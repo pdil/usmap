@@ -17,7 +17,8 @@ library(ggthemes)
 
 # import map shape file
 setwd("/Users/paolo/Desktop/github/us-map/data/")
-us <- readShapePoly("cb_2014_us_state_500k.shp", proj4string = CRS("+proj=longlat +datum=WGS84"))
+us <- readShapePoly("cb_2014_us_state_500k/cb_2014_us_state_500k.shp", 
+                    proj4string = CRS("+proj=longlat +datum=WGS84"))
 
 # aea: Albers Equal Area projection
 us_aea <- spTransform(us, CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +a=6370997 +b=6370997 +units=m +no_defs"))
