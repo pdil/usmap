@@ -11,4 +11,5 @@ The shape files that we use to plot the maps in R are located in the `data` fold
 * ~~`state-map.R` - US map withs state borders.~~ *Coming soon...*
 
 #### Examples
-*Coming soon...*
+Here is an example of a blank U.S. map created using this code.
+![Blank U.S. map](https://github.com/pdil/us-map/blob/master/blank-us-map.png)
