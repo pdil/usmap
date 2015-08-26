@@ -16,8 +16,8 @@ library(ggplot2)
 library(ggthemes)
 
 # import map shape file
-setwd("/Users/paolo/Desktop/github/us-map/data/")
-us <- readShapePoly("cb_2014_us_state_500k/cb_2014_us_state_500k.shp", 
+setwd("/Users/paolo/Desktop/github/us-map/")
+us <- readShapePoly("data/cb_2014_us_state_500k/cb_2014_us_state_500k.shp", 
                     proj4string = CRS("+proj=longlat +datum=WGS84"))
 
 # aea: Albers Equal Area projection
@@ -45,7 +45,7 @@ us_aea <- rbind(us_aea, alaska, hawaii)
 # plot map
 map <- fortify(us_aea, region = "GEOID")  # convert map to ggplot-friendly data frame
 
-ggplot() + 
+blank_map <- ggplot() + 
   geom_map(data = map, map = map, aes(x = long, y = lat, map_id = id, group = group), colour = "black", fill = "white", size = 0.3) +
   coord_equal() +
   theme_map() + 
@@ -54,3 +54,5 @@ ggplot() +
   scale_y_continuous(breaks = NULL) +
   labs(title = paste0("U.S. State Map")) +
   theme(plot.title = element_text(size = 22, face = "bold"))
+
+ggsave("blank-us-map.png", blank_map, width = 6, height = 4.9)
