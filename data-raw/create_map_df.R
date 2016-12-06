@@ -1,5 +1,5 @@
 # ==============================================================================
-# maps.R
+# create_map_df.R
 #
 # Plots US states map with Alaska and Hawaii
 #
@@ -16,8 +16,7 @@ library(ggplot2)
 library(ggthemes)
 
 # import map shape file
-setwd("/Users/paolo/Desktop/github/us-map/")
-us <- readShapePoly("data/cb_2014_us_state_500k/cb_2014_us_state_500k.shp", 
+us <- readShapePoly("cb_2014_us_state_500k/cb_2014_us_state_500k.shp", 
                     proj4string = CRS("+proj=longlat +datum=WGS84"))
 
 # aea: Albers Equal Area projection
