@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/pdil/usmap.svg?branch=master)](https://travis-ci.org/pdil/usmap)
 
 ### Note: This package is currently under construction and unreleased.
-Repo contents are subject to change rapidly and any description contained herein may not be indicative of the final product.
+Contents are subject to change rapidly and any description contained herein may not be indicative of the final product.
 
 =====
 
