@@ -7,3 +7,12 @@ Depends: R (>= 3.3.1)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+
+Imports:
+  ggplot2
+  ggthemes
+  mapproj
+  maptools
+  RColorBrewer
+  rgdal
+  rgeos
