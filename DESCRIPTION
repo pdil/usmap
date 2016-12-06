@@ -1,13 +1,12 @@
 Package: usmap
-Title: What the Package Does (one line, title case)
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.3.1)
-License: What license is it under?
-Encoding: UTF-8
-LazyData: true
-
+Title: What the Package Does (one line, title case)
+Authors@R: 
+  person("Paolo", "Di Lorenzo", email = "paolo@dilorenzo.pl", role = c("aut", "cre"))
+Description: 
+  What the package does (one paragraph).
+Depends: 
+  R (>= 3.3.1)
 Imports:
   ggplot2
   ggthemes
@@ -16,3 +15,6 @@ Imports:
   RColorBrewer
   rgdal
   rgeos
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
