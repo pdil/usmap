@@ -1,4 +1,5 @@
 # usmap
+[![Build Status](https://travis-ci.org/pdil/usmap.svg?branch=master)](https://travis-ci.org/pdil/usmap)
 
 #### Purpose
 Typically in R it is difficult to create nice US [choropleths](http://en.wikipedia.org/wiki/Choropleth) that include Alaska and Hawaii. The templates presented here attempt to elegantly solve this problem by utilizing `ggplot2`. This allows the user to easily add data to color the map. Eventually these templates may be deployed as an R package.
