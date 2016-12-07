@@ -3,7 +3,9 @@
 
 ### Note: This package is currently under construction and unreleased.
 Contents are subject to change rapidly and any description contained herein may not be indicative of the final product.
+
 =====
+
 #### Purpose
 Typically in R it is difficult to create nice US [choropleths](http://en.wikipedia.org/wiki/Choropleth) that include Alaska and Hawaii. The functions presented here attempt to elegantly solve this problem by manually moving these states to a new location and providing a fortified data frame for mapping and visualization. This allows the user to easily add data to color the map. Eventually these templates may be deployed as an R package.
 
