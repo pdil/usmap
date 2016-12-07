@@ -1,1 +1,4 @@
 ^\.travis\.yml$
+^usmap\.Rproj$
+^data-raw$
+^*\.png$
