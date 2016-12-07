@@ -1,5 +1,5 @@
 # usmap
-[![Build Status](https://travis-ci.org/pdil/usmap.svg?branch=master)](https://travis-ci.org/pdil/usmap)
+[![Build Status](https://travis-ci.org/pdil/usmap.svg?branch=master)](https://travis-ci.org/pdil/usmap) [![codecov](https://codecov.io/gh/pdil/usmap/branch/master/graph/badge.svg)](https://codecov.io/gh/pdil/usmap)
 
 ### Note: This package is currently under construction and unreleased.
 Contents are subject to change rapidly and any description contained herein may not be indicative of the final product.
