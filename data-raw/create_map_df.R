@@ -15,7 +15,7 @@ library(dplyr)
 
 prefix = "cb_2014_"
 
-resolutions <- c("500k", "5m", "20m")
+resolutions <- c("5m", "20m")
 region_types <- c("county", "state")
 
 map_type <- outer(region_types, resolutions, FUN = paste, sep = "_") %>% outer("us", ., FUN = paste, sep = "_") %>% as.vector

@@ -8,7 +8,7 @@
 library(ggplot2)
 library(ggthemes)
 
-load("../data/us_state_500k.rda")
+load("../data/us_state_20m.rda")
 
 blank_map <- ggplot(data = map) + 
   geom_map(map = map, aes(x = long, y = lat, map_id = id, group = group), colour = "black", fill = "white", size = 0.3) +
