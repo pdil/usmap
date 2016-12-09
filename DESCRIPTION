@@ -1,5 +1,5 @@
 Package: usmap
-Version: 0.0.1
+Version: 0.0.0.9000
 Title: United States map data frames
 Description: Obtain United States map data frames of varying resolutions and region types
   (e.g. county, state). The map data frames include Alaska and Hawaii conveniently placed
