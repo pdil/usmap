@@ -4,7 +4,6 @@
 # Creates example map plot to display in README.md
 # ==============================================================================
 
-# library(RColorBrewer)
 library(ggplot2)
 library(ggthemes)
 
