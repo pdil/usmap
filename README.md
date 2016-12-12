@@ -12,8 +12,17 @@ Typically in R it is difficult to create nice US [choropleths](http://en.wikiped
 ### Shape Files
 The shape files that we use to plot the maps in R are located in the `data-raw` folder. For more information refer to the [US Census Bureau](https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html). Map scales of varying sizes (1:5,000,000 to 1:20,000,000) at both the state and county levels are included for convenience.
 
-### R Scripts
-* *Coming soon...*
+### Proposed Functionality
+* Obtain map with certain region breakdown
+```{r}
+state_map <- us_map(region = "state")
+county_map <- us_map(region = "county")
+```
+* Include only certain states
+```{r}
+new_england_states <- c("Connecticut", "Maine", "Massachusetts", "New Hampshire", "Rhode Island", "Vermont")
+new_england_map <- us_map(region = "state", include = new_england_states)
+```
 
 ### Examples
 Here is an example of a blank U.S. map created using this code.
