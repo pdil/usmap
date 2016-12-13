@@ -8,7 +8,7 @@
 #' @examples
 #' print("Examples will go here.")
 us_map <- function(regions, include = c()) {
-  if (region %in% c("states", "counties")) {
+  if (regions %in% c("states", "counties")) {
     load(system.file("extdata", paste0("us_", regions, ".rda"), package = "usmap"))
     
     if (length(include) > 0) {
