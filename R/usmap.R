@@ -6,6 +6,7 @@
 #'  
 #' @return A data frame of US map coordinates divided by the desired `region`.
 #' @examples
+#' library(usmap)
 #' states_map <- us_map(region = "states")
 #' counties_map <- us_map(region = "counties")
 us_map <- function(region, include = c()) {
