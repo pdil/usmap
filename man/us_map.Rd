@@ -19,8 +19,6 @@ A data frame of US map coordinates divided by the desired `region`.
 Retrieve US map data
 }
 \examples{
-library(usmap)
-states_map <- us_map(region = "states")
-counties_map <- us_map(region = "counties")
+print("Examples will go here.")
 }
 

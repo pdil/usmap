@@ -6,9 +6,7 @@
 #'  
 #' @return A data frame of US map coordinates divided by the desired `region`.
 #' @examples
-#' library(usmap)
-#' states_map <- us_map(region = "states")
-#' counties_map <- us_map(region = "counties")
+#' print("Examples will go here.")
 us_map <- function(region, include = c()) {
   if (region %in% c("states", "counties")) {
     load(system.file("extdata", paste0("us_", region, ".rda"), package = "usmap"))
