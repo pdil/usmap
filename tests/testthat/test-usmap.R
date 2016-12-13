@@ -9,7 +9,7 @@ test_that("structure of states df is correct", {
 
 test_that("structure of counties df is correct", {
   expect_equal(length(unique(counties_map$id)), 3142)
-}
+})
 
 test_that("error occurs for invalid region", {
   expect_error(us_map(region = "cities"))
