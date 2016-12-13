@@ -15,13 +15,13 @@ The shape files that we use to plot the maps in R are located in the `data-raw` 
 ### Proposed Functionality
 * Obtain map with certain region breakdown
 ```{r}
-state_map <- us_map(region = "state")
-county_map <- us_map(region = "county")
+state_map <- us_map(regions = "states")
+county_map <- us_map(regions = "counties")
 ```
 * Include only certain states
 ```{r}
 new_england_states <- c("Connecticut", "Maine", "Massachusetts", "New Hampshire", "Rhode Island", "Vermont")
-new_england_map <- us_map(region = "state", include = new_england_states)
+new_england_map <- us_map(regions = "states", include = new_england_states)
 ```
 
 ### Examples
