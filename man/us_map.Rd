@@ -4,10 +4,10 @@
 \alias{us_map}
 \title{Retrieve US map data}
 \usage{
-us_map(region, include = c())
+us_map(regions, include = c())
 }
 \arguments{
-\item{region}{The region breakdown for the map, either `states` or `counties`.}
+\item{regions}{The region breakdown for the map, either `states` or `counties`.}
 
 \item{include}{The regions to include in the output data frame. The regions
 must be of the same type as `region`.}
