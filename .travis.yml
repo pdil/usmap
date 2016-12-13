@@ -1,11 +1,12 @@
 language: R
-sudo: false
 cache: packages
-warnings_are_errors: false
+sudo: false
+
 r_packages:
-- covr
+    - covr
 after_success:
-- Rscript -e 'library(covr); codecov()'
+    - Rscript -e 'covr::codecov()'
+
 notifications:
   pushover:
     api_key:
