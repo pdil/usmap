@@ -7,3 +7,5 @@ final_states_df <- merged_states_df[, c("long", "lat", "order", "hole", "piece",
 colnames(final_states_df) <- c("long", "lat", "order", "hole", "piece", "group", "fips", "abbr", "full")
 
 write.csv(final_states_df, file = "us_states.csv", row.names = FALSE, na = "")
+
+write.csv(states_fips, file = "state_fips.csv", row.names = FALSE, na = "")
