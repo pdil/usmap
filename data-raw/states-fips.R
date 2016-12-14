@@ -51,3 +51,5 @@ WA,53,WASHINGTON
 WI,55,WISCONSIN
 WV,54,WEST VIRGINIA
 WY,56,WYOMING")
+
+states_fips$full <- tools::toTitleCase(tolower(states_fips$full))
