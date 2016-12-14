@@ -13,16 +13,15 @@ library(rgeos)
 library(rgdal)
 library(dplyr)
 
-prefix = "cb_2014_"
-
-resolutions <- c("5m", "20m")
+prefix = "cb_2014_us_"
 region_types <- c("county", "state")
+suffix <- "20m"
 
-map_type <- outer(region_types, resolutions, FUN = paste, sep = "_") %>% outer("us", ., FUN = paste, sep = "_") %>% as.vector
+map_types <- paste0(prefix, region_types) %>% paste0(., "_", suffix)
 
 create_mapdata <- function(type) {
   # import map shape file
-  us <- readShapePoly(paste0(prefix, type, "/", prefix, type, ".shp"),
+  us <- readShapePoly(paste0(type, "/", type, ".shp"),
                       proj4string = CRS("+proj=longlat +datum=WGS84"))
   
   # aea: Albers Equal Area projection
@@ -48,14 +47,10 @@ create_mapdata <- function(type) {
   us_aea <- rbind(us_aea, alaska, hawaii)
   
   # plot map
-  map <- fortify(us_aea, region = "GEOID")  # convert map to ggplot-friendly data frame
+  map <- ggplot2::fortify(us_aea, region = "GEOID")  # convert map to ggplot-friendly data frame
   
   # export csv file
   write.csv(map, file = paste0(type, ".csv"), row.names = FALSE, na = "")
-  
-  save(map, file = paste0("../data/", type, ".rda"), compress = "bzip2")
 }
 
-for (type in map_type) { create_mapdata(type) }
-
-
+for (type in map_types) create_mapdata(type)

@@ -10,10 +10,10 @@ us_map(regions, include = c())
 \item{regions}{The region breakdown for the map, either `states` or `counties`.}
 
 \item{include}{The regions to include in the output data frame. The regions
-must be of the same type as `region`.}
+must be of the same type as `regions`.}
 }
 \value{
-A data frame of US map coordinates divided by the desired `region`.
+A data frame of US map coordinates divided by the desired `regions`.
 }
 \description{
 Retrieve US map data

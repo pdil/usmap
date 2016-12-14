@@ -2,20 +2,20 @@
 #' 
 #' @param regions The region breakdown for the map, either `states` or `counties`.
 #' @param include The regions to include in the output data frame. The regions
-#'  must be of the same type as `region`.
+#'  must be of the same type as `regions`.
 #'  
-#' @return A data frame of US map coordinates divided by the desired `region`.
+#' @return A data frame of US map coordinates divided by the desired `regions`.
 #' @examples
 #' print("Examples will go here.")
 us_map <- function(regions, include = c()) {
   if (regions %in% c("states", "counties")) {
-    load(system.file("extdata", paste0("us_", regions, ".rda"), package = "usmap"))
+    df <- read.csv(system.file("extdata", paste0("us_", regions, ".csv"), package = "usmap"))
     
     if (length(include) > 0) {
-      map <- map[map$id %in% include, ]  
+      df <- df[map$full %in% include, ]  
     }
     
-    return(map)
+    return(df)
   } else {
     stop("Regions must be either `states` or `counties`.")
   }
