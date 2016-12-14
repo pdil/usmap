@@ -26,7 +26,7 @@ new_england_map <- us_map(regions = "states", include = new_england_states)
 * Look up FIPS codes for states and counties
 ```{r}
 fips(state = "New Jersey")
-// "34"
+# "34"
 ```
 
 ### Examples
