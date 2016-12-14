@@ -12,7 +12,7 @@ Typically in R it is difficult to create nice US [choropleths](http://en.wikiped
 ### Shape Files
 The shape files that we use to plot the maps in R are located in the `data-raw` folder. For more information refer to the [US Census Bureau](https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html). Maps at both the state and county levels are included for convenience (zip code maps may be included in the future).
 
-### Proposed Functionality
+### Features
 * Obtain map with certain region breakdown
 ```{r}
 state_map <- us_map(regions = "states")
@@ -22,6 +22,11 @@ county_map <- us_map(regions = "counties")
 ```{r}
 new_england_states <- c("Connecticut", "Maine", "Massachusetts", "New Hampshire", "Rhode Island", "Vermont")
 new_england_map <- us_map(regions = "states", include = new_england_states)
+```
+* Look up FIPS codes for states and counties
+```{r}
+fips(state = "New Jersey")
+// "34"
 ```
 
 ### Examples
