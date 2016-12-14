@@ -9,20 +9,25 @@
 #' @examples 
 #' print("Examples will go here.")
 fips <- function(state = "", county = "") {
-  if (state != "" & county != "") {
+  state_ <- tolower(state)
+  county_ <- tolower(county)
+  
+  if (state_ != "" & county_ != "") {
     stop("Please enter EITHER a `state` or a `county`, not both.")
   }
   
-  if (state != "") {
+  if (state_ != "") {
     df <- read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
+    abbr <- tolower(df$abbr)
+    full <- tolower(df$full)
     
-    if (!(state %in% df$abbr) & !(state %in% df$full)) {
+    if (!(state_ %in% abbr) & !(state_ %in% full)) {
       stop("The `state` you entered is invalid.")
     } else {
-      if (state %in% df$abbr) {
-        as.character(df$fips[which(df$abbr == state)])
+      if (state_ %in% abbr) {
+        as.character(df$fips[which(abbr == state_)])
       } else {
-        as.character(df$fips[which(df$full == state)])
+        as.character(df$fips[which(full == state_)])
       }
     }
   } else {
