@@ -22,7 +22,7 @@ fips <- function(state = "", county = "") {
     full <- tolower(df$full)
     
     if (!(state_ %in% abbr) & !(state_ %in% full)) {
-      stop("The `state` you entered is invalid.")
+      stop(paste(state_, "is not a valid state.") 
     } else {
       if (state_ %in% abbr) {
         as.character(df$fips[which(abbr == state_)])
@@ -35,7 +35,7 @@ fips <- function(state = "", county = "") {
     name <- tolower(df$county)
     
     if (!county_ %in% name) {
-      stop(paste(county_, "entered is not a valid county.")  
+      stop(paste(county_, "is not a valid county.")  
     } else {
       as.character(df$fips[which(name == county_)])  
     }
