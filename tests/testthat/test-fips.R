@@ -5,15 +5,18 @@ test_that("returns correct FIPS code for NJ", {
   expect_match(fips(state = "New Jersey"), "34")
 })
 
-# this will be replaced once county functionality is added
-#test_that("returns 0 when county is entered", {
-#  expect_equal(fips(county = "Anything"), 0)
-#})
+test_that("returns correct FIPS code for Mercer County, NJ", {
+  expect_equal(fips(county = "Mercer County"), "34021")
+})
 
 test_that("error occurs for entering both state and county", {
-  expect_error(fips(state = "NJ", county = "Mercer"))
+  expect_error(fips(state = "NJ", county = "Mercer County"))
 })
 
 test_that("error occurs for invalid state", {
   expect_error(fips(state = "Puerto Rico"))
+})
+
+test_that("error occurs for invalid county", {
+  expect_error(fips(county = "Fake County"))
 })
