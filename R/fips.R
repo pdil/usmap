@@ -31,6 +31,13 @@ fips <- function(state = "", county = "") {
       }
     }
   } else {
-    0
+    df <- read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
+    name <- tolower(df$county)
+    
+    if (!county_ %in% name) {
+      stop(paste(county_, "entered is not a valid county.")  
+    } else {
+      as.character(df$fips[which(name == county_)])  
+    }
   }
 }
