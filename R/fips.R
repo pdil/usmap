@@ -53,19 +53,29 @@ fips_info <- function(fips) {
     fips_ <- sprintf("%05d", fips)
   } else if (is.numeric(fips) & fips >= 1 & fips <= 56) {
     fips_ <- sprintf("%02d", fips)
-  } else if (is.character(fips)) {
-    fips_ <- fips
+  } else if (is.character(fips) & nchar(fips) %in% 4:5) {
+    fips_ <- sprintf("%05s", fips)
+  } else if (is.character(fips) & nchar(fips) %in% 1:2) {
+    fips_ <- sprintf("%02s", fips)
   } else {
     stop("`fips` must be a numeric or character type.")
   }
   
   if (nchar(fips_) == 2) {
-    df <- utils::read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
+    df <- utils::read.csv(
+      system.file("extdata", "state_fips.csv", package = "usmap"), 
+      colClasses = rep("character", 3), stringsAsFactors = FALSE
+    )
+    
     df[df$fips == fips_, ]
   } else if (nchar(fips_) == 5) {
-    df <- utils::read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
+    df <- utils::read.csv(
+      system.file("extdata", "county_fips.csv", package = "usmap"), 
+      colClasses = rep("character", 4), stringsAsFactors = FALSE
+    )
+    
     df[df$fips == fips_, ]
   } else {
-    stop("Invalid FIPS code `fips`.")
+    stop("Invalid FIPS code.")
   }
 }
