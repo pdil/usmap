@@ -8,13 +8,9 @@ test_that("returns correct FIPS code for NJ", {
 })
 
 test_that("returns correct FIPS code for Mercer County, NJ", {
-  expect_equal(fips(county = "mercer"), "34021")
-  expect_equal(fips(county = "mercer county"), "34021")
-  expect_equal(fips(county = "Mercer County"), "34021")
-})
-
-test_that("error occurs for entering both state and county", {
-  expect_error(fips(state = "NJ", county = "Mercer County"))
+  expect_equal(fips(state = "NJ", county = "mercer"), "34021")
+  expect_equal(fips(state = "NJ", county = "mercer county"), "34021")
+  expect_equal(fips(state = "NJ", county = "Mercer County"), "34021")
 })
 
 test_that("error occurs for invalid state", {

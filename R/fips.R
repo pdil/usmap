@@ -3,20 +3,17 @@
 #' @param state The state for which to obtain a FIPS code.
 #' @param county The county for which to obtain a FIPS code.
 #' 
-#' @note Either a `state` or a `county` should be specified, but not both.
+#' @note A `state` must be included when searching for `county`,
+#'  otherwise multiple results may be returned for duplicate county names.
 #' 
 #' @return The FIPS code of given `state` or `county`.
 #' @examples 
 #' print("Examples will go here.")
-fips <- function(state = "", county = "") {
+fips <- function(state, county = "") {
   state_ <- tolower(state)
   county_ <- tolower(county)
   
-  if (state_ != "" & county_ != "") {
-    stop("Please enter EITHER a `state` or a `county`, not both.")
-  }
-  
-  if (state_ != "") {
+  if (county_ == "") {
     df <- read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
     abbr <- tolower(df$abbr)
     full <- tolower(df$full)
@@ -33,11 +30,12 @@ fips <- function(state = "", county = "") {
   } else {
     df <- read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
     name <- tolower(df$county)
-    
-    if (!(county_ %in% name) & !(county_ %in% paste(name, "county"))) {
+    state_name <- tolower(df$state)
+
+    if (!(county_ %in% name) & !(county_ %in% trimws(sub("county", "", name)))) {
       stop(paste(county_, "is not a valid county."))
     } else {
-      as.character(df$fips[which(name == county_ | name == paste(name, "county"))])  
+      as.character(df$fips[which((name == county_ | name == paste(county_, "county")) & state_name == state_)])  
     }
   }
 }
