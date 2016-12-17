@@ -25,10 +25,21 @@ new_england_map <- us_map(regions = "states", include = new_england_states)
 ```
 * Look up FIPS codes for states and counties
 ```{r}
-fips(state = "New Jersey")
+fips("New Jersey")
 # "34"
-fips(state = "NJ", county = "Mercer")
+fips("NJ", county = "Mercer")
 # "34021"
+```
+* Retrieve states or counties with a FIPS codes
+```{r}
+fips_info(c("34", "35"))
+#   abbr fips       full
+# 1   NJ   34 New Jersey
+# 2   NM   35 New Mexico
+fips_info(c("34021", "35021"))
+#         full abbr         county  fips
+# 1 New Jersey   NJ  Mercer County 34021
+# 2 New Mexico   NM Harding County 35021
 ```
 
 ### Examples
