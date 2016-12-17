@@ -27,6 +27,8 @@ new_england_map <- us_map(regions = "states", include = new_england_states)
 ```{r}
 fips(state = "New Jersey")
 # "34"
+fips(state = "NJ", county = "Mercer")
+# "34021"
 ```
 
 ### Examples
