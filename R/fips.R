@@ -46,3 +46,26 @@ fips <- function(state, county = "") {
     }
   }
 }
+
+#' @export
+fips_info <- function(fips) {
+  if (is.numeric(fips) & fips / 1000 > 1) {
+    fips_ <- sprintf("%05d", fips)
+  } else if (is.numeric(fips) & fips / 10 > 1) {
+    fips_ <- sprintf("%02d", fips)
+  } else if (is.character(fips)) {
+    fips_ <- fips
+  } else {
+    stop("`fips` must be a numeric or character type.")
+  }
+  
+  if (nchar(fips_) == 2) {
+    df <- utils::read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
+    df[df$fips == fips_]
+  } else if (nchar(fips_) == 5) {
+    df <- utils::read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
+    df[df$fips == fips_]
+  } else {
+    stop("Invalid FIPS code `fips`.")
+  }
+}
