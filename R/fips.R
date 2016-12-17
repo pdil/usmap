@@ -63,7 +63,7 @@ fips <- function(state, county = "") {
 #' fips_info(c("02", "03", "04"))
 #' 
 #' fips_info(2016)
-#' fips_info(c("02016", "02017")
+#' fips_info(c("02016", "02017"))
 #' 
 #' @export
 fips_info <- function(fips) {

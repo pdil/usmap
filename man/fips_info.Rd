@@ -25,7 +25,7 @@ fips_info("2")
 fips_info(c("02", "03", "04"))
 
 fips_info(2016)
-fips_info(c("02016", "02017")
+fips_info(c("02016", "02017"))
 
 }
 
