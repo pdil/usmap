@@ -30,7 +30,7 @@ fips("New Jersey")
 fips("NJ", county = "Mercer")
 # "34021"
 ```
-* Retrieve states or counties with a FIPS codes
+* Retrieve states or counties with FIPS codes
 ```{r}
 fips_info(c("34", "35"))
 #   abbr fips       full
