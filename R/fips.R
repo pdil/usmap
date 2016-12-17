@@ -29,13 +29,15 @@ fips <- function(state, county = "") {
   } else {
     df <- utils::read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
     name <- tolower(df$county)
-    state_abbr <- tolower(df$state)
+    state_abbr <- tolower(df$abbr)
+    state_full <- tolower(df$full)
 
     if (!(county_ %in% name) & !(county_ %in% trimws(sub("county", "", name)))) {
       stop(paste(county_, "is not a valid county."))
     } else {
       sprintf("%05d", df$fips[which(
-        (name == county_ | name == paste(county_, "county")) & state_abbr == state_
+        (name == county_ | name == paste(county_, "county")) & 
+          (state_abbr == state_ | state_full == state_)
       )])
     }
   }
