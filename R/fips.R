@@ -17,7 +17,7 @@ fips <- function(state, county = "") {
   county_ <- tolower(county)
   
   if (county_ == "") {
-    df <- read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
+    df <- utils::read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
     abbr <- tolower(df$abbr)
     full <- tolower(df$full)
     
@@ -27,7 +27,7 @@ fips <- function(state, county = "") {
       sprintf("%02d", df$fips[which(abbr == state_ | full == state_)])
     }
   } else {
-    df <- read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
+    df <- utils::read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
     name <- tolower(df$county)
     state_abbr <- tolower(df$state)
 
