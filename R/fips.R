@@ -1,16 +1,20 @@
 #' Retrieve FIPS code for either a US state or county
 #'
 #' @param state The state for which to obtain a FIPS code.
+#'  Can be entered as either a state abbrevation or full name (case-insensitive).
 #' @param county The county for which to obtain a FIPS code.
+#'  Can be entered with or without "county" (case-insensitive).
 #' 
 #' @note A `state` must be included when searching for `county`,
 #'  otherwise multiple results may be returned for duplicate county names.
 #' 
-#' @return The FIPS code of given `state` or `county`.
+#' @return The FIPS code of given \code{state} or \code{county}.
 #' @examples 
-#' fips(state = "NJ")
-#' fips(state = "California")
+#' fips("NJ")
+#' fips("California")
+#' fips("CA", county = "orange")
 #' fips(state = "AL", county = "autauga")
+#' fips(state = "Alabama", county = "Autauga County")
 #' @export
 fips <- function(state, county = "") {
   state_ <- tolower(state)
