@@ -21,11 +21,7 @@ fips <- function(state, county = "") {
     if (!(state_ %in% abbr) & !(state_ %in% full)) {
       stop(paste(state_, "is not a valid state."))
     } else {
-      if (state_ %in% abbr) {
-        sprintf("%02d", df$fips[which(abbr == state_)])
-      } else {
-        sprintf("%02d", df$fips[which(full == state_)])
-      }
+      sprintf("%02d", df$fips[which(abbr == state_ | full == state_)])
     }
   } else {
     df <- read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
@@ -35,7 +31,9 @@ fips <- function(state, county = "") {
     if (!(county_ %in% name) & !(county_ %in% trimws(sub("county", "", name)))) {
       stop(paste(county_, "is not a valid county."))
     } else {
-      sprintf("%05d", df$fips[which((name == county_ | name == paste(county_, "county")) & state_name == state_)])
+      sprintf("%05d", df$fips[which(
+        (name == county_ | name == paste(county_, "county")) & state_name == state_
+      )])
     }
   }
 }
