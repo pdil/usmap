@@ -61,10 +61,10 @@ fips_info <- function(fips) {
   
   if (nchar(fips_) == 2) {
     df <- utils::read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
-    df[df$fips == fips_]
+    df[df$fips == fips_, ]
   } else if (nchar(fips_) == 5) {
     df <- utils::read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
-    df[df$fips == fips_]
+    df[df$fips == fips_, ]
   } else {
     stop("Invalid FIPS code `fips`.")
   }
