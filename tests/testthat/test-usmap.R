@@ -7,6 +7,13 @@ test_that("structure of states df is correct", {
   expect_equal(length(unique(states_map$fips)), 51)
 })
 
+test_that("correct states are included", {
+  include_states <- c("AK", "AL", "AZ")
+  map <- us_map(regions = "states", include = include_states)
+  
+  expect_equal(length(unique(map$fips)), length(include_states))
+})
+
 # test_that("structure of counties df is correct", {
 #   expect_equal(length(unique(counties_map$id)), 3142)
 # })
