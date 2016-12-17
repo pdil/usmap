@@ -10,13 +10,13 @@ test_that("returns correct state FIPS information", {
 
 test_that("returns correct county FIPS information", {
   ak_result <- data.frame(
-    full = "Alaska", 
-    abbr = "AK", 
-    county = "Aleutians West Census Area", 
-    fips = "02016",
+    full = rep("Alaska", 2), 
+    abbr = rep("AK", 2), 
+    county = c("Aleutians West Census Area", "Anchorage Municipality"), 
+    fips = c("02016", "02020"),
     stringsAsFactors = FALSE
   )
   
-  expect_equivalent(fips_info(2016), ak_result)
-  expect_equivalent(fips_info("02016"), ak_result)
+  expect_equivalent(fips_info(c(2016, 2020)), ak_result)
+  expect_equivalent(fips_info(c("02016", "02020")), ak_result)
 })
