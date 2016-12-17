@@ -20,7 +20,7 @@ The FIPS code of given \code{state} or \code{county}.
 Retrieve FIPS code for either a US state or county
 }
 \note{
-A `state` must be included when searching for `county`,
+A \code{state} must be included when searching for `county`,
  otherwise multiple results may be returned for duplicate county names.
 }
 \examples{
