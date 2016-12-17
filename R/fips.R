@@ -8,7 +8,10 @@
 #' 
 #' @return The FIPS code of given `state` or `county`.
 #' @examples 
-#' print("Examples will go here.")
+#' fips(state = "NJ")
+#' fips(state = "California")
+#' fips(state = "AL", county = "autauga")
+#' @export
 fips <- function(state, county = "") {
   state_ <- tolower(state)
   county_ <- tolower(county)
@@ -26,13 +29,13 @@ fips <- function(state, county = "") {
   } else {
     df <- read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
     name <- tolower(df$county)
-    state_name <- tolower(df$state)
+    state_abbr <- tolower(df$state)
 
     if (!(county_ %in% name) & !(county_ %in% trimws(sub("county", "", name)))) {
       stop(paste(county_, "is not a valid county."))
     } else {
       sprintf("%05d", df$fips[which(
-        (name == county_ | name == paste(county_, "county")) & state_name == state_
+        (name == county_ | name == paste(county_, "county")) & state_abbr == state_
       )])
     }
   }

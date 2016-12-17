@@ -19,6 +19,7 @@ A data frame of US map coordinates divided by the desired `regions`.
 Retrieve US map data
 }
 \examples{
-print("Examples will go here.")
+df <- us_map(regions = "states")
+plot(df$long, df$lat)
 }
 

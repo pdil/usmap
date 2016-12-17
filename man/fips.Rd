@@ -4,7 +4,7 @@
 \alias{fips}
 \title{Retrieve FIPS code for either a US state or county}
 \usage{
-fips(state = "", county = "")
+fips(state, county = "")
 }
 \arguments{
 \item{state}{The state for which to obtain a FIPS code.}
@@ -18,9 +18,12 @@ The FIPS code of given `state` or `county`.
 Retrieve FIPS code for either a US state or county
 }
 \note{
-Either a `state` or a `county` should be specified, but not both.
+A `state` must be included when searching for `county`,
+ otherwise multiple results may be returned for duplicate county names.
 }
 \examples{
-print("Examples will go here.")
+fips(state = "NJ")
+fips(state = "California")
+fips(state = "AL", county = "autauga")
 }
 

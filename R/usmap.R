@@ -1,12 +1,16 @@
 #' Retrieve US map data
 #' 
+#' @importFrom "utils" "read.csv"
+#' 
 #' @param regions The region breakdown for the map, either `states` or `counties`.
 #' @param include The regions to include in the output data frame. The regions
 #'  must be of the same type as `regions`.
 #'  
 #' @return A data frame of US map coordinates divided by the desired `regions`.
 #' @examples
-#' print("Examples will go here.")
+#' df <- us_map(regions = "states")
+#' plot(df$long, df$lat)
+#' @export
 us_map <- function(regions, include = c()) {
   if (regions %in% c("states", "counties")) {
     df <- read.csv(system.file("extdata", paste0("us_", regions, ".csv"), package = "usmap"))
