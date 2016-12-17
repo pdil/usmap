@@ -12,7 +12,7 @@ us_map <- function(regions, include = c()) {
     df <- read.csv(system.file("extdata", paste0("us_", regions, ".csv"), package = "usmap"))
     
     if (length(include) > 0) {
-      df <- df[df$full %in% include | df$abbr %in% include, ]  
+      df <- df[df$full %in% include | df$abbr %in% include | sprintf("%02d", df$fips) %in% include, ]  
     }
     
     return(df)
