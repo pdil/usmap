@@ -49,9 +49,9 @@ fips <- function(state, county = "") {
 
 #' @export
 fips_info <- function(fips) {
-  if (is.numeric(fips) & fips / 1000 > 1) {
+  if (is.numeric(fips) & fips >= 1001 & fips <= 56043) {
     fips_ <- sprintf("%05d", fips)
-  } else if (is.numeric(fips) & fips / 10 > 1) {
+  } else if (is.numeric(fips) & fips >= 1 & fips <= 56) {
     fips_ <- sprintf("%02d", fips)
   } else if (is.character(fips)) {
     fips_ <- fips
