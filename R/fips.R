@@ -34,7 +34,7 @@ fips <- function(state = "", county = "") {
     df <- read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
     name <- tolower(df$county)
     
-    if (!(county_ %in% name) | !(county_ %in% paste(name, "county"))) {
+    if (!(county_ %in% name) & !(county_ %in% paste(name, "county"))) {
       stop(paste(county_, "is not a valid county."))
     } else {
       as.character(df$fips[which(name == county_ | name == paste(name, "county"))])  
