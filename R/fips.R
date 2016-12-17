@@ -5,7 +5,7 @@
 #' @param county The county for which to obtain a FIPS code.
 #'  Can be entered with or without "county" (case-insensitive).
 #' 
-#' @note A `state` must be included when searching for `county`,
+#' @note A \code{state} must be included when searching for `county`,
 #'  otherwise multiple results may be returned for duplicate county names.
 #' 
 #' @return The FIPS code of given \code{state} or \code{county}.
@@ -47,35 +47,60 @@ fips <- function(state, county = "") {
   }
 }
 
+#' Retrieve state or county pertaining to a FIPS code
+#' 
+#' @param fips A one to five digit, either \code{numeric}
+#'  or \code{character}, vector of FIPS codes for which to look up a state or county. 
+#'  States have a two digit FIPS code and counties have a five digit FIPS
+#'  code (where the first 2 numbers pertain to the state).
+#'  
+#' @return A data frame with the state or county and the associated
+#'  FIPS code.
+#'
+#' @examples 
+#' fips_info(2)
+#' fips_info("2")
+#' fips_info(c("02", "03", "04"))
+#' 
+#' fips_info(2016)
+#' fips_info(c("02016", "02017")
+#' 
 #' @export
 fips_info <- function(fips) {
-  if (is.numeric(fips) & fips >= 1001 & fips <= 56043) {
+  if (is.numeric(fips[1]) & fips[1] >= 1001 & fips[1] <= 56043) {
     fips_ <- sprintf("%05d", fips)
-  } else if (is.numeric(fips) & fips >= 1 & fips <= 56) {
+  } else if (is.numeric(fips[1]) & fips[1] >= 1 & fips[1] <= 56) {
     fips_ <- sprintf("%02d", fips)
-  } else if (is.character(fips) & nchar(fips) %in% 4:5) {
+  } else if (is.character(fips[1]) & nchar(fips[1]) %in% 4:5) {
     fips_ <- sprintf("%05s", fips)
-  } else if (is.character(fips) & nchar(fips) %in% 1:2) {
+  } else if (is.character(fips[1]) & nchar(fips[1]) %in% 1:2) {
     fips_ <- sprintf("%02s", fips)
   } else {
-    stop("`fips` must be a numeric or character type.")
+    stop("`fips` must be a numeric or character vector.")
   }
   
-  if (nchar(fips_) == 2) {
+  if (sum(nchar(fips_)) == 2 * length(fips_)) {
     df <- utils::read.csv(
       system.file("extdata", "state_fips.csv", package = "usmap"), 
       colClasses = rep("character", 3), stringsAsFactors = FALSE
     )
-    
-    df[df$fips == fips_, ]
-  } else if (nchar(fips_) == 5) {
+  
+    result <- df[df$fips %in% fips_, ]
+  } else if (sum(nchar(fips_)) == 5 * length(fips_)) {
     df <- utils::read.csv(
       system.file("extdata", "county_fips.csv", package = "usmap"), 
       colClasses = rep("character", 4), stringsAsFactors = FALSE
     )
     
-    df[df$fips == fips_, ]
+    result <- df[df$fips %in% fips_, ]
   } else {
     stop("Invalid FIPS code.")
+  }
+  
+  if (nrow(result) == 0) {
+    warning(paste("FIPS code(s)", fips_, "not found, returned 0 results."))
+  } else {
+    rownames(result) <- NULL
+    result
   }
 }
