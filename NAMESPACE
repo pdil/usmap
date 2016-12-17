@@ -2,4 +2,3 @@
 
 export(fips)
 export(us_map)
-importFrom("utils","read.csv")
