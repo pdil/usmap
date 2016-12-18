@@ -20,3 +20,7 @@ test_that("returns correct county FIPS information", {
   expect_equivalent(fips_info(c(2016, 2020)), ak_result)
   expect_equivalent(fips_info(c("02016", "02020")), ak_result)
 })
+
+test_that("error occurs for non-numeric/character FIPS", {
+  expect_error(fips_info(data.frame()))
+})
