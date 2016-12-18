@@ -103,14 +103,14 @@ fips_info.character <- function(fips) {
 #' Helper function for S3 method \code{fips_info}.
 #' @keywords internal
 getFipsInfo <- function(fips) {
-  if (sum(nchar(fips)) == 2 * length(fips)) {
+  if (all(nchar(fips) == 2)) {
     df <- utils::read.csv(
       system.file("extdata", "state_fips.csv", package = "usmap"),
       colClasses = rep("character", 3), stringsAsFactors = FALSE
     )
 
     result <- df[df$fips %in% fips, ]
-  } else if (sum(nchar(fips)) == 5 * length(fips)) {
+  } else if (all(nchar(fips) == 5)) {
     df <- utils::read.csv(
       system.file("extdata", "county_fips.csv", package = "usmap"),
       colClasses = rep("character", 4), stringsAsFactors = FALSE
