@@ -5,7 +5,7 @@
 #' @param county The county for which to obtain a FIPS code.
 #'  Can be entered with or without "county" (case-insensitive).
 #'
-#' @note A \code{state} must be included when searching for `county`,
+#' @note A \code{state} must be included when searching for \code{county},
 #'  otherwise multiple results may be returned for duplicate county names.
 #'
 #' @return The FIPS code of given \code{state} or \code{county}.
@@ -54,8 +54,8 @@ fips <- function(state, county = "") {
 #'  States have a two digit FIPS code and counties have a five digit FIPS
 #'  code (where the first 2 numbers pertain to the state).
 #'
-#' @return A data frame with the state or county and the associated
-#'  FIPS code.
+#' @return A data frame with the states or counties and the associated
+#'  FIPS codes.
 #'
 #' @examples
 #' fips_info(2)
@@ -100,7 +100,7 @@ fips_info.character <- function(fips) {
 }
 
 #' Gets FIPS info for either states or counties depending on input.
-#' Helper function for S3 method \code{fips_info}
+#' Helper function for S3 method \code{fips_info}.
 #' @keywords internal
 getFipsInfo <- function(fips) {
   if (sum(nchar(fips)) == 2 * length(fips)) {

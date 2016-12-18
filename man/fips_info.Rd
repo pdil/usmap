@@ -19,8 +19,8 @@ States have a two digit FIPS code and counties have a five digit FIPS
 code (where the first 2 numbers pertain to the state).}
 }
 \value{
-A data frame with the state or county and the associated
- FIPS code.
+A data frame with the states or counties and the associated
+ FIPS codes.
 }
 \description{
 Retrieve state or county pertaining to a FIPS code

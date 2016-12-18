@@ -7,14 +7,14 @@
 us_map(regions, include = c())
 }
 \arguments{
-\item{regions}{The region breakdown for the map, either (\code{"states"})` 
-or (\code{"counties"}).}
+\item{regions}{The region breakdown for the map, either \code{"states"}
+or \code{"counties"}.}
 
 \item{include}{The regions to include in the output data frame. The regions
 must be of the same type as \code{regions}.}
 }
 \value{
-A data frame of US map coordinates divided by the desired `regions`.
+A data frame of US map coordinates divided by the desired \code{regions}.
 }
 \description{
 Retrieve US map data
