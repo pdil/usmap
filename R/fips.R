@@ -101,6 +101,7 @@ fips_info.character <- function(fips) {
 
 #' Gets FIPS info for either states or counties depending on input.
 #' Helper function for S3 method \code{fips_info}
+#' @keywords internal
 getFipsInfo <- function(fips) {
   if (sum(nchar(fips)) == 2 * length(fips)) {
     df <- utils::read.csv(

@@ -11,4 +11,5 @@ getFipsInfo(fips)
 Gets FIPS info for either states or counties depending on input.
 Helper function for S3 method \code{fips_info}
 }
+\keyword{internal}
 
