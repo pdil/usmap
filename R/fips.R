@@ -67,40 +67,61 @@ fips <- function(state, county = "") {
 #'
 #' @export
 fips_info <- function(fips) {
-  if (is.numeric(fips[1]) & fips[1] >= 1001 & fips[1] <= 56043) {
+  UseMethod("fips_info", fips)
+}
+
+#' @export
+fips_info.numeric <- function(fips) {
+  if (all(fips >= 1001 & fips <= 56043)) {
     fips_ <- sprintf("%05d", fips)
-  } else if (is.numeric(fips[1]) & fips[1] >= 1 & fips[1] <= 56) {
+  } else if (all(fips >= 1 & fips <= 56)) {
     fips_ <- sprintf("%02d", fips)
-  } else if (is.character(fips[1]) & nchar(fips[1]) %in% 4:5) {
-    fips_ <- sprintf("%05s", fips)
-  } else if (is.character(fips[1]) & nchar(fips[1]) %in% 1:2) {
-    fips_ <- sprintf("%02s", fips)
   } else {
-    stop("`fips` must be a numeric or character vector.")
+    stop("Invalid FIPS code, must be 2 digit (states) or 5 digit (counties).")
   }
 
-  if (sum(nchar(fips_)) == 2 * length(fips_)) {
+  getFipsInfo(fips_)
+}
+
+#' @export
+fips_info.character <- function(fips) {
+  if (all(nchar(fips) %in% 4:5)) {
+    fips_ <- sprintf("%05s", fips)
+  } else if (all(nchar(fips)) %in% 1:2) {
+    fips_ <- sprintf("%02s", fips)
+  } else {
+    stop("Invalid FIPS code, must be 2 digit (states) or 5 digit (counties).")
+  }
+
+  getFipsInfo(fips_)
+}
+
+#' Gets FIPS info for either states or counties depending on input.
+#' Helper function for S3 method \code{fips_info}
+getFipsInfo <- function(fips) {
+  if (sum(nchar(fips)) == 2 * length(fips)) {
     df <- utils::read.csv(
       system.file("extdata", "state_fips.csv", package = "usmap"),
       colClasses = rep("character", 3), stringsAsFactors = FALSE
     )
 
-    result <- df[df$fips %in% fips_, ]
-  } else if (sum(nchar(fips_)) == 5 * length(fips_)) {
+    result <- df[df$fips %in% fips, ]
+  } else if (sum(nchar(fips)) == 5 * length(fips)) {
     df <- utils::read.csv(
       system.file("extdata", "county_fips.csv", package = "usmap"),
       colClasses = rep("character", 4), stringsAsFactors = FALSE
     )
 
-    result <- df[df$fips %in% fips_, ]
+    result <- df[df$fips %in% fips, ]
   } else {
     stop("Invalid FIPS code.")
   }
 
   if (nrow(result) == 0) {
-    warning(paste("FIPS code(s)", fips_, "not found, returned 0 results."))
+    warning(paste("FIPS code(s)", fips, "not found, returned 0 results."))
   }
 
   rownames(result) <- NULL
   result
 }
+

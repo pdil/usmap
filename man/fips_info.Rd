@@ -8,7 +8,7 @@ fips_info(fips)
 }
 \arguments{
 \item{fips}{A one to five digit, either \code{numeric}
-or \code{character}, vector of FIPS codes for which to look up a state or county. 
+or \code{character}, vector of FIPS codes for which to look up a state or county.
 States have a two digit FIPS code and counties have a five digit FIPS
 code (where the first 2 numbers pertain to the state).}
 }
