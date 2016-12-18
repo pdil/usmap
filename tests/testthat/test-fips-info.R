@@ -9,7 +9,6 @@ test_that("returns correct state FIPS information", {
   )
 
   expect_equivalent(fips_info(c(2, 34)), ak_result)
-  expect_equivalent(fips_info(c("2", "34")), ak_result)
   expect_equivalent(fips_info(c("02", "34")), ak_result)
 })
 
