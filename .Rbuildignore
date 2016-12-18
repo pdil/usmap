@@ -2,3 +2,4 @@
 ^usmap\.Rproj$
 ^data-raw$
 ^.*\.png$
+^\.Rproj\.user$
