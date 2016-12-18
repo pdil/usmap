@@ -65,11 +65,13 @@ fips <- function(state, county = "") {
 #' fips_info(2016)
 #' fips_info(c("02016", "02017"))
 #'
+#' @rdname fips_info
 #' @export
 fips_info <- function(fips) {
   UseMethod("fips_info", fips)
 }
 
+#' @rdname fips_info
 #' @export
 fips_info.numeric <- function(fips) {
   if (all(fips >= 1001 & fips <= 56043)) {
@@ -83,6 +85,7 @@ fips_info.numeric <- function(fips) {
   getFipsInfo(fips_)
 }
 
+#' @rdname fips_info
 #' @export
 fips_info.character <- function(fips) {
   if (all(nchar(fips) %in% 4:5)) {

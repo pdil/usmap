@@ -2,9 +2,15 @@
 % Please edit documentation in R/fips.R
 \name{fips_info}
 \alias{fips_info}
+\alias{fips_info.character}
+\alias{fips_info.numeric}
 \title{Retrieve state or county pertaining to a FIPS code}
 \usage{
 fips_info(fips)
+
+\method{fips_info}{numeric}(fips)
+
+\method{fips_info}{character}(fips)
 }
 \arguments{
 \item{fips}{A one to five digit, either \code{numeric}
