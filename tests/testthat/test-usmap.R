@@ -1,7 +1,7 @@
 context("Loading US map data")
 
 states_map <- us_map(regions = "states")
-# counties_map <- us_map(regions = "counties")
+counties_map <- us_map(regions = "counties")
 
 test_that("structure of states df is correct", {
   expect_equal(length(unique(states_map$fips)), 51)
