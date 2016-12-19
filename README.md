@@ -52,7 +52,7 @@ library(usmap)
 library(ggplot2)
 library(ggthemes)
 
-map <- us_map(region = "states")
+map <- us_map(regions = "states")
 
 blank_map <- ggplot(data = map) + 
   geom_map(map = map, aes(x = long, y = lat, map_id = id, group = group), 
