@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<gfc:FC_FeatureCatalogue xmlns:gmx="http://www.isotc211.org/2005/gmx"
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file contains all the Entity and Attribute Information--><gfc:FC_FeatureCatalogue xmlns:gmx="http://www.isotc211.org/2005/gmx"
                          xmlns:gco="http://www.isotc211.org/2005/gco"
                          xmlns:gmd="http://www.isotc211.org/2005/gmd"
                          xmlns:xlink="http://www.w3.org/1999/xlink"
                          xmlns:gml="http://www.opengis.net/gml/3.2"
                          xmlns:gfc="http://www.isotc211.org/2005/gfc">
    <gmx:name>
-      <gco:CharacterString>Feature Catalog for the 2014 State-County  1:20,000,000</gco:CharacterString>
+      <gco:CharacterString>Feature Catalog for the 2015 State  1:20,000,000</gco:CharacterString>
    </gmx:name>
    <gmx:scope>
-      <gco:CharacterString>The State-County at a scale of 1:20,000,000</gco:CharacterString>
+      <gco:CharacterString>The State at a scale of 1:20,000,000</gco:CharacterString>
    </gmx:scope>
    <gmx:versionNumber>
-      <gco:CharacterString>cb_2014_county_20m</gco:CharacterString>
+      <gco:CharacterString>cb_2015_state_20m</gco:CharacterString>
    </gmx:versionNumber>
    <gmx:versionDate>
-      <gco:Date>2015-05</gco:Date>
+      <gco:Date>2016-03</gco:Date>
    </gmx:versionDate>
    <gmx:language>
       <gco:CharacterString>eng</gco:CharacterString>
@@ -31,15 +31,15 @@
    <gfc:featureType>
       <gfc:FC_FeatureType>
          <gfc:typeName>
-            <gco:LocalName>cb_2014_us_county_20m.shp</gco:LocalName>
+            <gco:LocalName>cb_2015_us_state_20m.shp</gco:LocalName>
          </gfc:typeName>
          <gfc:definition>
-            <gco:CharacterString>Current County and Equivalent National entities</gco:CharacterString>
+            <gco:CharacterString>Current State and Equivalent National entities</gco:CharacterString>
          </gfc:definition>
          <gfc:isAbstract>
             <gco:Boolean>false</gco:Boolean>
          </gfc:isAbstract>
-         <gfc:featureCatalogue uuidref="2014_county_20m.ea.iso.xml"/>
+         <gfc:featureCatalogue uuidref="2015_state_20m.ea.iso.xml"/>
          <gfc:carrierOfCharacteristics>
             <gfc:FC_FeatureAttribute>
                <gfc:memberName>
@@ -65,32 +65,10 @@
          <gfc:carrierOfCharacteristics>
             <gfc:FC_FeatureAttribute>
                <gfc:memberName>
-                  <gco:LocalName>COUNTYFP</gco:LocalName>
+                  <gco:LocalName>STATENS</gco:LocalName>
                </gfc:memberName>
                <gfc:definition>
-                  <gco:CharacterString>Current county Federal Information Processing Series (FIPS) code</gco:CharacterString>
-               </gfc:definition>
-               <gfc:cardinality gco:nilReason="unknown"/>
-               <gfc:definitionReference xlink:title="U.S. Census Bureau"
-                                        xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
-               <gfc:listedValue>
-                  <gfc:FC_ListedValue>
-                     <gfc:label>
-                        <gco:CharacterString>National Standard Codes (ANSI INCITS 31-2009), Federal Information Processing Series (FIPS) - Counties/County Equivalents</gco:CharacterString>
-                     </gfc:label>
-                     <gfc:definitionReference xlink:title="U.S. Census Bureau"
-                                              xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
-                  </gfc:FC_ListedValue>
-               </gfc:listedValue>
-            </gfc:FC_FeatureAttribute>
-         </gfc:carrierOfCharacteristics>
-         <gfc:carrierOfCharacteristics>
-            <gfc:FC_FeatureAttribute>
-               <gfc:memberName>
-                  <gco:LocalName>COUNTYNS</gco:LocalName>
-               </gfc:memberName>
-               <gfc:definition>
-                  <gco:CharacterString>Current county Geographic Names Information System (GNIS) code</gco:CharacterString>
+                  <gco:CharacterString>Current state Geographic Names Information System (GNIS) code</gco:CharacterString>
                </gfc:definition>
                <gfc:cardinality gco:nilReason="unknown"/>
                <gfc:definitionReference xlink:title="U.S. Census Bureau"
@@ -159,17 +137,90 @@
                   <gco:LocalName>GEOID</gco:LocalName>
                </gfc:memberName>
                <gfc:definition>
-                  <gco:CharacterString>County identifier; a concatenation of current state Federal Information Processing Series (FIPS) code and county FIPS code</gco:CharacterString>
+                  <gco:CharacterString>State identifier; state FIPS code</gco:CharacterString>
                </gfc:definition>
                <gfc:cardinality gco:nilReason="unknown"/>
                <gfc:definitionReference xlink:title="U.S. Census Bureau"
                                         xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
                <gfc:listedValue>
                   <gfc:FC_ListedValue>
-                     <gfc:label gco:nilReason="inapplicable"/>
-                     <gfc:definition>
-                        <gco:CharacterString>The GEOID attribute is a concatenation of the state FIPS code followed by the county FIPS code. No spaces are allowed between the two codes. The State FIPS code is taken from "National Standard Codes (ANSI INCITS 38-2009), Federal Information Processing Series (FIPS) - States". The county FIPS code is taken from "National Standard Codes (ANSI INCITS 31-2009), Federal Information Processing Series (FIPS) - Counties/County Equivalents".</gco:CharacterString>
-                     </gfc:definition>
+                     <gfc:label>
+                        <gco:CharacterString>National Standard Codes (ANSI INCITS 38-2009), Federal Information Processing Series (FIPS) - States/State Equivalents</gco:CharacterString>
+                     </gfc:label>
+                     <gfc:definitionReference xlink:title="U.S. Census Bureau"
+                                              xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
+                  </gfc:FC_ListedValue>
+               </gfc:listedValue>
+            </gfc:FC_FeatureAttribute>
+         </gfc:carrierOfCharacteristics>
+         <gfc:carrierOfCharacteristics>
+            <gfc:FC_FeatureAttribute>
+               <gfc:memberName>
+                  <gco:LocalName>STUSPS</gco:LocalName>
+               </gfc:memberName>
+               <gfc:definition>
+                  <gco:CharacterString>Current United States Postal Service state abbreviation</gco:CharacterString>
+               </gfc:definition>
+               <gfc:cardinality gco:nilReason="unknown"/>
+               <gfc:definitionReference>
+                  <gfc:FC_DefinitionReference>
+                     <gfc:definitionSource>
+                        <gfc:FC_DefinitionSource>
+                           <gfc:source>
+                              <gmd:CI_Citation>
+                                 <gmd:title gco:nilReason="inapplicable"/>
+                                 <gmd:date gco:nilReason="unknown"/>
+                                 <gmd:citedResponsibleParty>
+                                    <gmd:CI_ResponsibleParty>
+                                       <gmd:organisationName>
+                                          <gco:CharacterString>U.S. Postal Service</gco:CharacterString>
+                                       </gmd:organisationName>
+                                       <gmd:role>
+                                          <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"
+                                                           codeListValue="resourceProvider"
+                                                           codeSpace="001"> resourceProvider
+                                                  </gmd:CI_RoleCode>
+                                       </gmd:role>
+                                    </gmd:CI_ResponsibleParty>
+                                 </gmd:citedResponsibleParty>
+                              </gmd:CI_Citation>
+                           </gfc:source>
+                        </gfc:FC_DefinitionSource>
+                     </gfc:definitionSource>
+                  </gfc:FC_DefinitionReference>
+               </gfc:definitionReference>
+               <gfc:listedValue>
+                  <gfc:FC_ListedValue>
+                     <gfc:label>
+                        <gco:CharacterString>Publication 28 - Postal Addressing Standards</gco:CharacterString>
+                     </gfc:label>
+                     <gfc:definitionReference>
+                        <gfc:FC_DefinitionReference>
+                           <gfc:definitionSource>
+                              <gfc:FC_DefinitionSource>
+                                 <gfc:source>
+                                    <gmd:CI_Citation>
+                                       <gmd:title gco:nilReason="inapplicable"/>
+                                       <gmd:date gco:nilReason="unknown"/>
+                                       <gmd:citedResponsibleParty>
+                                          <gmd:CI_ResponsibleParty>
+                                             <gmd:organisationName>
+                                                <gco:CharacterString>U.S. Postal Service</gco:CharacterString>
+                                             </gmd:organisationName>
+                                             <gmd:role>
+                                                <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"
+                                                                 codeListValue="resourceProvider"
+                                                                 codeSpace="001">resourceProvider
+                                                  </gmd:CI_RoleCode>
+                                             </gmd:role>
+                                          </gmd:CI_ResponsibleParty>
+                                       </gmd:citedResponsibleParty>
+                                    </gmd:CI_Citation>
+                                 </gfc:source>
+                              </gfc:FC_DefinitionSource>
+                           </gfc:definitionSource>
+                        </gfc:FC_DefinitionReference>
+                     </gfc:definitionReference>
                   </gfc:FC_ListedValue>
                </gfc:listedValue>
             </gfc:FC_FeatureAttribute>
@@ -180,7 +231,7 @@
                   <gco:LocalName>NAME</gco:LocalName>
                </gfc:memberName>
                <gfc:definition>
-                  <gco:CharacterString>Current county name</gco:CharacterString>
+                  <gco:CharacterString>Current State name</gco:CharacterString>
                </gfc:definition>
                <gfc:cardinality gco:nilReason="unknown"/>
                <gfc:definitionReference xlink:title="U.S. Census Bureau"
@@ -188,7 +239,7 @@
                <gfc:listedValue>
                   <gfc:FC_ListedValue>
                      <gfc:label>
-                        <gco:CharacterString>National Standard Codes (ANSI INCITS 31-2009), Federal Information Processing Series (FIPS) - Counties/County Equivalents</gco:CharacterString>
+                        <gco:CharacterString>National Standard Codes (ANSI INCITS 38-2009), Federal Information Processing Series (FIPS) - States/State Equivalents</gco:CharacterString>
                      </gfc:label>
                      <gfc:definitionReference xlink:title="U.S. Census Bureau"
                                               xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
@@ -202,7 +253,7 @@
                   <gco:LocalName>LSAD</gco:LocalName>
                </gfc:memberName>
                <gfc:definition>
-                  <gco:CharacterString>Current legal/statistical area description code for county</gco:CharacterString>
+                  <gco:CharacterString>Current legal/statistical area description code for state</gco:CharacterString>
                </gfc:definition>
                <gfc:cardinality gco:nilReason="unknown"/>
                <gfc:definitionReference xlink:title="U.S. Census Bureau"
@@ -214,126 +265,6 @@
                      </gfc:label>
                      <gfc:definition>
                         <gco:CharacterString>Blank</gco:CharacterString>
-                     </gfc:definition>
-                     <gfc:definitionReference xlink:title="U.S. Census Bureau"
-                                              xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
-                  </gfc:FC_ListedValue>
-               </gfc:listedValue>
-               <gfc:listedValue>
-                  <gfc:FC_ListedValue>
-                     <gfc:label>
-                        <gco:CharacterString>03</gco:CharacterString>
-                     </gfc:label>
-                     <gfc:definition>
-                        <gco:CharacterString>City and Borough (suffix)</gco:CharacterString>
-                     </gfc:definition>
-                     <gfc:definitionReference xlink:title="U.S. Census Bureau"
-                                              xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
-                  </gfc:FC_ListedValue>
-               </gfc:listedValue>
-               <gfc:listedValue>
-                  <gfc:FC_ListedValue>
-                     <gfc:label>
-                        <gco:CharacterString>04</gco:CharacterString>
-                     </gfc:label>
-                     <gfc:definition>
-                        <gco:CharacterString>Borough (suffix)</gco:CharacterString>
-                     </gfc:definition>
-                     <gfc:definitionReference xlink:title="U.S. Census Bureau"
-                                              xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
-                  </gfc:FC_ListedValue>
-               </gfc:listedValue>
-               <gfc:listedValue>
-                  <gfc:FC_ListedValue>
-                     <gfc:label>
-                        <gco:CharacterString>05</gco:CharacterString>
-                     </gfc:label>
-                     <gfc:definition>
-                        <gco:CharacterString>Census Area (suffix)</gco:CharacterString>
-                     </gfc:definition>
-                     <gfc:definitionReference xlink:title="U.S. Census Bureau"
-                                              xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
-                  </gfc:FC_ListedValue>
-               </gfc:listedValue>
-               <gfc:listedValue>
-                  <gfc:FC_ListedValue>
-                     <gfc:label>
-                        <gco:CharacterString>06</gco:CharacterString>
-                     </gfc:label>
-                     <gfc:definition>
-                        <gco:CharacterString>County (suffix)</gco:CharacterString>
-                     </gfc:definition>
-                     <gfc:definitionReference xlink:title="U.S. Census Bureau"
-                                              xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
-                  </gfc:FC_ListedValue>
-               </gfc:listedValue>
-               <gfc:listedValue>
-                  <gfc:FC_ListedValue>
-                     <gfc:label>
-                        <gco:CharacterString>07</gco:CharacterString>
-                     </gfc:label>
-                     <gfc:definition>
-                        <gco:CharacterString>District (suffix)</gco:CharacterString>
-                     </gfc:definition>
-                     <gfc:definitionReference xlink:title="U.S. Census Bureau"
-                                              xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
-                  </gfc:FC_ListedValue>
-               </gfc:listedValue>
-               <gfc:listedValue>
-                  <gfc:FC_ListedValue>
-                     <gfc:label>
-                        <gco:CharacterString>10</gco:CharacterString>
-                     </gfc:label>
-                     <gfc:definition>
-                        <gco:CharacterString>Island (suffix)</gco:CharacterString>
-                     </gfc:definition>
-                     <gfc:definitionReference xlink:title="U.S. Census Bureau"
-                                              xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
-                  </gfc:FC_ListedValue>
-               </gfc:listedValue>
-               <gfc:listedValue>
-                  <gfc:FC_ListedValue>
-                     <gfc:label>
-                        <gco:CharacterString>12</gco:CharacterString>
-                     </gfc:label>
-                     <gfc:definition>
-                        <gco:CharacterString>Municipality (suffix)</gco:CharacterString>
-                     </gfc:definition>
-                     <gfc:definitionReference xlink:title="U.S. Census Bureau"
-                                              xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
-                  </gfc:FC_ListedValue>
-               </gfc:listedValue>
-               <gfc:listedValue>
-                  <gfc:FC_ListedValue>
-                     <gfc:label>
-                        <gco:CharacterString>13</gco:CharacterString>
-                     </gfc:label>
-                     <gfc:definition>
-                        <gco:CharacterString>Municipio (suffix)</gco:CharacterString>
-                     </gfc:definition>
-                     <gfc:definitionReference xlink:title="U.S. Census Bureau"
-                                              xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
-                  </gfc:FC_ListedValue>
-               </gfc:listedValue>
-               <gfc:listedValue>
-                  <gfc:FC_ListedValue>
-                     <gfc:label>
-                        <gco:CharacterString>15</gco:CharacterString>
-                     </gfc:label>
-                     <gfc:definition>
-                        <gco:CharacterString>Parish (suffix)</gco:CharacterString>
-                     </gfc:definition>
-                     <gfc:definitionReference xlink:title="U.S. Census Bureau"
-                                              xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
-                  </gfc:FC_ListedValue>
-               </gfc:listedValue>
-               <gfc:listedValue>
-                  <gfc:FC_ListedValue>
-                     <gfc:label>
-                        <gco:CharacterString>25</gco:CharacterString>
-                     </gfc:label>
-                     <gfc:definition>
-                        <gco:CharacterString>city (suffix)</gco:CharacterString>
                      </gfc:definition>
                      <gfc:definitionReference xlink:title="U.S. Census Bureau"
                                               xlink:href="http://www.ngdc.noaa.gov/docucomp/eb139e38-ee29-4d59-b157-5e874d4420c4"/>
@@ -362,9 +293,8 @@
                   <gfc:FC_ListedValue>
                      <gfc:label gco:nilReason="inapplicable"/>
                      <gfc:definition>
-                        <gco:CharacterString>
-                                            Range Domain Minimum: 0
-                                            Range Domain Maximum: 9,999,999,999,999</gco:CharacterString>
+                        <gco:CharacterString> Range Domain Minimum: 0
+                                              Range Domain Maximum: 9,999,999,999,999</gco:CharacterString>
                      </gfc:definition>
                   </gfc:FC_ListedValue>
                </gfc:listedValue>
@@ -391,9 +321,8 @@
                   <gfc:FC_ListedValue>
                      <gfc:label gco:nilReason="inapplicable"/>
                      <gfc:definition>
-                        <gco:CharacterString>
-                                            Range Domain Minimum: 0
-                                            Range Domain Maximum: 9,999,999,999,999</gco:CharacterString>
+                        <gco:CharacterString> Range Domain Minimum: 0
+                                              Range Domain Maximum: 9,999,999,999,999</gco:CharacterString>
                      </gfc:definition>
                   </gfc:FC_ListedValue>
                </gfc:listedValue>
