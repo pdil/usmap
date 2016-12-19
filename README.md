@@ -56,10 +56,15 @@ Here are examples of blank U.S. maps (state and county, respectively) created us
 ```{r}
 library(ggplot2)
 
-map <- usmap::us_map(regions = "states")
+plot_map <- function(df) {
+  ggplot(data = df) + 
+    geom_polygon(aes(x = long, y = lat, group = group), colour = "black", fill = "white", size = 0.4) +
+    coord_equal() + ggthemes::theme_map()
+}
 
-ggplot(data = map) + 
-  geom_polygon(aes(x = long, y = lat, group = group), 
-           colour = "black", fill = "white", size = 0.4) +
-  coord_equal() + ggthemes::theme_map()
+# States map
+plot_map(usmap::us_map(regions = "states"))
+
+# Counties map
+plot_map(usmap::us_map(regions = "counties"))
 ```
