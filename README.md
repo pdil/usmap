@@ -59,9 +59,7 @@ library(ggplot2)
 map <- us_map(regions = "states")
 
 ggplot(data = map) + 
-  geom_map(map = map, aes(x = long, y = lat, map_id = id, group = group), 
-           colour = "black", fill = "white", size = 0.3) +
-  coord_equal() + ggthemes::theme_map() + 
-  labs(title = "U.S. State Map") +
-  theme(plot.title = element_text(size = 22, face = "bold"))
+  geom_polygon(aes(x = long, y = lat, group = group), 
+           colour = "black", fill = "white", size = 0.4) +
+  coord_equal() + ggthemes::theme_map()
 ```
