@@ -48,10 +48,11 @@ Here is an example of a blank U.S. map created using this code.
 
 #### Code
 ``` r
+library(usmap)
 library(ggplot2)
 library(ggthemes)
 
-load("../data/us_state_20m.rda")
+map <- us_map(region = "states")
 
 blank_map <- ggplot(data = map) + 
   geom_map(map = map, aes(x = long, y = lat, map_id = id, group = group), 
