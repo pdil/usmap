@@ -48,15 +48,15 @@ fips_info(c("34021", "35021"))
 # 2 New Mexico   NM Harding County 35021
 ```
 
-Here is an example of a blank U.S. map created using this code.
-<img src="https://github.com/pdil/us-map/blob/master/blank-state-map.png" width="500" height="340" />
+Here is an example of blank U.S. maps (state and county, respectively) created using this code.
+<img src="https://github.com/pdil/us-map/blob/master/blank-state-map.png" width="400" height="272" />
+<img src="https://github.com/pdil/us-map/blob/master/blank-county-map.png" width="400" height="272" />
 
 #### Code
 ```{r}
-library(usmap)
 library(ggplot2)
 
-map <- us_map(regions = "states")
+map <- usmap::us_map(regions = "states")
 
 ggplot(data = map) + 
   geom_polygon(aes(x = long, y = lat, group = group), 
