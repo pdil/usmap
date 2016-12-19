@@ -23,7 +23,7 @@ test_that("correct states are included", {
 })
 
 test_that("structure of counties df is correct", {
-  expect_equal(length(unique(counties_map$id)), 3142)
+  expect_equal(length(unique(counties_map$fips)), 3142)
 })
 
 test_that("error occurs for invalid region", {
