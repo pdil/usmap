@@ -48,7 +48,7 @@ fips_info(c("34021", "35021"))
 # 2 New Mexico   NM Harding County 35021
 ```
 
-Here is an example of blank U.S. maps (state and county, respectively) created using this code.
+Here are examples of blank U.S. maps (state and county, respectively) created using this code.
 <img src="https://github.com/pdil/us-map/blob/master/blank-state-map.png" width="400" height="272" />
 <img src="https://github.com/pdil/us-map/blob/master/blank-county-map.png" width="400" height="272" />
 
