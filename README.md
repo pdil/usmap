@@ -49,7 +49,7 @@ fips_info(c("34021", "35021"))
 ```
 
 Here is an example of a blank U.S. map created using this code.
-<img src="https://github.com/pdil/us-map/blob/master/blank-state-map.png" width="551" height="450" />
+<img src="https://github.com/pdil/us-map/blob/master/blank-state-map.png" width="500" height="340" />
 
 #### Code
 ```{r}
