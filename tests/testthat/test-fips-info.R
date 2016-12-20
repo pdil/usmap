@@ -36,3 +36,8 @@ test_that("warning occurs for non-existent yet valid FIPS", {
 test_that("error occurs for non-numeric/character FIPS", {
   expect_error(fips_info(data.frame()))
 })
+
+test_that("error occurs for invalid FIPS", {
+  expect_error(fips_info("18000"))
+  expect_error(fips_info(999))
+})

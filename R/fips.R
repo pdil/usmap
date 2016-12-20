@@ -117,8 +117,6 @@ getFipsInfo <- function(fips) {
     )
 
     result <- df[df$fips %in% fips, ]
-  } else {
-    stop("Invalid FIPS code.")
   }
 
   if (nrow(result) == 0) {
