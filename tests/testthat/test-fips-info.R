@@ -38,6 +38,6 @@ test_that("error occurs for non-numeric/character FIPS", {
 })
 
 test_that("error occurs for invalid FIPS", {
-  expect_error(fips_info("18000"))
+  expect_error(fips_info("999999"))
   expect_error(fips_info(999))
 })
