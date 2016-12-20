@@ -26,9 +26,9 @@ us_map <- function(regions, include = c()) {
 
     if (length(include) > 0) {
       if (regions_ %in% c("counties", "county")) {
-        df <- df[df$full %in% include | df$abbr %in% include | sprintf("%02d", df$fips) %in% include, ]
-      } else {
         df <- df[sprintf("%05d", df$fips) %in% include, ]
+      } else {
+        df <- df[df$full %in% include | df$abbr %in% include | sprintf("%02d", df$fips) %in% include, ]
       }
     }
 
