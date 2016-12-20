@@ -1,6 +1,9 @@
 # usmap
 [![Version](https://badge.fury.io/gh/pdil%2Fusmap.svg)](https://github.com/pdil/usmap/releases) [![Build Status](https://travis-ci.org/pdil/usmap.svg?branch=master)](https://travis-ci.org/pdil/usmap) [![codecov](https://codecov.io/gh/pdil/usmap/branch/master/graph/badge.svg)](https://codecov.io/gh/pdil/usmap)
 
+<img src="https://github.com/pdil/us-map/blob/master/blank-state-map.png" width="400" height="272" />
+<img src="https://github.com/pdil/us-map/blob/master/blank-county-map.png" width="400" height="272" />
+
 ## Purpose
 Typically in R it is difficult to create nice US [choropleths](https://en.wikipedia.org/wiki/Choropleth_map) that include Alaska and Hawaii. The functions presented here attempt to elegantly solve this problem by manually moving these states to a new location and providing a fortified data frame for mapping and visualization. This allows the user to easily add data to color the map.
 
@@ -48,11 +51,7 @@ fips_info(c("34021", "35021"))
 # 2 New Mexico   NM Harding County 35021
 ```
 
-Here are examples of blank U.S. maps (state and county, respectively) created using this package.
-<img src="https://github.com/pdil/us-map/blob/master/blank-state-map.png" width="400" height="272" />
-<img src="https://github.com/pdil/us-map/blob/master/blank-county-map.png" width="400" height="272" />
-
-#### Code
+#### Code for above maps
 ```{r}
 library(ggplot2)
 
