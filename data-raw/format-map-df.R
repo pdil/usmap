@@ -25,7 +25,8 @@ county_fips_final <- data.frame(
   full = county_fips_merged$full,
   abbr = county_fips_merged$abbr,
   county = county_fips_merged$county,
-  fips = paste0(county_fips_merged$state_fips, county_fips_merged$county_fips)
+  fips = paste0(county_fips_merged$state_fips, county_fips_merged$county_fips),
+  stringsAsFactors = FALSE
 )
 
 write.csv(county_fips_final, file = "county_fips.csv", row.names = FALSE, na = "")
