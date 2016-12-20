@@ -16,7 +16,7 @@ us_map <- function(regions, include = c()) {
   if (regions %in% c("states", "counties", "state", "county")) {
     if (regions == "state") {
       regions_ <- "states"
-    } else if (regions == "county") 
+    } else if (regions == "county") {
       regions_ <- "counties"
     } else {
       regions_ <- regions
