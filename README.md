@@ -50,7 +50,7 @@ fips_info(c("34021", "35021"))
 # 1 New Jersey   NJ  Mercer County 34021
 # 2 New Mexico   NM Harding County 35021
 ```
-* Merge data with map for plotting **(this has not been built yet)***
+* Merge data with map for plotting **(this has not been built yet)**
 ```{r}
 mydata <- read.csv("mydata.csv")     # data frame with two columns, "abbr" and "value"
 mapped_data <- data2map(data = mydata, regions = "states", id = "abbr", idCol = "abbr")
