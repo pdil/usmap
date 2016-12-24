@@ -10,8 +10,10 @@ us_map(regions, include = c())
 \item{regions}{The region breakdown for the map, either \code{"states"}
 or \code{"counties"}.}
 
-\item{include}{The regions to include in the output data frame. The regions
-must be of the same type as \code{regions}.}
+\item{include}{The regions to include in the output data frame. If \code{regions} is
+\code{"states"}, the value can be either a state name, abbreviation or FIPS code.
+For counties, the FIPS must be provided as there can be multiple counties with the
+same name.}
 }
 \value{
 A data frame of US map coordinates divided by the desired \code{regions}.
