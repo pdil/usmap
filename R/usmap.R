@@ -29,7 +29,7 @@
 #' and returned as a complete data frame, ready for use. This is done by using
 #' a data frame in which each row is identified by a state, county, or FIPS
 #' code (and specifying which type). The returned data frame can be easily
-#' plotted with \code{\link{base::plot}} or \pkg{ggplot2} (or any other plotting solution).
+#' plotted with \code{\link[base]{plot}} or \pkg{ggplot2} (or any other plotting solution).
 #'
 #' @docType package
 #' @name usmap
