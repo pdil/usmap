@@ -26,6 +26,21 @@ test_that("structure of counties df is correct", {
   expect_equal(length(unique(counties_map$fips)), 3142)
 })
 
+test_that("correct counties are included", {
+  include_fips <- c("34021", "34023", "34025")
+  map_fips <- us_map(regions = "counties", include = include_fips)
+  
+  expect_equal(length(unique(map_fips$fips)), length(include_fips))
+})
+
+test_that("singular regions value returns same data frames as plural", {
+  state_map <- us_map(regions = "state")
+  county_map <- us_map(regions = "county")
+  
+  expect_identical(states_map, state_map)
+  expect_identical(counties_map, county_map)
+})
+
 test_that("error occurs for invalid region", {
   expect_error(us_map(regions = "cities"))
 })
