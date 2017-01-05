@@ -10,6 +10,11 @@
 #' 
 #' @export
 plot_usmap <- function(regions = "states", theme = theme_map()) {
+  if (!requireNamespace("ggplot2", quietly = TRUE)) {
+    stop("`ggplot2` is needed for this function to work. Please install it: install.packages(\"ggplot2\")",
+      call. = FALSE)
+  }
+  
   ggplot2::ggplot(
     data = us_map(regions = regions)
   ) + geom_polygon(
