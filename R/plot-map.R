@@ -53,8 +53,9 @@ plot_usmap <- function(regions = "states", theme = theme_map()) {
 #' @keywords internal
 theme_map <- function(base_size = 9, base_family = "") {
   elementBlank = ggplot2::element_blank()
+ `%+replace%` <- ggplot2::`%+replace%`
   
-  ggplot2::theme_bw(base_size = base_size, base_family = base_family) ggplot2::%+replace%
+  ggplot2::theme_bw(base_size = base_size, base_family = base_family) %+replace%
     ggplot2::theme(axis.line = elementBlank,
                    axis.text = elementBlank,
                    axis.ticks = elementBlank,
