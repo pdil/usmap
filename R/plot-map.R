@@ -1,6 +1,4 @@
 #' Conveniently plot basic US map
-#'
-#' @import ggplot2
 #' 
 #' @param regions The region breakdown for the map, either \code{"states"}
 #'   or \code{"counties"}.
@@ -22,8 +20,8 @@ plot_usmap <- function(regions = "states", theme = theme_map()) {
     ggplot2::ggplot(
       data = map_df
     ) + 
-    geom_polygon(
-      aes(x = long, y = lat, group = group), 
+    ggplot2::geom_polygon(
+      ggplot2::aes(x = long, y = lat, group = group), 
       colour = "black",
       fill = "white",
       size = 0.4
@@ -54,16 +52,18 @@ plot_usmap <- function(regions = "states", theme = theme_map()) {
 #'
 #' @keywords internal
 theme_map <- function(base_size = 9, base_family = "") {
-  theme_bw(base_size = base_size, base_family = base_family) %+replace%
-    theme(axis.line = element_blank(),
-          axis.text = element_blank(),
-          axis.ticks = element_blank(),
-          axis.title = element_blank(),
-          panel.background = element_blank(),
-          panel.border = element_blank(),
-          panel.grid = element_blank(),
-          panel.spacing = unit(0, "lines"),
-          plot.background = element_blank(),
-          legend.justification = c(0, 0),
-          legend.position = c(0, 0))
+  elementBlank = ggplot2::element_blank()
+  
+  ggplot2::theme_bw(base_size = base_size, base_family = base_family) ggplot2::%+replace%
+    ggplot2::theme(axis.line = elementBlank,
+                   axis.text = elementBlank,
+                   axis.ticks = elementBlank,
+                   axis.title = elementBlank,
+                   panel.background = elementBlank,
+                   panel.border = elementBlank,
+                   panel.grid = elementBlank,
+                   panel.spacing = ggplot2::unit(0, "lines"),
+                   plot.background = elementBlank,
+                   legend.justification = c(0, 0),
+                   legend.position = c(0, 0))
 }
