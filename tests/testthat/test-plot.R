@@ -13,6 +13,6 @@ test_that("correct data is used", {
 })
 
 test_that("correct layers are used", {
-  expect_is(p$layers[[1]], "proto")
+  expect_is(p$layers[[1]], "ggproto")
   expect_identical(p$layers[[1]]$geom$objname, "polygon")
 })
