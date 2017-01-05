@@ -16,7 +16,8 @@ URL: http://www.github.com/pdil/usmap
 Imports:
     utils
 Suggests:
-    testthat,
     ggplot2,
-    ggthemes
+    ggthemes,
+    graphics,
+    testthat
 RoxygenNote: 5.0.1
