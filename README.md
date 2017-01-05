@@ -62,17 +62,9 @@ ggplot2::ggplot(data = mapped_data) +
 
 #### Code for above maps
 ```{r}
-library(ggplot2)
-
-plot_map <- function(df) {
-  ggplot(data = df) + 
-    geom_polygon(aes(x = long, y = lat, group = group), colour = "black", fill = "white", size = 0.4) +
-    coord_equal() + ggthemes::theme_map()
-}
-
 # States map
-plot_map(usmap::us_map(regions = "states"))
+usmap::plot_usmap(regions = "states")
 
 # Counties map
-plot_map(usmap::us_map(regions = "counties"))
+usmap::plot_usmap(regions = "states")
 ```
