@@ -19,5 +19,6 @@ Suggests:
     ggplot2,
     ggthemes,
     graphics,
+    proto,
     testthat
 RoxygenNote: 5.0.1
