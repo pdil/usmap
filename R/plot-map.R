@@ -1,4 +1,6 @@
 #' Conveniently plot basic US map
+#'
+#' @import ggplot2
 #' 
 #' @param regions The region breakdown for the map, either \code{"states"}
 #'   or \code{"counties"}.
@@ -19,31 +21,36 @@ plot_usmap <- function(regions = "states", theme = theme_map()) {
   if (requireNamespace("ggplot2", quietly = TRUE)) {
     ggplot2::ggplot(
       data = map_df
-    ) + geom_polygon(
+    ) + 
+    geom_polygon(
       aes(x = long, y = lat, group = group), 
       colour = "black",
       fill = "white",
       size = 0.4
-    ) + theme
+    ) + 
+    theme
   } else {
     warning("`ggplot2` is not installed; using basic `plot` function, which may reduce performance. 
              Install `ggplot2` (install.packages(\"ggplot2\")) for improved performance.")
     
-    plot(map_df$long, map_df$lat, col = "white", xaxt = "n", yaxt = "n", ann = FALSE, bty = "n")
+    graphics::plot(map_df$long, map_df$lat, col = "white", xaxt = "n", yaxt = "n", ann = FALSE, bty = "n")
 
     for (g in us$group) {
       subset <- map_df[map_df$group == g, ]
-      polygon(subset$long, subset$lat)
+      graphics::polygon(subset$long, subset$lat)
     }
   }
 }
 
 #' This creates a nice map theme. 
 #' It is borrowed from the ggthemes package located at this repository:
-#'  https://github.com/jrnold/ggthemes
+#'   https://github.com/jrnold/ggthemes
 #' 
 #' This function was manually rewritten here to avoid the need for
 #'  another package import.
+#'
+#' All theme functions (i.e. theme_bw, theme, element_blank, %+replace%)
+#'  come from ggplot2.
 #'
 #' @keywords internal
 theme_map <- function(base_size = 9, base_family = "") {
