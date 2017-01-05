@@ -17,4 +17,6 @@ Imports:
     utils
 Suggests:
     testthat
+    ggplot2
+    ggthemes
 RoxygenNote: 5.0.1
