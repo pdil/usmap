@@ -6,23 +6,36 @@
 #'   is \code{\link[ggthemes]{theme_map}}.
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object that contains a basic
-#'   US map with the described parameters.
+#'   US map with the described parameters. If \code{ggplot2} is not installed,
+#'   \code{\link[graphics]{plot}} is used, which may result in slower execution.
+#'   Moreover, basic plots cannot be stored in a variable or customized (themes, scales, etc.)
+#'   like \code{ggplot} can so it is highly recommend that \code{ggplot2} be installed
+#'   for a much better plotting experience.
 #' 
 #' @export
 plot_usmap <- function(regions = "states", theme = theme_map()) {
-  if (!requireNamespace("ggplot2", quietly = TRUE)) {
-    stop("`ggplot2` is needed for this function to work. Please install it: install.packages(\"ggplot2\")",
-      call. = FALSE)
-  }
+  map_df <- us_map(regions = regions)
   
-  ggplot2::ggplot(
-    data = us_map(regions = regions)
-  ) + geom_polygon(
-    aes(x = long, y = lat, group = group), 
-    colour = "black",
-    fill = "white",
-    size = 0.4
-  ) + theme
+  if (requireNamespace("ggplot2", quietly = TRUE)) {
+    ggplot2::ggplot(
+      data = map_df
+    ) + geom_polygon(
+      aes(x = long, y = lat, group = group), 
+      colour = "black",
+      fill = "white",
+      size = 0.4
+    ) + theme
+  } else {
+    warning("`ggplot2` is not installed; using basic `plot` function, which may reduce performance. 
+             Install `ggplot2` (install.packages(\"ggplot2\")) for improved performance.")
+    
+    plot(map_df$long, map_df$lat, col = "white", xaxt = "n", yaxt = "n", ann = FALSE, bty = "n")
+
+    for (g in us$group) {
+      subset <- map_df[map_df$group == g, ]
+      polygon(subset$long, subset$lat)
+    }
+  }
 }
 
 #' This creates a nice map theme. 
