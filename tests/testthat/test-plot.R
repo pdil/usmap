@@ -14,9 +14,9 @@ test_that("correct data is used", {
 
 test_that("layer parameters are correct", {
   expect_is(p$layers[[1]], "ggproto")
-  expect_equal(as.character(p$layers[[1]]$mapping$x), "long")
-  expect_equal(as.character(p$layers[[1]]$mapping$y), "lat")
-  expect_equal(as.character(p$layers[[1]]$mapping$group), "group")
+  expect_equal(as.character(p$layers[[1]]$mapping$x), "map_df$long")
+  expect_equal(as.character(p$layers[[1]]$mapping$y), "map_df$lat")
+  expect_equal(as.character(p$layers[[1]]$mapping$group), "map_df$group")
   expect_equal(as.character(p$layers[[1]]$aes_params$colour), "black")
   expect_equal(as.character(p$layers[[1]]$aes_params$fill), "white")
   expect_equal(p$layers[[1]]$aes_params$size, 0.4)
