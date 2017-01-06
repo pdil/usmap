@@ -29,6 +29,7 @@
 #'
 #' # Output is ggplot object so it can be extended
 #' #  with any number of ggplot layers
+#' library(ggplot2)
 #' plot_usmap(regions = "states", include = c("CA", "NV", "ID", "OR", "WA")) +
 #'   labs(title = "Western States")
 #'
