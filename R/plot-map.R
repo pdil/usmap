@@ -5,6 +5,9 @@
 #'
 #' @param regions The region breakdown for the map, either \code{"states"}
 #'   or \code{"counties"}.
+#' @param include The region (state names or state/county FIPS codes) to include
+#'   in the map. Usage of this parameter is identical to the \code{\link[usmap]{us_map}}
+#'   function.
 #' @param theme The theme that should be used for plotting the map. The default
 #'   is \code{\link[ggthemes]{theme_map}}.
 #'
