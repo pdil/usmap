@@ -9,6 +9,10 @@ plot_usmap(regions = "states", theme = theme_map())
 \arguments{
 \item{regions}{The region breakdown for the map, either \code{"states"}
 or \code{"counties"}.}
+  
+\item{include}{The region (state names or state/county FIPS codes) to include
+in the map. Usage of this parameter is identical to the \code{\link[usmap]{us_map}} 
+function.}
 
 \item{theme}{The theme that should be used for plotting the map. The default
 is \code{\link[ggthemes]{theme_map}}.}
@@ -31,9 +35,17 @@ plot_usmap(regions = "states")
 plot_usmap(regions = "counties")
 plot_usmap(regions = "state")
 plot_usmap(regions = "county")
+  
+# Output is ggplot object so it can be extended
+#  with any number of ggplot layers
+plot_usmap(regions = "states", include = c("CA", "NV", "ID", "OR", "WA")) +
+  labs(title = "Western States")
 
 }
 \seealso{
 \code{\link{usmap}}
 }
 
+#' @param include The region (state names or state/county FIPS codes) to include
+#'   in the map. Usage of this parameter is identical to the \code{\link[usmap]{us_map}}
+#'   function.
