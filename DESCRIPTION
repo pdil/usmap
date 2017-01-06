@@ -14,11 +14,10 @@ Encoding: UTF-8
 LazyData: true
 URL: http://www.github.com/pdil/usmap
 Imports:
+    graphics,
     utils
 Suggests:
     ggplot2,
-    ggthemes,
-    graphics,
     proto,
     testthat
 RoxygenNote: 5.0.1
