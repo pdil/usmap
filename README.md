@@ -16,8 +16,9 @@ To install the package from this repository, run the following code in an R cons
 install.package("devtools")
 devtools::install_github("pdil/usmap")
 ```
-Installing using ```devtools::install_github()``` will provide the most recent developer build of ```usmap```.
-When ```usmap``` is released to CRAN it can be installed using ```install.packages()```.
+Installing using ```devtools::install_github``` will provide the most recent developer build of ```usmap```.
+
+When ```usmap``` is released and approved by CRAN it can be installed using ```install.packages("usmap")```.
 
 ## Features
 * Obtain map with certain region breakdown
