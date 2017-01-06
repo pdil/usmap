@@ -1,5 +1,8 @@
 #' Conveniently plot basic US map
 #'
+#' @description \code{plot_usmap} quickly and easily plots a blank US map
+#'   using \pkg{ggplot2} if it is installed.
+#'
 #' @param regions The region breakdown for the map, either \code{"states"}
 #'   or \code{"counties"}.
 #' @param theme The theme that should be used for plotting the map. The default
@@ -11,6 +14,15 @@
 #'   Moreover, basic plots cannot be stored in a variable or customized (themes, scales, etc.)
 #'   like \code{ggplot} can so it is highly recommend that \code{ggplot2} be installed
 #'   for a much better plotting experience.
+#'
+#' @seealso \code{\link{usmap}}
+#'
+#' @examples
+#' plot_usmap()
+#' plot_usmap(regions = "states")
+#' plot_usmap(regions = "counties")
+#' plot_usmap(regions = "state")
+#' plot_usmap(regions = "county")
 #'
 #' @export
 plot_usmap <- function(regions = "states", theme = theme_map()) {
@@ -64,7 +76,7 @@ theme_map <- function(base_size = 9, base_family = "") {
                    panel.background = elementBlank,
                    panel.border = elementBlank,
                    panel.grid = elementBlank,
-                   panel.margin = ggplot2::unit(0, "lines"),
+                   panel.spacing = ggplot2::unit(0, "lines"),
                    plot.background = elementBlank,
                    legend.justification = c(0, 0),
                    legend.position = c(0, 0))
