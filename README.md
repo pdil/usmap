@@ -66,5 +66,5 @@ ggplot2::ggplot(data = mapped_data) +
 usmap::plot_usmap(regions = "states")
 
 # Counties map
-usmap::plot_usmap(regions = "states")
+usmap::plot_usmap(regions = "counties")
 ```
