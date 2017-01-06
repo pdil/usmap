@@ -46,7 +46,3 @@ plot_usmap(regions = "states", include = c("CA", "NV", "ID", "OR", "WA")) +
 \seealso{
 \code{\link{usmap}}
 }
-
-#' @param include The region (state names or state/county FIPS codes) to include
-#'   in the map. Usage of this parameter is identical to the \code{\link[usmap]{us_map}}
-#'   function.
