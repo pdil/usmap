@@ -24,9 +24,14 @@
 #' plot_usmap(regions = "state")
 #' plot_usmap(regions = "county")
 #'
+#' # Output is ggplot object so it can be extended
+#' #  with any number of ggplot layers
+#' plot_usmap(regions = "states", include = c("CA", "NV", "ID", "OR", "WA")) +
+#'   labs(title = "Western States")
+#'
 #' @export
-plot_usmap <- function(regions = "states", theme = theme_map()) {
-  map_df <- us_map(regions = regions)
+plot_usmap <- function(regions = "states", include = c(), theme = theme_map()) {
+  map_df <- us_map(regions = regions, include = include)
 
   if (requireNamespace("ggplot2", quietly = TRUE)) {
     ggplot2::ggplot(
@@ -53,7 +58,7 @@ plot_usmap <- function(regions = "states", theme = theme_map()) {
   }
 }
 
-#' This creates a nice map theme.
+#' This creates a nice map theme for use in plot_usmap.
 #' It is borrowed from the ggthemes package located at this repository:
 #'   https://github.com/jrnold/ggthemes
 #'
@@ -67,6 +72,7 @@ plot_usmap <- function(regions = "states", theme = theme_map()) {
 theme_map <- function(base_size = 9, base_family = "") {
   elementBlank = ggplot2::element_blank()
  `%+replace%` <- ggplot2::`%+replace%`
+  unit <- ggplot2::unit
 
   ggplot2::theme_bw(base_size = base_size, base_family = base_family) %+replace%
     ggplot2::theme(axis.line = elementBlank,
@@ -76,7 +82,7 @@ theme_map <- function(base_size = 9, base_family = "") {
                    panel.background = elementBlank,
                    panel.border = elementBlank,
                    panel.grid = elementBlank,
-                   panel.spacing = ggplot2::unit(0, "lines"),
+                   panel.spacing = unit(0, "lines"),
                    plot.background = elementBlank,
                    legend.justification = c(0, 0),
                    legend.position = c(0, 0))
