@@ -38,7 +38,7 @@ plot_usmap <- function(regions = "states", include = c(), theme = theme_map()) {
       data = map_df
     ) +
     ggplot2::geom_polygon(
-      ggplot2::aes(x = long, y = lat, group = group),
+      ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group),
       colour = "black",
       fill = "white",
       size = 0.4
@@ -51,7 +51,7 @@ plot_usmap <- function(regions = "states", include = c(), theme = theme_map()) {
 
     graphics::plot(map_df$long, map_df$lat, col = "white", xaxt = "n", yaxt = "n", ann = FALSE, bty = "n")
 
-    for (g in us$group) {
+    for (g in map_df$group) {
       subset <- map_df[map_df$group == g, ]
       graphics::polygon(subset$long, subset$lat)
     }
