@@ -4,7 +4,7 @@
 \alias{plot_usmap}
 \title{Conveniently plot basic US map}
 \usage{
-plot_usmap(regions = "states", theme = theme_map())
+plot_usmap(regions = "states", include = c(), theme = theme_map())
 }
 \arguments{
 \item{regions}{The region breakdown for the map, either \code{"states"}
