@@ -1,5 +1,8 @@
 #' Retrieve FIPS code for either a US state or county
 #'
+#' @description Each US state and county has a unique FIPS
+#'   (Federal Information Processing Standards) code.
+#'
 #' @param state The state for which to obtain a FIPS code.
 #'  Can be entered as either a state abbrevation or full name (case-insensitive).
 #' @param county The county for which to obtain a FIPS code.
@@ -8,7 +11,16 @@
 #' @note A \code{state} must be included when searching for \code{county},
 #'  otherwise multiple results may be returned for duplicate county names.
 #'
+#' @details State and county FIPS (Federal Information Processing Standards) are
+#'   two and five digit codes, respectively. They uniquely identify all states and
+#'   counties within the United States. The first two digits of the five digit county
+#'   codes correspond to the state that the county belongs to. FIPS codes also exist
+#'   for US territories and minor outlying islands, though this package only provides
+#'   information for the 50 US states (and their associated counties and
+#'   census designated areas).
+#'
 #' @return The FIPS code of given \code{state} or \code{county}.
+#'
 #' @examples
 #' fips("NJ")
 #' fips("California")
@@ -47,10 +59,10 @@ fips <- function(state, county = "") {
   }
 }
 
-#' Retrieve state or county pertaining to a FIPS code
+#' Retrieve states or counties using FIPS codes
 #'
 #' @param fips A one to five digit, either \code{numeric}
-#'  or \code{character}, vector of FIPS codes for which to look up a state or county.
+#'  or \code{character}, vector of FIPS codes for which to look up states or counties.
 #'  States have a two digit FIPS code and counties have a five digit FIPS
 #'  code (where the first 2 numbers pertain to the state).
 #'

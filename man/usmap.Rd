@@ -7,7 +7,9 @@
 \title{usmap: US maps including Alaska and Hawaii}
 \description{
 It is usually difficult or inconvenient to create US maps that
-  include both Alaska and Hawaii in a convenient spot.
+  include both Alaska and Hawaii in a convenient spot. All map
+  data frames produced by this package use the Alber's Equal Area
+  projection.
 }
 \section{Map data frames}{
 
@@ -33,12 +35,37 @@ retrieve the associated state(s) or county(ies). This can be useful when
 preparing data to be merged with the map data frame.
 }
 
-\section{Merge data with map}{
+\section{Plot US map data}{
 
-Before plotting, the data can be merged with the map data frame internally
-and returned as a complete data frame, ready for use. This is done by using
-a data frame in which each row is identified by a state, county, or FIPS
-code (and specifying which type). The returned data frame can be easily
-plotted with \code{\link[graphics]{plot}} or \pkg{ggplot2} (or any other plotting solution).
+A convenience function \code{\link{plot_usmap}} has been included which
+takes similar parameters to \code{\link{us_map}} and returns a \pkg{ggplot2}
+object. Since the output is a \code{ggplot} object, other layers can be
+added such as scales, themes, and labels.
+}
+\author{
+Paolo Di Lorenzo \cr
+\itemize{
+  \item Email: \email{paolo@dilorenzo.pl}
+  \item Website: \url{http://dilorenzo.pl}
+  \item Github: \url{http://www.github.com/pdil/}
+}
+}
+\references{
+Rudis, Bob. "Moving The Earth (well, Alaska & Hawaii) With R."
+Blog post. Rud.is., 16 Nov. 2014. Web. 10 Aug. 2015.
+<\url{https://rud.is/b/2014/11/16/moving-the-earth-well-alaska-hawaii-with-r/}>.
+}
+\seealso{
+Helpful links:
+\itemize{
+  \item FIPS code information \cr
+    \url{http://en.wikipedia.org/wiki/FIPS_county_code}
+    \url{http://en.wikipedia.org/wiki/FIPS_state_code}
+  \item US Census Shapefiles \cr
+    \url{https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html}
+  \item Map Projections \cr
+    \url{https://en.wikipedia.org/wiki/Map_projection}
+    \url{https://en.wikipedia.org/wiki/Albers_projection}
+}
 }
 

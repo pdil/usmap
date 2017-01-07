@@ -4,7 +4,7 @@
 \alias{fips_info}
 \alias{fips_info.character}
 \alias{fips_info.numeric}
-\title{Retrieve state or county pertaining to a FIPS code}
+\title{Retrieve states or counties using FIPS codes}
 \usage{
 fips_info(fips)
 
@@ -14,7 +14,7 @@ fips_info(fips)
 }
 \arguments{
 \item{fips}{A one to five digit, either \code{numeric}
-or \code{character}, vector of FIPS codes for which to look up a state or county.
+or \code{character}, vector of FIPS codes for which to look up states or counties.
 States have a two digit FIPS code and counties have a five digit FIPS
 code (where the first 2 numbers pertain to the state).}
 }
@@ -23,7 +23,7 @@ A data frame with the states or counties and the associated
  FIPS codes.
 }
 \description{
-Retrieve state or county pertaining to a FIPS code
+Retrieve states or counties using FIPS codes
 }
 \examples{
 fips_info(2)

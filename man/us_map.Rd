@@ -4,14 +4,14 @@
 \alias{us_map}
 \title{Retrieve US map data}
 \usage{
-us_map(regions, include = c())
+us_map(regions = "states", include = c())
 }
 \arguments{
-\item{regions}{The region breakdown for the map, either \code{"states"}
-or \code{"counties"}.}
+\item{regions}{The region breakdown for the map, can be one of
+(\code{"states"}, \code{"state"}, \code{"counties"}, \code{"county"}).}
 
 \item{include}{The regions to include in the output data frame. If \code{regions} is
-\code{"states"}, the value can be either a state name, abbreviation or FIPS code.
+\code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
 For counties, the FIPS must be provided as there can be multiple counties with the
 same name.}
 }
@@ -22,7 +22,9 @@ A data frame of US map coordinates divided by the desired \code{regions}.
 Retrieve US map data
 }
 \examples{
-df <- us_map(regions = "states")
-plot(df$long, df$lat)
+str(us_map())
+
+df <- us_map(regions = "counties")
+west_coast <- us_map(include = c("CA", "OR", "WA"))
 }
 

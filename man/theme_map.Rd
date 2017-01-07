@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot-map.R
 \name{theme_map}
 \alias{theme_map}
-\title{This creates a nice map theme.
+\title{This creates a nice map theme for use in plot_usmap.
 It is borrowed from the ggthemes package located at this repository:
   https://github.com/jrnold/ggthemes}
 \usage{

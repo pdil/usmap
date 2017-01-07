@@ -7,27 +7,27 @@
 plot_usmap(regions = "states", include = c(), theme = theme_map())
 }
 \arguments{
-\item{regions}{The region breakdown for the map, either \code{"states"}
-or \code{"counties"}.}
-  
-\item{include}{The region (state names or state/county FIPS codes) to include
-in the map. Usage of this parameter is identical to the \code{\link[usmap]{us_map}} 
-function.}
+\item{regions}{The region breakdown for the map, can be one of
+(\code{"states"}, \code{"state"}, \code{"counties"}, \code{"county"}).}
+
+\item{include}{The regions to include in the output data frame. If \code{regions} is
+\code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
+For counties, the FIPS must be provided as there can be multiple counties with the
+same name.}
 
 \item{theme}{The theme that should be used for plotting the map. The default
 is \code{\link[ggthemes]{theme_map}}.}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object that contains a basic
-  US map with the described parameters. If \code{ggplot2} is not installed,
+  US map with the described parameters. If \pkg{ggplot2} is not installed,
   \code{\link[graphics]{plot}} is used, which may result in slower execution.
   Moreover, basic plots cannot be stored in a variable or customized (themes, scales, etc.)
   like \code{ggplot} can so it is highly recommend that \code{ggplot2} be installed
   for a much better plotting experience.
 }
 \description{
-\code{plot_usmap} quickly and easily plots a blank US map
-  using \pkg{ggplot2} if it is installed.
+Conveniently plot basic US map
 }
 \examples{
 plot_usmap()
@@ -35,14 +35,15 @@ plot_usmap(regions = "states")
 plot_usmap(regions = "counties")
 plot_usmap(regions = "state")
 plot_usmap(regions = "county")
-  
+
 # Output is ggplot object so it can be extended
-#  with any number of ggplot layers
+# with any number of ggplot layers
 library(ggplot2)
-plot_usmap(regions = "states", include = c("CA", "NV", "ID", "OR", "WA")) +
+plot_usmap(include = c("CA", "NV", "ID", "OR", "WA")) +
   labs(title = "Western States")
 
 }
 \seealso{
-\code{\link{usmap}}
+\code{\link{usmap}}, \code{\link[ggplot2]{theme}}
 }
+

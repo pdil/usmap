@@ -1,8 +1,10 @@
 #' usmap: US maps including Alaska and Hawaii
 #'
+#' @description
 #' It is usually difficult or inconvenient to create US maps that
-#'   include both Alaska and Hawaii in a convenient spot.
-#'
+#'   include both Alaska and Hawaii in a convenient spot. All map
+#'   data frames produced by this package use the Alber's Equal Area
+#'   projection.
 #'
 #' @section Map data frames:
 #' Alaska and Hawaii have been manually moved to a new location so that
@@ -24,12 +26,36 @@
 #' retrieve the associated state(s) or county(ies). This can be useful when
 #' preparing data to be merged with the map data frame.
 #'
-#' @section Merge data with map:
-#' Before plotting, the data can be merged with the map data frame internally
-#' and returned as a complete data frame, ready for use. This is done by using
-#' a data frame in which each row is identified by a state, county, or FIPS
-#' code (and specifying which type). The returned data frame can be easily
-#' plotted with \code{\link[graphics]{plot}} or \pkg{ggplot2} (or any other plotting solution).
+#' @section Plot US map data:
+#' A convenience function \code{\link{plot_usmap}} has been included which
+#' takes similar parameters to \code{\link{us_map}} and returns a \pkg{ggplot2}
+#' object. Since the output is a \code{ggplot} object, other layers can be
+#' added such as scales, themes, and labels.
+#'
+#' @author Paolo Di Lorenzo \cr
+#' \itemize{
+#'   \item Email: \email{paolo@@dilorenzo.pl}
+#'   \item Website: \url{http://dilorenzo.pl}
+#'   \item Github: \url{http://www.github.com/pdil/}
+#' }
+#'
+#' @seealso
+#' Helpful links:
+#' \itemize{
+#'   \item FIPS code information \cr
+#'     \url{http://en.wikipedia.org/wiki/FIPS_county_code}
+#'     \url{http://en.wikipedia.org/wiki/FIPS_state_code}
+#'   \item US Census Shapefiles \cr
+#'     \url{https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html}
+#'   \item Map Projections \cr
+#'     \url{https://en.wikipedia.org/wiki/Map_projection}
+#'     \url{https://en.wikipedia.org/wiki/Albers_projection}
+#' }
+#'
+#' @references
+#' Rudis, Bob. "Moving The Earth (well, Alaska & Hawaii) With R."
+#' Blog post. Rud.is., 16 Nov. 2014. Web. 10 Aug. 2015.
+#' <\url{https://rud.is/b/2014/11/16/moving-the-earth-well-alaska-hawaii-with-r/}>.
 #'
 #' @docType package
 #' @name usmap
@@ -37,19 +63,22 @@
 
 #' Retrieve US map data
 #'
-#' @param regions The region breakdown for the map, either \code{"states"}
-#'  or \code{"counties"}.
+#' @param regions The region breakdown for the map, can be one of
+#'   (\code{"states"}, \code{"state"}, \code{"counties"}, \code{"county"}).
 #' @param include The regions to include in the output data frame. If \code{regions} is
-#'  \code{"states"}, the value can be either a state name, abbreviation or FIPS code.
+#'  \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
 #'  For counties, the FIPS must be provided as there can be multiple counties with the
 #'  same name.
 #'
 #' @return A data frame of US map coordinates divided by the desired \code{regions}.
+#'
 #' @examples
-#' df <- us_map(regions = "states")
-#' plot(df$long, df$lat)
+#' str(us_map())
+#'
+#' df <- us_map(regions = "counties")
+#' west_coast <- us_map(include = c("CA", "OR", "WA"))
 #' @export
-us_map <- function(regions, include = c()) {
+us_map <- function(regions = "states", include = c()) {
   if (regions %in% c("states", "counties", "state", "county")) {
     if (regions == "state") {
       regions_ <- "states"
