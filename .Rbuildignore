@@ -3,3 +3,5 @@
 ^data-raw$
 ^.*\.png$
 ^\.Rproj\.user$
+^cran-comments\.md$
+^revdep$
