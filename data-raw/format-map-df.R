@@ -34,9 +34,14 @@ write.csv(county_fips_final, file = "county_fips.csv", row.names = FALSE, na = "
 # Merge county FIPS with map ####
 counties_map_df <- readr::read_csv("us_counties_raw.csv")
 merged_counties_df <- merge(counties_map_df, county_fips_final,
-                            by.x = "id", by.y = "fips", all.x = TRUE)
+                            by.x = "id", by.y = "fips", all.x = TRUE, sort = FALSE)
 
-final_counties_df <- merged_counties_df[, c("long", "lat", "order", "hole", "piece",
+sorted_counties_df <- merged_counties_df[order(
+  merged_counties_df$full,
+  merged_counties_df$piece,
+  merged_counties_df$order), ]
+
+final_counties_df <- sorted_counties_df[, c("long", "lat", "order", "hole", "piece",
                                             "group", "id", "abbr", "full", "county")]
 
 colnames(final_counties_df) <- c("long", "lat", "order", "hole", "piece",
