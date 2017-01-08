@@ -6,7 +6,7 @@
 \title{Population estimates (2015), county level}
 \format{A data frame with 3220 rows and 4 variables.}
 \usage{
-\code{data(countypop)}
+data(countypop)
 }
 \description{
 US census population estimates by county for 2015. \cr\cr

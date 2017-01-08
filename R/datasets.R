@@ -3,7 +3,7 @@
 #' @description US census population estimates by county for 2015. \cr\cr
 #'   The data is formatted for easy merging with output from \code{\link[usmap]{us_map}}.
 #'
-#' @usage \code{data(countypop)}
+#' @usage data(countypop)
 #'
 #' @details
 #' \itemize{
@@ -30,7 +30,7 @@
 #' @description US census population estimates by state for 2015. \cr\cr
 #'   The data is formatted for easy merging with output from \code{\link[usmap]{us_map}}.
 #'
-#' @usage \code{data(statepop)}
+#' @usage data(statepop)
 #'
 #' @details
 #' \itemize{

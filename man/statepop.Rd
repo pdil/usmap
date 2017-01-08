@@ -6,7 +6,7 @@
 \title{Population estimates (2015), state level}
 \format{A data frame with 51 rows and 4 variables.}
 \usage{
-\code{data(statepop)}
+data(statepop)
 }
 \description{
 US census population estimates by state for 2015. \cr\cr
