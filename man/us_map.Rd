@@ -4,11 +4,12 @@
 \alias{us_map}
 \title{Retrieve US map data}
 \usage{
-us_map(regions = "states", include = c())
+us_map(regions = c("states", "state", "counties", "county"), include = c())
 }
 \arguments{
 \item{regions}{The region breakdown for the map, can be one of
-(\code{"states"}, \code{"state"}, \code{"counties"}, \code{"county"}).}
+(\code{"states"}, \code{"state"}, \code{"counties"}, \code{"county"}).
+The default is \code{"states"}.}
 
 \item{include}{The regions to include in the output data frame. If \code{regions} is
 \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.

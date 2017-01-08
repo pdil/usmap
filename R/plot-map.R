@@ -27,7 +27,7 @@
 #'   labs(title = "Western States")
 #'
 #' @export
-plot_usmap <- function(regions = "states",
+plot_usmap <- function(regions = c("states", "state", "counties", "county"),
                        include = c(),
                        theme = theme_map()) {
 

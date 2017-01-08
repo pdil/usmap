@@ -4,11 +4,13 @@
 \alias{plot_usmap}
 \title{Conveniently plot basic US map}
 \usage{
-plot_usmap(regions = "states", include = c(), theme = theme_map())
+plot_usmap(regions = c("states", "state", "counties", "county"),
+  include = c(), data = NULL, val_name = NULL, theme = theme_map())
 }
 \arguments{
 \item{regions}{The region breakdown for the map, can be one of
-(\code{"states"}, \code{"state"}, \code{"counties"}, \code{"county"}).}
+(\code{"states"}, \code{"state"}, \code{"counties"}, \code{"county"}).
+The default is \code{"states"}.}
 
 \item{include}{The regions to include in the output data frame. If \code{regions} is
 \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
