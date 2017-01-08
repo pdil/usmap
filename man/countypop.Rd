@@ -4,7 +4,7 @@
 \name{countypop}
 \alias{countypop}
 \title{Population estimates (2015), county level}
-\format{A data frame with 3220 rows and 4 variables.}
+\format{A data frame with 3142 rows and 4 variables.}
 \usage{
 data(countypop)
 }
@@ -14,7 +14,7 @@ US census population estimates by county for 2015. \cr\cr
 }
 \details{
 \itemize{
-  \item \code{FIPS} The 5-digit FIPS code corresponding to the county.
+  \item \code{fips} The 5-digit FIPS code corresponding to the county.
   \item \code{abbr} The 2-letter state abbrevation.
   \item \code{full} The full state name.
   \item \code{pop_est_2015} The 2015 population estimate (in number of people)

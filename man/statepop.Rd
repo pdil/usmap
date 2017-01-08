@@ -14,7 +14,7 @@ US census population estimates by state for 2015. \cr\cr
 }
 \details{
 \itemize{
-  \item \code{FIPS} The 2-digit FIPS code corresponding to the state.
+  \item \code{fips} The 2-digit FIPS code corresponding to the state.
   \item \code{abbr} The 2-letter state abbrevation.
   \item \code{full} The full state name.
   \item \code{pop_est_2015} The 2015 population estimate (in number of people)
