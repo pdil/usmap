@@ -1,6 +1,6 @@
 Package: usmap
 Version: 0.0.0.9000
-Title: Plot Better US Maps
+Title: US Maps Including Alaska and Hawaii
 Description: Obtain United States map data frames of varying region types (e.g. county, 
     state). The map data frames include Alaska and Hawaii conveniently placed to the
     bottom left, as they appear in most maps of the US. Convenience functions for plotting
