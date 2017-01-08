@@ -5,11 +5,9 @@
 #'   is \code{\link[ggthemes]{theme_map}}.
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object that contains a basic
-#'   US map with the described parameters. If \pkg{ggplot2} is not installed,
-#'   \code{\link[graphics]{plot}} is used, which may result in slower execution.
-#'   Moreover, basic plots cannot be stored in a variable or customized (themes, scales, etc.)
-#'   like \code{ggplot} can so it is highly recommend that \code{ggplot2} be installed
-#'   for a much better plotting experience.
+#'   US map with the described parameters. Since the result is a \code{ggplot}
+#'   object, it can be extended with more \code{geom} layers, scales, labels,
+#'   themes, etc.
 #'
 #' @seealso \code{\link{usmap}}, \code{\link[ggplot2]{theme}}
 #'
@@ -33,8 +31,11 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 
   map_df <- us_map(regions = regions, include = include)
 
-  if (requireNamespace("ggplot2", quietly = TRUE)) {
-    ggplot2::ggplot(
+  if (!requireNamespace("ggplot2", quietly = TRUE)) {
+    stop("Please install `ggplot2`. Use: install.packages(\"ggplot2\")")
+  }
+
+  ggplot2::ggplot(
       data = map_df
     ) +
     ggplot2::geom_polygon(
@@ -45,17 +46,6 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
     ) +
     ggplot2::coord_equal() +
     theme
-  } else {
-    warning("`ggplot2` is not installed; using basic `plot` function, which may reduce performance.
-             Install `ggplot2` (install.packages(\"ggplot2\")) for improved performance.")
-
-    graphics::plot(map_df$long, map_df$lat, col = "white", xaxt = "n", yaxt = "n", ann = FALSE, bty = "n")
-
-    for (g in map_df$group) {
-      subset <- map_df[map_df$group == g, ]
-      graphics::polygon(subset$long, subset$lat)
-    }
-  }
 }
 
 #' This creates a nice map theme for use in plot_usmap.
