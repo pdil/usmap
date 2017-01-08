@@ -83,6 +83,10 @@ us_map <- function(regions = c("states", "state", "counties", "county"),
                    include = c()) {
 
   regions_ <- match.arg(regions)
+
+  if (regions_ == "state") regions_ <- "states"
+  else if (regions_ == "county") regions_ <- "counties"
+
   df <- utils::read.csv(system.file("extdata", paste0("us_", regions_, ".csv"), package = "usmap"))
 
   if (length(include) > 0) {

@@ -29,7 +29,8 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
                        include = c(),
                        theme = theme_map()) {
 
-  map_df <- us_map(regions = regions, include = include)
+  regions_ <- match.arg(regions)
+  map_df <- us_map(regions = regions_, include = include)
 
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("Please install `ggplot2`. Use: install.packages(\"ggplot2\")")

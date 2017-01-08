@@ -5,7 +5,7 @@
 \title{Conveniently plot basic US map}
 \usage{
 plot_usmap(regions = c("states", "state", "counties", "county"),
-  include = c(), data = NULL, val_name = NULL, theme = theme_map())
+  include = c(), theme = theme_map())
 }
 \arguments{
 \item{regions}{The region breakdown for the map, can be one of
@@ -22,11 +22,9 @@ is \code{\link[ggthemes]{theme_map}}.}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object that contains a basic
-  US map with the described parameters. If \pkg{ggplot2} is not installed,
-  \code{\link[graphics]{plot}} is used, which may result in slower execution.
-  Moreover, basic plots cannot be stored in a variable or customized (themes, scales, etc.)
-  like \code{ggplot} can so it is highly recommend that \code{ggplot2} be installed
-  for a much better plotting experience.
+  US map with the described parameters. Since the result is a \code{ggplot}
+  object, it can be extended with more \code{geom} layers, scales, labels,
+  themes, etc.
 }
 \description{
 Conveniently plot basic US map
