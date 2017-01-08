@@ -87,15 +87,30 @@ us_map <- function(regions = c("states", "state", "counties", "county"),
   if (regions_ == "state") regions_ <- "states"
   else if (regions_ == "county") regions_ <- "counties"
 
-  df <- utils::read.csv(system.file("extdata", paste0("us_", regions_, ".csv"), package = "usmap"))
+  df <- utils::read.csv(system.file("extdata", paste0("us_", regions_, ".csv"), package = "usmap"),
+                        colClasses = col_classes(regions_),
+                        stringsAsFactors = FALSE)
 
   if (length(include) > 0) {
     if (regions_ %in% c("counties", "county")) {
-      df <- df[sprintf("%05d", df$fips) %in% include, ]
+      df <- df[df$fips %in% include, ]
     } else {
-      df <- df[df$full %in% include | df$abbr %in% include | sprintf("%02d", df$fips) %in% include, ]
+      df <- df[df$full %in% include | df$abbr %in% include | df$fips %in% include, ]
     }
   }
 
   df
+}
+
+#' Map data column classes
+#'
+#' @keywords internal
+col_classes <- function(regions) {
+  result <- c("numeric", "numeric", "integer", "logical", "integer", rep("character", 4))
+
+  if (regions %in% c("county", "counties")) {
+    result <- c(result, "character")    # add extra column for county name
+  }
+
+  result
 }
