@@ -18,5 +18,8 @@ Imports:
 Suggests:
     ggplot2,
     proto,
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr

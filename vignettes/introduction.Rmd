@@ -1,0 +1,102 @@
+---
+title: "usmap: Introduction"
+author: "Paolo Di Lorenzo"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+Plots of US maps in R usually lack Alaska and Hawaii. The reason is plotting takes the literal longitude and latitude coordinates and maps it to a cartesian x-y coordinate graph. Alaska and Hawaii are very far from the mainland US when using this so it can be unwieldy to include them. The `usmap` package solves this issue by providing data frames which have Alaska and Hawaii moved to a convenient spot just to the bottom left of the contiguous United States.
+
+#### Blank US state map
+
+```{r, fig.align='center', fig.width=7}
+usmap::plot_usmap()
+```
+
+
+#### Blank US county map
+
+```{r, fig.align='center', fig.width=7}
+usmap::plot_usmap(regions = "counties")
+```
+
+The nice thing about `usmap::plot_usmap` is it returns a [ggplot object](http://docs.ggplot2.org/current/) object, which means we can add `ggplot` layers to the plot right out of the box.
+
+```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
+library(ggplot2)
+
+usmap::plot_usmap(regions = "counties") + 
+  labs(title = "US Counties", subtitle = "This is a blank map of the counties of the United States.") + 
+  theme(panel.background = element_rect(colour = "black", fill = "lightblue"))
+```
+
+#### Plot only certain states
+
+```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
+library(ggplot2)
+
+usmap::plot_usmap(include = c("CA", "ID", "NV", "OR", "WA")) +
+  labs(title = "Western US States", subtitle = "These are the states in the Pacific Timezone.")
+```
+
+## Raw map data
+
+The raw US map data for counties or states can be obtained for further manipulation (and joining with data).
+
+```{r}
+str(usmap::us_map())
+```
+```{r}
+str(usmap::us_map(regions = "counties"))
+```
+
+You can also include only certain states and counties just like in `plot_usmap`. In fact, the `regions` and `include` parameters of `plot_usmap` are derived directly from their usage in `us_map`.
+
+## FIPS codes
+
+FIPS codes are defined in the Federal Information Processing Standards by the US government. One usage is uniquely identifying US states and counties (among other things such as identifying countries for the CIA World Factbook). Downloading datasets from the [US Census](http://www.census.gov/data.html) will often include FIPS codes as identifiers so it can be helpful to know what a FIPS code represents. The functions in `usmap` are built around the FIPS code identification system and so convenience methods for accessing them and performing reverse-lookups have been included.
+
+#### State/County FIPS lookup
+
+```{r}
+# Get FIPS code for a state
+usmap::fips(state = "MA")
+usmap::fips(state = "Massachusetts")
+
+# Get FIPS code for a county
+usmap::fips(state = "NJ", county = "Bergen")
+usmap::fips(state = "CA", county = "Orange County")
+
+# The parameters are NOT case sensitive!
+usmap::fips(state = "ca", county = "oRanGe cOUNty")
+```
+
+#### FIPS reverse lookup
+
+If the FIPS code is known and want to see what state/county it corresponds to, use the reverse lookup function `fips_info`.
+
+```{r}
+usmap::fips_info(c("30", "33", "34"))
+```
+
+```{r}
+usmap::fips_info(c("01001", "01003", "01005", "01007"))
+```
+
+#### Further reading
+
+More information about FIPS can be read [here](http://en.wikipedia.org/wiki/Federal_Information_Processing_Standards).
+  
+---
+
+> “A map is the greatest of all epic poems. Its lines and colors show the realization of great dreams.”
+> - _Gilbert H. Grosvenor, Editor of National Geographic (1903 - 1954)_
+  
