@@ -1,7 +1,9 @@
 #' Retrieve FIPS code for either a US state or county
 #'
 #' @description Each US state and county has a unique FIPS
-#'   (Federal Information Processing Standards) code.
+#'   (Federal Information Processing Standards) code. Use
+#'   this function to obtain the FIPS code for a state or
+#'   county.
 #'
 #' @param state The state for which to obtain a FIPS code.
 #'  Can be entered as either a state abbrevation or full name (case-insensitive).
@@ -29,6 +31,10 @@
 #' fips(state = "Alabama", county = "Autauga County")
 #' @export
 fips <- function(state, county = "") {
+  if (missing(state)) {
+    stop("`state` must be specified. Use full name (e.g. \"Alabama\") or two-letter abbreviation (e.g. \"AL\").")
+  }
+
   state_ <- tolower(state)
   county_ <- tolower(county)
 
@@ -91,7 +97,7 @@ fips_info.numeric <- function(fips) {
   } else if (all(fips >= 1 & fips <= 56)) {
     fips_ <- sprintf("%02d", fips)
   } else {
-    stop("Invalid FIPS code, must be 2 digit (states) or 5 digit (counties).")
+    stop("Invalid FIPS code(s), must be 2 digit (states) or 5 digit (counties).")
   }
 
   getFipsInfo(fips_)
@@ -102,7 +108,7 @@ fips_info.numeric <- function(fips) {
 fips_info.character <- function(fips) {
   if (all(nchar(fips) %in% 4:5)) {
     fips_ <- sprintf("%05s", fips)
-  } else if (all(nchar(fips)) %in% 1:2) {
+  } else if (all(nchar(fips) %in% 1:2)) {
     fips_ <- sprintf("%02s", fips)
   } else {
     stop("Invalid FIPS code, must be 2 digit (states) or 5 digit (counties).")
@@ -132,7 +138,7 @@ getFipsInfo <- function(fips) {
   }
 
   if (nrow(result) == 0) {
-    warning(paste("FIPS code(s)", fips, "not found, returned 0 results."))
+    warning(paste("FIPS code(s)", toString(fips), "not found, returned 0 results."))
   }
 
   rownames(result) <- NULL

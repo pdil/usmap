@@ -18,7 +18,9 @@ The FIPS code of given \code{state} or \code{county}.
 }
 \description{
 Each US state and county has a unique FIPS
-  (Federal Information Processing Standards) code.
+  (Federal Information Processing Standards) code. Use
+  this function to obtain the FIPS code for a state or
+  county.
 }
 \details{
 State and county FIPS (Federal Information Processing Standards) are
