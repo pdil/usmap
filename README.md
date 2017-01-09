@@ -51,15 +51,6 @@ fips_info(c("34021", "35021"))
 # 1 New Jersey   NJ  Mercer County 34021
 # 2 New Mexico   NM Harding County 35021
 ```
-* **[future version]** Merge data with map for plotting
-```{r}
-mydata <- read.csv("mydata.csv")     # data frame with two columns, "abbr" and "value"
-mapped_data <- data2map(data = mydata, regions = "states", id = "abbr", idCol = "abbr")
-
-ggplot2::ggplot(data = mapped_data) +
-  geom_polygon(aes(x = long, y = lat, group = group, fill = value), colour = "black", size = 0.4) +
-  coord_equal() + ggthemes::theme_map()
-```
 
 #### Code for above maps
 ```{r}
