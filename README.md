@@ -52,7 +52,7 @@ fips_info(c("34021", "35021"))
 # 2 New Mexico   NM Harding County 35021
 ```
 
-#### Code for above maps
+#### Code for maps shown above
 ```{r}
 # States map
 usmap::plot_usmap(regions = "states")
