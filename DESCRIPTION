@@ -17,9 +17,9 @@ Imports:
     utils
 Suggests:
     ggplot2,
-    proto,
-    testthat,
     knitr,
-    rmarkdown
+    proto,
+    rmarkdown,
+    testthat
 RoxygenNote: 5.0.1
 VignetteBuilder: knitr
