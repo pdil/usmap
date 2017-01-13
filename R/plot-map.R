@@ -4,7 +4,7 @@
 #' @param theme The theme that should be used for plotting the map. The default
 #'   is \code{\link[ggthemes]{theme_map}}.
 #' @param lines The line color to be used in the map. Corresponds to the
-#'   \code{colour} option in the \code{ggplot2} \code{aes} mapping. The default
+#'   \code{colour} option in the \code{\link[ggplot2]{aes}} mapping. The default
 #'   is \code{"black"}. \url[Click here]{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}
 #'   for more color options.
 #'
