@@ -3,6 +3,10 @@
 #' @inheritParams us_map
 #' @param theme The theme that should be used for plotting the map. The default
 #'   is \code{\link[ggthemes]{theme_map}}.
+#' @param lines The line color to be used in the map. Corresponds to the
+#'   \code{colour} option in the \code{ggplot2} \code{aes} mapping. The default
+#'   is \code{"black"}. \url[Click here]{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}
+#'   for more color options.
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object that contains a basic
 #'   US map with the described parameters. Since the result is a \code{ggplot}
@@ -27,7 +31,8 @@
 #' @export
 plot_usmap <- function(regions = c("states", "state", "counties", "county"),
                        include = c(),
-                       theme = theme_map()) {
+                       theme = theme_map(),
+                       lines = "black") {
 
   regions_ <- match.arg(regions)
   map_df <- us_map(regions = regions_, include = include)
@@ -36,14 +41,10 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
     stop("Please install `ggplot2`. Use: install.packages(\"ggplot2\")")
   }
 
-  ggplot2::ggplot(
-      data = map_df
-    ) +
+  ggplot2::ggplot(data = map_df) +
     ggplot2::geom_polygon(
       ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group),
-      colour = "black",
-      fill = "white",
-      size = 0.4
+      colour = lines, fill = "white", size = 0.4
     ) +
     ggplot2::coord_equal() +
     theme
