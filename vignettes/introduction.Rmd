@@ -28,37 +28,15 @@ usmap::plot_usmap()
 usmap::plot_usmap(regions = "counties")
 ```
 
-The nice thing about `usmap::plot_usmap` is it returns a [ggplot object](http://docs.ggplot2.org/current/) object, which means we can add `ggplot` layers to the plot right out of the box.
-
-```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
-library(ggplot2)
-
-usmap::plot_usmap(regions = "counties") + 
-  labs(title = "US Counties", subtitle = "This is a blank map of the counties of the United States.") + 
-  theme(panel.background = element_rect(colour = "black", fill = "lightblue"))
-```
-
-#### Plot only certain states
-
-```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
-library(ggplot2)
-
-usmap::plot_usmap(include = c("CA", "ID", "NV", "OR", "WA")) +
-  labs(title = "Western US States", subtitle = "These are the states in the Pacific Timezone.")
-```
-
 ## Raw map data
 
-The raw US map data for counties or states can be obtained for further manipulation (and joining with data).
-
-```{r}
-str(usmap::us_map())
-```
-```{r}
-str(usmap::us_map(regions = "counties"))
+The raw US map data for counties or states can be obtained for further manipulation (and joining with data). The default `regions` is `"states"`.
+ 
+```{r, eval = FALSE}
+states_df <- usmap::us_map()
+counties_df <- usmap::us_map(regions = "counties")
 ```
 
-You can also include only certain states and counties just like in `plot_usmap`. In fact, the `regions` and `include` parameters of `plot_usmap` are derived directly from their usage in `us_map`.
 
 ## FIPS codes
 
