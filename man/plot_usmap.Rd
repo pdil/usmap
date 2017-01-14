@@ -5,7 +5,7 @@
 \title{Conveniently plot basic US map}
 \usage{
 plot_usmap(regions = c("states", "state", "counties", "county"),
-  include = c(), theme = theme_map())
+  include = c(), theme = theme_map(), lines = "black")
 }
 \arguments{
 \item{regions}{The region breakdown for the map, can be one of
@@ -19,6 +19,11 @@ same name.}
 
 \item{theme}{The theme that should be used for plotting the map. The default
 is \code{\link[ggthemes]{theme_map}}.}
+
+\item{lines}{The line color to be used in the map. Corresponds to the
+\code{colour} option in the \code{\link[ggplot2]{aes}} mapping. The default
+is \code{"black"}. \url[Click here]{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}
+for more color options.}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object that contains a basic
