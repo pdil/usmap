@@ -22,7 +22,7 @@ is \code{\link[ggthemes]{theme_map}}.}
 
 \item{lines}{The line color to be used in the map. Corresponds to the
 \code{colour} option in the \code{\link[ggplot2]{aes}} mapping. The default
-is \code{"black"}. \url[Click here]{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}
+is \code{"black"}. \href[http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf]{Click here}
 for more color options.}
 }
 \value{
