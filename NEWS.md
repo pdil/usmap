@@ -2,7 +2,7 @@
 
 * First release
 
-## Main features
+### Main features
 
 * Retrieve US map data frame for merging with data and plotting
 * Lookup FIPS codes for states and counties (reverse-lookup as well)
