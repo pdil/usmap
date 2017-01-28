@@ -1,5 +1,5 @@
 Package: usmap
-Version: 0.0.0.9000
+Version: 0.1.0
 Title: US Maps Including Alaska and Hawaii
 Description: Obtain United States map data frames of varying region types (e.g. county, 
     state). The map data frames include Alaska and Hawaii conveniently placed to the
@@ -11,7 +11,8 @@ Depends:
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: http://www.github.com/pdil/usmap
+URL: http://dilorenzo.pl/usmap
+BugReports: http://github.com/pdil/usmap/issues
 Imports:
     graphics,
     utils
