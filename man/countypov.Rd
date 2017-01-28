@@ -24,7 +24,7 @@ US census poverty percentage estimates by county for 2014. \cr\cr
 \references{
 \itemize{
     \item \url{https://www.census.gov/topics/income-poverty/poverty.html}
-    \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/download-data.aspx}
+    \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
   }
 }
 \keyword{data}
