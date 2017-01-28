@@ -2,3 +2,5 @@
 .Rdata
 .Rproj.user
 inst/doc
+data-raw/PopulationEstimates.xls
+data-raw/PovertyEstimates.xls
