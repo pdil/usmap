@@ -1,6 +1,8 @@
 # usmap
 [![Version](https://badge.fury.io/gh/pdil%2Fusmap.svg)](https://github.com/pdil/usmap/releases) [![Build Status](https://travis-ci.org/pdil/usmap.svg?branch=master)](https://travis-ci.org/pdil/usmap) [![codecov](https://codecov.io/gh/pdil/usmap/branch/master/graph/badge.svg)](https://codecov.io/gh/pdil/usmap)
 
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/usmap)](https://cran.r-project.org/web/packages/usmap/index.html)
+
 <img src="https://github.com/pdil/us-map/blob/master/blank-state-map.png" width="400" height="272" />
 <img src="https://github.com/pdil/us-map/blob/master/blank-county-map.png" width="400" height="272" />
 
