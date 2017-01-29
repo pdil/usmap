@@ -11,14 +11,28 @@ Typically in R it is difficult to create nice US [choropleths](https://en.wikipe
 The shape files that we use to plot the maps in R are located in the `data-raw` folder. For more information refer to the [US Census Bureau](https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html). Maps at both the state and county levels are included for convenience (zip code maps may be included in the future).
 
 ## Installation
+To install from CRAN, run the following code in an R console:
+```{r}
+install.packages("usmap")
+```
 To install the package from this repository, run the following code in an R console:
 ```{r}
-install.package("devtools")
+# install.package("devtools")
 devtools::install_github("pdil/usmap")
 ```
-Installing using ```devtools::install_github``` will provide the most recent developer build of ```usmap```.
+Installing using `devtools::install_github` will provide the most recent developer build of `usmap`.
 
-When ```usmap``` is released and approved by CRAN it can be installed using ```install.packages("usmap")```.
+To begin using `usmap`, simply import the package using the `library` command:
+```{r}
+library(usmap)
+```
+
+To read the package vignettes, which explain helpful uses of the package, use `vignette`:
+```{r}
+vignette(package = "usmap")
+vignette("introduction", package = "usmap")
+vignette("mapping", package = "usmap")
+```
 
 ## Features
 * Obtain map with certain region breakdown
