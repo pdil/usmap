@@ -1,4 +1,4 @@
-# usmap 0.0.0.9000
+# usmap 0.1.0
 
 * First release
 
