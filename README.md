@@ -76,6 +76,6 @@ usmap::plot_usmap(regions = "counties")
 ```
 
 ## Acknowledgements
-The code used to generate the map files was based on this blog post by Bob Rudis:    
+The code used to generate the map files was based on this blog post by [Bob Rudis](https://github.com/hrbrmstr):    
 [Moving The Earth (well, Alaska & Hawaii) With R](https://rud.is/b/2014/11/16/moving-the-earth-well-alaska-hawaii-with-r/)
 
