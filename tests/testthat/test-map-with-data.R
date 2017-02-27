@@ -16,8 +16,3 @@ test_that("error occurs for invalid column names", {
   bad_data <- data.frame(state_fips <- c("01", "02"), the_values = c(3, 5))
   expect_error(map_with_data(bad_data))
 })
-
-test_that("error occurs for not having character type `fips` column", {
-  bad_data <- data.frame(fips = c(1, 2), value = c(3, 5))
-  expect_error(map_with_data(bad_data))
-})
