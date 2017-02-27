@@ -27,9 +27,7 @@ map_with_data <- function(data, na = NA) {
     stop("`data` must have at least one row")
   }
 
-  if (!is.character(data$fips)) {
-    stop("The `fips` column must be of type `character`")
-  }
+  data$fips <- as.character(data$fips)
 
   map_df <- us_map(regions = ifelse(nchar(data$fips[1]) == 2, "state", "county"))
 
