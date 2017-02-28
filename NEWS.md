@@ -1,4 +1,4 @@
-# usmap 0.1.0.9999
+# usmap 0.1.0.9000
 
 * Add ```map_with_data``` function for adding user-defined data to map data.
 
