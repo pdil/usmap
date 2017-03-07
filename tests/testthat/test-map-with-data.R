@@ -3,8 +3,18 @@ context("Joining state and county data to map")
 state_data <- data.frame(fips = c("01", "02", "04"), value = c(3, 5, 10))
 county_data <- data.frame(fips = c("01001", "01003", "01005"), value = c(3, 5, 10))
 
-test_that("values are assigned to correct region", {
+test_that("values are assigned to states correctly", {
+  df <- map_with_data(state_data)
+  expect_equal(length(unique(df$abbr[df$value == 3])), 1)
+  expect_equal(length(unique(df$abbr[df$value == 5])), 1)
+  expect_equal(length(unique(df$abbr[df$value == 10])), 1)
+})
 
+test_that("values are assigned to counties correctly", {
+  df <- map_with_data(county_data)
+  expect_equal(length(unique(df$county[df$value == 3])), 1)
+  expect_equal(length(unique(df$county[df$value == 5])), 1)
+  expect_equal(length(unique(df$county[df$value == 10])), 1)
 })
 
 test_that("error occurs for not having correct number of columns", {
