@@ -11,23 +11,23 @@ The shape files that we use to plot the maps in R are located in the `data-raw` 
 
 ## Installation
 To install from CRAN, run the following code in an R console:
-```{r}
+```r
 install.packages("usmap")
 ```
 To install the package from this repository, run the following code in an R console:
-```{r}
+```r
 # install.package("devtools")
 devtools::install_github("pdil/usmap")
 ```
 Installing using `devtools::install_github` will provide the most recent developer build of `usmap`.
 
 To begin using `usmap`, simply import the package using the `library` command:
-```{r}
+```r
 library(usmap)
 ```
 
 To read the package vignettes, which explain helpful uses of the package, use `vignette`:
-```{r}
+```r
 vignette(package = "usmap")
 vignette("introduction", package = "usmap")
 vignette("mapping", package = "usmap")
@@ -35,17 +35,17 @@ vignette("mapping", package = "usmap")
 
 ## Features
 * Obtain map with certain region breakdown
-```{r}
+```r
 state_map <- us_map(regions = "states")
 county_map <- us_map(regions = "counties")
 ```
 * Include only certain states
-```{r}
+```r
 new_england_states <- c("Connecticut", "Maine", "Massachusetts", "New Hampshire", "Rhode Island", "Vermont")
 new_england_map <- us_map(regions = "states", include = new_england_states)
 ```
 * Look up FIPS codes for states and counties
-```{r}
+```r
 fips("New Jersey")
 # "34"
 
@@ -53,7 +53,7 @@ fips("NJ", county = "Mercer")
 # "34021"
 ```
 * Retrieve states or counties with FIPS codes
-```{r}
+```r
 fips_info(c("34", "35"))
 #         full abbr fips
 # 1 New Jersey   NJ   34 
@@ -66,7 +66,7 @@ fips_info(c("34021", "35021"))
 ```
 
 #### Code for maps shown above
-```{r}
+```r
 # States map
 usmap::plot_usmap(regions = "states")
 
