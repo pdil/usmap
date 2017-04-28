@@ -34,11 +34,19 @@ map_with_data <- function(data, values = "value", na = NA) {
 
   data$fips <- as.character(data$fips)
 
-  map_df <- us_map(regions = ifelse(nchar(data$fips[1]) == 2, "state", "county"))
+  region_type <- ifelse(nchar(data$fips[1]) == 2, "state", "county")
+
+  map_df <- us_map(regions = region_type)
 
   result <- merge(map_df, data, by = "fips", all.x = TRUE, sort = FALSE)
   result[is.na(result[, values]), values] <- na
   result <- result[c(setdiff(names(result), names(data)), names(data))]
+
+  if (region_type == "state") {
+    result <- result <- result[order(result$full, result$piece, result$order), ]
+  } else {
+    result <- result <- result[order(result$full, result$county, result$piece, result$order), ]
+  }
 
   result
 }
