@@ -19,7 +19,9 @@
 #'
 #' @examples
 #' state_data <- data.frame(fips = c("01", "02", "04"), value = c(1, 5, 8))
-#' map_with_data(state_data, na = 0)
+#' df <- map_with_data(state_data, na = 0)
+#' str(df)
+#'
 #' @export
 map_with_data <- function(data, values = "value", na = NA) {
   if (!is.data.frame(data) || ncol(data) != 2 || !("fips" %in% names(data)) || !(values %in% names(data))) {
