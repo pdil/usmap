@@ -12,10 +12,11 @@ test_that("values are assigned to states correctly", {
 })
 
 test_that("values are assigned to counties correctly", {
-  # df <- map_with_data(county_data)
-  # expect_equal(length(unique(df$county[df$value == 3])), 1)
-  # expect_equal(length(unique(df$county[df$value == 5])), 1)
-  # expect_equal(length(unique(df$county[df$value == 10])), 1)
+  df <- map_with_data(county_data)
+
+  expect_equal(unique(county_data$value[county_data$fips == "01001"]), unique(df$value[df$fips == "01001"]))
+  expect_equal(unique(county_data$value[county_data$fips == "01003"]), unique(df$value[df$fips == "01003"]))
+  expect_equal(unique(county_data$value[county_data$fips == "01005"]), unique(df$value[df$fips == "01005"]))
 })
 
 test_that("error occurs for not having correct number of columns", {
