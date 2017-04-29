@@ -4,7 +4,7 @@
 \alias{map_with_data}
 \title{Join county or state level data to US map data}
 \usage{
-map_with_data(data, values = "value", na = NA)
+map_with_data(data, values = "value", include = c(), na = NA)
 }
 \arguments{
 \item{data}{The data that should be joined to a US map. This
@@ -16,6 +16,11 @@ columns of \code{data} _must_ be \code{fips} and the value of the
 
 \item{values}{The name of the column that contains the values to be associated
 with a given region. The default is \code{"value"}.}
+
+\item{include}{The regions to include in the output data frame. If \code{regions} is
+\code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
+For counties, the FIPS must be provided as there can be multiple counties with the
+same name.}
 
 \item{na}{The value to be inserted for states or counties that don't have
 a value in \code{data}. This value must be of the same type as the \code{value}
@@ -33,7 +38,6 @@ Join county or state level data to US map data
 \examples{
 state_data <- data.frame(fips = c("01", "02", "04"), value = c(1, 5, 8))
 df <- map_with_data(state_data, na = 0)
-str(df)
 
 }
 

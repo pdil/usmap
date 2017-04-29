@@ -5,7 +5,8 @@
 \title{Conveniently plot basic US map}
 \usage{
 plot_usmap(regions = c("states", "state", "counties", "county"),
-  include = c(), theme = theme_map(), lines = "black")
+  include = c(), data = data.frame(), values = "values",
+  theme = theme_map(), lines = "black")
 }
 \arguments{
 \item{regions}{The region breakdown for the map, can be one of
@@ -16,6 +17,16 @@ The default is \code{"states"}.}
 \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
 For counties, the FIPS must be provided as there can be multiple counties with the
 same name.}
+
+\item{data}{A data frame containing values to plot on the map. This
+parameter should be a data frame consisting of two columns,
+a fips code (2 characters for state, 5 characters for county)
+and the value that should be associated with that region. The
+columns of \code{data} _must_ be \code{fips} and the value of the
+`values` parameter.}
+
+\item{values}{The name of the column that contains the values to be associated
+with a given region. The default is \code{"value"}.}
 
 \item{theme}{The theme that should be used for plotting the map. The default
 is \code{\link[ggthemes]{theme_map}}.}
