@@ -70,15 +70,18 @@ plot_usmap(data = statepop, values = "pop_2015", lines = "red") +
   scale_fill_continuous(name = "Population (2015)", label = scales::comma) + 
   theme(legend.position = "right")
 ```
-[State Population Example](https://raw.githubusercontent.com/pdil/usmap/master/state-pop-example.png)
 
 #### Code for maps shown above
 ```r
 # States map
-usmap::plot_usmap(regions = "states")
+plot_usmap(data = statepop, values = "pop_2015") + 
+  scale_fill_continuous(low = "white", high = "red", guide = FALSE) +
+  scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 
 # Counties map
-usmap::plot_usmap(regions = "counties")
+plot_usmap(data = countypop, values = "pop_2015") + 
+  scale_fill_continuous(low = "white", high = "red", guide = FALSE) +
+  scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 ```
 
 ## Acknowledgements
