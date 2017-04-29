@@ -18,6 +18,7 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 The nice thing about `usmap::plot_usmap` is it returns a [ggplot object](http://docs.ggplot2.org/current/) object, which means we can add `ggplot` layers to the plot right out of the box.
 
 ```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
+library(usmap)
 library(ggplot2)
 
 usmap::plot_usmap(regions = "counties") + 
@@ -62,9 +63,10 @@ The data-filled map can also be filtered to show certain regions only, like the 
 #### Show data in certain states
 
 ```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
+library(usmap)
 library(ggplot2)
 
-usmap::plot_usmap(
+plot_usmap(
     data = statepop, values = "pop_2015", include = c("CA", "ID", "NV", "OR", "WA"), lines = "red"
   ) + 
   scale_fill_continuous(
