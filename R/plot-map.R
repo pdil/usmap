@@ -1,6 +1,14 @@
 #' Conveniently plot basic US map
 #'
 #' @inheritParams us_map
+#' @param data A data frame containing values to plot on the map. This
+#'   parameter should be a data frame consisting of two columns,
+#'   a fips code (2 characters for state, 5 characters for county)
+#'   and the value that should be associated with that region. The
+#'   columns of \code{data} _must_ be \code{fips} and the value of the
+#'   `values` parameter.
+#' @param values The name of the column that contains the values to be associated
+#'   with a given region. The default is \code{"value"}.
 #' @param theme The theme that should be used for plotting the map. The default
 #'   is \code{\link[ggthemes]{theme_map}}.
 #' @param lines The line color to be used in the map. Corresponds to the
@@ -31,23 +39,31 @@
 #' @export
 plot_usmap <- function(regions = c("states", "state", "counties", "county"),
                        include = c(),
+                       data = data.frame(), values = "values",
                        theme = theme_map(),
                        lines = "black") {
-
-  regions_ <- match.arg(regions)
-  map_df <- us_map(regions = regions_, include = include)
 
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("Please install `ggplot2`. Use: install.packages(\"ggplot2\")")
   }
 
-  ggplot2::ggplot(data = map_df) +
-    ggplot2::geom_polygon(
+  regions_ <- match.arg(regions)
+
+  if (nrow(data) == 0) {
+    map_df <- us_map(regions = regions_, include = include)
+    polygon_layer <- ggplot2::geom_polygon(
       ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group),
       colour = lines, fill = "white", size = 0.4
-    ) +
-    ggplot2::coord_equal() +
-    theme
+    )
+  } else {
+    map_df <- map_with_data(data, values = values, include = include)
+    polygon_layer <- ggplot2::geom_polygon(
+      ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group, fill = map_df[, values]),
+      colour = lines, size = 0.4
+    )
+  }
+
+  ggplot2::ggplot(data = map_df) + polygon_layer + ggplot2::coord_equal() + theme
 }
 
 #' This creates a nice map theme for use in plot_usmap.

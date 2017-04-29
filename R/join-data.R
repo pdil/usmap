@@ -8,6 +8,10 @@
 #'   `values` parameter.
 #' @param values The name of the column that contains the values to be associated
 #'   with a given region. The default is \code{"value"}.
+#' @param include The regions to include in the output data frame. If \code{regions} is
+#'  \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
+#'  For counties, the FIPS must be provided as there can be multiple counties with the
+#'  same name.
 #' @param na The value to be inserted for states or counties that don't have
 #'   a value in \code{data}. This value must be of the same type as the \code{value}
 #'   column of \code{data}.
@@ -20,12 +24,11 @@
 #' @examples
 #' state_data <- data.frame(fips = c("01", "02", "04"), value = c(1, 5, 8))
 #' df <- map_with_data(state_data, na = 0)
-#' str(df)
 #'
 #' @export
-map_with_data <- function(data, values = "value", na = NA) {
-  if (!is.data.frame(data) || ncol(data) != 2 || !("fips" %in% names(data)) || !(values %in% names(data))) {
-    stop(paste0("`data` must be a data frame with two columns, `fips` and `", values, "`"))
+map_with_data <- function(data, values = "value", include = c(), na = NA) {
+  if (!is.data.frame(data) || !("fips" %in% names(data)) || !(values %in% names(data))) {
+    stop(paste0("`data` must be a data frame with columns `fips` and `", values, "`"))
   }
 
   if (length(data$fips) < 1) {
@@ -35,12 +38,13 @@ map_with_data <- function(data, values = "value", na = NA) {
   data$fips <- as.character(data$fips)
 
   region_type <- ifelse(nchar(data$fips[1]) == 2, "state", "county")
+  map_df <- us_map(regions = region_type, include = include)
 
-  map_df <- us_map(regions = region_type)
+  df <- data[, c("fips", values)]
 
-  result <- merge(map_df, data, by = "fips", all.x = TRUE, sort = FALSE)
+  result <- merge(map_df, df, by = "fips", all.x = TRUE, sort = FALSE)
   result[is.na(result[, values]), values] <- na
-  result <- result[c(setdiff(names(result), names(data)), names(data))]
+  result <- result[, c(setdiff(names(result), names(df)), names(df))]
 
   if (region_type == "state") {
     result <- result <- result[order(result$full, result$piece, result$order), ]

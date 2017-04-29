@@ -19,11 +19,6 @@ test_that("values are assigned to counties correctly", {
   expect_equal(unique(county_data$value[county_data$fips == "01005"]), unique(df$value[df$fips == "01005"]))
 })
 
-test_that("error occurs for not having correct number of columns", {
-  bad_data <- data.frame(fips = c("01", "02"), value = c(3, 5), extra_col = c("abc", "def"))
-  expect_error(map_with_data(bad_data))
-})
-
 test_that("error occurs for invalid column names", {
   bad_data <- data.frame(state_fips <- c("01", "02"), the_values = c(3, 5))
   expect_error(map_with_data(bad_data))

@@ -64,6 +64,13 @@ fips_info(c("34021", "35021"))
 # 1 New Jersey   NJ  Mercer County 34021
 # 2 New Mexico   NM Harding County 35021
 ```
+* Color map with data
+```r
+plot_usmap(data = statepop, values = "pop_2015", lines = "red") + 
+  scale_fill_continuous(name = "Population (2015)", label = scales::comma) + 
+  theme(legend.position = "right")
+```
+[State Population Example](https://raw.githubusercontent.com/pdil/usmap/master/state-pop-example.png)
 
 #### Code for maps shown above
 ```r
