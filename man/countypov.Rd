@@ -28,4 +28,3 @@ US census poverty percentage estimates by county for 2014. \cr\cr
   }
 }
 \keyword{data}
-

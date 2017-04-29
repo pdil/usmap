@@ -40,4 +40,3 @@ state_data <- data.frame(fips = c("01", "02", "04"), value = c(1, 5, 8))
 df <- map_with_data(state_data, na = 0)
 
 }
-

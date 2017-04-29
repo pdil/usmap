@@ -28,4 +28,3 @@ US census poverty percentage estimates by state for 2014. \cr\cr
   }
 }
 \keyword{data}
-

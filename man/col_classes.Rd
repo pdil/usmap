@@ -10,4 +10,3 @@ col_classes(regions)
 Map data column classes
 }
 \keyword{internal}
-

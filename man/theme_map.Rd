@@ -17,4 +17,3 @@ All theme functions (i.e. theme_bw, theme, element_blank, %+replace%)
  come from ggplot2.
 }
 \keyword{internal}
-

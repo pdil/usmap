@@ -28,4 +28,3 @@ US census population estimates by state for 2015. \cr\cr
   }
 }
 \keyword{data}
-

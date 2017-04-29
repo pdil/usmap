@@ -2,8 +2,8 @@
 % Please edit documentation in R/fips.R
 \name{fips_info}
 \alias{fips_info}
-\alias{fips_info.character}
 \alias{fips_info.numeric}
+\alias{fips_info.character}
 \title{Retrieve states or counties using FIPS codes}
 \usage{
 fips_info(fips)
@@ -34,4 +34,3 @@ fips_info(2016)
 fips_info(c("02016", "02017"))
 
 }
-

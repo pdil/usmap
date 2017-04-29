@@ -4,6 +4,7 @@
 \name{usmap}
 \alias{usmap}
 \alias{usmap-package}
+\alias{usmap-package}
 \title{usmap: US maps including Alaska and Hawaii}
 \description{
 It is usually difficult or inconvenient to create US maps that
@@ -42,14 +43,7 @@ takes similar parameters to \code{\link{us_map}} and returns a \pkg{ggplot2}
 object. Since the output is a \code{ggplot} object, other layers can be
 added such as scales, themes, and labels.
 }
-\author{
-Paolo Di Lorenzo \cr
-\itemize{
-  \item Email: \email{paolo@dilorenzo.pl}
-  \item Website: \url{http://dilorenzo.pl}
-  \item Github: \url{http://www.github.com/pdil/}
-}
-}
+
 \references{
 Rudis, Bob. "Moving The Earth (well, Alaska & Hawaii) With R."
 Blog post. Rud.is., 16 Nov. 2014. Web. 10 Aug. 2015.
@@ -68,4 +62,11 @@ Helpful links:
     \url{https://en.wikipedia.org/wiki/Albers_projection}
 }
 }
-
+\author{
+Paolo Di Lorenzo \cr
+\itemize{
+  \item Email: \email{paolo@dilorenzo.pl}
+  \item Website: \url{http://dilorenzo.pl}
+  \item Github: \url{http://www.github.com/pdil/}
+}
+}

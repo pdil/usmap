@@ -62,4 +62,3 @@ plot_usmap(include = c("CA", "NV", "ID", "OR", "WA")) +
 \seealso{
 \code{\link{usmap}}, \code{\link[ggplot2]{theme}}
 }
-
