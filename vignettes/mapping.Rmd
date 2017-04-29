@@ -34,6 +34,46 @@ usmap::plot_usmap(include = c("CA", "ID", "NV", "OR", "WA")) +
   labs(title = "Western US States", subtitle = "These are the states in the Pacific Timezone.")
 ```
 
+#### Add some data to the map
+
+```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
+library(ggplot2)
+
+usmap::plot_usmap(data = statepop, values = "pop_2015", lines = "red") + 
+  scale_fill_continuous(name = "Population (2015)", label = scales::comma) + 
+  theme(legend.position = "right")
+```
+
+Notice the comprehensive expandability that can be applied to the map using `ggplot2` layers. For example, we might want to use a different color scheme.
+
+#### Change fill color scale
+
+```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
+library(ggplot2)
+
+usmap::plot_usmap(data = statepop, values = "pop_2015", lines = "red") + 
+  scale_fill_continuous(
+    low = "white", high = "red", name = "Population (2015)", label = scales::comma
+  ) + theme(legend.position = "right")
+```
+
+The data-filled map can also be filtered to show certain regions only, like the western states shown above.
+
+#### Show data in certain states
+
+```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
+library(ggplot2)
+
+usmap::plot_usmap(
+    data = statepop, values = "pop_2015", include = c("CA", "ID", "NV", "OR", "WA"), lines = "red"
+  ) + 
+  scale_fill_continuous(
+    low = "white", high = "red", name = "Population (2015)", label = scales::comma
+  ) + 
+  labs(title = "Western US States", subtitle = "These are the states in the Pacific Timezone.") +
+  theme(legend.position = "right")
+```
+
 ## Raw map data
 
 The raw US map data for counties or states can be obtained for further manipulation (and joining with data).
