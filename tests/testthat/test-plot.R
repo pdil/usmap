@@ -1,4 +1,4 @@
-context("Test plotting US maps")
+context("Plotting US maps")
 
 library(proto)
 p <- plot_usmap()
