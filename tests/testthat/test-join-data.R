@@ -23,3 +23,7 @@ test_that("error occurs for invalid column names", {
   bad_data <- data.frame(state_fips <- c("01", "02"), the_values = c(3, 5))
   expect_error(map_with_data(bad_data))
 })
+
+test_that("error occurs for empty data frame", {
+  expect_error(map_with_data(data.frame()))
+})
