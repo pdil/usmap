@@ -14,7 +14,6 @@ LazyData: true
 URL: http://dilorenzo.pl/usmap
 BugReports: http://github.com/pdil/usmap/issues
 Imports:
-    graphics,
     utils
 Suggests:
     ggplot2,
