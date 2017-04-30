@@ -36,6 +36,9 @@
 #' plot_usmap(include = c("CA", "NV", "ID", "OR", "WA")) +
 #'   labs(title = "Western States")
 #'
+#' # Color maps with data
+#' plot_usmap(data = statepop, values = "pop_2015")
+#'
 #' @export
 plot_usmap <- function(regions = c("states", "state", "counties", "county"),
                        include = c(),

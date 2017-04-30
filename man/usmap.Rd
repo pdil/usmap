@@ -41,7 +41,8 @@ preparing data to be merged with the map data frame.
 A convenience function \code{\link{plot_usmap}} has been included which
 takes similar parameters to \code{\link{us_map}} and returns a \pkg{ggplot2}
 object. Since the output is a \code{ggplot} object, other layers can be
-added such as scales, themes, and labels.
+added such as scales, themes, and labels. Including data in the function call
+will color the map according to the values in the data, creating a choropleth.
 }
 
 \references{
@@ -57,9 +58,10 @@ Helpful links:
     \url{http://en.wikipedia.org/wiki/FIPS_state_code}
   \item US Census Shapefiles \cr
     \url{https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html}
-  \item Map Projections \cr
+  \item Map Features \cr
     \url{https://en.wikipedia.org/wiki/Map_projection}
     \url{https://en.wikipedia.org/wiki/Albers_projection}
+    \url{https://en.wikipedia.org/wiki/Choropleth}
 }
 }
 \author{
@@ -67,6 +69,7 @@ Paolo Di Lorenzo \cr
 \itemize{
   \item Email: \email{paolo@dilorenzo.pl}
   \item Website: \url{http://dilorenzo.pl}
+  \item Twitter: \url{http://twitter.com/dilorenzopl}
   \item Github: \url{http://www.github.com/pdil/}
 }
 }
