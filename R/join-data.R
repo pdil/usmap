@@ -26,13 +26,21 @@
 #' df <- map_with_data(state_data, na = 0)
 #'
 #' @export
-map_with_data <- function(data, values = "value", include = c(), na = NA) {
-  if (!is.data.frame(data) || !("fips" %in% names(data)) || !(values %in% names(data))) {
-    stop(paste0("`data` must be a data frame with columns `fips` and `", values, "`"))
+map_with_data <- function(data, values = "values", include = c(), na = NA) {
+  if (nrow(data) == 0) {
+    if (length(include) == 0) {
+      region_type <- "state"
+    } else {
+      region_type <- ifelse(nchar(include[1]) == 2, "state", "county")
+    }
+
+    warning(paste("`data` is empty, returning basic", region_type, "US map data frame"))
+    return(us_map(regions = region_type, include = include))
   }
 
-  if (length(data$fips) < 1) {
-    stop("`data` must have at least one row")
+  if (!is.data.frame(data) || !("fips" %in% names(data)) || !(values %in% names(data))) {
+    stop(paste0("* `data` must be a data frame with columns `fips` and `", values,
+                "`\n  * Make sure the `values` parameter has been set correctly."))
   }
 
   data$fips <- as.character(data$fips)

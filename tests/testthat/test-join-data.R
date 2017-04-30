@@ -1,7 +1,7 @@
 context("Joining state and county data to map")
 
-state_data <- data.frame(fips = c("01", "02", "04"), value = c(3, 5, 10))
-county_data <- data.frame(fips = c("01001", "01003", "01005"), value = c(3, 5, 10))
+state_data <- data.frame(fips = c("01", "02", "04"), values = c(3, 5, 10))
+county_data <- data.frame(fips = c("01001", "01003", "01005"), values = c(3, 5, 10))
 
 test_that("values are assigned to states correctly", {
   df <- map_with_data(state_data)
@@ -24,6 +24,10 @@ test_that("error occurs for invalid column names", {
   expect_error(map_with_data(bad_data))
 })
 
-test_that("error occurs for empty data frame", {
-  expect_error(map_with_data(data.frame()))
+test_that("warning occurs for empty (yet valid) data frame", {
+  expect_warning(map_with_data(data.frame(fips = c(), values = c())))
+  expect_equal(suppressWarnings(map_with_data(data.frame(fips = c(), values = c()))), us_map())
+
+  expect_warning(map_with_data(data.frame(fips = c(), values = c()), include = c("01")), "*state*")
+  expect_warning(map_with_data(data.frame(fips = c(), values = c()), include = c("01001")), "*county*")
 })

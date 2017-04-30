@@ -1,6 +1,8 @@
 # usmap 0.2.0.9000
 
 * Standardize documentation language.
+* Improve descriptiveness of error messages and warnings.
+
 # usmap 0.2.0
 
 * Add `map_with_data` function for adding user-defined data to map data.
