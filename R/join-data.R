@@ -7,7 +7,7 @@
 #'   columns of \code{data} _must_ be \code{fips} and the value of the
 #'   `values` parameter.
 #' @param values The name of the column that contains the values to be associated
-#'   with a given region. The default is \code{"value"}.
+#'   with a given region. The default is \code{"values"}.
 #' @param include The regions to include in the output data frame. If \code{regions} is
 #'  \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
 #'  For counties, the FIPS must be provided as there can be multiple counties with the
@@ -22,7 +22,7 @@
 #'   The result can be plotted using \code{ggplot2}. See \code{\link{us_map}} for more details.
 #'
 #' @examples
-#' state_data <- data.frame(fips = c("01", "02", "04"), value = c(1, 5, 8))
+#' state_data <- data.frame(fips = c("01", "02", "04"), values = c(1, 5, 8))
 #' df <- map_with_data(state_data, na = 0)
 #'
 #' @export
