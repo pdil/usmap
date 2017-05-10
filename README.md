@@ -73,6 +73,8 @@ plot_usmap(data = statepop, values = "pop_2015", lines = "red") +
 
 #### Code for maps shown above
 ```r
+library(ggplot2)
+
 # States map
 plot_usmap(data = statepop, values = "pop_2015") + 
   scale_fill_continuous(low = "white", high = "red", guide = FALSE) +
