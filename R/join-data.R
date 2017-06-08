@@ -45,10 +45,13 @@ map_with_data <- function(data, values = "values", include = c(), na = NA) {
 
   data$fips <- as.character(data$fips)
 
-  region_type <- ifelse(nchar(data$fips[1]) == 2, "state", "county")
+  region_type <- ifelse(nchar(data$fips[1]) <= 2, "state", "county")
   map_df <- us_map(regions = region_type, include = include)
 
   df <- data[, c("fips", values)]
+
+  padding <- ifelse(region_type == "state", 2, 5)
+  df$fips <- stringr::str_pad(df$fips, width = padding, side = "left", pad = "0")
 
   result <- merge(map_df, df, by = "fips", all.x = TRUE, sort = FALSE)
   result[is.na(result[, values]), values] <- na
