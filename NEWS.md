@@ -1,7 +1,9 @@
 # usmap 0.2.0.9000
 
+### Improvements
 * Standardize documentation language.
 * Improve descriptiveness of error messages and warnings.
+### Bug Fixes
 * Allow data passed to `map_with_data` and `plot_usmap` to contain FIPS codes with missing leading zeros.
   * This usually occurs when the codes are read as `numeric` from a `.csv` file.
 
