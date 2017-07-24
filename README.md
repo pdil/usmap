@@ -52,22 +52,22 @@ new_england_map <- us_map(regions = "states", include = new_england_states)
 * Look up FIPS codes for states and counties
 ```r
 fips("New Jersey")
-# "34"
+#> "34"
 
 fips("NJ", county = "Mercer")
-# "34021"
+#> "34021"
 ```
 * Retrieve states or counties with FIPS codes
 ```r
 fips_info(c("34", "35"))
-#         full abbr fips
-# 1 New Jersey   NJ   34 
-# 2 New Mexico   NM   35
+#>         full abbr fips
+#> 1 New Jersey   NJ   34 
+#> 2 New Mexico   NM   35
 
 fips_info(c("34021", "35021"))
-#         full abbr         county  fips
-# 1 New Jersey   NJ  Mercer County 34021
-# 2 New Mexico   NM Harding County 35021
+#>         full abbr         county  fips
+#> 1 New Jersey   NJ  Mercer County 34021
+#> 2 New Mexico   NM Harding County 35021
 ```
 * Color map with data
 ```r
