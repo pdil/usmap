@@ -11,7 +11,7 @@ map_with_data(data, values = "values", include = c(), na = NA)
 parameter should be a data frame consisting of two columns,
 a fips code (2 characters for state, 5 characters for county)
 and the value that should be associated with that region. The
-columns of \code{data} _must_ be \code{fips} and the value of the
+columns of \code{data} \emph{must} be \code{fips} and the value of the
 `values` parameter.}
 
 \item{values}{The name of the column that contains the values to be associated
