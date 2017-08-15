@@ -15,7 +15,7 @@ US census poverty percentage estimates by county for 2014. \cr\cr
 \details{
 \itemize{
   \item \code{fips} The 5-digit FIPS code corresponding to the county.
-  \item \code{abbr} The 2-letter state abbrevation.
+  \item \code{abbr} The 2-letter state abbreviation.
   \item \code{county} The full county name.
   \item \code{pct_pov_2014} The 2014 poverty estimate (in percent of county population)
     for the corresponding county.

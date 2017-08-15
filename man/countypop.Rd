@@ -15,7 +15,7 @@ US census population estimates by county for 2015. \cr\cr
 \details{
 \itemize{
   \item \code{fips} The 5-digit FIPS code corresponding to the county.
-  \item \code{abbr} The 2-letter state abbrevation.
+  \item \code{abbr} The 2-letter state abbreviation.
   \item \code{county} The full county name.
   \item \code{pop_2015} The 2015 population estimate (in number of people)
     for the corresponding county.

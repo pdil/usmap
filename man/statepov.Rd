@@ -15,7 +15,7 @@ US census poverty percentage estimates by state for 2014. \cr\cr
 \details{
 \itemize{
   \item \code{fips} The 2-digit FIPS code corresponding to the state.
-  \item \code{abbr} The 2-letter state abbrevation.
+  \item \code{abbr} The 2-letter state abbreviation.
   \item \code{full} The full state name.
   \item \code{pct_pov_2014} The 2014 poverty estimate (in percent of state population)
     for the corresponding state
