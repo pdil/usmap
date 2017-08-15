@@ -35,8 +35,8 @@ vignette("mapping", package = "usmap")
 ```
 
 You can also read the vignettes online at the following links:
-* [Introduction](https://cran.r-project.org/web/packages/usmap/vignettes/introduction.html)
-* [Mapping the US](https://cran.r-project.org/web/packages/usmap/vignettes/mapping.html)
+* [Introduction](https://cran.r-project.org/package=usmap/vignettes/introduction.html)
+* [Mapping the US](https://cran.r-project.org/package=usmap/vignettes/mapping.html)
 
 ## Features
 * Obtain map with certain region breakdown
