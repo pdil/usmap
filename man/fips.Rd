@@ -8,7 +8,7 @@ fips(state, county = "")
 }
 \arguments{
 \item{state}{The state for which to obtain a FIPS code.
-Can be entered as either a state abbrevation or full name (case-insensitive).}
+Can be entered as either a state abbreviation or full name (case-insensitive).}
 
 \item{county}{The county for which to obtain a FIPS code.
 Can be entered with or without "county" (case-insensitive).}
