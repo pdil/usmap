@@ -1,4 +1,4 @@
-# usmap 0.2.0.9000
+# usmap 0.2.1
 
 ### Improvements
 * Standardize documentation language.
