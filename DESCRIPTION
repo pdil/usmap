@@ -11,7 +11,7 @@ Depends:
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://dilorenzo.pl/usmap
+URL: https://dilorenzo.pl/pkgs/usmap
 BugReports: https://github.com/pdil/usmap/issues
 Imports:
     utils
