@@ -1,5 +1,8 @@
 # usmap 0.2.1.9000
-* 
+* Update shape files to 2017 versions.
+* Improvements to `fips` and `fips_info`:
+  * Improved warning and error messages.
+  * Vectorization support (e.g. enter multiple states in `fips` to receive a vector of corresponding FIPS codes)
 
 # usmap 0.2.1
 
