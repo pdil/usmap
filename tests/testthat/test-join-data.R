@@ -45,6 +45,10 @@ test_that("error occurs for invalid column names", {
   expect_error(map_with_data(bad_data_values))
 })
 
+test_that("error occurs for non-data frame input", {
+  expect_error(map_with_data(data = "1"))
+})
+
 test_that("warning occurs for empty (yet valid) data frame", {
   expect_warning(map_with_data(data.frame(fips = c(), values = c())))
   expect_equal(suppressWarnings(map_with_data(data.frame(fips = c(), values = c()))), us_map())
