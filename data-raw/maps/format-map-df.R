@@ -1,4 +1,6 @@
 
+setwd("data-raw/maps/")
+
 # State FIPS ####
 source("states-fips.R")
 write.csv(states_fips, file = "state_fips.csv", row.names = FALSE, na = "")

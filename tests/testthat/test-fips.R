@@ -34,3 +34,10 @@ test_that("error occurs for missing state", {
 test_that("error occurs for invalid county", {
   expect_error(fips(state = "CA", county = "Fake County"))
 })
+
+# This is to ensure that the Shannon County -> Oglala Lakota County
+# change that occurred in South Dakota (May 1, 2015) is properly reflected.
+test_that("Oglala Lakota County is correctly in the data", {
+  expect_error(fips(state = "SD", county = "Shannon County"))
+  expect_equal(fips(state = "SD", county = "Oglala Lakota County"), "46102")
+})

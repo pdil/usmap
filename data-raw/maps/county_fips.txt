@@ -2415,7 +2415,7 @@ SD,46,105,Perkins County,H1
 SD,46,107,Potter County,H1
 SD,46,109,Roberts County,H1
 SD,46,111,Sanborn County,H1
-SD,46,113,Shannon County,H1
+SD,46,102,Oglala Lakota County,H1
 SD,46,115,Spink County,H1
 SD,46,117,Stanley County,H1
 SD,46,119,Sully County,H1

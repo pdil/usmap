@@ -13,7 +13,9 @@ library(rgeos)
 library(rgdal)
 library(dplyr)
 
-prefix = "cb_2015_us_"
+setwd("data-raw/maps/")
+
+prefix = "cb_2017_us_"
 region_types <- c("county", "state")
 suffix <- "20m"
 
@@ -23,6 +25,7 @@ create_mapdata <- function(type) {
   # import map shape file
   us <- readShapePoly(paste0(type, "/", type, ".shp"),
                       proj4string = CRS("+proj=longlat +datum=WGS84"))
+  # us <- readOGR(paste0("data-raw/maps/", type, "/"))
 
   # aea: Albers Equal Area projection
   us_aea <- spTransform(us, CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +a=6370997 +b=6370997 +units=m +no_defs"))
