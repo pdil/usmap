@@ -11,8 +11,8 @@ map_with_data(data, values = "values", include = c(), na = NA)
 parameter should be a data frame consisting of two columns,
 a fips code (2 characters for state, 5 characters for county)
 and the value that should be associated with that region. The
-columns of \code{data} \emph{must} be \code{fips} and the value of the
-`values` parameter.}
+columns of \code{data} \emph{must} be \code{fips} or \code{state} and
+the value of the `values` parameter.}
 
 \item{values}{The name of the column that contains the values to be associated
 with a given region. The default is \code{"values"}.}
@@ -37,6 +37,9 @@ Join county or state level data to US map data
 }
 \examples{
 state_data <- data.frame(fips = c("01", "02", "04"), values = c(1, 5, 8))
+df <- map_with_data(state_data, na = 0)
+
+state_data <- data.frame(state = c("AK", "CA", "Utah"), values = c(6, 9, 3))
 df <- map_with_data(state_data, na = 0)
 
 }

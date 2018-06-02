@@ -7,14 +7,24 @@
 fips(state, county = "")
 }
 \arguments{
-\item{state}{The state for which to obtain a FIPS code.
-Can be entered as either a state abbreviation or full name (case-insensitive).}
+\item{state}{The state(s) for which to obtain a FIPS code(s).
+ Can be entered as either a state abbreviation or full name (case-insensitive).
+
+ `state` can be entered as either a single state or a vector of states.
+ If `state` is a vector, `county` must be omitted.}
 
 \item{county}{The county for which to obtain a FIPS code.
 Can be entered with or without "county" (case-insensitive).}
 }
 \value{
-The FIPS code of given \code{state} or \code{county}.
+The FIPS code(s) of given \code{state} or \code{county}.
+
+If only states are entered, a vector of length equal to the number of states
+is returned. If any states are not found or are invalid, `NA` is returned in their place.
+
+If a state and county are entered, a single value with the FIPS code
+for the given county is returned. If the county is invalid for the given state,
+an error is thrown.
 }
 \description{
 Each US state and county has a unique FIPS
@@ -38,6 +48,9 @@ A \code{state} must be included when searching for \code{county},
 \examples{
 fips("NJ")
 fips("California")
+
+fips(c("AK", "CA", "UT"))
+
 fips("CA", county = "orange")
 fips(state = "AL", county = "autauga")
 fips(state = "Alabama", county = "Autauga County")

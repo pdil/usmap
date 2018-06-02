@@ -5,8 +5,8 @@
 #'   parameter should be a data frame consisting of two columns,
 #'   a fips code (2 characters for state, 5 characters for county)
 #'   and the value that should be associated with that region. The
-#'   columns of \code{data} \emph{must} be \code{fips} and the value of the
-#'   `values` parameter.
+#'   columns of \code{data} \emph{must} be \code{fips} or \code{state} and
+#'   the value of the `values` parameter.
 #' @param values The name of the column that contains the values to be associated
 #'   with a given region. The default is \code{"value"}.
 #' @param theme The theme that should be used for plotting the map. The default

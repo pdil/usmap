@@ -4,8 +4,8 @@
 #'   parameter should be a data frame consisting of two columns,
 #'   a fips code (2 characters for state, 5 characters for county)
 #'   and the value that should be associated with that region. The
-#'   columns of \code{data} \emph{must} be \code{fips} and the value of the
-#'   `values` parameter.
+#'   columns of \code{data} \emph{must} be \code{fips} or \code{state} and
+#'   the value of the `values` parameter.
 #' @param values The name of the column that contains the values to be associated
 #'   with a given region. The default is \code{"values"}.
 #' @param include The regions to include in the output data frame. If \code{regions} is
@@ -25,8 +25,15 @@
 #' state_data <- data.frame(fips = c("01", "02", "04"), values = c(1, 5, 8))
 #' df <- map_with_data(state_data, na = 0)
 #'
+#' state_data <- data.frame(state = c("AK", "CA", "Utah"), values = c(6, 9, 3))
+#' df <- map_with_data(state_data, na = 0)
+#'
 #' @export
 map_with_data <- function(data, values = "values", include = c(), na = NA) {
+  if (!is.data.frame(data)) {
+    stop("`data` must be a data frame")
+  }
+
   if (nrow(data) == 0) {
     if (length(include) == 0) {
       region_type <- "state"
@@ -38,9 +45,17 @@ map_with_data <- function(data, values = "values", include = c(), na = NA) {
     return(us_map(regions = region_type, include = include))
   }
 
-  if (!is.data.frame(data) || !("fips" %in% names(data)) || !(values %in% names(data))) {
-    stop(paste0("* `data` must be a data frame with columns `fips` and `", values,
-                "`\n  * Make sure the `values` parameter has been set correctly."))
+  if (!(values %in% names(data))) {
+    stop(paste0("\"", values, "\" column not found in `data`."))
+  }
+
+  if ("state" %in% names(data)) {
+    # convert to fips
+    data$fips <- fips(data$state)
+  } else if ("fips" %in% names(data)) {
+    # do nothing
+  } else {
+    stop("`data` must be a data.frame containing either a `state` or `fips` column.")
   }
 
   data$fips <- as.character(data$fips)
