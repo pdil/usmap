@@ -54,13 +54,15 @@ fips <- function(state, county = "") {
     state_abbr <- tolower(df$abbr)
     state_full <- tolower(df$full)
 
-    if (!(county_ %in% name) & !(county_ %in% trimws(sub("county", "", name)))) {
-      stop(paste(county_, "is not a valid county."))
+    result <- df$fips[which(
+      (name == county_ | name == paste(county_, "county")) &
+        (state_abbr == state_ | state_full == state_)
+    )]
+
+    if (length(result) == 0) {
+      stop(paste0(county, " is not a valid county in ", state, "."))
     } else {
-      sprintf("%05d", df$fips[which(
-        (name == county_ | name == paste(county_, "county")) &
-          (state_abbr == state_ | state_full == state_)
-      )])
+      sprintf("%05d", result)
     }
   }
 }
