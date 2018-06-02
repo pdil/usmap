@@ -36,6 +36,10 @@ test_that("error occurs for missing state", {
   expect_error(fips(county = "Mercer County"))
 })
 
+test_that("error occurs for county with list of states", {
+  expect_error(fips("CA", "NJ", county = "Mercer"))
+})
+
 test_that("error occurs for invalid county", {
   expect_error(fips(state = "CA", county = "Fake County"))
 })
