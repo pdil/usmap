@@ -38,8 +38,11 @@ test_that("values are appropriately assigned if state FIPS codes are missing lea
 })
 
 test_that("error occurs for invalid column names", {
-  bad_data <- data.frame(state_fips <- c("01", "02"), the_values = c(3, 5))
-  expect_error(map_with_data(bad_data))
+  bad_data_states <- data.frame(state_fips <- c("01", "02"), values = c(3, 5))
+  bad_data_values <- data.frame(fips <- c("01", "02"), the_values = c(3, 5))
+
+  expect_error(map_with_data(bad_data_states))
+  expect_error(map_with_data(bad_data_values))
 })
 
 test_that("warning occurs for empty (yet valid) data frame", {
