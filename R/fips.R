@@ -99,7 +99,7 @@ fips_info.numeric <- function(fips) {
   } else if (all(fips >= 1 & fips <= 56)) {
     fips_ <- sprintf("%02d", fips)
   } else {
-    stop("Invalid FIPS code(s), must be 2 digit (states) or 5 digit (counties).")
+    stop("Invalid FIPS code(s), must be either 2 digit (states) or 5 digit (counties), but not both.")
   }
 
   getFipsInfo(fips_)
@@ -113,7 +113,7 @@ fips_info.character <- function(fips) {
   } else if (all(nchar(fips) %in% 1:2)) {
     fips_ <- sprintf("%02s", fips)
   } else {
-    stop("Invalid FIPS code, must be 2 digit (states) or 5 digit (counties).")
+    stop("Invalid FIPS code, must be either 2 digit (states) or 5 digit (counties), but not both.")
   }
 
   getFipsInfo(fips_)
@@ -139,8 +139,15 @@ getFipsInfo <- function(fips) {
     result <- df[df$fips %in% fips, ]
   }
 
+  # Present warning if no results found.
   if (nrow(result) == 0) {
     warning(paste("FIPS code(s)", toString(fips), "not found, returned 0 results."))
+  }
+
+  # Present warning if any FIPS codes included are not found.
+  if (!all(fips %in% result$fips)) {
+    excluded_fips <- fips[which(!fips %in% result$fips)]
+    warning(paste("FIPS code(s)", toString(excluded_fips), "not found, excluded from result."))
   }
 
   rownames(result) <- NULL
