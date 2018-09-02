@@ -1,3 +1,8 @@
+# usmap 0.3.0.9999
+* Vectorize counties in `fips`.
+  * e.g. fips("NJ", c("Bergen", "Hudson")), see [Issue #10](https://github.com/pdil/usmap/issues/10).
+  
+
 # usmap 0.3.0
 
 ### Improvements

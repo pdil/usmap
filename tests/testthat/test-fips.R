@@ -1,6 +1,6 @@
 context("Retrieving FIPS codes")
 
-test_that("returns correct FIPS code for NJ", {
+test_that("returns correct FIPS code for state", {
   expect_equal(fips(state = "nj"), "34")
   expect_equal(fips(state = "NJ"), "34")
   expect_equal(fips(state = "New Jersey"), "34")
@@ -12,12 +12,19 @@ test_that("multiple states return appropriate FIPS codes", {
   expect_equal(fips(c("CA", "New jersey", "AL", "XX", "sOutH dAkoTA")), c("06", "34", "01", NA, "46"))
 })
 
-test_that("returns correct FIPS code for Mercer County, NJ", {
+test_that("returns correct FIPS code for county", {
   expect_equal(fips(state = "NJ", county = "mercer"), "34021")
   expect_equal(fips(state = "NJ", county = "mercer county"), "34021")
   expect_equal(fips(state = "NJ", county = "Mercer County"), "34021")
   expect_equal(fips(state = "new jersey", county = "mercer"), "34021")
   expect_equal(fips(state = "New Jersey", county = "Mercer County"), "34021")
+})
+
+test_that("multiple counties in same state return appropriate FIPS codes", {
+  expect_equal(fips(state = "NJ", county = c("Bergen", "Hudson")), c("34003", "34017"))
+  expect_equal(fips(state = "NJ", county = c("Hudson", "Bergen")), c("34017", "34003"))
+  expect_equal(fips(state = "NJ", county = c("Bergen County", "Hudson")), c("34003", "34017"))
+  expect_equal(fips(state = "NJ", county = c("bergen", "hudson county")), c("34003", "34017"))
 })
 
 test_that("returns correct FIPS if it starts with a 0", {

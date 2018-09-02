@@ -44,7 +44,7 @@
 #' fips(state = "AL", county = "autauga")
 #' fips(state = "Alabama", county = "Autauga County")
 #' @export
-fips <- function(state, county = "") {
+fips <- function(state, county = c()) {
   if (missing(state)) {
     stop("`state` must be specified. Use full name (e.g. \"Alabama\") or two-letter abbreviation (e.g. \"AL\").")
   }
@@ -52,7 +52,7 @@ fips <- function(state, county = "") {
   state_ <- tolower(state)
   county_ <- tolower(county)
 
-  if (county_ == "") {
+  if (length(county_) == 0) {
     df <- utils::read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
     abbr <- tolower(df$abbr)
     full <- tolower(df$full)
@@ -73,13 +73,25 @@ fips <- function(state, county = "") {
     state_abbr <- tolower(df$abbr)
     state_full <- tolower(df$full)
 
-    result <- df$fips[which(
-      (name == county_ | name == paste(county_, "county")) &
-        (state_abbr == state_ | state_full == state_)
-    )]
+    result <- c()
+
+    for (county_i in county_) {
+      result <- c(
+        result,
+        df$fips[which(
+          (name %in% county_i | name %in% paste(county_i, "county"))
+          &
+          (state_abbr %in% state_ | state_full %in% state_)
+        )]
+      )
+    }
 
     if (length(result) == 0) {
-      stop(paste0(county, " is not a valid county in ", state, "."))
+      if (length(county) == 1) {
+        stop(paste0(county, " is not a valid county in ", state, ".\n"))
+      } else {
+        stop(paste0(county, " are not valid counties in ", state, ".\n"))
+      }
     } else {
       sprintf("%05d", result)
     }
