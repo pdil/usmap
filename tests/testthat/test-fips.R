@@ -49,7 +49,7 @@ test_that("error occurs for county with list of states", {
 
 test_that("error occurs for invalid counties", {
   expect_error(fips(state = "CA", county = "Fake County"))
-  expect_error(fips(state = "CA", county = c("Fake County 1", "Orange County", "Fake County 2")))
+  expect_error(fips(state = "CA", county = c("Fake County 1", "Fake County 2")))
 })
 
 # This is to ensure that the Shannon County -> Oglala Lakota County
