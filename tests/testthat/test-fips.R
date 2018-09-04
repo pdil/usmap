@@ -44,11 +44,12 @@ test_that("error occurs for missing state", {
 })
 
 test_that("error occurs for county with list of states", {
-  expect_error(fips("CA", "NJ", county = "Mercer"))
+  expect_error(fips(state = c("CA", "NJ"), county = "Mercer"))
 })
 
-test_that("error occurs for invalid county", {
+test_that("error occurs for invalid counties", {
   expect_error(fips(state = "CA", county = "Fake County"))
+  expect_error(fips(state = "CA", county = c("Fake County 1", "Orange County", "Fake County 2")))
 })
 
 # This is to ensure that the Shannon County -> Oglala Lakota County
