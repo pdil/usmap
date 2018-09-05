@@ -106,3 +106,9 @@ test_that("singular regions can be used", {
   expect_equal(plot_usmap(regions = "counties")$layers,
                plot_usmap(regions = "county")$layers)
 })
+
+# This test should be removed when label support is added to county maps
+test_that("warning occurs when attempting to use labels with county map", {
+  expect_warning(plot_usmap(regions = "counties", labels = TRUE))
+  expect_warning(plot_usmap(regions = "county", labels = TRUE))
+})
