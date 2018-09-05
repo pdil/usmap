@@ -14,6 +14,7 @@ library(rgdal)
 library(dplyr)
 
 setwd("data-raw/maps/")
+source("compute-centroids.R")
 
 prefix = "cb_2017_us_"
 region_types <- c("county", "state")
@@ -66,6 +67,12 @@ create_mapdata <- function(type) {
 
   # export csv file
   write.csv(map, file = paste0(type, ".csv"), row.names = FALSE, na = "")
+
+  # determine centroids
+  centroids <- centroid(us_aea)
+
+  # export centroids (used to plot labels)
+  write.csv(centroids, file = paste0(type, "_centroids_test.csv"), row.names = FALSE)
 }
 
 for (type in map_types) create_mapdata(type)

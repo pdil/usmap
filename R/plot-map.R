@@ -15,6 +15,13 @@
 #'   \code{colour} option in the \code{\link[ggplot2]{aes}} mapping. The default
 #'   is \code{"black"}. \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{Click here}
 #'   for more color options.
+#' @param labels Whether or not to display labels on the map. Labels are not displayed
+#'   by default. For now, labels only work for state maps.
+#'   County labels may be added in the future.
+#' @param label_color The color of the labels to display. Corresponds to the \code{colour}
+#'   option in the \code{\link[ggplot2]{aes}} mapping. The default is \code{"black"}.
+#'   \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{Click here}
+#'   for more color options.
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object that contains a basic
 #'   US map with the described parameters. Since the result is a \code{ggplot}
@@ -39,12 +46,20 @@
 #' # Color maps with data
 #' plot_usmap(data = statepop, values = "pop_2015")
 #'
+#' # Include labels on map (e.g. state abbreviations)
+#' plot_usmap(data = statepop, values = "pop_2015", labels = TRUE)
+#' # Choose color for labels
+#' plot_usmap(data = statepop, values = "pop_2015", labels = TRUE, label_color = "white")
+#'
 #' @export
 plot_usmap <- function(regions = c("states", "state", "counties", "county"),
                        include = c(),
-                       data = data.frame(), values = "values",
+                       data = data.frame(),
+                       values = "values",
                        theme = theme_map(),
-                       lines = "black") {
+                       lines = "black",
+                       labels = FALSE,
+                       label_color = "black") {
 
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("Please install `ggplot2`. Use: install.packages(\"ggplot2\")")
@@ -66,7 +81,21 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
     )
   }
 
-  ggplot2::ggplot(data = map_df) + polygon_layer + ggplot2::coord_equal() + theme
+  if (labels) {
+    if (regions_ == "county" | regions_ == "counties") {
+      warning("`labels` is currently only supported for state maps. It has no effect on county maps.")
+      label_layer <- ggplot2::geom_blank()
+    } else {
+      centroid_labels <- utils::read.csv(system.file("extdata", paste0("us_", regions_, "_centroids.csv"), package = "usmap"),
+                                         colClasses = c("numeric", "numeric", "character", "character", "character"),
+                                         stringsAsFactors = FALSE)
+      label_layer <- ggplot2::geom_text(data = centroid_labels, ggplot2::aes(x = x, y = y, label = abbr), colour = label_color)
+    }
+  } else {
+    label_layer <- ggplot2::geom_blank()
+  }
+
+  ggplot2::ggplot(data = map_df) + polygon_layer + label_layer + ggplot2::coord_equal() + theme
 }
 
 #' This creates a nice map theme for use in plot_usmap.

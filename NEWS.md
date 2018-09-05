@@ -1,4 +1,6 @@
 # usmap 0.3.0.9999
+* Ability to include state abbreviation labels in state maps.
+  * `plot_usmap(labels = TRUE)`, see [Issue #9](https://github.com/pdil/usmap/issues/9).
 * Vectorize counties in `fips`.
   * e.g. `fips("NJ", c("Bergen", "Hudson"))`, see [Issue #10](https://github.com/pdil/usmap/issues/10).
   
