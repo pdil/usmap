@@ -6,7 +6,8 @@
 \usage{
 plot_usmap(regions = c("states", "state", "counties", "county"),
   include = c(), data = data.frame(), values = "values",
-  theme = theme_map(), lines = "black")
+  theme = theme_map(), lines = "black", labels = FALSE,
+  label_color = "black")
 }
 \arguments{
 \item{regions}{The region breakdown for the map, can be one of
@@ -35,6 +36,15 @@ is \code{\link[ggthemes]{theme_map}}.}
 \code{colour} option in the \code{\link[ggplot2]{aes}} mapping. The default
 is \code{"black"}. \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{Click here}
 for more color options.}
+
+\item{labels}{Whether or not to display labels on the map. Labels are not displayed
+by default. For now, labels only work for state maps.
+County labels may be added in the future.}
+
+\item{label_color}{The color of the labels to display. Corresponds to the \code{colour}
+option in the \code{\link[ggplot2]{aes}} mapping. The default is \code{"black"}.
+\href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{Click here}
+for more color options.}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object that contains a basic
@@ -60,6 +70,11 @@ plot_usmap(include = c("CA", "NV", "ID", "OR", "WA")) +
 
 # Color maps with data
 plot_usmap(data = statepop, values = "pop_2015")
+
+# Include labels on map (e.g. state abbreviations)
+plot_usmap(data = statepop, values = "pop_2015", labels = TRUE)
+# Choose color for labels
+plot_usmap(data = statepop, values = "pop_2015", labels = TRUE, label_color = "white")
 
 }
 \seealso{

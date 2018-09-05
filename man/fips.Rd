@@ -4,7 +4,7 @@
 \alias{fips}
 \title{Retrieve FIPS code for either a US state or county}
 \usage{
-fips(state, county = "")
+fips(state, county = c())
 }
 \arguments{
 \item{state}{The state(s) for which to obtain a FIPS code(s).

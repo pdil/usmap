@@ -4,7 +4,8 @@
 \alias{us_map}
 \title{Retrieve US map data}
 \usage{
-us_map(regions = c("states", "state", "counties", "county"), include = c())
+us_map(regions = c("states", "state", "counties", "county"),
+  include = c())
 }
 \arguments{
 \item{regions}{The region breakdown for the map, can be one of

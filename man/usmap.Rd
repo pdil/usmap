@@ -4,7 +4,6 @@
 \name{usmap}
 \alias{usmap}
 \alias{usmap-package}
-\alias{usmap-package}
 \title{usmap: US maps including Alaska and Hawaii}
 \description{
 It is usually difficult or inconvenient to create US maps that
