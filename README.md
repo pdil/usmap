@@ -1,8 +1,8 @@
 # 🗺 usmap
 [![CRAN](http://www.r-pkg.org/badges/version/usmap?color=blue)](https://cran.r-project.org/package=usmap) [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/usmap)](https://cran.r-project.org/package=usmap) [![Build Status](https://travis-ci.org/pdil/usmap.svg?branch=master)](https://travis-ci.org/pdil/usmap) [![codecov](https://codecov.io/gh/pdil/usmap/branch/master/graph/badge.svg)](https://codecov.io/gh/pdil/usmap)
 
-<img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example_plots.png" width="80%" />
-###### See code to generate by [clicking here](https://github.com/pdil/usmap/blob/master/resources/examples.R).
+<p align="center"><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example_plots.png" width="80%" /></p>
+See code to generate these plots [here](https://github.com/pdil/usmap/blob/master/resources/examples.R). 
 
 ## Purpose
 Typically in R it is difficult to create nice US [choropleths](https://en.wikipedia.org/wiki/Choropleth_map) that include Alaska and Hawaii. The functions presented here attempt to elegantly solve this problem by manually moving these states to a new location and providing a fortified data frame for mapping and visualization. This allows the user to easily add data to color the map.
