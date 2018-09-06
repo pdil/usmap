@@ -36,14 +36,12 @@ county_pov_map <-
 # Combine plots ####
 cowplot::plot_grid(
   blank_state_map,
-  blank_county_map,
   state_pop_map,
   state_pop_map_labeled,
+  blank_county_map,
   county_pop_map,
   county_pov_map,
-  ncol = 2
+  nrow = 2
 )
 
-# 950 x 1100 px
-# 16 x 22 in
-ggsave("resources/example_plots.png", width = 16, height = 22, units = "in")
+ggsave("resources/example_plots.png", width = 18, height = 10, units = "in")
