@@ -1,5 +1,5 @@
 
-files <- list.files("data-raw", full.names=TRUE)
+files <- list.files("data-raw", full.names = TRUE)
 files <- files[grepl("\\.[rR]$", files)]
 files <- files[files != "data-raw/make-all.R"]
 
