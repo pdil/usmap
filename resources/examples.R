@@ -8,25 +8,25 @@ blank_state_map <- plot_usmap()
 # Blank county map ####
 blank_county_map <- plot_usmap("counties")
 
-# State population map ####
+# Population by state ####
 state_pop_map <-
   plot_usmap(data = statepop, values = "pop_2015") +
   scale_fill_continuous(low = "white", high = "red", guide = FALSE) +
   scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 
-# State population map with labels ####
+# Population by state with labels ####
 state_pop_map_labeled <-
   plot_usmap(data = statepop, values = "pop_2015", labels = TRUE) +
   scale_fill_continuous(low = "white", high = "red", guide = FALSE) +
   scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 
-# County population map ####
+# Population by county ####
 county_pop_map <-
   plot_usmap(data = countypop, values = "pop_2015") +
   scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE) +
   scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 
-# County poverty map ####
+# Poverty percentage by county ####
 county_pov_map <-
   plot_usmap(data = countypov, values = "pct_pov_2014") +
   scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE) +
@@ -44,4 +44,5 @@ cowplot::plot_grid(
   nrow = 2
 )
 
+# Save plots ####
 ggsave("resources/example_plots.png", width = 18, height = 10, units = "in")
