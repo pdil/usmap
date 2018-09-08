@@ -72,7 +72,7 @@ create_mapdata <- function(type) {
   centroids <- centroid(us_aea)
 
   # export centroids (used to plot labels)
-  write.csv(centroids, file = paste0(type, "_centroids_test.csv"), row.names = FALSE)
+  write.csv(centroids, file = paste0(type, "_centroids_raw.csv"), row.names = FALSE)
 }
 
 for (type in map_types) create_mapdata(type)

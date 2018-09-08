@@ -58,3 +58,10 @@ test_that("Oglala Lakota County is correctly in the data", {
   expect_error(fips(state = "SD", county = "Shannon County"))
   expect_equal(fips(state = "SD", county = "Oglala Lakota County"), "46102")
 })
+
+# This is to ensure that the Wade Hampton Census Area -> Kusilvak Census Area
+# change that occured in Alaska (July 1, 2015) is properly reflected.
+test_that("Kusilvak Census Area is correctly in the data", {
+  expect_error(fips(state = "AK", county = "Wade Hampton Census Area"))
+  expect_equal(fips(state = "AK", county = "Kusilvak Census Area"), "02158")
+})

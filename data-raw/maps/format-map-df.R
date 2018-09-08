@@ -19,7 +19,7 @@ colnames(final_states_df) <- c("long", "lat", "order", "hole", "piece",
 write.csv(final_states_df, file = "us_states.csv", row.names = FALSE, na = "")
 
 # Merge states with centroids ####
-states_centroids_df <- readr::read_csv("state_centroids.csv")
+states_centroids_df <- readr::read_csv("us_state_centroids_raw.csv")
 merged_state_centroids_df <- merge(states_centroids_df, states_fips,
                                    by = "fips", all.x = TRUE)
 

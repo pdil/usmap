@@ -79,6 +79,7 @@ AK,02,110,Juneau City and Borough,H6
 AK,02,122,Kenai Peninsula Borough,H1
 AK,02,130,Ketchikan Gateway Borough,H1
 AK,02,150,Kodiak Island Borough,H1
+AK,02,158,Kusilvak Census Area,H5
 AK,02,164,Lake and Peninsula Borough,H1
 AK,02,170,Matanuska-Susitna Borough,H1
 AK,02,180,Nome Census Area,H5
@@ -90,7 +91,6 @@ AK,02,220,Sitka City and Borough,H6
 AK,02,230,Skagway Municipality,H1
 AK,02,240,Southeast Fairbanks Census Area,H5
 AK,02,261,Valdez-Cordova Census Area,H5
-AK,02,270,Wade Hampton Census Area,H5
 AK,02,275,Wrangell City and Borough,H1
 AK,02,282,Yakutat City and Borough,H1
 AK,02,290,Yukon-Koyukuk Census Area,H5
