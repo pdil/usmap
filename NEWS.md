@@ -3,7 +3,7 @@
   * `plot_usmap(labels = TRUE)`, see [Issue #9](https://github.com/pdil/usmap/issues/9).
 * Vectorize counties in `fips`.
   * e.g. `fips("NJ", c("Bergen", "Hudson"))`, see [Issue #10](https://github.com/pdil/usmap/issues/10).
-  
+* Allow all columns in the data frame that's passed to `map_with_data()` or `plot_usmap()` to be preserved.
 
 # usmap 0.3.0
 

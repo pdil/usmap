@@ -5,7 +5,8 @@
 #'   a fips code (2 characters for state, 5 characters for county)
 #'   and the value that should be associated with that region. The
 #'   columns of \code{data} \emph{must} be \code{fips} or \code{state} and
-#'   the value of the `values` parameter.
+#'   the value of the `values` parameter. If both \code{fips} and \code{state}
+#'   are provided, this function uses the \code{fips}.
 #' @param values The name of the column that contains the values to be associated
 #'   with a given region. The default is \code{"values"}.
 #' @param include The regions to include in the output data frame. If \code{regions} is
@@ -49,12 +50,13 @@ map_with_data <- function(data, values = "values", include = c(), na = NA) {
     stop(paste0("\"", values, "\" column not found in `data`."))
   }
 
-  if ("state" %in% names(data)) {
+  if ("fips" %in% names(data)) {
+    # do nothing
+  } else if ("state" %in% names(data)) {
     # convert to fips
     data$fips <- fips(data$state)
-  } else if ("fips" %in% names(data)) {
-    # do nothing
   } else {
+    # error
     stop("`data` must be a data.frame containing either a `state` or `fips` column.")
   }
 
@@ -63,19 +65,26 @@ map_with_data <- function(data, values = "values", include = c(), na = NA) {
   region_type <- ifelse(nchar(data$fips[1]) <= 2, "state", "county")
   map_df <- us_map(regions = region_type, include = include)
 
-  df <- data[, c("fips", values)]
+  # Remove columns in data that are already in map_df
+  data$abbr <- NULL
+  data$full <- NULL
+  data$piece <- NULL
+  data$order <- NULL
+  data$county <- NULL
+  #
 
   padding <- ifelse(region_type == "state", 2, 5)
-  df$fips <- stringr::str_pad(df$fips, width = padding, side = "left", pad = "0")
+  data$fips <- stringr::str_pad(data$fips, width = padding, side = "left", pad = "0")
 
-  result <- merge(map_df, df, by = "fips", all.x = TRUE, sort = FALSE)
+  result <- merge(map_df, data, by = "fips", all.x = TRUE, sort = FALSE)
   result[is.na(result[, values]), values] <- na
-  result <- result[, c(setdiff(names(result), names(df)), names(df))]
+
+  result <- result[, c(setdiff(names(result), names(data)), names(data))]
 
   if (region_type == "state") {
-    result <- result <- result[order(result$full, result$piece, result$order), ]
+    result <- result[order(result$full, result$piece, result$order), ]
   } else {
-    result <- result <- result[order(result$full, result$county, result$piece, result$order), ]
+    result <- result[order(result$full, result$county, result$piece, result$order), ]
   }
 
   result

@@ -12,7 +12,8 @@ parameter should be a data frame consisting of two columns,
 a fips code (2 characters for state, 5 characters for county)
 and the value that should be associated with that region. The
 columns of \code{data} \emph{must} be \code{fips} or \code{state} and
-the value of the `values` parameter.}
+the value of the `values` parameter. If both \code{fips} and \code{state}
+are provided, this function uses the \code{fips}.}
 
 \item{values}{The name of the column that contains the values to be associated
 with a given region. The default is \code{"values"}.}
