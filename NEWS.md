@@ -5,6 +5,9 @@
   * e.g. `fips("NJ", c("Bergen", "Hudson"))`, see [Issue #10](https://github.com/pdil/usmap/issues/10).
 * Allow all columns in the data frame that's passed to `map_with_data()` or `plot_usmap()` to be preserved.
 
+### Bug Fixes
+* Add Kusilvak Census Area (FIPS code 02158), replaces Wade Hampton Census Area (FIPS code 02270).
+
 # usmap 0.3.0
 
 ### Improvements
