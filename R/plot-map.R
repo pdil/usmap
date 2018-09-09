@@ -89,6 +89,10 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
       centroid_labels <- utils::read.csv(system.file("extdata", paste0("us_", regions_, "_centroids.csv"), package = "usmap"),
                                          colClasses = c("numeric", "numeric", "character", "character", "character"),
                                          stringsAsFactors = FALSE)
+      centroid_labels <- centroid_labels[
+        centroid_labels$full %in% include |
+          centroid_labels$abbr %in% include |
+          centroid_labels$fips %in% include, ]
       label_layer <- ggplot2::geom_text(data = centroid_labels, ggplot2::aes(x = x, y = y, label = abbr), colour = label_color)
     }
   } else {
