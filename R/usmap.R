@@ -72,7 +72,8 @@
 #' @param include The regions to include in the output data frame. If \code{regions} is
 #'  \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
 #'  For counties, the FIPS must be provided as there can be multiple counties with the
-#'  same name.
+#'  same name. If states are provided in the county map, only counties in the included states
+#'  will be returned.
 #'
 #' @return A data frame of US map coordinates divided by the desired \code{regions}.
 #'
@@ -95,11 +96,7 @@ us_map <- function(regions = c("states", "state", "counties", "county"),
                         stringsAsFactors = FALSE)
 
   if (length(include) > 0) {
-    if (regions_ %in% c("counties", "county")) {
-      df <- df[df$fips %in% include, ]
-    } else {
-      df <- df[df$full %in% include | df$abbr %in% include | df$fips %in% include, ]
-    }
+    df <- df[df$full %in% include | df$abbr %in% include | df$fips %in% include, ]
   }
 
   df

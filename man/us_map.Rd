@@ -15,7 +15,8 @@ The default is \code{"states"}.}
 \item{include}{The regions to include in the output data frame. If \code{regions} is
 \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
 For counties, the FIPS must be provided as there can be multiple counties with the
-same name.}
+same name. If states are provided in the county map, only counties in the included states
+will be returned.}
 }
 \value{
 A data frame of US map coordinates divided by the desired \code{regions}.
