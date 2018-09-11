@@ -1,14 +1,18 @@
 # usmap 0.3.0.9999
+
+### New Features
 * Ability to include state abbreviation labels in state maps, see [Issue #9](https://github.com/pdil/usmap/issues/9).
   * e.g. `plot_usmap(labels = TRUE)`
-* Vectorize counties in `fips`, see [Issue #10](https://github.com/pdil/usmap/issues/10).
-  * e.g. `fips("NJ", c("Bergen", "Hudson"))`
-* Allow all columns in the data frame that's passed to `map_with_data()` or `plot_usmap()` to be preserved.
-* Allow ability to include only certain states while viewing county map, see [Issue #11](https://github.com/pdil/usmap/issues/11).
-  * e.g. `us_map("counties", include = "TX")` or `plot_usmap("counties", include = c("AZ", "NM"))`
 * Add US Census Bureau regional divisions as constants for quick plotting of certain regions.
   * e.g. `plot_usmap(include = .northeast_region)`
   * The provided regions and divisions can be seen [on this map by the US Census Bureau](https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf).
+* Allow ability to include only certain states while viewing county map, see [Issue #11](https://github.com/pdil/usmap/issues/11).
+  * e.g. `us_map("counties", include = "TX")` or `plot_usmap("counties", include = c("AZ", "NM"))`
+
+### Improvements
+* Vectorize counties in `fips`, see [Issue #10](https://github.com/pdil/usmap/issues/10).
+  * e.g. `fips("NJ", c("Bergen", "Hudson"))`
+* Allow all columns in the data frame that's passed to `map_with_data()` or `plot_usmap()` to be preserved.
 
 ### Bug Fixes
 * Add Kusilvak Census Area (FIPS code 02158), replaces Wade Hampton Census Area (FIPS code 02270).
