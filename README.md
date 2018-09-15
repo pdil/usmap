@@ -170,10 +170,14 @@ plot_usmap("counties")
 * Display only certain states, counties, or regions
 ```r
 plot_usmap("states", include = .mountain, labels = TRUE)
+
+plot_usmap("counties", data = countypov, values = "pct_pov_2014", include = "FL") +
+    ggplot2::scale_fill_continuous(low = "green", high = "red", guide = FALSE)
+
 plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_england) + 
     ggplot2::scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE)
 ```
-<p align="center"><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-mountain-states.png" width="50%" /><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-new-england-counties.png" width="50%" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-mountain-states.png" width="33%" /><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-florida-counties.png" width="33%" /><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-new-england-counties.png" width="33%" /></p>
 
 ## Acknowledgements
 The code used to generate the map files was based on this blog post by [Bob Rudis](https://github.com/hrbrmstr):    
