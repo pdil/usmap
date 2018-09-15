@@ -97,20 +97,70 @@ You can also read the vignettes online at the following links:
 * Obtain map with certain region breakdown
 ```r
 state_map <- us_map(regions = "states")
+```
+<details>
+    <summary>
+
+    ```r
+    str(state_map)
+    ```
+
+    </summary>
+
+    ```r
+    #> 'data.frame':    12999 obs. of  9 variables:
+    #> $ long : num  1091779 1091268 1091140 1090940 1090913 ...
+    #> $ lat  : num  -1380695 -1376372 -1362998 -1343517 -1341006 ...
+    #> $ order: int  1 2 3 4 5 6 7 8 9 10 ...
+    #> $ hole : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+    #> $ piece: int  1 1 1 1 1 1 1 1 1 1 ...
+    #> $ group: chr  "01.1" "01.1" "01.1" "01.1" ...
+    #> $ fips : chr  "01" "01" "01" "01" ...
+    #> $ abbr : chr  "AL" "AL" "AL" "AL" ...
+    #> $ full : chr  "Alabama" "Alabama" "Alabama" "Alabama" ...
+    ```
+</details>
+
+```r
 county_map <- us_map(regions = "counties")
 ```
-* Include only certain states
-```r
-new_england_states <- c("Connecticut", "Maine", "Massachusetts", "New Hampshire", "Rhode Island", "Vermont")
-new_england_map <- us_map(regions = "states", include = new_england_states)
-```
+<details>
+    <summary>
+
+    ```r
+    str(county_map)
+    ```
+
+    </summary>
+
+    ```r
+    #> 'data.frame':    54187 obs. of  10 variables:
+    #> $ long  : num  1225889 1244873 1244129 1272010 1276797 ...
+    #> $ lat   : num  -1275020 -1272331 -1267515 -1262889 -1295514 ...
+    #> $ order : int  1 2 3 4 5 6 7 8 9 10 ...
+    #> $ hole  : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+    #> $ piece : int  1 1 1 1 1 1 1 1 1 1 ...
+    #> $ group : chr  "01001.1" "01001.1" "01001.1" "01001.1" ...
+    #> $ fips  : chr  "01001" "01001" "01001" "01001" ...
+    #> $ abbr  : chr  "AL" "AL" "AL" "AL" ...
+    #> $ full  : chr  "Alabama" "Alabama" "Alabama" "Alabama" ...
+    #> $ county: chr  "Autauga County" "Autauga County" "Autauga County" "Autauga County" ...
+    ```
+</details>
+
 * Look up FIPS codes for states and counties
 ```r
 fips("New Jersey")
 #> "34"
 
+fips(c("AZ", "CA", "New Hampshire"))
+#> "04" "06" "33"
+
 fips("NJ", county = "Mercer")
 #> "34021"
+
+fips("NJ", county = c("Bergen", "Hudson", "Mercer"))
+#> "34003" "34017" "34021"
 ```
 * Retrieve states or counties with FIPS codes
 ```r
@@ -124,12 +174,18 @@ fips_info(c("34021", "35021"))
 #> 1 New Jersey   NJ  Mercer County 34021
 #> 2 New Mexico   NM Harding County 35021
 ```
-* Color map with data
+* Plot US maps
 ```r
-plot_usmap(data = statepop, values = "pop_2015", lines = "red") + 
-  scale_fill_continuous(name = "Population (2015)", label = scales::comma) + 
-  theme(legend.position = "right")
+plot_usmap("states")
+plot_usmap("counties")
 ```
+* Display only certain states, counties, or regions
+```r
+plot_usmap("states", include = .mountain, labels = TRUE)
+plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_england) + 
+    ggplot2::scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE)
+```
+<p align="center"><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-mountain-states.png" width="50%" /><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-new-england-counties.png" width="50%" /></p>
 
 ## Acknowledgements
 The code used to generate the map files was based on this blog post by [Bob Rudis](https://github.com/hrbrmstr):    
