@@ -1,4 +1,4 @@
-# usmap 0.3.0.9999
+# usmap 0.4.0
 
 ### New Features
 * Ability to include state abbreviation labels in state maps, see [Issue #9](https://github.com/pdil/usmap/issues/9).
