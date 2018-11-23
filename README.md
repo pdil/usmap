@@ -175,9 +175,9 @@ data %>% rowwise %>% mutate(fips = fips(state, county))
 
 #>   state     county  fips
 #> 1    NJ     Bergen 34003
-#> 1    NJ     Hudson 34017
-#> 1    NJ     Mercer 34021
-#> 1    PA  Allegheny 42003
+#> 2    NJ     Hudson 34017
+#> 3    NJ     Mercer 34021
+#> 4    PA  Allegheny 42003
 ```
 
 * Plot US maps
