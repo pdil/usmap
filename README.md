@@ -166,18 +166,18 @@ fips_info(c("34021", "35021"))
 * Add FIPS codes to data frame
 ```r
 data <- data.frame(
-  state = c("NJ", "NJ", "NY", "PA"),
+  state = c("NJ", "NJ", "NJ", "PA"),
   county = c("Bergen", "Hudson", "Mercer", "Allegheny")
 )
 
 library(dplyr)
 data %>% rowwise %>% mutate(fips = fips(state, county))
 
-#>   state            county  fips
-#> 1    NJ     Bergen County 34003
-#> 1    NJ     Hudson County 34017
-#> 1    NJ     Mercer County 34021
-#> 1    PA  Allegheny County 42003
+#>   state     county  fips
+#> 1    NJ     Bergen 34003
+#> 1    NJ     Hudson 34017
+#> 1    NJ     Mercer 34021
+#> 1    PA  Allegheny 42003
 ```
 
 * Plot US maps
