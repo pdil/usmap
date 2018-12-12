@@ -82,6 +82,8 @@ To begin using `usmap`, simply import the package using the `library` command:
 library(usmap)
 ```
 
+## Documentation
+
 To read the package vignettes, which explain helpful uses of the package, use `vignette`:
 ```r
 vignette(package = "usmap")
@@ -92,6 +94,8 @@ vignette("mapping", package = "usmap")
 You can also read the vignettes online at the following links:
 * [Introduction](https://cran.r-project.org/package=usmap/vignettes/introduction.html)
 * [Mapping the US](https://cran.r-project.org/package=usmap/vignettes/mapping.html)
+
+For further help with this package, open an [issue](https://github.com/pdil/usmap/issues) or ask a question on Stackoverflow with the [usmap tag](https://stackoverflow.com/questions/tagged/usmap).
 
 ## Features
 * Obtain map with certain region breakdown
