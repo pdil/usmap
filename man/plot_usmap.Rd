@@ -6,8 +6,7 @@
 \usage{
 plot_usmap(regions = c("states", "state", "counties", "county"),
   include = c(), data = data.frame(), values = "values",
-  theme = theme_map(), lines = "black", labels = FALSE,
-  label_color = "black")
+  theme = theme_map(), labels = FALSE, label_color = "black", ...)
 }
 \arguments{
 \item{regions}{The region breakdown for the map, can be one of
@@ -33,11 +32,6 @@ with a given region. The default is \code{"value"}.}
 \item{theme}{The theme that should be used for plotting the map. The default
 is \code{\link[ggthemes]{theme_map}}.}
 
-\item{lines}{The line color to be used in the map. Corresponds to the
-\code{colour} option in the \code{\link[ggplot2]{aes}} mapping. The default
-is \code{"black"}. \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{Click here}
-for more color options.}
-
 \item{labels}{Whether or not to display labels on the map. Labels are not displayed
 by default. For now, labels only work for state maps.
 County labels may be added in the future.}
@@ -46,6 +40,11 @@ County labels may be added in the future.}
 option in the \code{\link[ggplot2]{aes}} mapping. The default is \code{"black"}.
 \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{Click here}
 for more color options.}
+
+\item{...}{Other arguments to pass to \code{ggplot2::aes()}. These are
+often aesthetics, used to set an aesthetic to a fixed value, like \code{color = "red"}
+or \code{size = 3}. They affect the appearance of the polygons used to render
+the map (for example fill color, line color, line thickness, etc.).}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object that contains a basic

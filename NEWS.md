@@ -1,3 +1,13 @@
+# usmap 0.4.0.9999
+
+### New Features
+* Ability to pass `ggplot2::geom_polygon()` parameters to `plot_usmap()`
+  * This is a breaking change and removes the `lines` parameter, as well as the built-in defaults. This may affect the appearance of your plots. The original defaults were `colour = lines, fill = "white", size = 0.4`.
+  * Refer to the `ggplot2::geom_polygon()` documentation for more information.
+  * The following aesthetics are supported: `alpha`, `colour`, `fill`, `linetype`, `size`
+  * This feature provides more direct control over the appearance of plots.
+
+
 # usmap 0.4.0
 
 ### New Features

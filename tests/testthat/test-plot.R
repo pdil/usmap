@@ -7,10 +7,10 @@ example_data <- data.frame(
   values = c(5, 8, 7)
 )
 
-p <- plot_usmap("counties")
-q <- plot_usmap(data = statepop, values = "pop_2015")
-r <- plot_usmap(data = example_data)
-s <- plot_usmap(include = c("AL", "FL", "GA"), labels = TRUE)
+p <- plot_usmap("counties", colour = "black", fill = "white", size = 0.4)
+q <- plot_usmap(data = statepop, values = "pop_2015", colour = "black", size = 0.4)
+r <- plot_usmap(data = example_data, colour = "black", size = 0.4)
+s <- plot_usmap(include = c("AL", "FL", "GA"), labels = TRUE, colour = "black", size = 0.4)
 
 test_that("ggplot object is returned", {
   expect_is(p, "ggplot")

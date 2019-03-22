@@ -11,10 +11,6 @@
 #'   with a given region. The default is \code{"value"}.
 #' @param theme The theme that should be used for plotting the map. The default
 #'   is \code{\link[ggthemes]{theme_map}}.
-#' @param lines The line color to be used in the map. Corresponds to the
-#'   \code{colour} option in the \code{\link[ggplot2]{aes}} mapping. The default
-#'   is \code{"black"}. \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{Click here}
-#'   for more color options.
 #' @param labels Whether or not to display labels on the map. Labels are not displayed
 #'   by default. For now, labels only work for state maps.
 #'   County labels may be added in the future.
@@ -22,6 +18,10 @@
 #'   option in the \code{\link[ggplot2]{aes}} mapping. The default is \code{"black"}.
 #'   \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{Click here}
 #'   for more color options.
+#' @param ... Other arguments to pass to \code{ggplot2::aes()}. These are
+#'   often aesthetics, used to set an aesthetic to a fixed value, like \code{color = "red"}
+#'   or \code{size = 3}. They affect the appearance of the polygons used to render
+#'   the map (for example fill color, line color, line thickness, etc.).
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object that contains a basic
 #'   US map with the described parameters. Since the result is a \code{ggplot}
@@ -57,9 +57,9 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
                        data = data.frame(),
                        values = "values",
                        theme = theme_map(),
-                       lines = "black",
                        labels = FALSE,
-                       label_color = "black") {
+                       label_color = "black",
+                       ...) {
 
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("Please install `ggplot2`. Use: install.packages(\"ggplot2\")")
@@ -71,13 +71,13 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
     map_df <- us_map(regions = regions_, include = include)
     polygon_layer <- ggplot2::geom_polygon(
       ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group),
-      colour = lines, fill = "white", size = 0.4
+      ...
     )
   } else {
     map_df <- map_with_data(data, values = values, include = include)
     polygon_layer <- ggplot2::geom_polygon(
       ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group, fill = map_df[, values]),
-      colour = lines, size = 0.4
+      ...
     )
   }
 
