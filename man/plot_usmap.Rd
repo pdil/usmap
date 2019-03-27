@@ -44,7 +44,10 @@ for more color options.}
 \item{...}{Other arguments to pass to \code{ggplot2::aes()}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like \code{color = "red"}
 or \code{size = 3}. They affect the appearance of the polygons used to render
-the map (for example fill color, line color, line thickness, etc.).}
+the map (for example fill color, line color, line thickness, etc.). If any of
+\code{color}/\code{colour}, \code{fill}, or \code{size} are not specified they
+are set to their default values of \code{colour="black"}, \code{fill="white"},
+and \code{size=0.4}.}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object that contains a basic

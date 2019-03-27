@@ -66,7 +66,7 @@ centroid <- function(pol, ultimate = TRUE, iterations = 5, initial_width_step = 
     centroids <- data.frame(gCentroid(pol, byid = TRUE))
   }
 
-  centroids <- cbind(centroids, as.character(pol@data$STATEFP))
+  centroids <- cbind(centroids, as.character(pol@data$GEOID))
   colnames(centroids) <- c("x", "y", "fips")
 
   return(centroids)

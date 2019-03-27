@@ -7,16 +7,18 @@ example_data <- data.frame(
   values = c(5, 8, 7)
 )
 
-p <- plot_usmap("counties", colour = "black", fill = "white", size = 0.4)
-q <- plot_usmap(data = statepop, values = "pop_2015", colour = "black", size = 0.4)
-r <- plot_usmap(data = example_data, colour = "black", size = 0.4)
-s <- plot_usmap(include = c("AL", "FL", "GA"), labels = TRUE, colour = "black", size = 0.4)
+p <- plot_usmap("counties", fill = "red")
+q <- plot_usmap(data = statepop, values = "pop_2015", colour = "blue")
+r <- plot_usmap(data = example_data, size = 0.8)
+s <- plot_usmap(include = c("AL", "FL", "GA"), labels = TRUE, label_color = "blue")
+t <- plot_usmap("counties", include = "AZ", labels = TRUE, fill = "yellow", size = 0.6)
 
 test_that("ggplot object is returned", {
   expect_is(p, "ggplot")
   expect_is(q, "ggplot")
   expect_is(r, "ggplot")
   expect_is(s, "ggplot")
+  expect_is(t, "ggplot")
 })
 
 test_that("correct data is used", {
@@ -31,6 +33,9 @@ test_that("correct data is used", {
 
   s_map_data <- us_map(regions = "states", include = c("AL", "FL", "GA"))
   expect_identical(s$data, s_map_data)
+
+  t_map_data <- us_map(regions = "counties", include = "AZ")
+  expect_identical(t$data, t_map_data)
 })
 
 test_that("layer parameters are correct", {
@@ -39,7 +44,7 @@ test_that("layer parameters are correct", {
   expect_equal(deparse(p$layers[[1]]$mapping$y), "~map_df$lat")
   expect_equal(deparse(p$layers[[1]]$mapping$group), "~map_df$group")
   expect_equal(as.character(p$layers[[1]]$aes_params$colour), "black")
-  expect_equal(as.character(p$layers[[1]]$aes_params$fill), "white")
+  expect_equal(as.character(p$layers[[1]]$aes_params$fill), "red")
   expect_equal(p$layers[[1]]$aes_params$size, 0.4)
 
   expect_is(q$layers[[1]], "ggproto")
@@ -47,7 +52,7 @@ test_that("layer parameters are correct", {
   expect_equal(deparse(q$layers[[1]]$mapping$y), "~map_df$lat")
   expect_equal(deparse(q$layers[[1]]$mapping$group), "~map_df$group")
   expect_equal(deparse(q$layers[[1]]$mapping$fill), "~map_df[, values]")
-  expect_equal(as.character(q$layers[[1]]$aes_params$colour), "black")
+  expect_equal(as.character(q$layers[[1]]$aes_params$colour), "blue")
   expect_equal(q$layers[[1]]$aes_params$size, 0.4)
 
   expect_is(r$layers[[1]], "ggproto")
@@ -56,14 +61,32 @@ test_that("layer parameters are correct", {
   expect_equal(deparse(r$layers[[1]]$mapping$group), "~map_df$group")
   expect_equal(deparse(r$layers[[1]]$mapping$fill), "~map_df[, values]")
   expect_equal(as.character(r$layers[[1]]$aes_params$colour), "black")
-  expect_equal(r$layers[[1]]$aes_params$size, 0.4)
+  expect_equal(r$layers[[1]]$aes_params$size, 0.8)
 
   expect_is(s$layers[[1]], "ggproto")
   expect_equal(deparse(s$layers[[1]]$mapping$x), "~map_df$long")
   expect_equal(deparse(s$layers[[1]]$mapping$y), "~map_df$lat")
   expect_equal(deparse(s$layers[[1]]$mapping$group), "~map_df$group")
+  expect_equal(as.character(s$layers[[1]]$aes_params$fill), "white")
   expect_equal(as.character(s$layers[[1]]$aes_params$colour), "black")
   expect_equal(s$layers[[1]]$aes_params$size, 0.4)
+  expect_is(s$layers[[2]], "ggproto")
+  expect_equal(deparse(s$layers[[2]]$mapping$x), "~centroid_labels$x")
+  expect_equal(deparse(s$layers[[2]]$mapping$y), "~centroid_labels$y")
+  expect_equal(deparse(s$layers[[2]]$mapping$label), "~centroid_labels$abbr")
+  expect_equal(as.character(s$layers[[2]]$aes_params$colour), "blue")
+
+  expect_is(t$layers[[1]], "ggproto")
+  expect_equal(deparse(t$layers[[1]]$mapping$x), "~map_df$long")
+  expect_equal(deparse(t$layers[[1]]$mapping$y), "~map_df$lat")
+  expect_equal(deparse(t$layers[[1]]$mapping$group), "~map_df$group")
+  expect_equal(as.character(t$layers[[1]]$aes_params$fill), "yellow")
+  expect_equal(as.character(t$layers[[1]]$aes_params$colour), "black")
+  expect_equal(t$layers[[1]]$aes_params$size, 0.6)
+  expect_is(t$layers[[2]], "ggproto")
+  expect_equal(deparse(t$layers[[2]]$mapping$x), "~centroid_labels$x")
+  expect_equal(deparse(t$layers[[2]]$mapping$y), "~centroid_labels$y")
+  expect_equal(deparse(t$layers[[2]]$mapping$label), "~centroid_labels$county")
 })
 
 test_that("singular regions can be used", {
@@ -71,10 +94,4 @@ test_that("singular regions can be used", {
                plot_usmap(regions = "state")$layers)
   expect_equal(plot_usmap(regions = "counties")$layers,
                plot_usmap(regions = "county")$layers)
-})
-
-# This test should be removed when label support is added to county maps
-test_that("warning occurs when attempting to use labels with county map", {
-  expect_warning(plot_usmap(regions = "counties", labels = TRUE))
-  expect_warning(plot_usmap(regions = "county", labels = TRUE))
 })

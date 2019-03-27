@@ -61,10 +61,9 @@ colnames(final_counties_df) <- c("long", "lat", "order", "hole", "piece",
 write.csv(final_counties_df, file = "us_counties.csv", row.names = FALSE, na = "")
 
 # Merge counties with centroids ####
-# TO BE ADDED AT A LATER DATE
-# counties_centroids_df <- readr::read_csv("county_centroids.csv")
-# merged_counties_centroids_df <- merge(counties_centroids_df, county_fips_final,
-#                                       by = "fips", all.x = TRUE)
-#
-# final_counties_centroids_df <- merged_counties_centroids_df[, c("x", "y", "fips", "abbr", "full")]
-# write.csv(final_counties_centroids_df, file = "us_counties_centroids.csv", row.names = FALSE, na = "")
+counties_centroids_df <- readr::read_csv("us_county_centroids_raw.csv")
+merged_counties_centroids_df <- merge(counties_centroids_df, county_fips_final,
+                                      by = "fips", all.x = TRUE)
+
+final_counties_centroids_df <- merged_counties_centroids_df[, c("x", "y", "fips", "abbr", "full", "county")]
+write.csv(final_counties_centroids_df, file = "us_counties_centroids.csv", row.names = FALSE, na = "")

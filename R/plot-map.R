@@ -21,7 +21,10 @@
 #' @param ... Other arguments to pass to \code{ggplot2::aes()}. These are
 #'   often aesthetics, used to set an aesthetic to a fixed value, like \code{color = "red"}
 #'   or \code{size = 3}. They affect the appearance of the polygons used to render
-#'   the map (for example fill color, line color, line thickness, etc.).
+#'   the map (for example fill color, line color, line thickness, etc.). If any of
+#'   \code{color}/\code{colour}, \code{fill}, or \code{size} are not specified they
+#'   are set to their default values of \code{colour="black"}, \code{fill="white"},
+#'   and \code{size=0.4}.
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object that contains a basic
 #'   US map with the described parameters. Since the result is a \code{ggplot}
@@ -61,42 +64,67 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
                        label_color = "black",
                        ...) {
 
+  # check for ggplot2
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("Please install `ggplot2`. Use: install.packages(\"ggplot2\")")
   }
 
+  # parse parameters
   regions_ <- match.arg(regions)
+  geom_args <- list(...)
 
-  if (nrow(data) == 0) {
-    map_df <- us_map(regions = regions_, include = include)
-    polygon_layer <- ggplot2::geom_polygon(
-      ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group),
-      ...
-    )
-  } else {
-    map_df <- map_with_data(data, values = values, include = include)
-    polygon_layer <- ggplot2::geom_polygon(
-      ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group, fill = map_df[, values]),
-      ...
-    )
+  # set geom_polygon defaults
+  if (is.null(geom_args[["colour"]]) & is.null(geom_args[["color"]])) {
+    geom_args[["colour"]] <- "black"
   }
 
+  if (is.null(geom_args[["fill"]])) {
+    geom_args[["fill"]] <- "white"
+  }
+
+  if (is.null(geom_args[["size"]])) {
+    geom_args[["size"]] <- 0.4
+  }
+
+  # create polygon layer
+  if (nrow(data) == 0) {
+    map_df <- us_map(regions = regions_, include = include)
+    geom_args[["mapping"]] <- ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group)
+  } else {
+    map_df <- map_with_data(data, values = values, include = include)
+    geom_args[["mapping"]] <- ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group, fill = map_df[, values])
+  }
+
+  polygon_layer <- do.call(ggplot2::geom_polygon, geom_args)
+
+  # create label layer
   if (labels) {
+    centroidLabelsColClasses <- c("numeric", "numeric", "character", "character", "character")
+
     if (regions_ == "county" | regions_ == "counties") {
-      warning("`labels` is currently only supported for state maps. It has no effect on county maps.")
-      label_layer <- ggplot2::geom_blank()
+      # add extra column for the county name
+      centroidLabelsColClasses <- c(centroidLabelsColClasses, "character")
+    }
+
+    centroid_labels <- utils::read.csv(system.file("extdata", paste0("us_", regions_, "_centroids.csv"), package = "usmap"),
+                                       colClasses = centroidLabelsColClasses,
+                                       stringsAsFactors = FALSE)
+
+    if (length(include) > 0) {
+      centroid_labels <- centroid_labels[
+        centroid_labels$full %in% include |
+          centroid_labels$abbr %in% include |
+          centroid_labels$fips %in% include, ]
+    }
+
+    if (regions_ == "county" | regions_ == "counties") {
+      label_layer <- ggplot2::geom_text(
+        data = centroid_labels,
+        ggplot2::aes(x = centroid_labels$x,
+                     y = centroid_labels$y,
+                     label = centroid_labels$county),
+        colour = label_color)
     } else {
-      centroid_labels <- utils::read.csv(system.file("extdata", paste0("us_", regions_, "_centroids.csv"), package = "usmap"),
-                                         colClasses = c("numeric", "numeric", "character", "character", "character"),
-                                         stringsAsFactors = FALSE)
-
-      if (length(include) > 0) {
-        centroid_labels <- centroid_labels[
-          centroid_labels$full %in% include |
-            centroid_labels$abbr %in% include |
-            centroid_labels$fips %in% include, ]
-      }
-
       label_layer <- ggplot2::geom_text(
         data = centroid_labels,
         ggplot2::aes(x = centroid_labels$x,
@@ -108,6 +136,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
     label_layer <- ggplot2::geom_blank()
   }
 
+  # construct final plot
   ggplot2::ggplot(data = map_df) + polygon_layer + label_layer + ggplot2::coord_equal() + theme
 }
 
