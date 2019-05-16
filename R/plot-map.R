@@ -66,7 +66,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 
   # check for ggplot2
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
-    stop("Please install `ggplot2`. Use: install.packages(\"ggplot2\")")
+    stop("`ggplot2` must be installed to use `plot_usmap`. Use: install.packages(\"ggplot2\") and try again.")
   }
 
   # parse parameters
