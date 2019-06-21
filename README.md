@@ -75,9 +75,11 @@ To install the package from this repository, run the following code in an R cons
 # install.package("devtools")
 devtools::install_github("pdil/usmap")
 ```
-Installing using `devtools::install_github` will provide the most recent developer build of `usmap`. The developer build may be unstable and not function correctly, use with caution.
+Installing using `devtools::install_github` will provide the most recent developer build of `usmap`.
 
-To begin using `usmap`, simply import the package using the `library` command:
+⚠️ The developer build may be unstable and not function correctly, use with caution.
+
+To begin using `usmap`, import the package using the `library` command:
 ```r
 library(usmap)
 ```
