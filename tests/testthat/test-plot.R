@@ -86,7 +86,8 @@ test_that("layer parameters are correct", {
   expect_is(t$layers[[2]], "ggproto")
   expect_equal(deparse(t$layers[[2]]$mapping$x), "~centroid_labels$x")
   expect_equal(deparse(t$layers[[2]]$mapping$y), "~centroid_labels$y")
-  expect_equal(deparse(t$layers[[2]]$mapping$label), "~centroid_labels$county")
+  expect_equal(deparse(t$layers[[2]]$mapping$label),
+               "~sub(\" County\", \"\", centroid_labels$county)")
 })
 
 test_that("singular regions can be used", {

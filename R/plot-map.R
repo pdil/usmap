@@ -126,7 +126,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
         data = centroid_labels,
         ggplot2::aes(x = centroid_labels$x,
                      y = centroid_labels$y,
-                     label = centroid_labels$county),
+                     label = sub(" County", "", centroid_labels$county)),
         colour = label_color)
     } else {
       label_layer <- ggplot2::geom_text(

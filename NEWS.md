@@ -9,7 +9,7 @@
   * The following aesthetics are supported: `alpha`, `colour`/`color`, `fill`, `linetype`, `size`
   * This feature provides more direct control over the appearance of plots.
 * Ability to include county name labels on county maps, see [Issue #14](https://github.com/pdil/usmap/issues/14).
-  * They currently work the same as state labels except they include the full county name (including the word "County").
+  * They currently work the same as state labels except they include the full county name (excluding the word "County").
 
 # usmap 0.4.0
 
