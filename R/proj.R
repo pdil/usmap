@@ -13,7 +13,6 @@
 #'   input data frame with the Albers Equal Area projection applied.
 #'
 #' @examples
-#'
 #' data <- data.frame(
 #'   lon = c(-74.01, -95.36, -118.24, -87.65, -134.42, -157.86),
 #'   lat = c(40.71, 29.76, 34.05, 41.85, 58.30, 21.31)
@@ -26,7 +25,7 @@
 #' library(ggplot2)
 #'
 #' plot_usmap() + geom_point(
-#'   data = data.frame(td),
+#'   data = transformed_data,
 #'   aes(x = lon, y = lat),
 #'   colour = "red",
 #'   size = 2
@@ -70,10 +69,10 @@ usmap_proj <- function(data) {
   ak_bbox <- sp::bbox(
     matrix(
       c(
-        -4360650, # min longitude
-        -1512250, # max longitude
-        1466100,  # min latitude
-        3911200   # max latitude
+        -4360650, # min transformed longitude
+        -1512250, # max transformed longitude
+        1466100,  # min transformed latitude
+        3911200   # max transformed latitude
       ), ncol = 2
     )
   )
@@ -102,10 +101,10 @@ usmap_proj <- function(data) {
   hi_bbox <- bbox(
     matrix(
       c(
-        -5762000, # min longitude
-        -5451950, # max longitude
-        -1051950, # min latitude
-        -441850   # max latitude
+        -5762000, # min transformed longitude
+        -5451950, # max transformed longitude
+        -1051950, # min transformed latitude
+        -441850   # max transformed latitude
       ), ncol = 2
     )
   )

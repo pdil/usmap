@@ -22,7 +22,6 @@ Converting an external data frame of map coordinates will
   the same Albers Equal Area projection to those points as well.
 }
 \examples{
-
 data <- data.frame(
   lon = c(-74.01, -95.36, -118.24, -87.65, -134.42, -157.86),
   lat = c(40.71, 29.76, 34.05, 41.85, 58.30, 21.31)
@@ -35,7 +34,7 @@ transformed_data <- usmap_proj(data)
 library(ggplot2)
 
 plot_usmap() + geom_point(
-  data = data.frame(td),
+  data = transformed_data,
   aes(x = lon, y = lat),
   colour = "red",
   size = 2
