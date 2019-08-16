@@ -18,9 +18,11 @@ Imports:
 Suggests:
     ggplot2,
     knitr,
+    maptools,
     proto,
     rmarkdown,
     scales,
+    sp,
     stringr,
     testthat
 RoxygenNote: 6.1.0
