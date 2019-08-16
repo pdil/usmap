@@ -62,7 +62,7 @@ usmap_proj <- function(data) {
   )
 
   # transform to canonical projection
-  transformed <- sp::spTransform(spdf, usmap_crs)
+  transformed <- sp::spTransform(spdf, usmap_crs())
 
   # transform Alaska points
 
@@ -98,7 +98,7 @@ usmap_proj <- function(data) {
 
   # transform Hawaii points
 
-  hi_bbox <- bbox(
+  hi_bbox <- sp::bbox(
     matrix(
       c(
         -5762000, # min transformed longitude
@@ -123,7 +123,7 @@ usmap_proj <- function(data) {
       bb = hi_bbox
     )
     hawaii <- maptools::elide(hawaii, shift = c(5400000, -1400000))
-    proj4string(hawaii) <- proj4string(transformed)
+    sp::proj4string(hawaii) <- sp::proj4string(transformed)
   }
 
   # combine all points
@@ -137,7 +137,9 @@ usmap_proj <- function(data) {
     combined <- transformed
   }
 
-  combined[!duplicated(combined@data[, c(1, 2)], fromLast = TRUE), ]
+  as.data.frame(
+    combined@coords[!duplicated(combined@data[, c(1, 2)], fromLast = TRUE), ]
+  )
 }
 
 #' usmap coordinate reference system
@@ -149,5 +151,12 @@ usmap_proj <- function(data) {
 #' by the \code{plot_usmap} function.
 #'
 #' @export
-usmap_crs <- sp::CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0
+usmap_crs <- function() {
+  if (!requireNamespace("sp", quietly = TRUE)) {
+    stop("`sp` must be installed to use `usmap_proj`.
+         Use: install.packages(\"sp\") and try again.")
+  }
+
+  sp::CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0
                      +a=6370997 +b=6370997 +units=m +no_defs")
+}
