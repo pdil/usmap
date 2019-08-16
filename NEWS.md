@@ -8,6 +8,9 @@
   * This feature provides more direct control over the appearance of plots.
 * Ability to include county name labels on county maps, see [Issue #14](https://github.com/pdil/usmap/issues/14).
   * They currently work the same as state labels except they include the full county name (including the word "County").
+  
+* New function (`usmap_proj`) to transform longitude/latitude point data frames into coordinate reference system that matches the plotted map.
+  * Also includes `usmap_crs` to easily access the coordinate reference system used by the package.
 
 
 # usmap 0.4.0
