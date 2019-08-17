@@ -1,7 +1,7 @@
 # usmap 0.4.0.9999
 
 ### New Features
-* Add ability to exclude counties and states with new `exclude` parameter in `us_map`, `map_with_data`, and `plot_usmap`, see [Issue #19](https://github.com/pdil/usmap/issues/19).
+* Ability to exclude counties and states with new `exclude` parameter in `us_map`, `map_with_data`, and `plot_usmap`, see [Issue #19](https://github.com/pdil/usmap/issues/19).
 * New function (`usmap_proj`) to transform longitude/latitude point data frames into coordinate reference system that matches the plotted map, see [Issue #21](https://github.com/pdil/usmap/issues/21).
   * Also includes `usmap_crs()` to easily access the coordinate reference system used by the package.
 * Ability to pass `ggplot2::geom_polygon()` parameters to `plot_usmap()`, see [Issue #15](https://github.com/pdil/usmap/issues/15).
