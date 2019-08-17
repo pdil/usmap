@@ -143,9 +143,12 @@ usmap_proj <- function(data) {
     combined <- transformed
   }
 
-  as.data.frame(
+  result <- as.data.frame(
     combined@coords[!duplicated(combined@data[, c(1, 2)], fromLast = TRUE), ]
   )
+  row.names(result) <- NULL
+
+  result
 }
 
 #' usmap coordinate reference system
