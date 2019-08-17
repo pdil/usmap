@@ -20,6 +20,7 @@ Suggests:
     knitr,
     maptools,
     proto,
+    rgdal,
     rmarkdown,
     scales,
     sp,

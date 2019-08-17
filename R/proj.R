@@ -33,16 +33,22 @@
 #'
 #' @export
 usmap_proj <- function(data) {
+  # check for maptools
+  if (!requireNamespace("maptools", quietly = TRUE)) {
+    stop("`maptools` must be installed to use `usmap_proj`.
+         Use: install.packages(\"maptools\") and try again.")
+  }
+
   # check for sp
   if (!requireNamespace("sp", quietly = TRUE)) {
     stop("`sp` must be installed to use `usmap_proj`.
          Use: install.packages(\"sp\") and try again.")
   }
 
-  # check for maptools
-  if (!requireNamespace("maptools", quietly = TRUE)) {
-    stop("`maptools` must be installed to use `usmap_proj`.
-         Use: install.packages(\"maptools\") and try again.")
+  # check for rgdal
+  if (!requireNamespace("rgdal", quietly = TRUE)) {
+    stop("`rgdal` must be installed to use `usmap_proj`.
+         Use: install.packages(\"rgdal\") and try again.")
   }
 
   # validation

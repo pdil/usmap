@@ -1,12 +1,19 @@
 language: R
-cache: packages
-sudo: false
+dist: trusty
+
+addons:
+  apt:
+    packages:
+      - gdal-bin
 
 r_packages:
-    - covr
-    - sp
+  - covr
+
+r_binary_packages:
+  - rgdal
+
 after_success:
-    - Rscript -e 'covr::codecov()'
+  - Rscript -e 'covr::codecov()'
 
 notifications:
   pushover:
