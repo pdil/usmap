@@ -1,5 +1,6 @@
 #' Join county or state level data to US map data
 #'
+#' @inheritParams us_map
 #' @param data The data that should be joined to a US map. This
 #'   parameter should be a data frame consisting of two columns,
 #'   a fips code (2 characters for state, 5 characters for county)
@@ -9,10 +10,6 @@
 #'   are provided, this function uses the \code{fips}.
 #' @param values The name of the column that contains the values to be associated
 #'   with a given region. The default is \code{"values"}.
-#' @param include The regions to include in the output data frame. If \code{regions} is
-#'  \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
-#'  For counties, the FIPS must be provided as there can be multiple counties with the
-#'  same name.
 #' @param na The value to be inserted for states or counties that don't have
 #'   a value in \code{data}. This value must be of the same type as the \code{value}
 #'   column of \code{data}.
@@ -20,7 +17,8 @@
 #' @return A data frame composed of the map data frame (from \code{\link{us_map}}) except
 #'   an extra column containing the values in \code{data} is included.
 #'
-#'   The result can be plotted using \code{ggplot2}. See \code{\link{us_map}} for more details.
+#'   The result can be plotted using \code{ggplot2}. See \code{\link{us_map}} or
+#'   \code{\link{plot_usmap}} for more details.
 #'
 #' @examples
 #' state_data <- data.frame(fips = c("01", "02", "04"), values = c(1, 5, 8))
@@ -30,7 +28,12 @@
 #' df <- map_with_data(state_data, na = 0)
 #'
 #' @export
-map_with_data <- function(data, values = "values", include = c(), na = NA) {
+map_with_data <- function(data,
+                          values = "values",
+                          include = c(),
+                          exclude = c(),
+                          na = NA) {
+
   if (!is.data.frame(data)) {
     stop("`data` must be a data frame")
   }
@@ -43,7 +46,7 @@ map_with_data <- function(data, values = "values", include = c(), na = NA) {
     }
 
     warning(paste("`data` is empty, returning basic", region_type, "US map data frame"))
-    return(us_map(regions = region_type, include = include))
+    return(us_map(regions = region_type, include = include, exclude = exclude))
   }
 
   if (!(values %in% names(data))) {
@@ -63,7 +66,7 @@ map_with_data <- function(data, values = "values", include = c(), na = NA) {
   data$fips <- as.character(data$fips)
 
   region_type <- ifelse(nchar(data$fips[1]) <= 2, "state", "county")
-  map_df <- us_map(regions = region_type, include = include)
+  map_df <- us_map(regions = region_type, include = include, exclude = exclude)
 
   # Remove columns in data that are already in map_df
   data$abbr <- NULL

@@ -57,6 +57,7 @@
 #' @export
 plot_usmap <- function(regions = c("states", "state", "counties", "county"),
                        include = c(),
+                       exclude = c(),
                        data = data.frame(),
                        values = "values",
                        theme = theme_map(),
@@ -92,10 +93,10 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 
   # create polygon layer
   if (nrow(data) == 0) {
-    map_df <- us_map(regions = regions_, include = include)
+    map_df <- us_map(regions = regions_, include = include, exclude = exclude)
     geom_args[["mapping"]] <- ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group)
   } else {
-    map_df <- map_with_data(data, values = values, include = include)
+    map_df <- map_with_data(data, values = values, include = include, exclude = exclude)
     geom_args[["mapping"]] <- ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group, fill = map_df[, values])
   }
 

@@ -5,19 +5,27 @@
 \title{Conveniently plot basic US map}
 \usage{
 plot_usmap(regions = c("states", "state", "counties", "county"),
-  include = c(), data = data.frame(), values = "values",
-  theme = theme_map(), labels = FALSE, label_color = "black", ...)
+  include = c(), exclude = c(), data = data.frame(),
+  values = "values", theme = theme_map(), labels = FALSE,
+  label_color = "black", ...)
 }
 \arguments{
 \item{regions}{The region breakdown for the map, can be one of
 (\code{"states"}, \code{"state"}, \code{"counties"}, \code{"county"}).
 The default is \code{"states"}.}
 
-\item{include}{The regions to include in the output data frame. If \code{regions} is
+\item{include}{The regions to include in the resulting map. If \code{regions} is
 \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
 For counties, the FIPS must be provided as there can be multiple counties with the
 same name. If states are provided in the county map, only counties in the included states
 will be returned.}
+
+\item{exclude}{The regions to exclude in the resulting map. If \code{regions} is
+\code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
+For counties, the FIPS must be provided as there can be multiple counties with the
+same name. The regions listed in the \code{include} parameter are applied first and the
+\code{exclude} regions are then removed from the resulting map. Any excluded regions
+not present in the included regions will be ignored.}
 
 \item{data}{A data frame containing values to plot on the map. This
 parameter should be a data frame consisting of two columns,

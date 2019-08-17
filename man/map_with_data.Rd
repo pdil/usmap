@@ -4,7 +4,8 @@
 \alias{map_with_data}
 \title{Join county or state level data to US map data}
 \usage{
-map_with_data(data, values = "values", include = c(), na = NA)
+map_with_data(data, values = "values", include = c(), exclude = c(),
+  na = NA)
 }
 \arguments{
 \item{data}{The data that should be joined to a US map. This
@@ -18,10 +19,18 @@ are provided, this function uses the \code{fips}.}
 \item{values}{The name of the column that contains the values to be associated
 with a given region. The default is \code{"values"}.}
 
-\item{include}{The regions to include in the output data frame. If \code{regions} is
+\item{include}{The regions to include in the resulting map. If \code{regions} is
 \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
 For counties, the FIPS must be provided as there can be multiple counties with the
-same name.}
+same name. If states are provided in the county map, only counties in the included states
+will be returned.}
+
+\item{exclude}{The regions to exclude in the resulting map. If \code{regions} is
+\code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
+For counties, the FIPS must be provided as there can be multiple counties with the
+same name. The regions listed in the \code{include} parameter are applied first and the
+\code{exclude} regions are then removed from the resulting map. Any excluded regions
+not present in the included regions will be ignored.}
 
 \item{na}{The value to be inserted for states or counties that don't have
 a value in \code{data}. This value must be of the same type as the \code{value}
@@ -31,7 +40,8 @@ column of \code{data}.}
 A data frame composed of the map data frame (from \code{\link{us_map}}) except
   an extra column containing the values in \code{data} is included.
 
-  The result can be plotted using \code{ggplot2}. See \code{\link{us_map}} for more details.
+  The result can be plotted using \code{ggplot2}. See \code{\link{us_map}} or
+  \code{\link{plot_usmap}} for more details.
 }
 \description{
 Join county or state level data to US map data
