@@ -2,6 +2,7 @@
 
 S3method(fips_info,character)
 S3method(fips_info,numeric)
+S3method(usmap_transform,data.frame)
 export(.east_north_central)
 export(.east_south_central)
 export(.mid_atlantic)
@@ -22,4 +23,4 @@ export(map_with_data)
 export(plot_usmap)
 export(us_map)
 export(usmap_crs)
-export(usmap_proj)
+export(usmap_transform)

@@ -11,7 +11,7 @@ test_that("data frame with AK and HI points is transformed", {
     lat = c(-133148.4, -1677546.4, -1035039.5, -273371.4, -2083498.9, -2044963.7)
   )
 
-  expect_equal(usmap_proj(data), result, tolerance = 1e-05)
+  expect_equal(usmap_transform(data), result, tolerance = 1e-05)
 })
 
 test_that("data frame with AK points is transformed", {
@@ -25,7 +25,7 @@ test_that("data frame with AK points is transformed", {
     lat = c(-133148.4, -1677546.4, -1035039.5, -273371.4, -2083498.9)
   )
 
-  expect_equal(usmap_proj(data), result, tolerance = 1e-05)
+  expect_equal(usmap_transform(data), result, tolerance = 1e-05)
 })
 
 test_that("data frame with HI points is transformed", {
@@ -39,7 +39,7 @@ test_that("data frame with HI points is transformed", {
     lat = c(-133148.4, -1677546.4, -1035039.5, -273371.4, -2044963.7)
   )
 
-  expect_equal(usmap_proj(data), result, tolerance = 1e-05)
+  expect_equal(usmap_transform(data), result, tolerance = 1e-05)
 })
 
 test_that("data frame with no AK or HI points is transformed", {
@@ -53,7 +53,7 @@ test_that("data frame with no AK or HI points is transformed", {
     lat = c(-133148.4, -1677546.4, -1035039.5, -273371.4)
   )
 
-  expect_equal(usmap_proj(data), result, tolerance = 1e-05)
+  expect_equal(usmap_transform(data), result, tolerance = 1e-05)
 })
 
 test_that("error occurs for data without 2 columns", {
@@ -63,8 +63,8 @@ test_that("error occurs for data without 2 columns", {
     something_else = c(1, 2, 3, 4)
   )
 
-  expect_error(usmap_proj(invalid_data))
-  expect_error(usmap_proj(data.frame()))
+  expect_error(usmap_transform(invalid_data))
+  expect_error(usmap_transform(data.frame()))
 })
 
 test_that("error occurs for data with non-numeric columns", {
@@ -83,7 +83,7 @@ test_that("error occurs for data with non-numeric columns", {
     lat = c("d", "e", "f")
   )
 
-  expect_error(usmap_proj(invalid_data1))
-  expect_error(usmap_proj(invalid_data2))
-  expect_error(usmap_proj(invalid_data3))
+  expect_error(usmap_transform(invalid_data1))
+  expect_error(usmap_transform(invalid_data2))
+  expect_error(usmap_transform(invalid_data3))
 })

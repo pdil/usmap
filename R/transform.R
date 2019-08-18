@@ -19,7 +19,7 @@
 #' )
 #'
 #' # Transform data
-#' transformed_data <- usmap_proj(data)
+#' transformed_data <- usmap_transform(data)
 #'
 #' # Plot transformed data on map
 #' library(ggplot2)
@@ -31,8 +31,15 @@
 #'   size = 2
 #' )
 #'
+#' @rdname usmap_transform
 #' @export
-usmap_proj <- function(data) {
+usmap_transform <- function(data) {
+  UseMethod("usmap_transform", data)
+}
+
+#' @rdname usmap_transform
+#' @export
+usmap_transform.data.frame <- function(data) {
   # check for maptools
   if (!requireNamespace("maptools", quietly = TRUE)) {
     stop("`maptools` must be installed to use `usmap_proj`.
