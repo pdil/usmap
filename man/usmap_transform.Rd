@@ -17,7 +17,9 @@ just that the order of the columns is kept intact.}
 }
 \value{
 A data frame containing the transformed coordinates from the
-  input data frame with the Albers Equal Area projection applied.
+  input data frame with the Albers Equal Area projection applied. The
+  transformed columns will be appended to the data frame so that all
+  original columns should remain intact.
 }
 \description{
 Converting an external data frame of map coordinates will
@@ -27,7 +29,8 @@ Converting an external data frame of map coordinates will
 \examples{
 data <- data.frame(
   lon = c(-74.01, -95.36, -118.24, -87.65, -134.42, -157.86),
-  lat = c(40.71, 29.76, 34.05, 41.85, 58.30, 21.31)
+  lat = c(40.71, 29.76, 34.05, 41.85, 58.30, 21.31),
+  pop = c(8398748, 2325502, 3990456, 2705994, 32113, 347397)
 )
 
 # Transform data
@@ -38,9 +41,8 @@ library(ggplot2)
 
 plot_usmap() + geom_point(
   data = transformed_data,
-  aes(x = lon, y = lat),
-  colour = "red",
-  size = 2
+  aes(x = lon.1, y = lat.1, size = pop),
+  colour = "red", alpha = 0.5
 )
 
 }

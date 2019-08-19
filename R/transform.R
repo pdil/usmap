@@ -10,12 +10,15 @@
 #'   just that the order of the columns is kept intact.
 #'
 #' @return A data frame containing the transformed coordinates from the
-#'   input data frame with the Albers Equal Area projection applied.
+#'   input data frame with the Albers Equal Area projection applied. The
+#'   transformed columns will be appended to the data frame so that all
+#'   original columns should remain intact.
 #'
 #' @examples
 #' data <- data.frame(
 #'   lon = c(-74.01, -95.36, -118.24, -87.65, -134.42, -157.86),
-#'   lat = c(40.71, 29.76, 34.05, 41.85, 58.30, 21.31)
+#'   lat = c(40.71, 29.76, 34.05, 41.85, 58.30, 21.31),
+#'   pop = c(8398748, 2325502, 3990456, 2705994, 32113, 347397)
 #' )
 #'
 #' # Transform data
@@ -26,20 +29,13 @@
 #'
 #' plot_usmap() + geom_point(
 #'   data = transformed_data,
-#'   aes(x = lon, y = lat),
-#'   colour = "red",
-#'   size = 2
+#'   aes(x = lon.1, y = lat.1, size = pop),
+#'   colour = "red", alpha = 0.5
 #' )
 #'
 #' @rdname usmap_transform
 #' @export
 usmap_transform <- function(data) {
-  UseMethod("usmap_transform", data)
-}
-
-#' @rdname usmap_transform
-#' @export
-usmap_transform.data.frame <- function(data) {
   # check for maptools
   if (!requireNamespace("maptools", quietly = TRUE)) {
     stop("`maptools` must be installed to use `usmap_proj`.
@@ -58,9 +54,15 @@ usmap_transform.data.frame <- function(data) {
          Use: install.packages(\"rgdal\") and try again.")
   }
 
+  UseMethod("usmap_transform", data)
+}
+
+#' @rdname usmap_transform
+#' @export
+usmap_transform.data.frame <- function(data) {
   # validation
-  if (ncol(data) != 2) {
-    stop("`data` must contain two numeric columns with longitude
+  if (ncol(data) < 2) {
+    stop("`data` must contain at least two numeric columns with longitude
          in the first column and latitude in the second.")
   } else if (class(data[, 1]) != "numeric" | class(data[, 2]) != "numeric") {
     stop("`data` must contain two numeric columns with longitude
@@ -151,7 +153,7 @@ usmap_transform.data.frame <- function(data) {
   }
 
   result <- as.data.frame(
-    combined@coords[!duplicated(combined@data[, c(1, 2)], fromLast = TRUE), ]
+    combined[!duplicated(combined@data[, c(1, 2)], fromLast = TRUE), ]
   )
   row.names(result) <- NULL
 
