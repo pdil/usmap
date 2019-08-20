@@ -1,4 +1,5 @@
 ^\.travis\.yml$
+^\.codecov\.yml$
 ^usmap\.Rproj$
 ^data-raw$
 ^.*\.png$
