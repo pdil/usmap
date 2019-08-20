@@ -1,7 +1,7 @@
 # 🗺 usmap
 [![CRAN](http://www.r-pkg.org/badges/version/usmap?color=blue)](https://cran.r-project.org/package=usmap) [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/usmap)](https://cran.r-project.org/package=usmap) [![Build Status](https://travis-ci.org/pdil/usmap.svg?branch=master)](https://travis-ci.org/pdil/usmap) [![codecov](https://codecov.io/gh/pdil/usmap/branch/master/graph/badge.svg)](https://codecov.io/gh/pdil/usmap)
 
-<p align="center"><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example_plots.png" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-plots.png" /></p>
 
 <details>
   <summary>View code used to generate these plots</summary>

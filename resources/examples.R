@@ -45,4 +45,4 @@ cowplot::plot_grid(
 )
 
 # Save plots ####
-ggsave("resources/example_plots.png", width = 18, height = 10, units = "in")
+ggsave("resources/example-plots.png", width = 18, height = 10, units = "in")
