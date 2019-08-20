@@ -133,3 +133,31 @@
 #'   }
 #' @keywords data
 "citypop"
+
+#' Earthquakes (2019)
+#'
+#' @description US earthquakes with a magnitude of 2.5 or greater, occurring in the
+#'   first half of 2019, from January 1st to June 30th, from USGS.\cr\cr
+#'   The data is formatted for transforming with \code{\link[usmap]{usmap_transform}}.
+#'   Once the longitude and latitude is transformed, it can be added to
+#'   \code{\link[usmap]{plot_usmap}} using \code{ggplot2} layers.
+#'
+#' @usage data(earthquakes)
+#'
+#' @details
+#' \itemize{
+#'   \item \code{lon} The longitude of the earthquake's location.
+#'   \item \code{lat} The latitude of the earthquake's location.
+#'   \item \code{mag} The magnitude of the earthquake.
+#' }
+#'
+#' @name earthquakes
+#' @format A data frame with 2254 rows and 3 variables.
+#' @docType data
+#' @references
+#'   \itemize{
+#'     \item \url{https://earthquake.usgs.gov/earthquakes/}
+#'     \item \url{https://earthquake.usgs.gov/earthquakes/search/}
+#'   }
+#' @keywords data
+"earthquakes"
