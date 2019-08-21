@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-#### Extending `plot_usmap` with `ggplot2`
+## Extending `plot_usmap` with `ggplot2`
 
 The nice thing about `usmap::plot_usmap` is it returns a [ggplot object](http://docs.ggplot2.org/current/) object, which means we can add `ggplot` layers to the plot right out of the box.
 
@@ -82,6 +82,66 @@ plot_usmap(
   ) + 
   labs(title = "Western US States", subtitle = "These are the states in the Pacific Timezone.") +
   theme(legend.position = "right")
+```
+
+## Built-in Regions
+
+`usmap` provides some built-in regions based on the [US Census Bureau Regions and Divisions](https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf). These can be used in place of the `include`/`exclude` parameters when using `us_map` or `plot_usmap` and start with a `.` (dot):
+
+```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
+usmap::plot_usmap(include = .south_region)
+```
+
+```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
+usmap::plot_usmap(include = .east_south_central)
+```
+
+```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
+usmap::plot_usmap(include = .south_region, exclude = .east_south_central)
+```
+
+This also works with county maps. The regions can also be combined with actual state or FIPS values within the `include`/`exclude` parameters:
+
+```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
+usmap::plot_usmap("counties", 
+                  include = c(.south_region, "IA"), 
+                  exclude = c(.east_south_central, "12"))  # 12 = FL
+```
+
+You can even include or exclude individual counties (county-level inclusions/exclusions can only be done via their FIPS codes due to duplicate county names across states; for example eight different states have an "Orange County"):
+
+```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
+usmap::plot_usmap("counties", fill = "yellow", alpha = 0.25,
+                  # 06065 = Riverside County, CA
+                  include = c(.south_region, "IA", "06065"),
+                  # 12 = FL, 48141 = El Paso County, TX
+                  exclude = c(.east_south_central, "12", "48141"))
+```
+
+These parameters therefore allow for the posibility of some complex compositions of states and counties, to create the exact map that is desired.
+
+#### Supported US Census Regions and Divisions
+
+The following divisions are supported:
+```{r}
+.new_england
+.mid_atlantic
+.east_north_central
+.west_north_central
+.south_atlantic
+.east_south_central
+.west_south_central
+.mountain
+.pacific
+```
+
+Regions are composed of multiple divisions, and the following are supported:
+```{r}
+.northeast_region      # c(.new_england, .mid_atlantic)
+.north_central_region  # c(.east_north_central, .west_north_central)
+.midwest_region        # .north_central_region (renamed in June 1984)
+.south_region          # c(.south_atlantic, .east_south_central, .west_south_central)
+.west_region           # c(.mountain, .pacific)
 ```
 
 ## Raw map data

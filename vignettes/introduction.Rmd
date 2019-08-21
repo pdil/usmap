@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Plotting
+
 Plots of US maps in R usually lack Alaska and Hawaii. The reason is plotting takes the literal longitude and latitude coordinates and maps it to a cartesian x-y coordinate graph. Alaska and Hawaii are very far from the mainland US when using this so it can be unwieldy to include them. The `usmap` package solves this issue by providing data frames which have Alaska and Hawaii moved to a convenient spot just to the bottom left of the contiguous United States.
 
 #### Blank US state map
@@ -23,7 +25,6 @@ Plots of US maps in R usually lack Alaska and Hawaii. The reason is plotting tak
 ```{r, fig.align='center', fig.width=7}
 usmap::plot_usmap()
 ```
-
 
 #### Blank US county map
 
@@ -80,4 +81,3 @@ More information about FIPS can be read [here](http://en.wikipedia.org/wiki/Fede
 
 > “A map is the greatest of all epic poems. Its lines and colors show the realization of great dreams.”
 > - _Gilbert H. Grosvenor, Editor of National Geographic (1903 - 1954)_
-  
