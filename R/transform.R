@@ -60,6 +60,9 @@ usmap_transform <- function(data) {
 #' @rdname usmap_transform
 #' @export
 usmap_transform.data.frame <- function(data) {
+  # ensure data is data.frame
+  data <- as.data.frame(data)
+
   # validation
   if (ncol(data) < 2) {
     stop("`data` must contain at least two numeric columns with longitude
