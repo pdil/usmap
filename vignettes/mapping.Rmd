@@ -9,8 +9,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, echo = FALSE}
-knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 ```
 
 #### Extending `plot_usmap` with `ggplot2`
@@ -22,8 +25,9 @@ library(usmap)
 library(ggplot2)
 
 plot_usmap(regions = "counties") + 
-  labs(title = "US Counties", subtitle = "This is a blank map of the counties of the United States.") + 
-  theme(panel.background = element_rect(colour = "black", fill = "lightblue"))
+  labs(title = "US Counties",
+       subtitle = "This is a blank map of the counties of the United States.") + 
+  theme(panel.background = element_rect(color = "black", fill = "lightblue"))
 ```
 
 #### Plot only certain states
@@ -33,7 +37,8 @@ library(usmap)
 library(ggplot2)
 
 plot_usmap(include = c("CA", "ID", "NV", "OR", "WA")) +
-  labs(title = "Western US States", subtitle = "These are the states in the Pacific Timezone.")
+  labs(title = "Western US States",
+       subtitle = "These are the states in the Pacific Timezone.")
 ```
 
 #### Add some data to the map
@@ -42,7 +47,7 @@ plot_usmap(include = c("CA", "ID", "NV", "OR", "WA")) +
 library(usmap)
 library(ggplot2)
 
-plot_usmap(data = statepop, values = "pop_2015", lines = "red") + 
+plot_usmap(data = statepop, values = "pop_2015", color = "red") + 
   scale_fill_continuous(name = "Population (2015)", label = scales::comma) + 
   theme(legend.position = "right")
 ```
@@ -55,7 +60,7 @@ Notice the comprehensive expandability that can be applied to the map using `ggp
 library(usmap)
 library(ggplot2)
 
-plot_usmap(data = statepop, values = "pop_2015", lines = "red") + 
+plot_usmap(data = statepop, values = "pop_2015", color = "red") + 
   scale_fill_continuous(
     low = "white", high = "red", name = "Population (2015)", label = scales::comma
   ) + theme(legend.position = "right")
@@ -70,7 +75,7 @@ library(usmap)
 library(ggplot2)
 
 plot_usmap(
-    data = statepop, values = "pop_2015", include = c("CA", "ID", "NV", "OR", "WA"), lines = "red"
+    data = statepop, values = "pop_2015", include = c("CA", "ID", "NV", "OR", "WA"), color = "red"
   ) + 
   scale_fill_continuous(
     low = "white", high = "red", name = "Population (2015)", label = scales::comma

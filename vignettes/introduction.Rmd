@@ -9,8 +9,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, echo = FALSE}
-knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 ```
 
 Plots of US maps in R usually lack Alaska and Hawaii. The reason is plotting takes the literal longitude and latitude coordinates and maps it to a cartesian x-y coordinate graph. Alaska and Hawaii are very far from the mainland US when using this so it can be unwieldy to include them. The `usmap` package solves this issue by providing data frames which have Alaska and Hawaii moved to a convenient spot just to the bottom left of the contiguous United States.
