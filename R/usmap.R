@@ -105,11 +105,17 @@ us_map <- function(regions = c("states", "state", "counties", "county"),
                         stringsAsFactors = FALSE)
 
   if (length(include) > 0) {
-    df <- df[df$full %in% include | df$abbr %in% include | df$fips %in% include, ]
+    df <- df[df$full %in% include |
+               df$abbr %in% include |
+               df$fips %in% include |
+               substr(df$fips, 1, 2) %in% include, ]
   }
 
   if (length(exclude) > 0) {
-    df <- df[!(df$full %in% exclude | df$abbr %in% exclude | df$fips %in% exclude), ]
+    df <- df[!(df$full %in% exclude |
+                 df$abbr %in% exclude |
+                 df$fips %in% exclude |
+                 substr(df$fips, 1, 2) %in% exclude), ]
   }
 
   df
