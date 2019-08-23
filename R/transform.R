@@ -30,7 +30,7 @@
 #' plot_usmap() + geom_point(
 #'   data = transformed_data,
 #'   aes(x = lon.1, y = lat.1, size = pop),
-#'   colour = "red", alpha = 0.5
+#'   color = "red", alpha = 0.5
 #' )
 #'
 #' @rdname usmap_transform

@@ -32,7 +32,6 @@ county_pov_map <-
   scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE) +
   scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 
-
 # Combine plots ####
 cowplot::plot_grid(
   blank_state_map,

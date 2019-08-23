@@ -14,7 +14,7 @@
 #' @param labels Whether or not to display labels on the map. Labels are not displayed
 #'   by default. For now, labels only work for state maps.
 #'   County labels may be added in the future.
-#' @param label_color The color of the labels to display. Corresponds to the \code{colour}
+#' @param label_color The color of the labels to display. Corresponds to the \code{color}
 #'   option in the \code{\link[ggplot2]{aes}} mapping. The default is \code{"black"}.
 #'   \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{Click here}
 #'   for more color options.
@@ -23,7 +23,7 @@
 #'   or \code{size = 3}. They affect the appearance of the polygons used to render
 #'   the map (for example fill color, line color, line thickness, etc.). If any of
 #'   \code{color}/\code{colour}, \code{fill}, or \code{size} are not specified they
-#'   are set to their default values of \code{colour="black"}, \code{fill="white"},
+#'   are set to their default values of \code{color="black"}, \code{fill="white"},
 #'   and \code{size=0.4}.
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object that contains a basic
@@ -77,7 +77,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 
   # set geom_polygon defaults
   if (is.null(geom_args[["colour"]]) & is.null(geom_args[["color"]])) {
-    geom_args[["colour"]] <- "black"
+    geom_args[["color"]] <- "black"
   }
 
   if (is.null(geom_args[["size"]])) {
@@ -128,14 +128,14 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
         ggplot2::aes(x = centroid_labels$x,
                      y = centroid_labels$y,
                      label = sub(" County", "", centroid_labels$county)),
-        colour = label_color)
+        color = label_color)
     } else {
       label_layer <- ggplot2::geom_text(
         data = centroid_labels,
         ggplot2::aes(x = centroid_labels$x,
                      y = centroid_labels$y,
                      label = centroid_labels$abbr),
-        colour = label_color)
+        color = label_color)
     }
   } else {
     label_layer <- ggplot2::geom_blank()
@@ -157,20 +157,20 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 #'
 #' @keywords internal
 theme_map <- function(base_size = 9, base_family = "") {
-  elementBlank = ggplot2::element_blank()
+  element_blank = ggplot2::element_blank()
  `%+replace%` <- ggplot2::`%+replace%`
   unit <- ggplot2::unit
 
   ggplot2::theme_bw(base_size = base_size, base_family = base_family) %+replace%
-    ggplot2::theme(axis.line = elementBlank,
-                   axis.text = elementBlank,
-                   axis.ticks = elementBlank,
-                   axis.title = elementBlank,
-                   panel.background = elementBlank,
-                   panel.border = elementBlank,
-                   panel.grid = elementBlank,
+    ggplot2::theme(axis.line = element_blank,
+                   axis.text = element_blank,
+                   axis.ticks = element_blank,
+                   axis.title = element_blank,
+                   panel.background = element_blank,
+                   panel.border = element_blank,
+                   panel.grid = element_blank,
                    panel.spacing = unit(0, "lines"),
-                   plot.background = elementBlank,
+                   plot.background = element_blank,
                    legend.justification = c(0, 0),
                    legend.position = c(0, 0))
 }

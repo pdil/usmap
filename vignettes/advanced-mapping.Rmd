@@ -48,7 +48,7 @@ Parameters used by the map's aesthetic mapping (`ggplot2::aes`) can be passed di
 usmap::plot_usmap("counties",
                   include = c("MA", "CT", "RI"),
                   labels = TRUE, label_color = "blue",
-                  fill = "yellow", alpha = 0.25, colour = "orange", size = 2)
+                  fill = "yellow", alpha = 0.25, color = "orange", size = 2)
 ```
 
 Notice in this case we set the `fill` and `alpha` parameters to fill in the counties with a semi-transparent yellow color.

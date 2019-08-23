@@ -8,7 +8,7 @@ example_data <- data.frame(
 )
 
 p <- plot_usmap("counties", fill = "red")
-q <- plot_usmap(data = statepop, values = "pop_2015", colour = "blue")
+q <- plot_usmap(data = statepop, values = "pop_2015", color = "blue")
 r <- plot_usmap(data = example_data, size = 0.8)
 s <- plot_usmap(include = c("AL", "FL", "GA"), labels = TRUE, label_color = "blue")
 t <- plot_usmap("counties", include = "AZ", labels = TRUE, fill = "yellow", size = 0.6)

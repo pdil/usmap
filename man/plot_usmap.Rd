@@ -44,7 +44,7 @@ is \code{\link[ggthemes]{theme_map}}.}
 by default. For now, labels only work for state maps.
 County labels may be added in the future.}
 
-\item{label_color}{The color of the labels to display. Corresponds to the \code{colour}
+\item{label_color}{The color of the labels to display. Corresponds to the \code{color}
 option in the \code{\link[ggplot2]{aes}} mapping. The default is \code{"black"}.
 \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{Click here}
 for more color options.}
@@ -54,7 +54,7 @@ often aesthetics, used to set an aesthetic to a fixed value, like \code{color = 
 or \code{size = 3}. They affect the appearance of the polygons used to render
 the map (for example fill color, line color, line thickness, etc.). If any of
 \code{color}/\code{colour}, \code{fill}, or \code{size} are not specified they
-are set to their default values of \code{colour="black"}, \code{fill="white"},
+are set to their default values of \code{color="black"}, \code{fill="white"},
 and \code{size=0.4}.}
 }
 \value{
