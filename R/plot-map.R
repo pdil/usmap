@@ -122,6 +122,14 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
           centroid_labels$fips %in% include, ]
     }
 
+    if (length(exclude) > 0) {
+      centroid_labels <- centroid_labels[!(
+        centroid_labels$full %in% exclude |
+          centroid_labels$abbr %in% exclude |
+          centroid_labels$fips %in% exclude |
+          substr(centroid_labels$fips, 1, 2) %in% exclude), ]
+    }
+
     if (regions_ == "county" | regions_ == "counties") {
       label_layer <- ggplot2::geom_text(
         data = centroid_labels,

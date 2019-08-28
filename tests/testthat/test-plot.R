@@ -12,6 +12,7 @@ q <- plot_usmap(data = statepop, values = "pop_2015", color = "blue")
 r <- plot_usmap(data = example_data, size = 0.8)
 s <- plot_usmap(include = c("AL", "FL", "GA"), labels = TRUE, label_color = "blue")
 t <- plot_usmap("counties", include = "AZ", labels = TRUE, fill = "yellow", size = 0.6)
+u <- plot_usmap(include = .new_england, exclude = "ME", labels = TRUE)
 
 test_that("ggplot object is returned", {
   expect_is(p, "ggplot")
@@ -19,6 +20,7 @@ test_that("ggplot object is returned", {
   expect_is(r, "ggplot")
   expect_is(s, "ggplot")
   expect_is(t, "ggplot")
+  expect_is(u, "ggplot")
 })
 
 test_that("correct data is used", {
@@ -36,6 +38,9 @@ test_that("correct data is used", {
 
   t_map_data <- us_map(regions = "counties", include = "AZ")
   expect_identical(t$data, t_map_data)
+
+  u_map_data <- us_map(include = .new_england, exclude = "ME")
+  expect_identical(u$data, u_map_data)
 })
 
 test_that("layer parameters are correct", {
@@ -88,6 +93,18 @@ test_that("layer parameters are correct", {
   expect_equal(deparse(t$layers[[2]]$mapping$y), "~centroid_labels$y")
   expect_equal(deparse(t$layers[[2]]$mapping$label),
                "~sub(\" County\", \"\", centroid_labels$county)")
+
+  expect_is(u$layers[[1]], "ggproto")
+  expect_equal(deparse(u$layers[[1]]$mapping$x), "~map_df$long")
+  expect_equal(deparse(u$layers[[1]]$mapping$y), "~map_df$lat")
+  expect_equal(deparse(u$layers[[1]]$mapping$group), "~map_df$group")
+  expect_equal(as.character(u$layers[[1]]$aes_params$fill), "white")
+  expect_equal(as.character(u$layers[[1]]$aes_params$colour), "black")
+  expect_equal(u$layers[[1]]$aes_params$size, 0.4)
+  expect_is(u$layers[[2]], "ggproto")
+  expect_equal(deparse(u$layers[[2]]$mapping$x), "~centroid_labels$x")
+  expect_equal(deparse(u$layers[[2]]$mapping$y), "~centroid_labels$y")
+  expect_equal(deparse(u$layers[[2]]$mapping$label), "~centroid_labels$abbr")
 })
 
 test_that("singular regions can be used", {
