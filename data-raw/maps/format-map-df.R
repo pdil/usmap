@@ -13,7 +13,7 @@ merged_states_df <- merge(states_map_df, states_fips,
 final_states_df <- merged_states_df[, c("long", "lat", "order", "hole", "piece",
                                         "group", "id", "abbr", "full")]
 
-colnames(final_states_df) <- c("long", "lat", "order", "hole", "piece",
+colnames(final_states_df) <- c("x", "y", "order", "hole", "piece",
                                "group", "fips", "abbr", "full")
 
 write.csv(final_states_df, file = "us_states.csv", row.names = FALSE, na = "")
@@ -55,7 +55,7 @@ sorted_counties_df <- merged_counties_df[order(
 final_counties_df <- sorted_counties_df[, c("long", "lat", "order", "hole", "piece",
                                             "group", "id", "abbr", "full", "county")]
 
-colnames(final_counties_df) <- c("long", "lat", "order", "hole", "piece",
+colnames(final_counties_df) <- c("x", "y", "order", "hole", "piece",
                                  "group", "fips", "abbr", "full", "county")
 
 write.csv(final_counties_df, file = "us_counties.csv", row.names = FALSE, na = "")

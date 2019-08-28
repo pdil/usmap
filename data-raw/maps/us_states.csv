@@ -1,4 +1,4 @@
-"long","lat","order","hole","piece","group","fips","abbr","full"
+"x","y","order","hole","piece","group","fips","abbr","full"
 1091778.85322839,-1380694.98298214,1,FALSE,1,"01.1","01","AL","Alabama"
 1091267.95498953,-1376372.37580687,2,FALSE,1,"01.1","01","AL","Alabama"
 1091139.9450531,-1362997.83724386,3,FALSE,1,"01.1","01","AL","Alabama"

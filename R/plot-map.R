@@ -94,10 +94,12 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
   # create polygon layer
   if (nrow(data) == 0) {
     map_df <- us_map(regions = regions_, include = include, exclude = exclude)
-    geom_args[["mapping"]] <- ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group)
+    geom_args[["mapping"]] <- ggplot2::aes(x = map_df$x, y = map_df$y,
+                                           group = map_df$group)
   } else {
     map_df <- map_with_data(data, values = values, include = include, exclude = exclude)
-    geom_args[["mapping"]] <- ggplot2::aes(x = map_df$long, y = map_df$lat, group = map_df$group, fill = map_df[, values])
+    geom_args[["mapping"]] <- ggplot2::aes(x = map_df$x, y = map_df$y,
+                                           group = map_df$group, fill = map_df[, values])
   }
 
   polygon_layer <- do.call(ggplot2::geom_polygon, geom_args)
