@@ -1,27 +1,22 @@
-# Setup
+# Platform
 
-## Platform
-
-|setting  |value                        |
+|field    |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.5.1 (2018-07-02) |
+|version  |R version 3.6.1 (2019-07-05) |
+|os       |macOS Catalina 10.15         |
 |system   |x86_64, darwin15.6.0         |
-|ui       |RStudio (1.1.456)            |
+|ui       |RStudio                      |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
+|ctype    |en_US.UTF-8                  |
 |tz       |America/New_York             |
-|date     |2018-09-15                   |
+|date     |2019-08-28                   |
 
-## Packages
+# Dependencies
 
-|package |*  |version    |date       |source                |
-|:-------|:--|:----------|:----------|:---------------------|
-|usmap   |*  |0.3.0.9999 |2018-09-15 |local (pdil/usmap@NA) |
+|package |old   |new        |Δ  |
+|:-------|:-----|:----------|:--|
+|usmap   |0.4.0 |0.4.0.9999 |*  |
 
-# Check results
-
-0 packages
-
-
-
+# Revdeps
 
