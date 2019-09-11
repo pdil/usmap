@@ -10,13 +10,13 @@
 |collate  |en_US.UTF-8                  |
 |ctype    |en_US.UTF-8                  |
 |tz       |America/New_York             |
-|date     |2019-08-28                   |
+|date     |2019-09-11                   |
 
 # Dependencies
 
-|package |old   |new        |Δ  |
-|:-------|:-----|:----------|:--|
-|usmap   |0.4.0 |0.4.0.9999 |*  |
+|package |old   |new   |Δ  |
+|:-------|:-----|:-----|:--|
+|usmap   |0.4.0 |0.5.0 |*  |
 
 # Revdeps
 

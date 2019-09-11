@@ -1,5 +1,5 @@
 Package: usmap
-Version: 0.4.0.9999
+Version: 0.5.0
 Title: US Maps Including Alaska and Hawaii
 Description: Obtain United States map data frames of varying region types (e.g. county, 
     state). The map data frames include Alaska and Hawaii conveniently placed to the
@@ -21,7 +21,7 @@ RemoteType: local
 RemoteUrl: /Users/paolo/Library/CloudStorage/iCloud
         Drive/Documents/github/usmap
 NeedsCompilation: no
-Packaged: 2019-08-28 22:02:58 UTC; paolo
+Packaged: 2019-09-11 23:36:39 UTC; paolo
 Author: Paolo Di Lorenzo [aut, cre]
 Maintainer: Paolo Di Lorenzo <paolo@dilorenzo.pl>
-Built: R 3.6.1; ; 2019-08-28 22:02:59 UTC; unix
+Built: R 3.6.1; ; 2019-09-11 23:36:42 UTC; unix

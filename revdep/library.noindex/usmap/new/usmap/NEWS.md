@@ -1,4 +1,4 @@
-# usmap 0.4.0.9999
+# usmap 0.5.0
 
 ### New Features
 * Ability to include county name labels on county maps, see [Issue #14](https://github.com/pdil/usmap/issues/14).

@@ -1,5 +1,5 @@
 Library: /Users/paolo/Library/CloudStorage/iCloud Drive/Documents/github/usmap/revdep/library.noindex/usmap/new
-usmap (0.4.0.9999)
+usmap (0.5.0)
 
 Library: /Users/paolo/Library/CloudStorage/iCloud Drive/Documents/github/usmap/revdep/library.noindex/refuge
 askpass      (1.1)

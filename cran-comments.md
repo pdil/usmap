@@ -1,6 +1,6 @@
 ## Test environments
-* local OS X install, R 3.5.1
-* ubuntu 14.04 (on travis-ci), R 3.5.0
+* local OS X install, R 3.6.1
+* ubuntu 14.04 (on travis-ci), R 3.6.1
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -12,12 +12,15 @@ which are vital to the function of this package. The data
 is unlikely to change often (at most once per year). 
 Here is the ```R CMD check``` output:
 ```
-checking installed package size ... NOTE
-  installed size is  7.0Mb
-  sub-directories of 1Mb or more:
-    extdata   6.2Mb
+❯ checking installed package size ... NOTE
+    installed size is  8.4Mb
+    sub-directories of 1Mb or more:
+      doc       1.6Mb
+      extdata   6.4Mb
 ```
 
-## Reverse dependencies
+## Downstream dependencies
 
-There are no reverse dependencies.
+I have also run R CMD check on downstream dependencies of usmap:
+
+* refuge

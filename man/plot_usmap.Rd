@@ -38,7 +38,7 @@ the value of the `values` parameter.}
 with a given region. The default is \code{"value"}.}
 
 \item{theme}{The theme that should be used for plotting the map. The default
-is \code{\link[ggthemes]{theme_map}}.}
+is \code{theme_map} from \href{https://github.com/jrnold/ggthemes}{ggthemes}.}
 
 \item{labels}{Whether or not to display labels on the map. Labels are not displayed
 by default. For now, labels only work for state maps.

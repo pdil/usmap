@@ -1,3 +1,4 @@
+^\.github$
 ^\.travis\.yml$
 ^\.codecov\.yml$
 ^usmap\.Rproj$
@@ -7,3 +8,5 @@
 ^cran-comments\.md$
 ^revdep$
 ^resources$
+^doc$
+^Meta$
