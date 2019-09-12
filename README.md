@@ -6,7 +6,7 @@
 <details>
   <summary>View code used to generate these plots</summary>
   
-  [resources/examples.R](resources/examples.R)
+  [resources/examples.R](https://github.com/pdil/usmap/blob/master/resources/examples.R)
   
   ``` r
   library(usmap)

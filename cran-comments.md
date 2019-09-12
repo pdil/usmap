@@ -1,3 +1,8 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Fixed resoures/examples.R URI in README.
+
 ## Test environments
 * local OS X install, R 3.6.1
 * ubuntu 14.04 (on travis-ci), R 3.6.1
@@ -13,7 +18,7 @@ is unlikely to change often (at most once per year).
 Here is the ```R CMD check``` output:
 ```
 ❯ checking installed package size ... NOTE
-    installed size is  8.4Mb
+    installed size is  8.3Mb
     sub-directories of 1Mb or more:
       doc       1.6Mb
       extdata   6.4Mb
