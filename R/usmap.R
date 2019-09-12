@@ -3,7 +3,7 @@
 #' @description
 #' It is usually difficult or inconvenient to create US maps that
 #'   include both Alaska and Hawaii in a convenient spot. All map
-#'   data frames produced by this package use the Alber's Equal Area
+#'   data frames produced by this package use the Albers Equal Area
 #'   projection.
 #'
 #' @section Map data frames:

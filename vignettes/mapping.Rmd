@@ -118,7 +118,7 @@ usmap::plot_usmap("counties", fill = "yellow", alpha = 0.25,
                   exclude = c(.east_south_central, "12", "48141"))
 ```
 
-These parameters therefore allow for the posibility of some complex compositions of states and counties, to create the exact map that is desired.
+These parameters therefore allow for the possibility of some complex compositions of states and counties, to create the exact map that is desired.
 
 #### Supported US Census Regions and Divisions
 
