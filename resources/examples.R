@@ -80,3 +80,17 @@ cowplot::plot_grid(
 
 # Save plots ####
 ggsave("resources/example-plots.png", width = 18, height = 15, units = "in")
+
+# Combine plots for Github social media preview image ####
+cowplot::plot_grid(
+  blank_county_map,
+  midwest_pop_map,
+  county_pov_map,
+  ak_blank_county_map,
+  state_pop_map_labeled,
+  south_pov_map,
+  nrow = 2
+)
+
+ggsave("resources/github-preview.png", width = 20, height = 10, units = "in")
+# NOTE: scale image to 1280x640 before adding to Github profile
