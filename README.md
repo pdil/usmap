@@ -3,61 +3,7 @@
 
 <p align="center"><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-plots.png" /></p>
 
-<details>
-  <summary>View code used to generate these plots</summary>
-  
-  [resources/examples.R](https://github.com/pdil/usmap/blob/master/resources/examples.R)
-  
-  ``` r
-  library(usmap)
-  library(ggplot2)
-
-  # Blank state map ####
-  blank_state_map <- plot_usmap()
-
-  # Blank county map ####
-  blank_county_map <- plot_usmap("counties")
-
-  # Population by state ####
-  state_pop_map <-
-    plot_usmap(data = statepop, values = "pop_2015") +
-    scale_fill_continuous(low = "white", high = "red", guide = FALSE) +
-    scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
-
-  # Population by state with labels ####
-  state_pop_map_labeled <-
-    plot_usmap(data = statepop, values = "pop_2015", labels = TRUE) +
-    scale_fill_continuous(low = "white", high = "red", guide = FALSE) +
-    scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
-
-  # Population by county ####
-  county_pop_map <-
-    plot_usmap(data = countypop, values = "pop_2015") +
-    scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE) +
-    scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
-
-  # Poverty percentage by county ####
-  county_pov_map <-
-    plot_usmap(data = countypov, values = "pct_pov_2014") +
-    scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE) +
-    scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
-
-
-  # Combine plots ####
-  cowplot::plot_grid(
-    blank_state_map,
-    state_pop_map,
-    state_pop_map_labeled,
-    blank_county_map,
-    county_pop_map,
-    county_pov_map,
-    nrow = 2
-  )
-
-  # Save plots ####
-  ggsave("resources/example_plots.png", width = 18, height = 10, units = "in")
-  ```
-</details>
+View code used to generate these plots: [resources/examples.R](https://github.com/pdil/usmap/blob/master/resources/examples.R)
 
 ## Purpose
 Typically in R it is difficult to create nice US [choropleths](https://en.wikipedia.org/wiki/Choropleth_map) that include Alaska and Hawaii. The functions presented here attempt to elegantly solve this problem by manually moving these states to a new location and providing a fortified data frame for mapping and visualization. This allows the user to easily add data to color the map.
