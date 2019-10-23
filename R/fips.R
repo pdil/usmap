@@ -133,7 +133,7 @@ fips_info.numeric <- function(fips) {
     stop("Invalid FIPS code(s), must be either 2 digit (states) or 5 digit (counties), but not both.")
   }
 
-  getFipsInfo(fips_)
+  get_fips_info(fips_)
 }
 
 #' @rdname fips_info
@@ -147,13 +147,13 @@ fips_info.character <- function(fips) {
     stop("Invalid FIPS code, must be either 2 digit (states) or 5 digit (counties), but not both.")
   }
 
-  getFipsInfo(fips_)
+  get_fips_info(fips_)
 }
 
 #' Gets FIPS info for either states or counties depending on input.
 #' Helper function for S3 method \code{fips_info}.
 #' @keywords internal
-getFipsInfo <- function(fips) {
+get_fips_info <- function(fips) {
   if (all(nchar(fips) == 2)) {
     df <- utils::read.csv(
       system.file("extdata", "state_fips.csv", package = "usmap"),
