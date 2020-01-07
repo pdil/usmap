@@ -151,6 +151,26 @@ plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_eng
 ```
 <p align="center"><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-mountain-states.png" width="33%" /><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-florida-counties.png" width="33%" /><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-new-england-counties.png" width="33%" /></p>
 
+## Additional Information
+
+### Projection
+`usmap` uses an [Albers equal-area conic projection](https://en.wikipedia.org/wiki/Albers_projection), with arguments as follows:
+```r
+usmap::usmap_crs()
+#> CRS arguments:
+#>     +proj=laea +lat_0=45 +lon_0=-100 +x_0=0
+#>     +y_0=0 +a=6370997 +b=6370997 +units=m
+#>     +no_defs 
+```
+
+To obtain the projection used by `usmap`, use `usmap_crs()`.
+
+Alternatively, the CRS ([coordinate reference system](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf)) can be created manually with the following command:
+```r
+sp::CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0
+         +a=6370997 +b=6370997 +units=m +no_defs")
+```
+
 ## Acknowledgements
 The code used to generate the map files was based on this blog post by [Bob Rudis](https://github.com/hrbrmstr):    
 [Moving The Earth (well, Alaska & Hawaii) With R](https://rud.is/b/2014/11/16/moving-the-earth-well-alaska-hawaii-with-r/)
