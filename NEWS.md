@@ -1,7 +1,8 @@
 # usmap 0.5.0.9999
 * New website for the package: https://usmap.dev
   * Lightweight landing page containing useful information, links, and examples of usmap usage.
-
+* `state` can now be omitted when using `fips()`. In this case, all available FIPS codes are returned, sorted by state abbreviation, see [Issue #28](https://github.com/pdil/usmap/issues/28).
+* `fips` can now be omitted when using `fips_info()`. In this case, all available states are returned, sorted by state abbreviation, see [Issue #28](https://github.com/pdil/usmap/issues/28).
 
 # usmap 0.5.0
 Released Friday, September 13, 2019.

@@ -34,7 +34,13 @@
 #' for the given county is returned. If the county is invalid for the given state,
 #' an error is thrown.
 #'
+#' If both `state` and `county` are omitted, the entire list of available FIPS
+#' codes is returned, sorted by the state's abbreviation (e.g. Alaska (AK) comes
+#' before Alabama (AL)).
+#'
 #' @examples
+#' fips()
+#'
 #' fips("NJ")
 #' fips("California")
 #'
@@ -45,8 +51,9 @@
 #' fips(state = "Alabama", county = "Autauga County")
 #' @export
 fips <- function(state, county = c()) {
-  if (missing(state)) {
-    stop("`state` must be specified. Use full name (e.g. \"Alabama\") or two-letter abbreviation (e.g. \"AL\").")
+  if (missing(state) & missing(county)) {
+    df <- utils::read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
+    return(sprintf("%02d", df$fips))
   }
 
   state_ <- tolower(state)
@@ -108,6 +115,9 @@ fips <- function(state, county = c()) {
 #' @return A data frame with the states or counties and the associated
 #'  FIPS codes.
 #'
+#'  If `fips` is omitted, the data frame containing all available states is
+#'  returned.
+#'
 #' @examples
 #' fips_info(2)
 #' fips_info("2")
@@ -119,7 +129,11 @@ fips <- function(state, county = c()) {
 #' @rdname fips_info
 #' @export
 fips_info <- function(fips) {
-  UseMethod("fips_info", fips)
+  if (missing(fips)) {
+    fips_info.character(usmap::fips())
+  } else {
+    UseMethod("fips_info", fips)
+  }
 }
 
 #' @rdname fips_info

@@ -1,5 +1,9 @@
 context("Retrieving FIPS code info")
 
+test_that("all states returned when no FIPS specified", {
+  expect_equal(fips_info()$fips, fips())
+})
+
 test_that("returns correct state FIPS information", {
   ak_result <- data.frame(
     abbr = c("AK", "NJ"),

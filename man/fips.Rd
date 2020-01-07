@@ -25,6 +25,10 @@ is returned. If any states are not found or are invalid, `NA` is returned in the
 If a state and county are entered, a single value with the FIPS code
 for the given county is returned. If the county is invalid for the given state,
 an error is thrown.
+
+If both `state` and `county` are omitted, the entire list of available FIPS
+codes is returned, sorted by the state's abbreviation (e.g. Alaska (AK) comes
+before Alabama (AL)).
 }
 \description{
 Each US state and county has a unique FIPS
@@ -46,6 +50,8 @@ A \code{state} must be included when searching for \code{county},
  otherwise multiple results may be returned for duplicate county names.
 }
 \examples{
+fips()
+
 fips("NJ")
 fips("California")
 

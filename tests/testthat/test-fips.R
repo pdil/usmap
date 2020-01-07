@@ -1,5 +1,16 @@
 context("Retrieving FIPS codes")
 
+test_that("all FIPS codes returned when no state specified", {
+  expect_equal(fips(),
+               c("02", "01", "05", "04", "06", "08", "09", "11",
+                 "10", "12", "13", "15", "19", "16", "17", "18",
+                 "20", "21", "22", "25", "24", "23", "26", "27",
+                 "29", "28", "30", "31", "37", "33", "38", "34",
+                 "35", "32", "36", "39", "40", "41", "42", "44",
+                 "45", "46", "47", "48", "49", "51", "50", "53",
+                 "55", "54", "56"))
+})
+
 test_that("returns correct FIPS code for state", {
   expect_equal(fips(state = "nj"), "34")
   expect_equal(fips(state = "NJ"), "34")
