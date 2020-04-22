@@ -1,7 +1,7 @@
 # ==============================================================================
 # create-map-df.R
 #
-# Plots US states map with Alaska and Hawaii
+# Plots US states map with Alaska and Hawaii and Puerto Rico
 #
 # Based off code found here:
 #   http://www.r-bloggers.com/moving-the-earth-well-alaska-hawaii-with-r/
@@ -44,11 +44,17 @@ create_mapdata <- function(type) {
   hawaii <- elide(hawaii, rotate = -35)
   hawaii <- elide(hawaii, shift = c(5400000, -1400000))
   proj4string(hawaii) <- proj4string(us_aea)
+  
+  # FIPS code for puertorico = 72
+  puertorico <- us_aea[us_aea$STATEFP == "72", ]
+  puertorico <- elide(puertorico, rotate = 0)
+  puertorico <- elide(puertorico, shift = c(-2100000, 10000))
+  proj4string(puertorico) <- proj4string(us_aea)
 
   # keep only US states (i.e. remove territories, minor outlying islands, etc.)
-  # also remove Alaska (02) and Hawaii (15) so that we can add in shifted one
-  us_aea <- us_aea[!us_aea$STATEFP %in% c(as.character(57:80), "02", "15"), ]
-  us_aea <- rbind(us_aea, alaska, hawaii)
+  # also remove Alaska (02) and Hawaii (15) and PuertoRico (72) so that we can add in shifted one
+  us_aea <- us_aea[!us_aea$STATEFP %in% c(as.character(57:80), "02", "15", "72"), ]
+  us_aea <- rbind(us_aea, alaska, hawaii, puertorico)
 
   # reduce shapefile resolution by removing small polygons
   # for more info: http://www.r-bloggers.com/simplifying-polygon-shapefiles-in-r/

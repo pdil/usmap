@@ -50,6 +50,7 @@ VT,50,VERMONT
 WA,53,WASHINGTON
 WI,55,WISCONSIN
 WV,54,WEST VIRGINIA
-WY,56,WYOMING")
+WY,56,WYOMING
+PR,72,PUERTO RICO")
 
 states_fips$full <- tools::toTitleCase(tolower(states_fips$full))
