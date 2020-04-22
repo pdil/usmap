@@ -16,17 +16,17 @@
 #'
 #' @examples
 #' data <- data.frame(
-#'   lon = c(-74.01, -95.36, -118.24, -87.65, -134.42, -157.86),
-#'   lat = c(40.71, 29.76, 34.05, 41.85, 58.30, 21.31),
-#'   pop = c(8398748, 2325502, 3990456, 2705994, 32113, 347397)
+#'   lon = c(-74.01, -95.36, -118.24, -87.65, -134.42, -157.86, -66.104),
+#'   lat = c(40.71, 29.76, 34.05, 41.85, 58.30, 21.31, 18.466),
+#'   pop = c(8398748, 2325502, 3990456, 2705994, 32113, 347397, 347052)
 #' )
 #'
-#' # Transform data
+#' Transform data
 #' transformed_data <- usmap_transform(data)
-#'
-#' # Plot transformed data on map
+#' 
+#' Plot transformed data on map
 #' library(ggplot2)
-#'
+#' 
 #' plot_usmap() + geom_point(
 #'   data = transformed_data,
 #'   aes(x = lon.1, y = lat.1, size = pop),
@@ -143,10 +143,61 @@ usmap_transform.data.frame <- function(data) {
     hawaii <- maptools::elide(hawaii, shift = c(5400000, -1400000))
     sp::proj4string(hawaii) <- sp::proj4string(transformed)
   }
+  
+  
+  ###### BEGIN UPDATE
+  
+  # transform Puerto Rico points
+  
+  # PR': ('Puerto Rico', (-67.2424275377, 17.946553453, -65.5910037909, 18.5206011011)),
+  pr_bbox <- sp::bbox(
+    matrix(
+      c(
+        3757622, # min transformed longitude, LL
+        3203810, # max transformed longitude, UL
+        -2480312, # min transformed latitude, UR
+        -2105640  # max transformed latitude, UL
+      ), ncol = 2
+    )
+  )
+  
+  puertorico <- transformed[
+    transformed@coords[, 1] >= pr_bbox[1, 1] &
+      transformed@coords[, 1] <= pr_bbox[1, 2] &
+      transformed@coords[, 2] >= pr_bbox[2, 1] &
+      transformed@coords[, 2] <= pr_bbox[2, 2],
+    ]
+  
+  if (length(puertorico) > 0) {
+    puertorico <- maptools::elide(
+      puertorico,
+      rotate = 0,
+      bb = pr_bbox
+    )
+    puertorico <- maptools::elide(puertorico, shift = c(-2100000, 10000))
+    sp::proj4string(puertorico) <- sp::proj4string(transformed)
+  }
+  
+  
+  
+  
+  
+  ###### END UPDATE
+  
+  
+  
 
   # combine all points
-  if (length(alaska) > 0 & length(hawaii) > 0) {
+  if (length(alaska) > 0 & length(hawaii) > 0 & length(puertorico) > 0) {
+    combined <- rbind(transformed, alaska, hawaii, puertorico)
+  } else if (length(alaska) > 0 & length(puertorico) > 0) {
+    combined <- rbind(transformed, alaska, puertorico)
+  } else if (length(hawaii) > 0 & length(puertorico) > 0) {
+    combined <- rbind(transformed, hawaii, puertorico)
+  } else if (length(alaska) > 0 & length(hawaii) > 0) {
     combined <- rbind(transformed, alaska, hawaii)
+  } else if (length(puertorico) > 0) {
+    combined <- rbind(transformed, puertorico)
   } else if (length(alaska) > 0) {
     combined <- rbind(transformed, alaska)
   } else if (length(hawaii) > 0) {
