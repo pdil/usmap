@@ -23,13 +23,23 @@ suffix <- "20m"
 map_types <- paste0(prefix, region_types) %>% paste0(., "_", suffix)
 
 create_mapdata <- function(type) {
-  # import map shape file
-  us <- readShapePoly(paste0(type, "/", type, ".shp"),
-                      proj4string = CRS("+proj=longlat +datum=WGS84"))
-  # us <- readOGR(paste0("data-raw/maps/", type, "/"))
 
-  # aea: Albers Equal Area projection
-  us_aea <- spTransform(us, CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +a=6370997 +b=6370997 +units=m +no_defs"))
+  # us_geo <- as_Spatial(us_geo)
+  us_geo <- tigris::states(class = "sf")
+
+  us_geo <- as_Spatial(us_geo)
+  us_aea <- spTransform(us_geo, CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +a=6370997 +b=6370997 +units=m +no_defs"))
+
+
+  # # import map shape file
+  # us <- readShapePoly(paste0(type, "/", type, ".shp"),
+  #                     proj4string = CRS("+proj=longlat +datum=WGS84"))
+  # # us <- readOGR(paste0("data-raw/maps/", type, "/"))
+  #
+  # # aea: Albers Equal Area projection
+  # us_aea <- spTransform(us, CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +a=6370997 +b=6370997 +units=m +no_defs"))
+  #
+
   us_aea@data$id <- rownames(us_aea@data)
 
   # FIPS code for Alaska = 02
@@ -44,7 +54,7 @@ create_mapdata <- function(type) {
   hawaii <- elide(hawaii, rotate = -35)
   hawaii <- elide(hawaii, shift = c(5400000, -1400000))
   proj4string(hawaii) <- proj4string(us_aea)
-  
+
   # FIPS code for puertorico = 72
   puertorico <- us_aea[us_aea$STATEFP == "72", ]
   puertorico <- elide(puertorico, rotate = 0)
@@ -56,23 +66,26 @@ create_mapdata <- function(type) {
   us_aea <- us_aea[!us_aea$STATEFP %in% c(as.character(57:80), "02", "15", "72"), ]
   us_aea <- rbind(us_aea, alaska, hawaii, puertorico)
 
+  # The below shapefiled resolution reduction didn't work when the new shapefile with PR was added
   # reduce shapefile resolution by removing small polygons
   # for more info: http://www.r-bloggers.com/simplifying-polygon-shapefiles-in-r/
-  area <- lapply(us_aea@polygons, function(x) sapply(x@Polygons, function(y) y@area))
-  mainPolys <- lapply(area, function(x) which(x >= 500000000))
-
-  for (i in 1:length(mainPolys)) {
-    if (length(mainPolys[[i]]) >= 1 && mainPolys[[i]][1] >= 1) {
-      us_aea@polygons[[i]]@Polygons <- us_aea@polygons[[i]]@Polygons[mainPolys[[i]]]
-      us_aea@polygons[[i]]@plotOrder <- 1:length(us_aea@polygons[[i]]@Polygons)
-    }
-  }
+  # area <- lapply(us_aea@polygons, function(x) sapply(x@Polygons, function(y) y@area))
+  # mainPolys <- lapply(area, function(x) which(x >= 500000000))
+  #
+  # for (i in 1:length(mainPolys)) {
+  #   if (length(mainPolys[[i]]) >= 1 && mainPolys[[i]][1] >= 1) {
+  #     us_aea@polygons[[i]]@Polygons <- us_aea@polygons[[i]]@Polygons[mainPolys[[i]]]
+  #     us_aea@polygons[[i]]@plotOrder <- 1:length(us_aea@polygons[[i]]@Polygons)
+  #   }
+  # }
 
   # plot map
   map <- ggplot2::fortify(us_aea, region = "GEOID")  # convert map to ggplot-friendly data frame
 
   # export csv file
   write.csv(map, file = paste0(type, ".csv"), row.names = FALSE, na = "")
+
+  write.csv(map, file = paste0("us_states_raw_PR", ".csv"), row.names = FALSE, na = "")
 
   # determine centroids
   centroids <- centroid(us_aea)
