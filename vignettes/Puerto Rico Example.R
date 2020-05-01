@@ -24,9 +24,6 @@ plot_usmap() + geom_point(
 
 #########
 
-plot_usmap(include = c("HI", "GA", "FL", "PR"))
+# This is a bit imprecise of a rendering
+plot_usmap(include = c("PR"))
 
-
-centroid_labels <- utils::read.csv(system.file("extdata", paste0("us_", "PR", "_centroids.csv"), package = "usmap"),
-                                   colClasses = centroidLabelsColClasses,
-                                   stringsAsFactors = FALSE)
