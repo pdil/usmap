@@ -2,8 +2,6 @@ library(devtools)
 install_github("dcaud/usmap")
 library(usmap)
 
-
-
 # notice new last data points for San Juan, Puerto Rico
 data <- data.frame(
   lon = c(-74.01, -95.36, -118.24, -87.65, -134.42, -157.86, -66.104),
