@@ -8,7 +8,7 @@ write.csv(states_fips, file = "state_fips.csv", row.names = FALSE, na = "")
 # Merge state FIPS with map ####
 states_map_df <- readr::read_csv("us_states_raw.csv") # old w/o PR
 library(readr)
-pr_states_map_df <- readr::read_csv("us_states_raw_with_PR.csv",
+pr_states_map_df <- readr::read_csv("us_states_raw_PR.csv",
                                     col_types =
                                     cols(
                                       long = col_double(),
@@ -19,7 +19,6 @@ pr_states_map_df <- readr::read_csv("us_states_raw_with_PR.csv",
                                       id = col_character(),
                                       group = col_character()
                                     )) # new w/ PR
-pr_states_map_df$id <- "72"
 
 states_map_df <- bind_rows(states_map_df, pr_states_map_df)
 

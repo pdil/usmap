@@ -27,7 +27,7 @@ create_mapdata <- function(type) {
   # us_geo <- as_Spatial(us_geo)
   us_geo <- tigris::states(class = "sf")
 
-  us_geo <- as_Spatial(us_geo)
+  us_geo <- sf::as_Spatial(us_geo)
   us_aea <- spTransform(us_geo, CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +a=6370997 +b=6370997 +units=m +no_defs"))
 
 
@@ -82,10 +82,17 @@ create_mapdata <- function(type) {
   # plot map
   map <- ggplot2::fortify(us_aea, region = "GEOID")  # convert map to ggplot-friendly data frame
 
+
+  #check PR
+  # pr <- map %>% filter( id == "72")
+  # plot(pr)
   # export csv file
+
   write.csv(map, file = paste0(type, ".csv"), row.names = FALSE, na = "")
 
-  write.csv(map, file = paste0("us_states_raw_PR", ".csv"), row.names = FALSE, na = "")
+  pr <- map %>% filter( id == "72")
+
+  write.csv(pr, file = paste0("us_states_raw_PR", ".csv"), row.names = FALSE, na = "")
 
   # determine centroids
   centroids <- centroid(us_aea)
