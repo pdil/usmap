@@ -1,3 +1,10 @@
+library(devtools)
+install_github("dcaud/usmap")
+library(usmap)
+
+
+
+# notice new last data points for San Juan, Puerto Rico
 data <- data.frame(
   lon = c(-74.01, -95.36, -118.24, -87.65, -134.42, -157.86, -66.104),
   lat = c(40.71, 29.76, 34.05, 41.85, 58.30, 21.31, 18.466),
@@ -15,7 +22,6 @@ plot_usmap() + geom_point(
   aes(x = lon.1, y = lat.1, size = pop),
   color = "red", alpha = 0.5
 )
-
 
 
 #########
