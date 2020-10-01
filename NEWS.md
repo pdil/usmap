@@ -3,6 +3,7 @@
   * Lightweight landing page containing useful information, links, and examples of usmap usage.
 * `state` can now be omitted when using `fips()`. In this case, all available FIPS codes are returned, sorted by state abbreviation, see [Issue #28](https://github.com/pdil/usmap/issues/28).
 * `fips` can now be omitted when using `fips_info()`. In this case, all available states are returned, sorted by state abbreviation, see [Issue #28](https://github.com/pdil/usmap/issues/28).
+* Fix duplicate coordinates from being removed during `usmap_transform` (if value columns differ), see [Issue #32](https://github.com/pdil/usmap/issues/32).
 * Prevent [warnings introduced by `ggplot2` v3.3.0](https://github.com/tidyverse/ggplot2/pull/3346), see [Issue #35](https://github.com/pdil/usmap/issues/35).
 
 # usmap 0.5.0

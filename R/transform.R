@@ -156,7 +156,7 @@ usmap_transform.data.frame <- function(data) {
   }
 
   result <- as.data.frame(
-    combined[!duplicated(combined@data[, c(1, 2)], fromLast = TRUE), ]
+    combined[!duplicated(combined@data, fromLast = TRUE), ]
   )
   row.names(result) <- NULL
 
