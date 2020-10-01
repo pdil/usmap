@@ -16,6 +16,7 @@ BugReports: https://github.com/pdil/usmap/issues
 Imports:
     utils
 Suggests:
+    covr,
     ggplot2,
     ggrepel,
     knitr,
