@@ -1,5 +1,4 @@
 language: R
-dist: trusty
 
 addons:
   apt:
