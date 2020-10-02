@@ -5,6 +5,7 @@
 * `fips` can now be omitted when using `fips_info()`. In this case, all available states are returned, sorted by state abbreviation, see [Issue #28](https://github.com/pdil/usmap/issues/28).
 * Fix duplicate coordinates from being removed during `usmap_transform` (if value columns differ), see [Issue #32](https://github.com/pdil/usmap/issues/32).
 * Prevent [warnings introduced by `ggplot2` v3.3.0](https://github.com/tidyverse/ggplot2/pull/3346), see [Issue #35](https://github.com/pdil/usmap/issues/35).
+* Set minimum R version to 3.5.0. Versions lower than this do not support the latest version of the `rgdal` package.
 
 # usmap 0.5.0
 Released Friday, September 13, 2019.
