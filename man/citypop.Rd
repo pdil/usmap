@@ -4,7 +4,9 @@
 \name{citypop}
 \alias{citypop}
 \title{Most populous city in each state (2010)}
-\format{A data frame with 51 rows and 5 variables.}
+\format{
+A data frame with 51 rows and 5 variables.
+}
 \usage{
 data(citypop)
 }

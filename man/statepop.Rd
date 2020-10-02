@@ -4,7 +4,9 @@
 \name{statepop}
 \alias{statepop}
 \title{Population estimates (2015), state level}
-\format{A data frame with 51 rows and 4 variables.}
+\format{
+A data frame with 51 rows and 4 variables.
+}
 \usage{
 data(statepop)
 }

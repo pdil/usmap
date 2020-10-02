@@ -4,7 +4,9 @@
 \name{earthquakes}
 \alias{earthquakes}
 \title{Earthquakes (2019)}
-\format{A data frame with 2254 rows and 3 variables.}
+\format{
+A data frame with 2254 rows and 3 variables.
+}
 \usage{
 data(earthquakes)
 }

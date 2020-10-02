@@ -4,7 +4,9 @@
 \name{.north_central_region}
 \alias{.north_central_region}
 \title{North-Central census region}
-\format{An object of class \code{character} of length 12.}
+\format{
+An object of class \code{character} of length 12.
+}
 \usage{
 .north_central_region
 }

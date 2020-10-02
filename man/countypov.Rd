@@ -4,7 +4,9 @@
 \name{countypov}
 \alias{countypov}
 \title{Poverty percentage estimates (2014), county level}
-\format{A data frame with 3142 rows and 4 variables.}
+\format{
+A data frame with 3142 rows and 4 variables.
+}
 \usage{
 data(countypov)
 }

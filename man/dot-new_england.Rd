@@ -4,7 +4,9 @@
 \name{.new_england}
 \alias{.new_england}
 \title{New England census division}
-\format{An object of class \code{character} of length 6.}
+\format{
+An object of class \code{character} of length 6.
+}
 \usage{
 .new_england
 }

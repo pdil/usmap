@@ -4,8 +4,7 @@
 \alias{map_with_data}
 \title{Join county or state level data to US map data}
 \usage{
-map_with_data(data, values = "values", include = c(), exclude = c(),
-  na = NA)
+map_with_data(data, values = "values", include = c(), exclude = c(), na = NA)
 }
 \arguments{
 \item{data}{The data that should be joined to a US map. This

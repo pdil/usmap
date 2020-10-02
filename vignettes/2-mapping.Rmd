@@ -1,10 +1,10 @@
 ---
-title: "usmap: Mapping the US"
+title: "2. Mapping the US"
 author: "Paolo Di Lorenzo"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Mapping the US}
+  %\VignetteIndexEntry{2. Mapping the US}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -4,7 +4,9 @@
 \name{.mid_atlantic}
 \alias{.mid_atlantic}
 \title{Mid-Atlantic census division}
-\format{An object of class \code{character} of length 3.}
+\format{
+An object of class \code{character} of length 3.
+}
 \usage{
 .mid_atlantic
 }

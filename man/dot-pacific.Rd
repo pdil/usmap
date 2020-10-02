@@ -4,7 +4,9 @@
 \name{.pacific}
 \alias{.pacific}
 \title{Pacific census division}
-\format{An object of class \code{character} of length 5.}
+\format{
+An object of class \code{character} of length 5.
+}
 \usage{
 .pacific
 }

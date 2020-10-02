@@ -4,7 +4,9 @@
 \name{.east_north_central}
 \alias{.east_north_central}
 \title{East North Central census division}
-\format{An object of class \code{character} of length 5.}
+\format{
+An object of class \code{character} of length 5.
+}
 \usage{
 .east_north_central
 }

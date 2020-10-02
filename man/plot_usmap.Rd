@@ -4,10 +4,17 @@
 \alias{plot_usmap}
 \title{Conveniently plot basic US map}
 \usage{
-plot_usmap(regions = c("states", "state", "counties", "county"),
-  include = c(), exclude = c(), data = data.frame(),
-  values = "values", theme = theme_map(), labels = FALSE,
-  label_color = "black", ...)
+plot_usmap(
+  regions = c("states", "state", "counties", "county"),
+  include = c(),
+  exclude = c(),
+  data = data.frame(),
+  values = "values",
+  theme = theme_map(),
+  labels = FALSE,
+  label_color = "black",
+  ...
+)
 }
 \arguments{
 \item{regions}{The region breakdown for the map, can be one of

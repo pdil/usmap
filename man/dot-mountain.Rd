@@ -4,7 +4,9 @@
 \name{.mountain}
 \alias{.mountain}
 \title{Mountain census division}
-\format{An object of class \code{character} of length 8.}
+\format{
+An object of class \code{character} of length 8.
+}
 \usage{
 .mountain
 }

@@ -4,7 +4,9 @@
 \name{countypop}
 \alias{countypop}
 \title{Population estimates (2015), county level}
-\format{A data frame with 3142 rows and 4 variables.}
+\format{
+A data frame with 3142 rows and 4 variables.
+}
 \usage{
 data(countypop)
 }

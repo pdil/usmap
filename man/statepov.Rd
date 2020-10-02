@@ -4,7 +4,9 @@
 \name{statepov}
 \alias{statepov}
 \title{Poverty percentage estimates (2014), state level}
-\format{A data frame with 51 rows and 4 variables.}
+\format{
+A data frame with 51 rows and 4 variables.
+}
 \usage{
 data(statepov)
 }
