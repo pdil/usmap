@@ -171,6 +171,6 @@ sp::CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0
          +a=6370997 +b=6370997 +units=m +no_defs")
 ```
 
-## Acknowledgements
+## Acknowledgments
 The code used to generate the map files was based on this blog post by [Bob Rudis](https://github.com/hrbrmstr):    
 [Moving The Earth (well, Alaska & Hawaii) With R](https://rud.is/b/2014/11/16/moving-the-earth-well-alaska-hawaii-with-r/)
