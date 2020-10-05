@@ -9,7 +9,7 @@ View code used to generate these plots: [resources/examples.R](https://github.co
 Typically in R it is difficult to create nice US [choropleths](https://en.wikipedia.org/wiki/Choropleth_map) that include Alaska and Hawaii. The functions presented here attempt to elegantly solve this problem by manually moving these states to a new location and providing a fortified data frame for mapping and visualization. This allows the user to easily add data to color the map.
 
 ## Shape Files
-The shape files that we use to plot the maps in R are located in the `data-raw` folder. For more information refer to the [US Census Bureau](https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html). Maps at both the state and county levels are included for convenience (zip code maps may be included in the future).
+The shape files that we use to plot the maps in R are located in the `data-raw` folder. For more information refer to the [US Census Bureau](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html). Maps at both the state and county levels are included for convenience (zip code maps may be included in the future).
 
 ## Installation
 To install from CRAN _(recommended)_, run the following code in an R console:
@@ -165,7 +165,7 @@ usmap::usmap_crs()
 
 To obtain the projection used by `usmap`, use `usmap_crs()`.
 
-Alternatively, the CRS ([coordinate reference system](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf)) can be created manually with the following command:
+Alternatively, the CRS ([coordinate reference system](https://www.nceas.ucsb.edu/sites/default/files/2020-04/OverviewCoordinateReferenceSystems.pdf)) can be created manually with the following command:
 ```r
 sp::CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0
          +a=6370997 +b=6370997 +units=m +no_defs")

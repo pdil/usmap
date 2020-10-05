@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 ## Extending `plot_usmap` with `ggplot2`
 
-The nice thing about `usmap::plot_usmap` is it returns a [ggplot object](http://docs.ggplot2.org/current/) object, which means we can add `ggplot` layers to the plot right out of the box.
+The nice thing about `usmap::plot_usmap` is it returns a [ggplot object](https://ggplot2.tidyverse.org/index.html) object, which means we can add `ggplot` layers to the plot right out of the box.
 
 ```{r, fig.align='center', fig.width=7, message=FALSE, warning=FALSE}
 library(usmap)

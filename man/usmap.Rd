@@ -53,10 +53,10 @@ Blog post. Rud.is., 16 Nov. 2014. Web. 10 Aug. 2015.
 Helpful links:
 \itemize{
   \item FIPS code information \cr
-    \url{http://en.wikipedia.org/wiki/FIPS_county_code}
-    \url{http://en.wikipedia.org/wiki/FIPS_state_code}
+    \url{https://en.wikipedia.org/wiki/FIPS_county_code}
+    \url{https://en.wikipedia.org/wiki/FIPS_state_code}
   \item US Census Shapefiles \cr
-    \url{https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html}
+    \url{https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html}
   \item Map Features \cr
     \url{https://en.wikipedia.org/wiki/Map_projection}
     \url{https://en.wikipedia.org/wiki/Albers_projection}
@@ -67,8 +67,7 @@ Helpful links:
 Paolo Di Lorenzo \cr
 \itemize{
   \item Email: \email{paolo@dilorenzo.pl}
-  \item Website: \url{http://dilorenzo.pl}
-  \item Twitter: \url{http://twitter.com/dilorenzopl}
-  \item Github: \url{http://www.github.com/pdil/}
+  \item Website: \url{https://dilorenzo.pl}
+  \item Github: \url{https://github.com/pdil/}
 }
 }

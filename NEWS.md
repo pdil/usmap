@@ -53,7 +53,7 @@ Released Sunday, September 16, 2018.
 Released Sunday, June 3, 2018.
 
 ### Improvements
-* Update shape files to [2017 versions](https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html).
+* Update shape files to [2017 versions](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2017.html).
 * Improvements to `fips` and `fips_info`:
   * Vectorization support (e.g. enter multiple states in `fips` to receive a vector of corresponding FIPS codes)
   * e.g. `fips(c("AK", "AL"))` or `fips(c("Alaska", "Alabama"))`

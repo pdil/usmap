@@ -1,3 +1,7 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Fixed invalid URLs.
 
 ## Test environments
 * local macOS install, R 4.0.2

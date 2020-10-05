@@ -26,7 +26,7 @@ US earthquakes with a magnitude of 2.5 or greater, occurring in the
 }
 \references{
 \itemize{
-    \item \url{https://earthquake.usgs.gov/earthquakes/}
+    \item \url{https://www.usgs.gov/natural-hazards/earthquake-hazards/earthquakes}
     \item \url{https://earthquake.usgs.gov/earthquakes/search/}
   }
 }

@@ -75,7 +75,7 @@ usmap::fips_info(c("01001", "01003", "01005", "01007"))
 
 #### Further reading
 
-More information about FIPS can be read [here](http://en.wikipedia.org/wiki/Federal_Information_Processing_Standards).
+More information about FIPS can be read [here](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standards).
   
 ---
 
