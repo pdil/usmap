@@ -1,0 +1,105 @@
+
+R version 4.0.2 (2020-06-22) -- "Taking Off Again"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "refuge"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('refuge')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("rfg_all_restrooms")
+> ### * rfg_all_restrooms
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: rfg_all_restrooms
+> ### Title: All refuge restrooms
+> ### Aliases: rfg_all_restrooms
+> 
+> ### ** Examples
+> 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("rfg_date")
+> ### * rfg_date
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: rfg_date
+> ### Title: Bathrooms by dates
+> ### Aliases: rfg_date
+> 
+> ### ** Examples
+> 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("rfg_location")
+> ### * rfg_location
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: rfg_location
+> ### Title: Bathroom locations
+> ### Aliases: rfg_location
+> 
+> ### ** Examples
+> 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("rfg_search")
+> ### * rfg_search
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: rfg_search
+> ### Title: Restroom record search
+> ### Aliases: rfg_search
+> 
+> ### ** Examples
+> 
+> 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.912 0.081 1.461 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')
