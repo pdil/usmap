@@ -1,4 +1,5 @@
 # usmap 0.5.1
+Released Wednesday, October 7, 2020.
 
 * New website for the package: https://usmap.dev
   * Lightweight landing page containing useful information, links, and examples of usmap usage.
