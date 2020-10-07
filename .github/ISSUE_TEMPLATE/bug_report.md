@@ -20,13 +20,17 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Smartphone (please complete the following information):**
- - R version: [e.g. 3.5.0, 3.6.1]
- - `usmap` version: [e.g. 0.2.1, 0.5.0]
+**Environment (please complete the following information):**
  - Platform: [e.g. macOS, Windows, Linux]
+ - `version` output:
+ ```
+ 
+ ```
+ - `sessionInfo()` output:
+ ```
+ 
+ ```
+ 
 
 **Additional context**
 Add any other context about the problem here.
