@@ -9,7 +9,7 @@
 #' @section Map data frames:
 #' Alaska and Hawaii have been manually moved to a new location so that
 #' their new coordinates place them to the bottom-left corner of
-#' the map. These maps can be accessed by using the \code{\link{usmap}} function.
+#' the map. These maps can be accessed by using the \code{\link{us_map}} function.
 #'
 #' The function provides the ability to retrieve maps with either
 #' state borders or county borders using the \code{regions} parameter
