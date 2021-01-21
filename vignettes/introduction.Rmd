@@ -44,7 +44,7 @@ counties_df <- usmap::us_map(regions = "counties")
 
 ## FIPS codes
 
-FIPS codes are defined in the Federal Information Processing Standards by the US government. One usage is uniquely identifying US states and counties (among other things such as identifying countries for the CIA World Factbook). Downloading datasets from the [US Census](http://www.census.gov/data.html) will often include FIPS codes as identifiers so it can be helpful to know what a FIPS code represents. The functions in `usmap` are built around the FIPS code identification system and so convenience methods for accessing them and performing reverse-lookups have been included.
+FIPS codes are defined in the Federal Information Processing Standards by the US government. One usage is uniquely identifying US states and counties (among other things such as identifying countries for the CIA World Factbook). Downloading datasets from the [US Census](https://www.census.gov/data.html) will often include FIPS codes as identifiers so it can be helpful to know what a FIPS code represents. The functions in `usmap` are built around the FIPS code identification system and so convenience methods for accessing them and performing reverse-lookups have been included.
 
 #### State/County FIPS lookup
 

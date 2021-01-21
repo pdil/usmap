@@ -40,11 +40,6 @@ vignette("mapping", package = "usmap")
 vignette("advanced-mapping", package = "usmap")
 ```
 
-You can also read the vignettes online at the following links:
-* [Introduction](https://cran.r-project.org/package=usmap/vignettes/introduction.html)
-* [Mapping the US](https://cran.r-project.org/package=usmap/vignettes/mapping.html)
-* [Advanced Mapping](https://cran.r-project.org/package=usmap/vignettes/advanced-mapping.html)
-
 For further help with this package, open an [issue](https://github.com/pdil/usmap/issues) or ask a question on Stackoverflow with the [usmap tag](https://stackoverflow.com/questions/tagged/usmap).
 
 ## Features

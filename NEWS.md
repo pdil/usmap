@@ -1,5 +1,7 @@
 # usmap 0.5.1.9999
 
+* Update links in documentation.
+
 # usmap 0.5.1
 Released Wednesday, October 7, 2020.
 

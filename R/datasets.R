@@ -19,7 +19,7 @@
 #' @docType data
 #' @references
 #'   \itemize{
-#'     \item \url{http://www.census.gov/programs-surveys/popest.html}
+#'     \item \url{https://www.census.gov/programs-surveys/popest.html}
 #'     \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
 #'   }
 #' @keywords data
@@ -46,7 +46,7 @@
 #' @docType data
 #' @references
 #'   \itemize{
-#'     \item \url{http://www.census.gov/programs-surveys/popest.html}
+#'     \item \url{https://www.census.gov/programs-surveys/popest.html}
 #'     \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
 #'   }
 #' @keywords data

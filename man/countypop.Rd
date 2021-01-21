@@ -25,7 +25,7 @@ US census population estimates by county for 2015. \cr\cr
 }
 \references{
 \itemize{
-    \item \url{http://www.census.gov/programs-surveys/popest.html}
+    \item \url{https://www.census.gov/programs-surveys/popest.html}
     \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
   }
 }
