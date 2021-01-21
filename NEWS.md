@@ -1,4 +1,4 @@
-# usmap 0.5.1.9999
+# usmap 0.5.2
 
 * Update links in documentation.
 
