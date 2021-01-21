@@ -27,4 +27,4 @@ Here is the ```R CMD check``` output:
 
 I have also run R CMD check on downstream dependencies of usmap:
 
-* refuge
+* cpsvote

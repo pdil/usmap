@@ -1,0 +1,251 @@
+
+R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "cpsvote"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('cpsvote')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("cps_download_data")
+> ### * cps_download_data
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cps_download_data
+> ### Title: Download CPS microdata
+> ### Aliases: cps_download_data
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D cps_download_data(path = "cps_docs", years = 2016, overwrite = TRUE)
+> ## End(Not run)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cps_download_docs")
+> ### * cps_download_docs
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cps_download_docs
+> ### Title: Download CPS technical documentation
+> ### Aliases: cps_download_docs
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D cps_download_docs(path = "cps_docs", years = 2016, overwrite = TRUE)
+> ## End(Not run)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cps_label")
+> ### * cps_label
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cps_label
+> ### Title: Apply factor levels to raw CPS data
+> ### Aliases: cps_label
+> 
+> ### ** Examples
+> 
+> cps_label(cps_2016_10k)
+[90m# A tibble: 10,000 x 17[39m
+   FILE   YEAR STATE   AGE SEX   EDUCATION RACE  HISPANIC WEIGHT VRS_VOTE
+   [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<dbl>[39m[23m [3m[90m<fct>[39m[23m   
+[90m 1[39m cps_…  [4m2[24m016 AL       69 FEMA… HIGH SCH… WHIT… NON-HIS…  [4m1[24m328. YES     
+[90m 2[39m cps_…  [4m2[24m016 AL       35 MALE  BACHELOR… WHIT… NON-HIS…  [4m1[24m793. YES     
+[90m 3[39m cps_…  [4m2[24m016 AL       54 FEMA… HIGH SCH… WHIT… NON-HIS…  [4m1[24m757. NO RESP…
+[90m 4[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHIT… NON-HIS…  [4m1[24m628. NO      
+[90m 5[39m cps_…  [4m2[24m016 AL       60 FEMA… SOME COL… WHIT… NON-HIS…  [4m1[24m396. NO RESP…
+[90m 6[39m cps_…  [4m2[24m016 AL       12 FEMA… [31mNA[39m        WHIT… NON-HIS…  [4m1[24m917. [31mNA[39m      
+[90m 7[39m cps_…  [4m2[24m016 AL       65 MALE  HIGH SCH… WHIT… NON-HIS…  [4m1[24m732. NO      
+[90m 8[39m cps_…  [4m2[24m016 AL       43 MALE  SOME COL… WHIT… NON-HIS…  [4m2[24m042. YES     
+[90m 9[39m cps_…  [4m2[24m016 AL       46 MALE  SOME COL… WHIT… HISPANIC  [4m2[24m068. YES     
+[90m10[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHIT… NON-HIS…  [4m1[24m694. NO      
+[90m# … with 9,990 more rows, and 7 more variables: VRS_REG [3m[90m<fct>[90m[23m,[39m
+[90m#   VRS_REG_WHYNOT [3m[90m<fct>[90m[23m, VRS_VOTE_WHYNOT [3m[90m<fct>[90m[23m,[39m
+[90m#   VRS_VOTEMODE_2004toPRESENT [3m[90m<fct>[90m[23m, VRS_VOTEWHEN_2004toPRESENT [3m[90m<fct>[90m[23m,[39m
+[90m#   VRS_REG_METHOD [3m[90m<fct>[90m[23m, VRS_RESIDENCE [3m[90m<fct>[90m[23m[39m
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cps_load_basic")
+> ### * cps_load_basic
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cps_load_basic
+> ### Title: load some basic/default CPS data into the environment
+> ### Aliases: cps_load_basic
+> 
+> ### ** Examples
+> 
+> ## Not run: cps_load-basic(years = 2016, outdir = "data")
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cps_read")
+> ### * cps_read
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cps_read
+> ### Title: Read in CPS data
+> ### Aliases: cps_read
+> 
+> ### ** Examples
+> 
+> ## Not run: cps_read(years = 2016, names_col = "new_name")
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cps_recode_vote")
+> ### * cps_recode_vote
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cps_recode_vote
+> ### Title: recode the voting variable for turnout calculations
+> ### Aliases: cps_recode_vote
+> 
+> ### ** Examples
+> 
+> cps_recode_vote(cps_refactor(cps_label(cps_2016_10k)))
+[90m# A tibble: 10,000 x 20[39m
+   FILE   YEAR STATE   AGE SEX   EDUCATION RACE  HISPANIC WEIGHT VRS_VOTE
+   [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<dbl>[39m[23m [3m[90m<fct>[39m[23m   
+[90m 1[39m cps_…  [4m2[24m016 AL       69 FEMA… HIGH SCH… WHITE NON-HIS…  [4m1[24m328. YES     
+[90m 2[39m cps_…  [4m2[24m016 AL       35 MALE  BACHELOR… WHITE NON-HIS…  [4m1[24m793. YES     
+[90m 3[39m cps_…  [4m2[24m016 AL       54 FEMA… HIGH SCH… WHITE NON-HIS…  [4m1[24m757. NO RESP…
+[90m 4[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m628. NO      
+[90m 5[39m cps_…  [4m2[24m016 AL       60 FEMA… SOME COL… WHITE NON-HIS…  [4m1[24m396. NO RESP…
+[90m 6[39m cps_…  [4m2[24m016 AL       12 FEMA… [31mNA[39m        WHITE NON-HIS…  [4m1[24m917. [31mNA[39m      
+[90m 7[39m cps_…  [4m2[24m016 AL       65 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m732. NO      
+[90m 8[39m cps_…  [4m2[24m016 AL       43 MALE  SOME COL… WHITE NON-HIS…  [4m2[24m042. YES     
+[90m 9[39m cps_…  [4m2[24m016 AL       46 MALE  SOME COL… WHITE HISPANIC  [4m2[24m068. YES     
+[90m10[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m694. NO      
+[90m# … with 9,990 more rows, and 10 more variables: VRS_REG [3m[90m<fct>[90m[23m,[39m
+[90m#   VRS_REG_WHYNOT [3m[90m<fct>[90m[23m, VRS_VOTE_WHYNOT [3m[90m<fct>[90m[23m,[39m
+[90m#   VRS_VOTEMODE_2004toPRESENT [3m[90m<fct>[90m[23m, VRS_VOTEWHEN_2004toPRESENT [3m[90m<fct>[90m[23m,[39m
+[90m#   VRS_REG_METHOD [3m[90m<fct>[90m[23m, VRS_RESIDENCE [3m[90m<fct>[90m[23m, VRS_VOTEMETHOD_CON [3m[90m<fct>[90m[23m,[39m
+[90m#   cps_turnout [3m[90m<fct>[90m[23m, hurachen_turnout [3m[90m<fct>[90m[23m[39m
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cps_refactor")
+> ### * cps_refactor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cps_refactor
+> ### Title: combine factor levels across years
+> ### Aliases: cps_refactor
+> 
+> ### ** Examples
+> 
+> cps_refactor(cps_label(cps_2016_10k))
+[90m# A tibble: 10,000 x 18[39m
+   FILE   YEAR STATE   AGE SEX   EDUCATION RACE  HISPANIC WEIGHT VRS_VOTE
+   [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<dbl>[39m[23m [3m[90m<fct>[39m[23m   
+[90m 1[39m cps_…  [4m2[24m016 AL       69 FEMA… HIGH SCH… WHITE NON-HIS…  [4m1[24m328. YES     
+[90m 2[39m cps_…  [4m2[24m016 AL       35 MALE  BACHELOR… WHITE NON-HIS…  [4m1[24m793. YES     
+[90m 3[39m cps_…  [4m2[24m016 AL       54 FEMA… HIGH SCH… WHITE NON-HIS…  [4m1[24m757. NO RESP…
+[90m 4[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m628. NO      
+[90m 5[39m cps_…  [4m2[24m016 AL       60 FEMA… SOME COL… WHITE NON-HIS…  [4m1[24m396. NO RESP…
+[90m 6[39m cps_…  [4m2[24m016 AL       12 FEMA… [31mNA[39m        WHITE NON-HIS…  [4m1[24m917. [31mNA[39m      
+[90m 7[39m cps_…  [4m2[24m016 AL       65 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m732. NO      
+[90m 8[39m cps_…  [4m2[24m016 AL       43 MALE  SOME COL… WHITE NON-HIS…  [4m2[24m042. YES     
+[90m 9[39m cps_…  [4m2[24m016 AL       46 MALE  SOME COL… WHITE HISPANIC  [4m2[24m068. YES     
+[90m10[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m694. NO      
+[90m# … with 9,990 more rows, and 8 more variables: VRS_REG [3m[90m<fct>[90m[23m,[39m
+[90m#   VRS_REG_WHYNOT [3m[90m<fct>[90m[23m, VRS_VOTE_WHYNOT [3m[90m<fct>[90m[23m,[39m
+[90m#   VRS_VOTEMODE_2004toPRESENT [3m[90m<fct>[90m[23m, VRS_VOTEWHEN_2004toPRESENT [3m[90m<fct>[90m[23m,[39m
+[90m#   VRS_REG_METHOD [3m[90m<fct>[90m[23m, VRS_RESIDENCE [3m[90m<fct>[90m[23m, VRS_VOTEMETHOD_CON [3m[90m<fct>[90m[23m[39m
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cps_reweight_turnout")
+> ### * cps_reweight_turnout
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cps_reweight_turnout
+> ### Title: apply weight correction for voter turnout
+> ### Aliases: cps_reweight_turnout
+> 
+> ### ** Examples
+> 
+> cps_reweight_turnout(cps_recode_vote(cps_refactor(cps_label(cps_2016_10k))))
+[90m# A tibble: 10,000 x 21[39m
+   FILE   YEAR STATE   AGE SEX   EDUCATION RACE  HISPANIC WEIGHT VRS_VOTE
+   [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<dbl>[39m[23m [3m[90m<fct>[39m[23m   
+[90m 1[39m cps_…  [4m2[24m016 AL       69 FEMA… HIGH SCH… WHITE NON-HIS…  [4m1[24m328. YES     
+[90m 2[39m cps_…  [4m2[24m016 AL       35 MALE  BACHELOR… WHITE NON-HIS…  [4m1[24m793. YES     
+[90m 3[39m cps_…  [4m2[24m016 AL       54 FEMA… HIGH SCH… WHITE NON-HIS…  [4m1[24m757. NO RESP…
+[90m 4[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m628. NO      
+[90m 5[39m cps_…  [4m2[24m016 AL       60 FEMA… SOME COL… WHITE NON-HIS…  [4m1[24m396. NO RESP…
+[90m 6[39m cps_…  [4m2[24m016 AL       12 FEMA… [31mNA[39m        WHITE NON-HIS…  [4m1[24m917. [31mNA[39m      
+[90m 7[39m cps_…  [4m2[24m016 AL       65 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m732. NO      
+[90m 8[39m cps_…  [4m2[24m016 AL       43 MALE  SOME COL… WHITE NON-HIS…  [4m2[24m042. YES     
+[90m 9[39m cps_…  [4m2[24m016 AL       46 MALE  SOME COL… WHITE HISPANIC  [4m2[24m068. YES     
+[90m10[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m694. NO      
+[90m# … with 9,990 more rows, and 11 more variables: VRS_REG [3m[90m<fct>[90m[23m,[39m
+[90m#   VRS_REG_WHYNOT [3m[90m<fct>[90m[23m, VRS_VOTE_WHYNOT [3m[90m<fct>[90m[23m,[39m
+[90m#   VRS_VOTEMODE_2004toPRESENT [3m[90m<fct>[90m[23m, VRS_VOTEWHEN_2004toPRESENT [3m[90m<fct>[90m[23m,[39m
+[90m#   VRS_REG_METHOD [3m[90m<fct>[90m[23m, VRS_RESIDENCE [3m[90m<fct>[90m[23m, VRS_VOTEMETHOD_CON [3m[90m<fct>[90m[23m,[39m
+[90m#   cps_turnout [3m[90m<fct>[90m[23m, hurachen_turnout [3m[90m<fct>[90m[23m, turnout_weight [3m[90m<dbl>[90m[23m[39m
+> 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  2.209 0.164 2.501 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')
