@@ -144,7 +144,7 @@ plot_usmap("counties", data = countypov, values = "pct_pov_2014", include = "FL"
 plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_england) + 
     ggplot2::scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE)
 ```
-<p align="center"><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-mountain-states.png" width="33%" /><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-florida-counties.png" width="33%" /><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-new-england-counties.png" width="33%" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-usage.png" /></p>
 
 ## Additional Information
 
