@@ -87,11 +87,11 @@ mountain_states <- plot_usmap("states", include = .mountain, labels = TRUE)
 
 fl_pct_pov <- plot_usmap("counties", data = countypov,
                          values = "pct_pov_2014", include = "FL") +
-  ggplot2::scale_fill_continuous(low = "green", high = "red", guide = FALSE)
+  scale_fill_continuous(low = "green", high = "red", guide = FALSE)
 
 ne_pop <- plot_usmap("counties", data = countypop,
                      values = "pop_2015", include = .new_england) +
-  ggplot2::scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE)
+  scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE)
 
 
 # Combine usage plots ####
