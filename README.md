@@ -51,9 +51,9 @@ state_map <- us_map(regions = "states")
   <summary><code>str(state_map)</code></summary>
 
   ```r
-  #> 'data.frame':    12999 obs. of  9 variables:
-  #> $ long : num  1091779 1091268 1091140 1090940 1090913 ...
-  #> $ lat  : num  -1380695 -1376372 -1362998 -1343517 -1341006 ...
+  #> 'data.frame':	13696 obs. of  9 variables:
+  #> $ x    : num  1093752 1093244 1093125 1092939 1092914 ...
+  #> $ y    : num  -1378545 -1374233 -1360891 -1341458 -1338952 ...
   #> $ order: int  1 2 3 4 5 6 7 8 9 10 ...
   #> $ hole : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
   #> $ piece: int  1 1 1 1 1 1 1 1 1 1 ...
@@ -71,9 +71,9 @@ county_map <- us_map(regions = "counties")
   <summary><code>str(county_map)</code></summary>
 
   ```r
-  #> 'data.frame':    54187 obs. of  10 variables:
-  #> $ long  : num  1225889 1244873 1244129 1272010 1276797 ...
-  #> $ lat   : num  -1275020 -1272331 -1267515 -1262889 -1295514 ...
+  #> 'data.frame':	55097 obs. of  10 variables:
+  #> $ x     : num  811200 829408 828835 855600 859265 ...
+  #> $ y     : num  -821207 -819722 -814641 -811770 -846158 ...
   #> $ order : int  1 2 3 4 5 6 7 8 9 10 ...
   #> $ hole  : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
   #> $ piece : int  1 1 1 1 1 1 1 1 1 1 ...
@@ -153,17 +153,17 @@ plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_eng
 ```r
 usmap::usmap_crs()
 #> CRS arguments:
-#>     +proj=laea +lat_0=45 +lon_0=-100 +x_0=0
-#>     +y_0=0 +a=6370997 +b=6370997 +units=m
-#>     +no_defs 
+#>     +proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0
+#>     +y_0=0 +datum=WGS84 +units=m +no_defs 
 ```
+
+This is the same projection used by the [US National Atlas](https://epsg.io/2163).
 
 To obtain the projection used by `usmap`, use `usmap_crs()`.
 
 Alternatively, the CRS ([coordinate reference system](https://www.nceas.ucsb.edu/sites/default/files/2020-04/OverviewCoordinateReferenceSystems.pdf)) can be created manually with the following command:
 ```r
-sp::CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0
-         +a=6370997 +b=6370997 +units=m +no_defs")
+sp::CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +units=m +no_defs +datum=WGS84")
 ```
 
 ## Acknowledgments

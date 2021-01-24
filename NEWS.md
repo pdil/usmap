@@ -1,5 +1,9 @@
 # usmap 0.5.2.9999
 
+* Improve map resolution.
+  * More polygons are shown, this has a marginal increase on the data set file sizes but it is negligible.
+* Fix CRS warnings, see [Issue #40](https://github.com/pdil/usmap/issues/40).
+
 # usmap 0.5.2
 Released Wednesday, October 7, 2020.
 

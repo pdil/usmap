@@ -73,10 +73,12 @@ usmap_transform.data.frame <- function(data) {
   }
 
   # create SpatialPointsDataFrame
+  longlat <- sp::CRS(SRS_string = "EPSG:4326") # long/lat coordinates
+
   spdf <- sp::SpatialPointsDataFrame(
     coords = data[, c(1, 2)],
     data = data,
-    proj4string = sp::CRS("+proj=longlat +datum=WGS84")
+    proj4string = longlat
   )
 
   # transform to canonical projection
@@ -87,10 +89,10 @@ usmap_transform.data.frame <- function(data) {
   ak_bbox <- sp::bbox(
     matrix(
       c(
-        -4360650, # min transformed longitude
-        -1512250, # max transformed longitude
-        1466100,  # min transformed latitude
-        3911200   # max transformed latitude
+        -4377000, # min transformed longitude
+        -1519000, # max transformed longitude
+        1466000,  # min transformed latitude
+        3914000   # max transformed latitude
       ), ncol = 2
     )
   )
@@ -110,7 +112,7 @@ usmap_transform.data.frame <- function(data) {
       bb = ak_bbox
     )
     alaska <- maptools::elide(alaska, shift = c(-1298669, -3018809))
-    sp::proj4string(alaska) <- sp::proj4string(transformed)
+    sp::proj4string(alaska) <- usmap_crs()
     names(alaska) <- names(transformed)
   }
 
@@ -119,10 +121,10 @@ usmap_transform.data.frame <- function(data) {
   hi_bbox <- sp::bbox(
     matrix(
       c(
-        -5762000, # min transformed longitude
-        -5451950, # max transformed longitude
-        -1051950, # min transformed latitude
-        -441850   # max transformed latitude
+        -5750000, # min transformed longitude
+        -5450000, # max transformed longitude
+        -1050000, # min transformed latitude
+        -441000   # max transformed latitude
       ), ncol = 2
     )
   )
@@ -141,7 +143,8 @@ usmap_transform.data.frame <- function(data) {
       bb = hi_bbox
     )
     hawaii <- maptools::elide(hawaii, shift = c(5400000, -1400000))
-    sp::proj4string(hawaii) <- sp::proj4string(transformed)
+    sp::proj4string(hawaii) <- usmap_crs()
+    names(hawaii) <- names(transformed)
   }
 
   # combine all points
@@ -174,10 +177,10 @@ usmap_transform.data.frame <- function(data) {
 #' @export
 usmap_crs <- function() {
   if (!requireNamespace("sp", quietly = TRUE)) {
-    stop("`sp` must be installed to use `usmap_proj`.
+    stop("`sp` must be installed to use `usmap_crs`.
          Use: install.packages(\"sp\") and try again.")
   }
 
   sp::CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0
-          +a=6370997 +b=6370997 +units=m +no_defs")
+          +units=m +no_defs +datum=WGS84")
 }

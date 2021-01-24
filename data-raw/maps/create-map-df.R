@@ -24,12 +24,14 @@ map_types <- paste0(prefix, region_types) %>% paste0(., "_", suffix)
 
 create_mapdata <- function(type) {
   # import map shape file
-  us <- readShapePoly(paste0(type, "/", type, ".shp"),
-                      proj4string = CRS("+proj=longlat +datum=WGS84"))
-  # us <- readOGR(paste0("data-raw/maps/", type, "/"))
+  # us <- readShapePoly(paste0(type, "/", type, ".shp"),
+  #                     proj4string = CRS("+proj=longlat +datum=WGS84"))
+  us <- readOGR(type)
 
   # aea: Albers Equal Area projection
-  us_aea <- spTransform(us, CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +a=6370997 +b=6370997 +units=m +no_defs"))
+  aea_crs <- CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0
+                 +units=m +no_defs +datum=WGS84")
+  us_aea <- spTransform(us, aea_crs)
   us_aea@data$id <- rownames(us_aea@data)
 
   # FIPS code for Alaska = 02
@@ -37,33 +39,22 @@ create_mapdata <- function(type) {
   alaska <- elide(alaska, rotate = -50)
   alaska <- elide(alaska, scale = max(apply(bbox(alaska), 1, diff)) / 2.3)
   alaska <- elide(alaska, shift = c(-2100000, -2500000))
-  proj4string(alaska) <- proj4string(us_aea)
+  proj4string(alaska) <- aea_crs
 
   # FIPS code for Hawaii = 15
   hawaii <- us_aea[us_aea$STATEFP == "15", ]
+  browser()
   hawaii <- elide(hawaii, rotate = -35)
   hawaii <- elide(hawaii, shift = c(5400000, -1400000))
-  proj4string(hawaii) <- proj4string(us_aea)
+  proj4string(hawaii) <- aea_crs
 
   # keep only US states (i.e. remove territories, minor outlying islands, etc.)
   # also remove Alaska (02) and Hawaii (15) so that we can add in shifted one
   us_aea <- us_aea[!us_aea$STATEFP %in% c(as.character(57:80), "02", "15"), ]
   us_aea <- rbind(us_aea, alaska, hawaii)
 
-  # reduce shapefile resolution by removing small polygons
-  # for more info: http://www.r-bloggers.com/simplifying-polygon-shapefiles-in-r/
-  area <- lapply(us_aea@polygons, function(x) sapply(x@Polygons, function(y) y@area))
-  mainPolys <- lapply(area, function(x) which(x >= 500000000))
-
-  for (i in 1:length(mainPolys)) {
-    if (length(mainPolys[[i]]) >= 1 && mainPolys[[i]][1] >= 1) {
-      us_aea@polygons[[i]]@Polygons <- us_aea@polygons[[i]]@Polygons[mainPolys[[i]]]
-      us_aea@polygons[[i]]@plotOrder <- 1:length(us_aea@polygons[[i]]@Polygons)
-    }
-  }
-
   # plot map
-  map <- ggplot2::fortify(us_aea, region = "GEOID")  # convert map to ggplot-friendly data frame
+  map <- broom::tidy(us_aea, region = "GEOID")  # convert map to data frame
 
   # export csv file
   write.csv(map, file = paste0(type, ".csv"), row.names = FALSE, na = "")
