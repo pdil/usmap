@@ -97,7 +97,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
     geom_args[["mapping"]] <- ggplot2::aes(x = x, y = y, group = group)
   } else {
     map_df <- map_with_data(data, values = values, include = include, exclude = exclude)
-    geom_args[["mapping"]] <- ggplot2::aes(x = x, y = y, group = group, fill = map_df[, values])
+    geom_args[["mapping"]] <- ggplot2::aes_string(x = 'x', y = 'y', group = 'group', fill = values)
   }
 
   polygon_layer <- do.call(ggplot2::geom_polygon, geom_args)
