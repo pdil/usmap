@@ -24,8 +24,6 @@ map_types <- paste0(prefix, region_types) %>% paste0(., "_", suffix)
 
 create_mapdata <- function(type) {
   # import map shape file
-  # us <- readShapePoly(paste0(type, "/", type, ".shp"),
-  #                     proj4string = CRS("+proj=longlat +datum=WGS84"))
   us <- readOGR(type)
 
   # aea: Albers Equal Area projection
