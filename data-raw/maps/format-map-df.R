@@ -6,7 +6,7 @@ source("states-fips.R")
 write.csv(states_fips, file = "state_fips.csv", row.names = FALSE, na = "")
 
 # Merge state FIPS with map ####
-states_map_df <- readr::read_csv("cb_2017_us_state_20m.csv")
+states_map_df <- readr::read_csv("us_states_raw.csv")
 merged_states_df <- merge(states_map_df, states_fips,
                           by.x = "id", by.y = "fips", all.x = TRUE)
 
@@ -19,12 +19,13 @@ colnames(final_states_df) <- c("x", "y", "order", "hole", "piece",
 write.csv(final_states_df, file = "us_states.csv", row.names = FALSE, na = "")
 
 # Merge states with centroids ####
-states_centroids_df <- readr::read_csv("cb_2017_us_state_20m_centroids.csv")
+states_centroids_df <- readr::read_csv("us_states_centroids_raw.csv")
 merged_state_centroids_df <- merge(states_centroids_df, states_fips,
                                    by = "fips", all.x = TRUE)
 
 final_state_centroids_df <- merged_state_centroids_df[, c("x", "y", "fips", "abbr", "full")]
-write.csv(final_state_centroids_df, file = "us_states_centroids.csv", row.names = FALSE, na = "")
+write.csv(final_state_centroids_df, file = "us_states_centroids.csv",
+          row.names = FALSE, na = "")
 
 
 # County FIPS ####
@@ -43,7 +44,7 @@ county_fips_final <- data.frame(
 write.csv(county_fips_final, file = "county_fips.csv", row.names = FALSE, na = "")
 
 # Merge county FIPS with map ####
-counties_map_df <- readr::read_csv("cb_2017_us_county_20m.csv")
+counties_map_df <- readr::read_csv("us_counties_raw.csv")
 merged_counties_df <- merge(counties_map_df, county_fips_final,
                             by.x = "id", by.y = "fips", all.x = TRUE, sort = FALSE)
 
@@ -61,9 +62,10 @@ colnames(final_counties_df) <- c("x", "y", "order", "hole", "piece",
 write.csv(final_counties_df, file = "us_counties.csv", row.names = FALSE, na = "")
 
 # Merge counties with centroids ####
-counties_centroids_df <- readr::read_csv("cb_2017_us_county_20m_centroids.csv")
+counties_centroids_df <- readr::read_csv("us_counties_centroids_raw.csv")
 merged_counties_centroids_df <- merge(counties_centroids_df, county_fips_final,
                                       by = "fips", all.x = TRUE)
 
 final_counties_centroids_df <- merged_counties_centroids_df[, c("x", "y", "fips", "abbr", "full", "county")]
-write.csv(final_counties_centroids_df, file = "us_counties_centroids.csv", row.names = FALSE, na = "")
+write.csv(final_counties_centroids_df, file = "us_counties_centroids.csv",
+          row.names = FALSE, na = "")

@@ -56,13 +56,21 @@ create_mapdata <- function(type) {
   map <- broom::tidy(us_aea, region = "GEOID")  # convert map to data frame
 
   # export csv file
-  write.csv(map, file = paste0(type, ".csv"), row.names = FALSE, na = "")
+  file_prefix <-
+    gsub(prefix, "us_", type) %>%
+    gsub(suffix, "", .) %>%
+    gsub("state", "states", .) %>%
+    gsub("county", "counties", .)
+
+  write.csv(map, file = paste0(file_prefix, "raw.csv"),
+            row.names = FALSE, na = "")
 
   # determine centroids
   centroids <- centroid(us_aea)
 
   # export centroids (used to plot labels)
-  write.csv(centroids, file = paste0(type, "_centroids.csv"), row.names = FALSE)
+  write.csv(centroids, file = paste0(file_prefix, "centroids_raw.csv"),
+            row.names = FALSE)
 }
 
 for (type in map_types) create_mapdata(type)
