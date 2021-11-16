@@ -181,6 +181,6 @@ usmap_crs <- function() {
          Use: install.packages(\"sp\") and try again.")
   }
 
-  sp::CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0
-          +units=m +no_defs +datum=WGS84")
+  sp::CRS(paste("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0",
+                "+a=6370997 +b=6370997 +units=m +no_defs"))
 }

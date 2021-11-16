@@ -29,8 +29,8 @@ create_mapdata <- function(type) {
   us <- readOGR(type)
 
   # aea: Albers Equal Area projection
-  aea_crs <- CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0
-                 +units=m +no_defs +datum=WGS84")
+  aea_crs <- CRS(paste("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0",
+                       "+a=6370997 +b=6370997 +units=m +no_defs"))
   us_aea <- spTransform(us, aea_crs)
   us_aea@data$id <- rownames(us_aea@data)
 
@@ -43,7 +43,6 @@ create_mapdata <- function(type) {
 
   # FIPS code for Hawaii = 15
   hawaii <- us_aea[us_aea$STATEFP == "15", ]
-  browser()
   hawaii <- elide(hawaii, rotate = -35)
   hawaii <- elide(hawaii, shift = c(5400000, -1400000))
   proj4string(hawaii) <- aea_crs
@@ -63,7 +62,7 @@ create_mapdata <- function(type) {
   centroids <- centroid(us_aea)
 
   # export centroids (used to plot labels)
-  write.csv(centroids, file = paste0(type, "_centroids_raw.csv"), row.names = FALSE)
+  write.csv(centroids, file = paste0(type, "_centroids.csv"), row.names = FALSE)
 }
 
 for (type in map_types) create_mapdata(type)

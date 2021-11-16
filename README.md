@@ -150,12 +150,51 @@ plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_eng
 
 ### Projection
 `usmap` uses an [Albers equal-area conic projection](https://en.wikipedia.org/wiki/Albers_projection), with arguments as follows:
-```r
-usmap::usmap_crs()
-#> CRS arguments:
-#>     +proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0
-#>     +y_0=0 +datum=WGS84 +units=m +no_defs 
-```
+
+<details>
+  <summary><code>usmap::usmap_crs()</code></summary>
+  
+  ```
+  #> Coordinate Reference System:
+  #> Deprecated Proj.4 representation:
+  #>  +proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +ellps=sphere
+  #> +units=m +no_defs 
+  #> WKT2 2019 representation:
+  #> PROJCRS["unknown",
+  #>     BASEGEOGCRS["unknown",
+  #>         DATUM["unknown",
+  #>             ELLIPSOID["Normal Sphere (r=6370997)",6370997,0,
+  #>                 LENGTHUNIT["metre",1,
+  #>                     ID["EPSG",9001]]]],
+  #>         PRIMEM["Greenwich",0,
+  #>             ANGLEUNIT["degree",0.0174532925199433],
+  #>             ID["EPSG",8901]]],
+  #>     CONVERSION["unknown",
+  #>         METHOD["Lambert Azimuthal Equal Area (Spherical)",
+  #>             ID["EPSG",1027]],
+  #>         PARAMETER["Latitude of natural origin",45,
+  #>             ANGLEUNIT["degree",0.0174532925199433],
+  #>             ID["EPSG",8801]],
+  #>         PARAMETER["Longitude of natural origin",-100,
+  #>             ANGLEUNIT["degree",0.0174532925199433],
+  #>             ID["EPSG",8802]],
+  #>         PARAMETER["False easting",0,
+  #>             LENGTHUNIT["metre",1],
+  #>             ID["EPSG",8806]],
+  #>         PARAMETER["False northing",0,
+  #>             LENGTHUNIT["metre",1],
+  #>             ID["EPSG",8807]]],
+  #>     CS[Cartesian,2],
+  #>         AXIS["(E)",east,
+  #>             ORDER[1],
+  #>             LENGTHUNIT["metre",1,
+  #>                 ID["EPSG",9001]]],
+  #>         AXIS["(N)",north,
+  #>             ORDER[2],
+  #>             LENGTHUNIT["metre",1,
+  #>                 ID["EPSG",9001]]]] 
+  ```
+</details>
 
 This is the same projection used by the [US National Atlas](https://epsg.io/2163).
 
@@ -163,7 +202,8 @@ To obtain the projection used by `usmap`, use `usmap_crs()`.
 
 Alternatively, the CRS ([coordinate reference system](https://www.nceas.ucsb.edu/sites/default/files/2020-04/OverviewCoordinateReferenceSystems.pdf)) can be created manually with the following command:
 ```r
-sp::CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +units=m +no_defs +datum=WGS84")
+sp::CRS(paste("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0",
+              "+a=6370997 +b=6370997 +units=m +no_defs"))
 ```
 
 ## Acknowledgments
