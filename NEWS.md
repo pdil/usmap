@@ -2,6 +2,7 @@
 
 * Improve map resolution.
   * More polygons are shown, this has a marginal increase on the data set file sizes but it is negligible.
+* Add shape file update history, see [Issue #30](https://github.com/pdil/usmap/issues/30).
 * Fix CRS warnings, see [Issue #40](https://github.com/pdil/usmap/issues/40).
 
 # usmap 0.5.2
