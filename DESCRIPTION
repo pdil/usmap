@@ -8,7 +8,7 @@ Description: Obtain United States map data frames of varying region types (e.g. 
 Authors@R: person("Paolo", "Di Lorenzo", email = "paolo@dilorenzo.pl", role = c("aut", "cre"))
 Depends:
     R (>= 3.5.0)
-License: GPL-3 | file LICENSE
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 URL: https://usmap.dev
