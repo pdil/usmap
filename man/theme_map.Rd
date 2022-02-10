@@ -4,16 +4,16 @@
 \alias{theme_map}
 \title{This creates a nice map theme for use in plot_usmap.
 It is borrowed from the ggthemes package located at this repository:
-  https://github.com/jrnold/ggthemes}
+https://github.com/jrnold/ggthemes}
 \usage{
 theme_map(base_size = 9, base_family = "")
 }
 \description{
 This function was manually rewritten here to avoid the need for
- another package import.
+another package import.
 }
 \details{
-All theme functions (i.e. theme_bw, theme, element_blank, %+replace%)
- come from ggplot2.
+All theme functions (i.e. theme_bw, theme, element_blank, \%+replace\%)
+come from ggplot2.
 }
 \keyword{internal}

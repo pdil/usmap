@@ -12,21 +12,21 @@ data(countypop)
 }
 \description{
 US census population estimates by county for 2015. \cr\cr
-  The data is formatted for easy merging with output from \code{\link[usmap]{us_map}}.
+The data is formatted for easy merging with output from \code{\link[usmap]{us_map}}.
 }
 \details{
 \itemize{
-  \item \code{fips} The 5-digit FIPS code corresponding to the county.
-  \item \code{abbr} The 2-letter state abbreviation.
-  \item \code{county} The full county name.
-  \item \code{pop_2015} The 2015 population estimate (in number of people)
-    for the corresponding county.
+\item \code{fips} The 5-digit FIPS code corresponding to the county.
+\item \code{abbr} The 2-letter state abbreviation.
+\item \code{county} The full county name.
+\item \code{pop_2015} The 2015 population estimate (in number of people)
+for the corresponding county.
 }
 }
 \references{
 \itemize{
-    \item \url{https://www.census.gov/programs-surveys/popest.html}
-    \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
-  }
+\item \url{https://www.census.gov/programs-surveys/popest.html}
+\item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
+}
 }
 \keyword{data}

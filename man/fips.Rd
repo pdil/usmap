@@ -8,10 +8,10 @@ fips(state, county = c())
 }
 \arguments{
 \item{state}{The state(s) for which to obtain a FIPS code(s).
- Can be entered as either a state abbreviation or full name (case-insensitive).
+Can be entered as either a state abbreviation or full name (case-insensitive).
 
- `state` can be entered as either a single state or a vector of states.
- If `state` is a vector, `county` must be omitted.}
+\code{state} can be entered as either a single state or a vector of states.
+If \code{state} is a vector, \code{county} must be omitted.}
 
 \item{county}{The county for which to obtain a FIPS code.
 Can be entered with or without "county" (case-insensitive).}
@@ -20,34 +20,34 @@ Can be entered with or without "county" (case-insensitive).}
 The FIPS code(s) of given \code{state} or \code{county}.
 
 If only states are entered, a vector of length equal to the number of states
-is returned. If any states are not found or are invalid, `NA` is returned in their place.
+is returned. If any states are not found or are invalid, \code{NA} is returned in their place.
 
 If a state and county are entered, a single value with the FIPS code
 for the given county is returned. If the county is invalid for the given state,
 an error is thrown.
 
-If both `state` and `county` are omitted, the entire list of available FIPS
+If both \code{state} and \code{county} are omitted, the entire list of available FIPS
 codes is returned, sorted by the state's abbreviation (e.g. Alaska (AK) comes
 before Alabama (AL)).
 }
 \description{
 Each US state and county has a unique FIPS
-  (Federal Information Processing Standards) code. Use
-  this function to obtain the FIPS code for a state or
-  county.
+(Federal Information Processing Standards) code. Use
+this function to obtain the FIPS code for a state or
+county.
 }
 \details{
 State and county FIPS (Federal Information Processing Standards) are
-  two and five digit codes, respectively. They uniquely identify all states and
-  counties within the United States. The first two digits of the five digit county
-  codes correspond to the state that the county belongs to. FIPS codes also exist
-  for US territories and minor outlying islands, though this package only provides
-  information for the 50 US states (and their associated counties and
-  census designated areas).
+two and five digit codes, respectively. They uniquely identify all states and
+counties within the United States. The first two digits of the five digit county
+codes correspond to the state that the county belongs to. FIPS codes also exist
+for US territories and minor outlying islands, though this package only provides
+information for the 50 US states (and their associated counties and
+census designated areas).
 }
 \note{
 A \code{state} must be included when searching for \code{county},
- otherwise multiple results may be returned for duplicate county names.
+otherwise multiple results may be returned for duplicate county names.
 }
 \examples{
 fips()

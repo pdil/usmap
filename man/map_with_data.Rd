@@ -12,7 +12,7 @@ parameter should be a data frame consisting of two columns,
 a fips code (2 characters for state, 5 characters for county)
 and the value that should be associated with that region. The
 columns of \code{data} \emph{must} be \code{fips} or \code{state} and
-the value of the `values` parameter. If both \code{fips} and \code{state}
+the value of the \code{values} parameter. If both \code{fips} and \code{state}
 are provided, this function uses the \code{fips}.}
 
 \item{values}{The name of the column that contains the values to be associated
@@ -37,10 +37,10 @@ column of \code{data}.}
 }
 \value{
 A data frame composed of the map data frame (from \code{\link{us_map}}) except
-  an extra column containing the values in \code{data} is included.
+an extra column containing the values in \code{data} is included.
 
-  The result can be plotted using \code{ggplot2}. See \code{\link{us_map}} or
-  \code{\link{plot_usmap}} for more details.
+The result can be plotted using \code{ggplot2}. See \code{\link{us_map}} or
+\code{\link{plot_usmap}} for more details.
 }
 \description{
 Join county or state level data to US map data

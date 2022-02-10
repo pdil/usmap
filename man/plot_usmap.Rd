@@ -39,7 +39,7 @@ parameter should be a data frame consisting of two columns,
 a fips code (2 characters for state, 5 characters for county)
 and the value that should be associated with that region. The
 columns of \code{data} \emph{must} be \code{fips} or \code{state} and
-the value of the `values` parameter.}
+the value of the \code{values} parameter.}
 
 \item{values}{The name of the column that contains the values to be associated
 with a given region. The default is \code{"value"}.}
@@ -66,9 +66,9 @@ and \code{size=0.4}.}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object that contains a basic
-  US map with the described parameters. Since the result is a \code{ggplot}
-  object, it can be extended with more \code{geom} layers, scales, labels,
-  themes, etc.
+US map with the described parameters. Since the result is a \code{ggplot}
+object, it can be extended with more \code{geom} layers, scales, labels,
+themes, etc.
 }
 \description{
 Conveniently plot basic US map

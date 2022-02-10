@@ -20,10 +20,10 @@ code (where the first 2 numbers pertain to the state).}
 }
 \value{
 A data frame with the states or counties and the associated
- FIPS codes.
+FIPS codes.
 
- If `fips` is omitted, the data frame containing all available states is
- returned.
+If \code{fips} is omitted, the data frame containing all available states is
+returned.
 }
 \description{
 Retrieve states or counties using FIPS codes

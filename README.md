@@ -9,13 +9,13 @@ View code used to generate these plots: [resources/examples.R](https://github.co
 Typically in R it is difficult to create nice US [choropleths](https://en.wikipedia.org/wiki/Choropleth_map) that include Alaska and Hawaii. The functions presented here attempt to elegantly solve this problem by manually moving these states to a new location and providing a fortified data frame for mapping and visualization. This allows the user to easily add data to color the map.
 
 ## Shape Files
-The shape files that we use to plot the maps in R are located in the `data-raw` folder. For more information refer to the [US Census Bureau](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html). Maps at both the state and county levels are included for convenience (zip code maps may be included in the future).
+The shape files that we use to plot the maps in R are located in the [`usmapdata`](https://github.com/pdil/usmapdata) package. These are generated from the [US Census Bureau cartographic boundary files](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html). Maps at both the state and county levels are included for convenience.
 
 #### Update History
 
-<!--- | -                | 0.6.0           | 2020            | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2020.html) | -->
 | Date             | `usmap` version | Shape File Year | Link |
 | ---              | :-:             | :-:             | :-:  |
+| -                | 0.6.0 (pending) | 2020            | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2020.html) |
 | June 3, 2018     | 0.3.0           | 2017            | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2017.html)   |
 | January 29, 2017 | 0.1.0           | 2015            | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2015.html)   |
 

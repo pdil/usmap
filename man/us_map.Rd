@@ -42,3 +42,6 @@ west_coast <- us_map(include = c("CA", "OR", "WA"))
 
 south_atl_excl_FL <- us_map(include = .south_atlantic, exclude = "FL")
 }
+\seealso{
+\code{\link[usmapdata:us_map]{usmapdata::us_map()}} of which this function is a wrapper for.
+}
