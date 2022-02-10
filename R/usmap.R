@@ -30,7 +30,7 @@
 #'
 #' @section Plot US map data:
 #' A convenience function [plot_usmap] has been included which
-#' takes similar parameters to [us_map] and returns a [ggplot2]
+#' takes similar parameters to [us_map] and returns a [ggplot2::ggplot2]
 #' object. Since the output is a \code{ggplot} object, other layers can be
 #' added such as scales, themes, and labels. Including data in the function call
 #' will color the map according to the values in the data, creating a choropleth.
