@@ -14,6 +14,7 @@ LazyData: true
 URL: https://usmap.dev
 BugReports: https://github.com/pdil/usmap/issues
 Imports:
+    usmapdata,
     utils
 Suggests:
     covr,
@@ -28,5 +29,6 @@ Suggests:
     sp,
     stringr,
     testthat
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
+Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr

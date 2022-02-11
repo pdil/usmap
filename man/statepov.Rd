@@ -12,21 +12,21 @@ data(statepov)
 }
 \description{
 US census poverty percentage estimates by state for 2014. \cr\cr
-  The data is formatted for easy merging with output from \code{\link[usmap]{us_map}}.
+The data is formatted for easy merging with output from \code{\link[usmap]{us_map}}.
 }
 \details{
 \itemize{
-  \item \code{fips} The 2-digit FIPS code corresponding to the state.
-  \item \code{abbr} The 2-letter state abbreviation.
-  \item \code{full} The full state name.
-  \item \code{pct_pov_2014} The 2014 poverty estimate (in percent of state population)
-    for the corresponding state
+\item \code{fips} The 2-digit FIPS code corresponding to the state.
+\item \code{abbr} The 2-letter state abbreviation.
+\item \code{full} The full state name.
+\item \code{pct_pov_2014} The 2014 poverty estimate (in percent of state population)
+for the corresponding state
 }
 }
 \references{
 \itemize{
-    \item \url{https://www.census.gov/topics/income-poverty/poverty.html}
-    \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
-  }
+\item \url{https://www.census.gov/topics/income-poverty/poverty.html}
+\item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
+}
 }
 \keyword{data}

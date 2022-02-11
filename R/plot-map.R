@@ -104,16 +104,11 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 
   # create label layer
   if (labels) {
-    centroidLabelsColClasses <- c("numeric", "numeric", "character", "character", "character")
+    if (regions_ == "state") regions__ <- "states"
+    else if (regions_ == "county") regions__ <- "counties"
+    else { regions__ <- regions_ }
 
-    if (regions_ == "county" | regions_ == "counties") {
-      # add extra column for the county name
-      centroidLabelsColClasses <- c(centroidLabelsColClasses, "character")
-    }
-
-    centroid_labels <- utils::read.csv(system.file("extdata", paste0("us_", regions_, "_centroids.csv"), package = "usmap"),
-                                       colClasses = centroidLabelsColClasses,
-                                       stringsAsFactors = FALSE)
+    centroid_labels <- usmapdata::centroid_labels(regions__)
 
     if (length(include) > 0) {
       centroid_labels <- centroid_labels[

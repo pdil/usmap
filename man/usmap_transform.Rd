@@ -17,14 +17,14 @@ just that the order of the columns is kept intact.}
 }
 \value{
 A data frame containing the transformed coordinates from the
-  input data frame with the Albers Equal Area projection applied. The
-  transformed columns will be appended to the data frame so that all
-  original columns should remain intact.
+input data frame with the Albers Equal Area projection applied. The
+transformed columns will be appended to the data frame so that all
+original columns should remain intact.
 }
 \description{
 Converting an external data frame of map coordinates will
-  allow those points to line up with the regular usmap plot by applying
-  the same Albers Equal Area projection to those points as well.
+allow those points to line up with the regular usmap plot by applying
+the same Albers Equal Area projection to those points as well.
 }
 \examples{
 data <- data.frame(
