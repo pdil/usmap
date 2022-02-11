@@ -104,8 +104,8 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 
   # create label layer
   if (labels) {
-    if (regions_ == "state") { regions__ <- "states" }
-    else if (regions_ == "county") { regions__ <- "counties" }
+    if (regions_ == "state") regions__ <- "states"
+    else if (regions_ == "county") regions__ <- "counties"
     else { regions__ <- regions_ }
 
     centroid_labels <- usmapdata::centroid_labels(regions__)
