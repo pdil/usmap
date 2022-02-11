@@ -65,7 +65,7 @@ test_that("layer parameters are correct", {
   expect_equal(deparse(q$layers[[1]]$mapping$x), "~x")
   expect_equal(deparse(q$layers[[1]]$mapping$y), "~y")
   expect_equal(deparse(q$layers[[1]]$mapping$group), "~group")
-  expect_equal(deparse(q$layers[[1]]$mapping$fill), "~map_df[, values]")
+  expect_equal(deparse(q$layers[[1]]$mapping$fill), "~pop_2015")
   expect_equal(as.character(q$layers[[1]]$aes_params$colour), "blue")
   expect_equal(q$layers[[1]]$aes_params$size, 0.4)
 
@@ -73,7 +73,7 @@ test_that("layer parameters are correct", {
   expect_equal(deparse(r$layers[[1]]$mapping$x), "~x")
   expect_equal(deparse(r$layers[[1]]$mapping$y), "~y")
   expect_equal(deparse(r$layers[[1]]$mapping$group), "~group")
-  expect_equal(deparse(r$layers[[1]]$mapping$fill), "~map_df[, values]")
+  expect_equal(deparse(r$layers[[1]]$mapping$fill), "~values")
   expect_equal(as.character(r$layers[[1]]$aes_params$colour), "black")
   expect_equal(r$layers[[1]]$aes_params$size, 0.8)
 
