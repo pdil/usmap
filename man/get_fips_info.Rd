@@ -5,7 +5,7 @@
 \title{Gets FIPS info for either states or counties depending on input.
 Helper function for S3 method \code{fips_info}.}
 \usage{
-get_fips_info(fips)
+get_fips_info(fips, sortAndRemoveDuplicates)
 }
 \description{
 Gets FIPS info for either states or counties depending on input.

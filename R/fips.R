@@ -112,6 +112,11 @@ fips <- function(state, county = c()) {
 #'  States have a two digit FIPS code and counties have a five digit FIPS
 #'  code (where the first 2 numbers pertain to the state).
 #'
+#' @param sortAndRemoveDuplicates Whether or not to sort the output and remove
+#'  duplicates. By default, the output will be returned in the order of
+#'  the values provided to the \code{fips} parameter. Set this parameter to \code{TRUE}
+#'  to return the output sorted by FIPS with a single instance of each FIPS.
+#'
 #' @return A data frame with the states or counties and the associated
 #'  FIPS codes.
 #'
@@ -124,11 +129,11 @@ fips <- function(state, county = c()) {
 #' fips_info(c("02", "03", "04"))
 #'
 #' fips_info(2016)
-#' fips_info(c("02016", "02017"))
+#' fips_info(c("02016", "02017"), sortAndRemoveDuplicates = TRUE)
 #'
 #' @rdname fips_info
 #' @export
-fips_info <- function(fips) {
+fips_info <- function(fips, sortAndRemoveDuplicates = FALSE) {
   if (missing(fips)) {
     fips_info.character(usmap::fips())
   } else {
@@ -138,7 +143,7 @@ fips_info <- function(fips) {
 
 #' @rdname fips_info
 #' @export
-fips_info.numeric <- function(fips) {
+fips_info.numeric <- function(fips, sortAndRemoveDuplicates = FALSE) {
   if (all(fips >= 1001 & fips <= 56043)) {
     fips_ <- sprintf("%05d", fips)
   } else if (all(fips >= 1 & fips <= 56)) {
@@ -147,12 +152,12 @@ fips_info.numeric <- function(fips) {
     stop("Invalid FIPS code(s), must be either 2 digit (states) or 5 digit (counties), but not both.")
   }
 
-  get_fips_info(fips_)
+  get_fips_info(fips_, sortAndRemoveDuplicates)
 }
 
 #' @rdname fips_info
 #' @export
-fips_info.character <- function(fips) {
+fips_info.character <- function(fips, sortAndRemoveDuplicates = FALSE) {
   if (all(nchar(fips) %in% 4:5)) {
     fips_ <- sprintf("%05s", fips)
   } else if (all(nchar(fips) %in% 1:2)) {
@@ -161,41 +166,54 @@ fips_info.character <- function(fips) {
     stop("Invalid FIPS code, must be either 2 digit (states) or 5 digit (counties), but not both.")
   }
 
-  get_fips_info(fips_)
+  get_fips_info(fips_, sortAndRemoveDuplicates)
 }
 
 #' Gets FIPS info for either states or counties depending on input.
 #' Helper function for S3 method \code{fips_info}.
 #' @keywords internal
-get_fips_info <- function(fips) {
+get_fips_info <- function(fips, sortAndRemoveDuplicates) {
   if (all(nchar(fips) == 2)) {
     df <- utils::read.csv(
       system.file("extdata", "state_fips.csv", package = "usmap"),
       colClasses = rep("character", 3), stringsAsFactors = FALSE
     )
 
-    result <- df[df$fips %in% fips, ]
+    columns <- c("abbr", "fips", "full")
   } else if (all(nchar(fips) == 5)) {
     df <- utils::read.csv(
       system.file("extdata", "county_fips.csv", package = "usmap"),
       colClasses = rep("character", 4), stringsAsFactors = FALSE
     )
 
+    columns <- c("full", "abbr", "county", "fips")
+  }
+
+  if (sortAndRemoveDuplicates) {
     result <- df[df$fips %in% fips, ]
+  } else {
+    result <- static_merge(data.frame(fips = fips), df)
   }
 
-  # Present warning if no results found.
   if (nrow(result) == 0) {
+    # Present warning if no results found.
     warning(paste("FIPS code(s)", toString(fips), "not found, returned 0 results."))
-  }
-
-  # Present warning if any FIPS codes included are not found.
-  if (!all(fips %in% result$fips)) {
+  } else if (!all(fips %in% result$fips)) {
+    # Present warning if any FIPS codes included are not found.
     excluded_fips <- fips[which(!fips %in% result$fips)]
-    warning(paste("FIPS code(s)", toString(excluded_fips), "not found, excluded from result."))
+    warning(paste("FIPS code(s)", toString(excluded_fips), "not found"))
   }
 
   rownames(result) <- NULL
-  result
+  result[, columns]
 }
 
+#' Performs merge while maintaining original sort order.
+#'
+#' @seealso https://stackoverflow.com/a/61560405/7264964
+#' @keywords internal
+static_merge <- function(x, y, ...) {
+  x$join_id_ <- 1:nrow(x)
+  joined <- merge(x = x, y = y, sort = FALSE, ...)
+  joined[order(joined$join_id), colnames(joined) != "join_id_"]
+}

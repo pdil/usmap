@@ -6,18 +6,42 @@ test_that("all states returned when no FIPS specified", {
 
 test_that("returns correct state FIPS information", {
   ak_result <- data.frame(
+    abbr = c("AK", "NJ", "AK"),
+    fips = c("02", "34", "02"),
+    full = c("Alaska", "New Jersey", "Alaska"),
+    stringsAsFactors = FALSE
+  )
+
+  expect_equivalent(fips_info(c(2, 34, 2)), ak_result)
+  expect_equivalent(fips_info(c("02", "34", "02")), ak_result)
+
+  ak_result_sorted <- data.frame(
     abbr = c("AK", "NJ"),
     fips = c("02", "34"),
     full = c("Alaska", "New Jersey"),
     stringsAsFactors = FALSE
   )
 
-  expect_equivalent(fips_info(c(2, 34)), ak_result)
-  expect_equivalent(fips_info(c("02", "34")), ak_result)
+  expect_equivalent(fips_info(c(2, 34, 2), sortAndRemoveDuplicates = TRUE),
+                    ak_result_sorted)
+  expect_equivalent(fips_info(c("02", "34", "02"), sortAndRemoveDuplicates = TRUE),
+                    ak_result_sorted)
 })
 
 test_that("returns correct county FIPS information", {
   ak_result <- data.frame(
+    full = rep("Alaska", 3),
+    abbr = rep("AK", 3),
+    county = c("Anchorage Municipality", "Aleutians West Census Area",
+               "Anchorage Municipality"),
+    fips = c("02020", "02016", "02020"),
+    stringsAsFactors = FALSE
+  )
+
+  expect_equivalent(fips_info(c(2020, 2016, 2020)), ak_result)
+  expect_equivalent(fips_info(c("02020", "02016", "02020")), ak_result)
+
+  ak_result_sorted <- data.frame(
     full = rep("Alaska", 2),
     abbr = rep("AK", 2),
     county = c("Aleutians West Census Area", "Anchorage Municipality"),
@@ -25,8 +49,10 @@ test_that("returns correct county FIPS information", {
     stringsAsFactors = FALSE
   )
 
-  expect_equivalent(fips_info(c(2016, 2020)), ak_result)
-  expect_equivalent(fips_info(c("02016", "02020")), ak_result)
+  expect_equivalent(fips_info(c(2020, 2016, 2020), sortAndRemoveDuplicates = TRUE),
+                    ak_result_sorted)
+  expect_equivalent(fips_info(c("02020", "02016", "02020"), sortAndRemoveDuplicates = TRUE),
+                    ak_result_sorted)
 })
 
 # non-existent yet valid means a FIPS such as "03", which falls

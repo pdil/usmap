@@ -1,16 +1,19 @@
 # usmap 0.5.2.9999
 
+### New Features
+* Added `sortAndRemoveDuplicates` parameter to `fips_info`, see [Issue #47](https://github.com/pdil/usmap/issues/47).
+  * The default (`FALSE`) value changes existing behavior, to retain existing behavior, change the parameter value to `TRUE`.
+
 ### Improvements
 * Improve map resolution.
   * More polygons are shown, this has a marginal increase on the data set file sizes but it is negligible.
 * Add shape file update history, see [Issue #30](https://github.com/pdil/usmap/issues/30).
-* Extract map data frame to external [usmapdata](https://github.com/pdil/usmapdata) package to reduce `usmap` package size, see [Issue #39](https://github.com/pdil/usmap/issues/39).
+* Extract map data frame to external [usmapdata](https://github.com/pdil/usmapdata) package to reduce `usmap` package size, see [Issue #39](https://github.com/pdil/usmap/issues/39).as
   * All existing functions (including `us_map()`) should continue to work as usual.
   
 ### Bug Fixes
 * Fix CRS warnings, see [Issue #40](https://github.com/pdil/usmap/issues/40).
 * Fix `plot_usmap()` issue when provided data has `"values"` column, see [Issue #48](https://github.com/pdil/usmap/issues/48) and [this Stack Overflow question](https://stackoverflow.com/questions/61111024/trouble-using-plot-usmap-function-in-usmap-package).
-
 
 # usmap 0.5.2
 Released Wednesday, October 7, 2020.
