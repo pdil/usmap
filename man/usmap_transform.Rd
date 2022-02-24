@@ -5,9 +5,17 @@
 \alias{usmap_transform.data.frame}
 \title{Convert coordinate date frame to usmap projection}
 \usage{
-usmap_transform(data)
+usmap_transform(
+  data,
+  input_names = c("lon", "lat"),
+  output_names = c("x", "y")
+)
 
-\method{usmap_transform}{data.frame}(data)
+\method{usmap_transform}{data.frame}(
+  data,
+  input_names = c("lon", "lat"),
+  output_names = c("x", "y")
+)
 }
 \arguments{
 \item{data}{A data frame containing coordinates in a two column format
