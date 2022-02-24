@@ -11,8 +11,9 @@ p <- plot_usmap("counties", fill = "red")
 q <- plot_usmap(data = statepop, values = "pop_2015", color = "blue")
 r <- plot_usmap(data = example_data, size = 0.8)
 s <- plot_usmap(include = c("AL", "FL", "GA"), labels = TRUE, label_color = "blue")
-t <- plot_usmap("counties", include = "AZ", labels = TRUE, fill = "yellow", size = 0.6)
+t <- plot_usmap("county", include = "AZ", labels = TRUE, fill = "yellow", size = 0.6)
 u <- plot_usmap(include = .new_england, exclude = "ME", labels = TRUE)
+v <- plot_usmap("state", labels = TRUE)
 
 test_that("ggplot object is returned", {
   expect_is(p, "ggplot")
@@ -21,6 +22,7 @@ test_that("ggplot object is returned", {
   expect_is(s, "ggplot")
   expect_is(t, "ggplot")
   expect_is(u, "ggplot")
+  expect_is(v, "ggplot")
 })
 
 test_that("no warnings are produced", {
@@ -30,6 +32,7 @@ test_that("no warnings are produced", {
   expect_silent(s)
   expect_silent(t)
   expect_silent(u)
+  expect_silent(v)
 })
 
 test_that("correct data is used", {
@@ -50,6 +53,9 @@ test_that("correct data is used", {
 
   u_map_data <- us_map(include = .new_england, exclude = "ME")
   expect_identical(u$data, u_map_data)
+
+  v_map_data <- us_map()
+  expect_identical(v$data, v_map_data)
 })
 
 test_that("layer parameters are correct", {
@@ -114,6 +120,18 @@ test_that("layer parameters are correct", {
   expect_equal(deparse(u$layers[[2]]$mapping$x), "~x")
   expect_equal(deparse(u$layers[[2]]$mapping$y), "~y")
   expect_equal(deparse(u$layers[[2]]$mapping$label), "~abbr")
+
+  expect_is(v$layers[[1]], "ggproto")
+  expect_equal(deparse(v$layers[[1]]$mapping$x), "~x")
+  expect_equal(deparse(v$layers[[1]]$mapping$y), "~y")
+  expect_equal(deparse(v$layers[[1]]$mapping$group), "~group")
+  expect_equal(as.character(v$layers[[1]]$aes_params$fill), "white")
+  expect_equal(as.character(v$layers[[1]]$aes_params$colour), "black")
+  expect_equal(v$layers[[1]]$aes_params$size, 0.4)
+  expect_is(v$layers[[2]], "ggproto")
+  expect_equal(deparse(v$layers[[2]]$mapping$x), "~x")
+  expect_equal(deparse(v$layers[[2]]$mapping$y), "~y")
+  expect_equal(deparse(v$layers[[2]]$mapping$label), "~abbr")
 })
 
 test_that("singular regions can be used", {

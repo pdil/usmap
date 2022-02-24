@@ -59,7 +59,7 @@ test_that("returns correct county FIPS information", {
 # within the prescribed boundaries yet is not assigned to any US state
 # and therefore returns a warning
 test_that("warning occurs for non-existent yet valid FIPS", {
-  expect_warning(fips_info("03"))
+  expect_warning(fips_info(c("03", "04")))
   expect_warning(fips_info("03055"))
 })
 
