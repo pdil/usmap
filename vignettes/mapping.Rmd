@@ -84,6 +84,59 @@ plot_usmap(
   theme(legend.position = "right")
 ```
 
+### Required Data Format
+
+The data passed to the `data` parameter in `plot_usmap()` must be a data frame
+with at least two columns. One of the columns must be named `"fips"` or `"state"` and contain
+either the FIPS code, the state abbreviation, or the state name (for county maps
+only the FIPS code is supported). The second column must be the values to be plotted
+for each region. The default name of the values column is `"values"`. If a different
+name is used in the data frame, the name can be specified in the `values` parameter
+of `plot_usmap`. Any extra columns in the data frame will be ignored.
+
+#### FIPS column with default `values` column
+```{r, fig.show='hide', message=FALSE, warning=FALSE}
+df <- data.frame(
+  fips = c("02", "01", "05", "04"),
+  values = c(14, 18, 19, 8)
+)
+
+plot_usmap(data = df)
+```
+
+#### FIPS column with custom `values` column
+Name of values column must be specified in `values` parameter if it is not `"values"`.
+```{r, fig.show='hide', message=FALSE, warning=FALSE}
+df <- data.frame(
+  fips = c("02", "01", "05", "04"),
+  population = c(14, 18, 19, 8)
+)
+
+plot_usmap(data = df, values = "population")
+```
+
+#### States
+Abbreviations and full names can be mixed if desired.
+```{r, fig.show='hide', message=FALSE, warning=FALSE}
+df <- data.frame(
+  state = c("AL", "Alaska", "AR", "AZ"),
+  values = c(14, 18, 19, 8)
+)
+
+plot_usmap(data = df)
+```
+
+#### Counties
+County names are not supported in `plot_usmap` data frames. Use `fips` instead.
+```{r, fig.show='hide', message=FALSE, warning=FALSE}
+df <- data.frame(
+  fips = c("10001", "10003", "10005"),
+  values = c(93, 98, 41)
+)
+
+plot_usmap(data = df)
+```
+
 ## Built-in Regions
 
 `usmap` provides some built-in regions based on the [US Census Bureau Regions and Divisions](https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf). These can be used in place of the `include`/`exclude` parameters when using `us_map` or `plot_usmap` and start with a `.` (dot):
