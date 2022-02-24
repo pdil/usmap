@@ -6,17 +6,22 @@
 \alias{fips_info.character}
 \title{Retrieve states or counties using FIPS codes}
 \usage{
-fips_info(fips)
+fips_info(fips, sortAndRemoveDuplicates = FALSE)
 
-\method{fips_info}{numeric}(fips)
+\method{fips_info}{numeric}(fips, sortAndRemoveDuplicates = FALSE)
 
-\method{fips_info}{character}(fips)
+\method{fips_info}{character}(fips, sortAndRemoveDuplicates = FALSE)
 }
 \arguments{
 \item{fips}{A one to five digit, either \code{numeric}
 or \code{character}, vector of FIPS codes for which to look up states or counties.
 States have a two digit FIPS code and counties have a five digit FIPS
 code (where the first 2 numbers pertain to the state).}
+
+\item{sortAndRemoveDuplicates}{Whether or not to sort the output and remove
+duplicates. By default, the output will be returned in the order of
+the values provided to the \code{fips} parameter. Set this parameter to \code{TRUE}
+to return the output sorted by FIPS with a single instance of each FIPS.}
 }
 \value{
 A data frame with the states or counties and the associated
@@ -34,6 +39,6 @@ fips_info("2")
 fips_info(c("02", "03", "04"))
 
 fips_info(2016)
-fips_info(c("02016", "02017"))
+fips_info(c("02016", "02017"), sortAndRemoveDuplicates = TRUE)
 
 }
