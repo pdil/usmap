@@ -1,7 +1,7 @@
 # usmap 0.5.2.9999
 
 ### New Features
-* Added `sortAndRemoveDuplicates` parameter to `fips_info`, see [Issue #47](https://github.com/pdil/usmap/issues/47).
+* Add `sortAndRemoveDuplicates` parameter to `fips_info`, see [Issue #47](https://github.com/pdil/usmap/issues/47).
   * The default (`FALSE`) value changes existing behavior, to retain existing behavior, change the parameter value to `TRUE`.
 
 ### Improvements
@@ -10,6 +10,7 @@
 * Add shape file update history, see [Issue #30](https://github.com/pdil/usmap/issues/30).
 * Extract map data frame to external [usmapdata](https://github.com/pdil/usmapdata) package to reduce `usmap` package size, see [Issue #39](https://github.com/pdil/usmap/issues/39).
   * All existing functions (including `us_map()`) should continue to work as usual.
+* Add data format examples for `plot_usmap` to "Mapping" vignette, see [Issue #42](https://github.com/pdil/usmap/issues/42).
   
 ### Bug Fixes
 * Fix CRS warnings, see [Issue #40](https://github.com/pdil/usmap/issues/40).
