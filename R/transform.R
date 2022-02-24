@@ -9,6 +9,14 @@
 #'   represents latitude. The names of the data frame column do not matter,
 #'   just that the order of the columns is kept intact.
 #'
+#' @param input_names A character vector of length two which specifies the
+#'   longitude and latitude columns of the input data (the ones that should be
+#'   transformed), respectively. Defaults to `c("lon", "lat")`.
+#'
+#' @param output_names A character vector of length two which specifies the
+#'   longitude and latitude columns of the output data (after transformation),
+#'   respectively. Defaults to `c("x", "y")`.
+#'
 #' @return A data frame containing the transformed coordinates from the
 #'   input data frame with the Albers Equal Area projection applied. The
 #'   transformed columns will be appended to the data frame so that all
@@ -29,13 +37,15 @@
 #'
 #' plot_usmap() + geom_point(
 #'   data = transformed_data,
-#'   aes(x = lon.1, y = lat.1, size = pop),
+#'   aes(x = x, y = y, size = pop),
 #'   color = "red", alpha = 0.5
 #' )
 #'
 #' @rdname usmap_transform
 #' @export
-usmap_transform <- function(data) {
+usmap_transform <- function(data,
+                            input_names = c("lon", "lat"),
+                            output_names = c("x", "y")) {
   # check for maptools
   if (!requireNamespace("maptools", quietly = TRUE)) {
     stop("`maptools` must be installed to use `usmap_transform`.
@@ -59,24 +69,40 @@ usmap_transform <- function(data) {
 
 #' @rdname usmap_transform
 #' @export
-usmap_transform.data.frame <- function(data) {
+usmap_transform.data.frame <- function(data,
+                                       input_names = c("lon", "lat"),
+                                       output_names = c("x", "y")) {
   # ensure data is data.frame
   data <- as.data.frame(data)
 
   # validation
-  if (ncol(data) < 2) {
-    stop("`data` must contain at least two numeric columns with longitude
-         in the first column and latitude in the second.")
-  } else if (class(data[, 1]) != "numeric" | class(data[, 2]) != "numeric") {
-    stop("`data` must contain two numeric columns with longitude
-         in the first column and latitude in the second.")
+  if (length(input_names) != 2 & !any(is.na(as.character(input_names)))) {
+    stop("`input_names` must be a character vector of length 2.")
+  } else {
+    input_names <- as.character(input_names)
+  }
+
+  if (!all(input_names %in% colnames(data))) {
+    stop("All `input_names` must exist as column names in `data`.")
+  }
+
+  if (ncol(data) < 2 |
+      !is.numeric(data[, input_names[1]]) |
+      !is.numeric(data[, input_names[2]])) {
+    stop("`data` must contain at least two numeric columns.")
+  }
+
+  if (length(output_names) != 2 & !any(is.na(as.character(output_names)))) {
+    stop("`output_names` must be a character vector of length 2.")
+  } else {
+    output_names <- as.character(output_names)
   }
 
   # create SpatialPointsDataFrame
   longlat <- sp::CRS(SRS_string = "EPSG:4326") # long/lat coordinates
 
   spdf <- sp::SpatialPointsDataFrame(
-    coords = data[, c(1, 2)],
+    coords = data[, c(input_names[1], input_names[2])],
     data = data,
     proj4string = longlat
   )
@@ -162,6 +188,8 @@ usmap_transform.data.frame <- function(data) {
     combined[!duplicated(combined@data, fromLast = TRUE), ]
   )
   row.names(result) <- NULL
+
+  colnames(result) <- c(colnames(data), output_names)
 
   result
 }

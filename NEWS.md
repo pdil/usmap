@@ -1,6 +1,7 @@
 # usmap 0.5.2.9999
 
 ### New Features
+* Add `input_names` and `output_names` parameters to `usmap_transform`, see [Issue #33](https://github.com/pdil/usmap/issues/33).
 * Add `sortAndRemoveDuplicates` parameter to `fips_info`, see [Issue #47](https://github.com/pdil/usmap/issues/47).
   * The default (`FALSE`) value changes existing behavior, to retain existing behavior, change the parameter value to `TRUE`.
 
