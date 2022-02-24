@@ -22,6 +22,14 @@ usmap_transform(
 where the first column represents longitude and the second data frame
 represents latitude. The names of the data frame column do not matter,
 just that the order of the columns is kept intact.}
+
+\item{input_names}{A character vector of length two which specifies the
+longitude and latitude columns of the input data (the ones that should be
+transformed), respectively. Defaults to \code{c("lon", "lat")}.}
+
+\item{output_names}{A character vector of length two which specifies the
+longitude and latitude columns of the output data (after transformation),
+respectively. Defaults to \code{c("x", "y")}.}
 }
 \value{
 A data frame containing the transformed coordinates from the
@@ -49,7 +57,7 @@ library(ggplot2)
 
 plot_usmap() + geom_point(
   data = transformed_data,
-  aes(x = lon.1, y = lat.1, size = pop),
+  aes(x = x, y = y, size = pop),
   color = "red", alpha = 0.5
 )
 

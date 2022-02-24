@@ -9,6 +9,14 @@
 #'   represents latitude. The names of the data frame column do not matter,
 #'   just that the order of the columns is kept intact.
 #'
+#' @param input_names A character vector of length two which specifies the
+#'   longitude and latitude columns of the input data (the ones that should be
+#'   transformed), respectively. Defaults to `c("lon", "lat")`.
+#'
+#' @param output_names A character vector of length two which specifies the
+#'   longitude and latitude columns of the output data (after transformation),
+#'   respectively. Defaults to `c("x", "y")`.
+#'
 #' @return A data frame containing the transformed coordinates from the
 #'   input data frame with the Albers Equal Area projection applied. The
 #'   transformed columns will be appended to the data frame so that all
@@ -29,7 +37,7 @@
 #'
 #' plot_usmap() + geom_point(
 #'   data = transformed_data,
-#'   aes(x = lon.1, y = lat.1, size = pop),
+#'   aes(x = x, y = y, size = pop),
 #'   color = "red", alpha = 0.5
 #' )
 #'
