@@ -14,7 +14,6 @@ usmap-package	usmap
 .west_region	dot-west_region
 .west_south_central	dot-west_south_central
 citypop	citypop
-col_classes	col_classes
 countypop	countypop
 countypov	countypov
 earthquakes	earthquakes
@@ -27,6 +26,7 @@ map_with_data	map_with_data
 plot_usmap	plot_usmap
 statepop	statepop
 statepov	statepov
+static_merge	static_merge
 theme_map	theme_map
 usmap	usmap
 usmap_crs	usmap_crs

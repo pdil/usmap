@@ -1,6 +1,6 @@
 * using log directory ‘/Users/paolo/Documents/github/usmap/revdep/checks.noindex/cpsvote/old/cpsvote.Rcheck’
-* using R version 4.0.3 (2020-10-10)
-* using platform: x86_64-apple-darwin17.0 (64-bit)
+* using R version 4.1.2 (2021-11-01)
+* using platform: aarch64-apple-darwin20 (64-bit)
 * using session charset: UTF-8
 * using options ‘--no-manual --no-build-vignettes’
 * checking for file ‘cpsvote/DESCRIPTION’ ... OK
@@ -46,6 +46,7 @@
 * checking for unstated dependencies in examples ... OK
 * checking contents of ‘data’ directory ... OK
 * checking data for non-ASCII characters ... OK
+* checking LazyData ... OK
 * checking data for ASCII and uncompressed saves ... OK
 * checking installed files from ‘inst/doc’ ... OK
 * checking files in ‘vignettes’ ... OK

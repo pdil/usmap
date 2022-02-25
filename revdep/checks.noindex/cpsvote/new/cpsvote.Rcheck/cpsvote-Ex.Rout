@@ -1,7 +1,7 @@
 
-R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
-Copyright (C) 2020 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin17.0 (64-bit)
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin20 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -75,23 +75,23 @@ Type 'q()' to quit R.
 > ### ** Examples
 > 
 > cps_label(cps_2016_10k)
-[90m# A tibble: 10,000 x 17[39m
-   FILE   YEAR STATE   AGE SEX   EDUCATION RACE  HISPANIC WEIGHT VRS_VOTE
-   [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<dbl>[39m[23m [3m[90m<fct>[39m[23m   
-[90m 1[39m cps_…  [4m2[24m016 AL       69 FEMA… HIGH SCH… WHIT… NON-HIS…  [4m1[24m328. YES     
-[90m 2[39m cps_…  [4m2[24m016 AL       35 MALE  BACHELOR… WHIT… NON-HIS…  [4m1[24m793. YES     
-[90m 3[39m cps_…  [4m2[24m016 AL       54 FEMA… HIGH SCH… WHIT… NON-HIS…  [4m1[24m757. NO RESP…
-[90m 4[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHIT… NON-HIS…  [4m1[24m628. NO      
-[90m 5[39m cps_…  [4m2[24m016 AL       60 FEMA… SOME COL… WHIT… NON-HIS…  [4m1[24m396. NO RESP…
-[90m 6[39m cps_…  [4m2[24m016 AL       12 FEMA… [31mNA[39m        WHIT… NON-HIS…  [4m1[24m917. [31mNA[39m      
-[90m 7[39m cps_…  [4m2[24m016 AL       65 MALE  HIGH SCH… WHIT… NON-HIS…  [4m1[24m732. NO      
-[90m 8[39m cps_…  [4m2[24m016 AL       43 MALE  SOME COL… WHIT… NON-HIS…  [4m2[24m042. YES     
-[90m 9[39m cps_…  [4m2[24m016 AL       46 MALE  SOME COL… WHIT… HISPANIC  [4m2[24m068. YES     
-[90m10[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHIT… NON-HIS…  [4m1[24m694. NO      
-[90m# … with 9,990 more rows, and 7 more variables: VRS_REG [3m[90m<fct>[90m[23m,[39m
-[90m#   VRS_REG_WHYNOT [3m[90m<fct>[90m[23m, VRS_VOTE_WHYNOT [3m[90m<fct>[90m[23m,[39m
-[90m#   VRS_VOTEMODE_2004toPRESENT [3m[90m<fct>[90m[23m, VRS_VOTEWHEN_2004toPRESENT [3m[90m<fct>[90m[23m,[39m
-[90m#   VRS_REG_METHOD [3m[90m<fct>[90m[23m, VRS_RESIDENCE [3m[90m<fct>[90m[23m[39m
+# A tibble: 10,000 × 17
+   FILE          YEAR STATE   AGE SEX   EDUCATION RACE  HISPANIC WEIGHT VRS_VOTE
+   <fct>        <int> <fct> <int> <fct> <fct>     <fct> <fct>     <dbl> <fct>   
+ 1 cps_nov2016…  2016 AL       69 FEMA… HIGH SCH… WHIT… NON-HIS…  1328. YES     
+ 2 cps_nov2016…  2016 AL       35 MALE  BACHELOR… WHIT… NON-HIS…  1793. YES     
+ 3 cps_nov2016…  2016 AL       54 FEMA… HIGH SCH… WHIT… NON-HIS…  1757. NO RESP…
+ 4 cps_nov2016…  2016 AL       47 MALE  HIGH SCH… WHIT… NON-HIS…  1628. NO      
+ 5 cps_nov2016…  2016 AL       60 FEMA… SOME COL… WHIT… NON-HIS…  1396. NO RESP…
+ 6 cps_nov2016…  2016 AL       12 FEMA… <NA>      WHIT… NON-HIS…  1917. <NA>    
+ 7 cps_nov2016…  2016 AL       65 MALE  HIGH SCH… WHIT… NON-HIS…  1732. NO      
+ 8 cps_nov2016…  2016 AL       43 MALE  SOME COL… WHIT… NON-HIS…  2042. YES     
+ 9 cps_nov2016…  2016 AL       46 MALE  SOME COL… WHIT… HISPANIC  2068. YES     
+10 cps_nov2016…  2016 AL       47 MALE  HIGH SCH… WHIT… NON-HIS…  1694. NO      
+# … with 9,990 more rows, and 7 more variables: VRS_REG <fct>,
+#   VRS_REG_WHYNOT <fct>, VRS_VOTE_WHYNOT <fct>,
+#   VRS_VOTEMODE_2004toPRESENT <fct>, VRS_VOTEWHEN_2004toPRESENT <fct>,
+#   VRS_REG_METHOD <fct>, VRS_RESIDENCE <fct>
 > 
 > 
 > 
@@ -143,24 +143,24 @@ Type 'q()' to quit R.
 > ### ** Examples
 > 
 > cps_recode_vote(cps_refactor(cps_label(cps_2016_10k)))
-[90m# A tibble: 10,000 x 20[39m
-   FILE   YEAR STATE   AGE SEX   EDUCATION RACE  HISPANIC WEIGHT VRS_VOTE
-   [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<dbl>[39m[23m [3m[90m<fct>[39m[23m   
-[90m 1[39m cps_…  [4m2[24m016 AL       69 FEMA… HIGH SCH… WHITE NON-HIS…  [4m1[24m328. YES     
-[90m 2[39m cps_…  [4m2[24m016 AL       35 MALE  BACHELOR… WHITE NON-HIS…  [4m1[24m793. YES     
-[90m 3[39m cps_…  [4m2[24m016 AL       54 FEMA… HIGH SCH… WHITE NON-HIS…  [4m1[24m757. NO RESP…
-[90m 4[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m628. NO      
-[90m 5[39m cps_…  [4m2[24m016 AL       60 FEMA… SOME COL… WHITE NON-HIS…  [4m1[24m396. NO RESP…
-[90m 6[39m cps_…  [4m2[24m016 AL       12 FEMA… [31mNA[39m        WHITE NON-HIS…  [4m1[24m917. [31mNA[39m      
-[90m 7[39m cps_…  [4m2[24m016 AL       65 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m732. NO      
-[90m 8[39m cps_…  [4m2[24m016 AL       43 MALE  SOME COL… WHITE NON-HIS…  [4m2[24m042. YES     
-[90m 9[39m cps_…  [4m2[24m016 AL       46 MALE  SOME COL… WHITE HISPANIC  [4m2[24m068. YES     
-[90m10[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m694. NO      
-[90m# … with 9,990 more rows, and 10 more variables: VRS_REG [3m[90m<fct>[90m[23m,[39m
-[90m#   VRS_REG_WHYNOT [3m[90m<fct>[90m[23m, VRS_VOTE_WHYNOT [3m[90m<fct>[90m[23m,[39m
-[90m#   VRS_VOTEMODE_2004toPRESENT [3m[90m<fct>[90m[23m, VRS_VOTEWHEN_2004toPRESENT [3m[90m<fct>[90m[23m,[39m
-[90m#   VRS_REG_METHOD [3m[90m<fct>[90m[23m, VRS_RESIDENCE [3m[90m<fct>[90m[23m, VRS_VOTEMETHOD_CON [3m[90m<fct>[90m[23m,[39m
-[90m#   cps_turnout [3m[90m<fct>[90m[23m, hurachen_turnout [3m[90m<fct>[90m[23m[39m
+# A tibble: 10,000 × 20
+   FILE          YEAR STATE   AGE SEX   EDUCATION RACE  HISPANIC WEIGHT VRS_VOTE
+   <fct>        <int> <fct> <int> <fct> <fct>     <fct> <fct>     <dbl> <fct>   
+ 1 cps_nov2016…  2016 AL       69 FEMA… HIGH SCH… WHITE NON-HIS…  1328. YES     
+ 2 cps_nov2016…  2016 AL       35 MALE  BACHELOR… WHITE NON-HIS…  1793. YES     
+ 3 cps_nov2016…  2016 AL       54 FEMA… HIGH SCH… WHITE NON-HIS…  1757. NO RESP…
+ 4 cps_nov2016…  2016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  1628. NO      
+ 5 cps_nov2016…  2016 AL       60 FEMA… SOME COL… WHITE NON-HIS…  1396. NO RESP…
+ 6 cps_nov2016…  2016 AL       12 FEMA… <NA>      WHITE NON-HIS…  1917. <NA>    
+ 7 cps_nov2016…  2016 AL       65 MALE  HIGH SCH… WHITE NON-HIS…  1732. NO      
+ 8 cps_nov2016…  2016 AL       43 MALE  SOME COL… WHITE NON-HIS…  2042. YES     
+ 9 cps_nov2016…  2016 AL       46 MALE  SOME COL… WHITE HISPANIC  2068. YES     
+10 cps_nov2016…  2016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  1694. NO      
+# … with 9,990 more rows, and 10 more variables: VRS_REG <fct>,
+#   VRS_REG_WHYNOT <fct>, VRS_VOTE_WHYNOT <fct>,
+#   VRS_VOTEMODE_2004toPRESENT <fct>, VRS_VOTEWHEN_2004toPRESENT <fct>,
+#   VRS_REG_METHOD <fct>, VRS_RESIDENCE <fct>, VRS_VOTEMETHOD_CON <fct>,
+#   cps_turnout <fct>, hurachen_turnout <fct>
 > 
 > 
 > 
@@ -178,23 +178,23 @@ Type 'q()' to quit R.
 > ### ** Examples
 > 
 > cps_refactor(cps_label(cps_2016_10k))
-[90m# A tibble: 10,000 x 18[39m
-   FILE   YEAR STATE   AGE SEX   EDUCATION RACE  HISPANIC WEIGHT VRS_VOTE
-   [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<dbl>[39m[23m [3m[90m<fct>[39m[23m   
-[90m 1[39m cps_…  [4m2[24m016 AL       69 FEMA… HIGH SCH… WHITE NON-HIS…  [4m1[24m328. YES     
-[90m 2[39m cps_…  [4m2[24m016 AL       35 MALE  BACHELOR… WHITE NON-HIS…  [4m1[24m793. YES     
-[90m 3[39m cps_…  [4m2[24m016 AL       54 FEMA… HIGH SCH… WHITE NON-HIS…  [4m1[24m757. NO RESP…
-[90m 4[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m628. NO      
-[90m 5[39m cps_…  [4m2[24m016 AL       60 FEMA… SOME COL… WHITE NON-HIS…  [4m1[24m396. NO RESP…
-[90m 6[39m cps_…  [4m2[24m016 AL       12 FEMA… [31mNA[39m        WHITE NON-HIS…  [4m1[24m917. [31mNA[39m      
-[90m 7[39m cps_…  [4m2[24m016 AL       65 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m732. NO      
-[90m 8[39m cps_…  [4m2[24m016 AL       43 MALE  SOME COL… WHITE NON-HIS…  [4m2[24m042. YES     
-[90m 9[39m cps_…  [4m2[24m016 AL       46 MALE  SOME COL… WHITE HISPANIC  [4m2[24m068. YES     
-[90m10[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m694. NO      
-[90m# … with 9,990 more rows, and 8 more variables: VRS_REG [3m[90m<fct>[90m[23m,[39m
-[90m#   VRS_REG_WHYNOT [3m[90m<fct>[90m[23m, VRS_VOTE_WHYNOT [3m[90m<fct>[90m[23m,[39m
-[90m#   VRS_VOTEMODE_2004toPRESENT [3m[90m<fct>[90m[23m, VRS_VOTEWHEN_2004toPRESENT [3m[90m<fct>[90m[23m,[39m
-[90m#   VRS_REG_METHOD [3m[90m<fct>[90m[23m, VRS_RESIDENCE [3m[90m<fct>[90m[23m, VRS_VOTEMETHOD_CON [3m[90m<fct>[90m[23m[39m
+# A tibble: 10,000 × 18
+   FILE          YEAR STATE   AGE SEX   EDUCATION RACE  HISPANIC WEIGHT VRS_VOTE
+   <fct>        <int> <fct> <int> <fct> <fct>     <fct> <fct>     <dbl> <fct>   
+ 1 cps_nov2016…  2016 AL       69 FEMA… HIGH SCH… WHITE NON-HIS…  1328. YES     
+ 2 cps_nov2016…  2016 AL       35 MALE  BACHELOR… WHITE NON-HIS…  1793. YES     
+ 3 cps_nov2016…  2016 AL       54 FEMA… HIGH SCH… WHITE NON-HIS…  1757. NO RESP…
+ 4 cps_nov2016…  2016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  1628. NO      
+ 5 cps_nov2016…  2016 AL       60 FEMA… SOME COL… WHITE NON-HIS…  1396. NO RESP…
+ 6 cps_nov2016…  2016 AL       12 FEMA… <NA>      WHITE NON-HIS…  1917. <NA>    
+ 7 cps_nov2016…  2016 AL       65 MALE  HIGH SCH… WHITE NON-HIS…  1732. NO      
+ 8 cps_nov2016…  2016 AL       43 MALE  SOME COL… WHITE NON-HIS…  2042. YES     
+ 9 cps_nov2016…  2016 AL       46 MALE  SOME COL… WHITE HISPANIC  2068. YES     
+10 cps_nov2016…  2016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  1694. NO      
+# … with 9,990 more rows, and 8 more variables: VRS_REG <fct>,
+#   VRS_REG_WHYNOT <fct>, VRS_VOTE_WHYNOT <fct>,
+#   VRS_VOTEMODE_2004toPRESENT <fct>, VRS_VOTEWHEN_2004toPRESENT <fct>,
+#   VRS_REG_METHOD <fct>, VRS_RESIDENCE <fct>, VRS_VOTEMETHOD_CON <fct>
 > 
 > 
 > 
@@ -212,24 +212,24 @@ Type 'q()' to quit R.
 > ### ** Examples
 > 
 > cps_reweight_turnout(cps_recode_vote(cps_refactor(cps_label(cps_2016_10k))))
-[90m# A tibble: 10,000 x 21[39m
-   FILE   YEAR STATE   AGE SEX   EDUCATION RACE  HISPANIC WEIGHT VRS_VOTE
-   [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<int>[39m[23m [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m     [3m[90m<dbl>[39m[23m [3m[90m<fct>[39m[23m   
-[90m 1[39m cps_…  [4m2[24m016 AL       69 FEMA… HIGH SCH… WHITE NON-HIS…  [4m1[24m328. YES     
-[90m 2[39m cps_…  [4m2[24m016 AL       35 MALE  BACHELOR… WHITE NON-HIS…  [4m1[24m793. YES     
-[90m 3[39m cps_…  [4m2[24m016 AL       54 FEMA… HIGH SCH… WHITE NON-HIS…  [4m1[24m757. NO RESP…
-[90m 4[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m628. NO      
-[90m 5[39m cps_…  [4m2[24m016 AL       60 FEMA… SOME COL… WHITE NON-HIS…  [4m1[24m396. NO RESP…
-[90m 6[39m cps_…  [4m2[24m016 AL       12 FEMA… [31mNA[39m        WHITE NON-HIS…  [4m1[24m917. [31mNA[39m      
-[90m 7[39m cps_…  [4m2[24m016 AL       65 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m732. NO      
-[90m 8[39m cps_…  [4m2[24m016 AL       43 MALE  SOME COL… WHITE NON-HIS…  [4m2[24m042. YES     
-[90m 9[39m cps_…  [4m2[24m016 AL       46 MALE  SOME COL… WHITE HISPANIC  [4m2[24m068. YES     
-[90m10[39m cps_…  [4m2[24m016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  [4m1[24m694. NO      
-[90m# … with 9,990 more rows, and 11 more variables: VRS_REG [3m[90m<fct>[90m[23m,[39m
-[90m#   VRS_REG_WHYNOT [3m[90m<fct>[90m[23m, VRS_VOTE_WHYNOT [3m[90m<fct>[90m[23m,[39m
-[90m#   VRS_VOTEMODE_2004toPRESENT [3m[90m<fct>[90m[23m, VRS_VOTEWHEN_2004toPRESENT [3m[90m<fct>[90m[23m,[39m
-[90m#   VRS_REG_METHOD [3m[90m<fct>[90m[23m, VRS_RESIDENCE [3m[90m<fct>[90m[23m, VRS_VOTEMETHOD_CON [3m[90m<fct>[90m[23m,[39m
-[90m#   cps_turnout [3m[90m<fct>[90m[23m, hurachen_turnout [3m[90m<fct>[90m[23m, turnout_weight [3m[90m<dbl>[90m[23m[39m
+# A tibble: 10,000 × 21
+   FILE          YEAR STATE   AGE SEX   EDUCATION RACE  HISPANIC WEIGHT VRS_VOTE
+   <fct>        <int> <fct> <int> <fct> <fct>     <fct> <fct>     <dbl> <fct>   
+ 1 cps_nov2016…  2016 AL       69 FEMA… HIGH SCH… WHITE NON-HIS…  1328. YES     
+ 2 cps_nov2016…  2016 AL       35 MALE  BACHELOR… WHITE NON-HIS…  1793. YES     
+ 3 cps_nov2016…  2016 AL       54 FEMA… HIGH SCH… WHITE NON-HIS…  1757. NO RESP…
+ 4 cps_nov2016…  2016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  1628. NO      
+ 5 cps_nov2016…  2016 AL       60 FEMA… SOME COL… WHITE NON-HIS…  1396. NO RESP…
+ 6 cps_nov2016…  2016 AL       12 FEMA… <NA>      WHITE NON-HIS…  1917. <NA>    
+ 7 cps_nov2016…  2016 AL       65 MALE  HIGH SCH… WHITE NON-HIS…  1732. NO      
+ 8 cps_nov2016…  2016 AL       43 MALE  SOME COL… WHITE NON-HIS…  2042. YES     
+ 9 cps_nov2016…  2016 AL       46 MALE  SOME COL… WHITE HISPANIC  2068. YES     
+10 cps_nov2016…  2016 AL       47 MALE  HIGH SCH… WHITE NON-HIS…  1694. NO      
+# … with 9,990 more rows, and 11 more variables: VRS_REG <fct>,
+#   VRS_REG_WHYNOT <fct>, VRS_VOTE_WHYNOT <fct>,
+#   VRS_VOTEMODE_2004toPRESENT <fct>, VRS_VOTEWHEN_2004toPRESENT <fct>,
+#   VRS_REG_METHOD <fct>, VRS_RESIDENCE <fct>, VRS_VOTEMETHOD_CON <fct>,
+#   cps_turnout <fct>, hurachen_turnout <fct>, turnout_weight <dbl>
 > 
 > 
 > 
@@ -239,7 +239,7 @@ Type 'q()' to quit R.
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.961 0.139 2.149 0 0 
+Time elapsed:  1.073 0.046 1.14 0 0 
 > grDevices::dev.off()
 null device 
           1 
