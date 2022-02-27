@@ -58,7 +58,7 @@ Helpful links:
 \url{https://en.wikipedia.org/wiki/FIPS_county_code}
 \url{https://en.wikipedia.org/wiki/FIPS_state_code}
 \item US Census Shapefiles \cr
-\url{httpshttps://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html}
+\url{https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html}
 \item Map Features \cr
 \url{https://en.wikipedia.org/wiki/Map_projection}
 \url{https://en.wikipedia.org/wiki/Albers_projection}

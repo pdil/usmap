@@ -26,7 +26,7 @@ Once the longitude and latitude is transformed, it can be added to
 }
 \references{
 \itemize{
-\item \url{https://www.usgs.gov/natural-hazards/earthquake-hazards/earthquakes}
+\item \url{https://www.usgs.gov/programs/earthquake-hazards/earthquakes}
 \item \url{https://earthquake.usgs.gov/earthquakes/search/}
 }
 }
