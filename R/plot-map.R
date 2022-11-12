@@ -54,6 +54,7 @@
 #' # Choose color for labels
 #' plot_usmap(data = statepop, values = "pop_2015", labels = TRUE, label_color = "white")
 #'
+#' @importFrom rlang .data
 #' @export
 plot_usmap <- function(regions = c("states", "state", "counties", "county"),
                        include = c(),
