@@ -1,4 +1,4 @@
-# usmap 0.6.0.9999
+# usmap 0.6.1
 
 ### Bug Fixes
 * Fix failing `plot_usmap` tests, see [Issue #58](https://github.com/pdil/usmap/issues/58).

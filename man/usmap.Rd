@@ -70,6 +70,6 @@ Paolo Di Lorenzo \cr
 \itemize{
 \item Email: \email{paolo@dilorenzo.pl}
 \item Website: \url{https://dilorenzo.pl}
-\item Github: \url{https://github.com/pdil/}
+\item GitHub: \url{https://github.com/pdil/}
 }
 }

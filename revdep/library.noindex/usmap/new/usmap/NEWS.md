@@ -1,4 +1,11 @@
-# usmap 0.5.2.9999
+# usmap 0.6.0.9999
+
+### Bug Fixes
+* Fix failing `plot_usmap` tests, see [Issue #58](https://github.com/pdil/usmap/issues/58).
+* Fix `aes_string` and `size` deprecation in ggplot2, see [Issue #59](https://github.com/pdil/usmap/issues/59).
+
+# usmap 0.6.0
+Released Sunday, February 27, 2022.
 
 ### New Features
 * Add `input_names` and `output_names` parameters to `usmap_transform`, see [Issue #33](https://github.com/pdil/usmap/issues/33).
