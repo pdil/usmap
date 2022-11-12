@@ -19,7 +19,7 @@ usmap::plot_usmap("counties",
 usmap::plot_usmap("counties",
                   include = c("MA", "CT", "RI"),
                   labels = TRUE, label_color = "blue",
-                  fill = "yellow", alpha = 0.25, color = "orange", size = 2)
+                  fill = "yellow", alpha = 0.25, color = "orange", linewidth = 2)
 
 ## ---- warning=FALSE-----------------------------------------------------------
 usmap::usmap_crs()@projargs
