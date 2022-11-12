@@ -80,8 +80,8 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
     geom_args[["color"]] <- "black"
   }
 
-  if (is.null(geom_args[["size"]])) {
-    geom_args[["size"]] <- 0.4
+  if (is.null(geom_args[["linewidth"]])) {
+    geom_args[["linewidth"]] <- 0.4
   }
 
   # only use "fill" setting if data is not included
@@ -97,7 +97,12 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
     geom_args[["mapping"]] <- ggplot2::aes(x = x, y = y, group = group)
   } else {
     map_df <- map_with_data(data, values = values, include = include, exclude = exclude)
-    geom_args[["mapping"]] <- ggplot2::aes_string(x = "x", y = "y", group = "group", fill = values)
+    geom_args[["mapping"]] <- ggplot2::aes(
+      x = .data[["x"]],
+      y = .data[["y"]],
+      group = .data[["group"]],
+      fill = .data[[values]]
+    )
   }
 
   polygon_layer <- do.call(ggplot2::geom_polygon, geom_args)
