@@ -134,13 +134,6 @@ test_that("layer parameters are correct", {
   expect_equal(deparse(v$layers[[2]]$mapping$label), "~abbr")
 })
 
-test_that("singular regions can be used", {
-  expect_equal(plot_usmap(regions = "states")$layers,
-               plot_usmap(regions = "state")$layers)
-  expect_equal(plot_usmap(regions = "counties")$layers,
-               plot_usmap(regions = "county")$layers)
-})
-
 test_that("warning occurs for unnecessary fill argument", {
   expect_warning(plot_usmap(data = example_data, fill = "red"))
 })
