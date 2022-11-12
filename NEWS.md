@@ -1,4 +1,8 @@
+# usmap 0.6.1.9999
+
+
 # usmap 0.6.1
+Released Saturday, November 12, 2022.
 
 ### Bug Fixes
 * Fix failing `plot_usmap` tests, see [Issue #58](https://github.com/pdil/usmap/issues/58).
