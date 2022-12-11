@@ -3,5 +3,6 @@ linters: linters_with_defaults(
   object_name_linter(c("camelCase", "snake_case", "symbols"))
  )
 exclusions: list(
-  "revdep"
+  "revdep",
+  "vignettes"
  )
