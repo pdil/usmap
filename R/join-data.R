@@ -46,7 +46,7 @@ map_with_data <- function(data,
     }
 
     warning(paste("`data` is empty, returning basic", region_type, "US map data frame"))
-    return(us_map(regions = region_type, include = include, exclude = exclude))
+    return(usmap::us_map(regions = region_type, include = include, exclude = exclude))
   }
 
   if (!(values %in% names(data))) {
@@ -57,7 +57,7 @@ map_with_data <- function(data,
     # do nothing
   } else if ("state" %in% names(data)) {
     # convert to fips
-    data$fips <- fips(data$state)
+    data$fips <- usmap::fips(data$state)
   } else {
     # error
     stop("`data` must be a data.frame containing either a `state` or `fips` column.")
@@ -66,7 +66,7 @@ map_with_data <- function(data,
   data$fips <- as.character(data$fips)
 
   region_type <- ifelse(nchar(data$fips[1]) <= 2, "state", "county")
-  map_df <- us_map(regions = region_type, include = include, exclude = exclude)
+  map_df <- usmap::us_map(regions = region_type, include = include, exclude = exclude)
 
   # Remove columns in data that are already in map_df
   data$abbr <- NULL

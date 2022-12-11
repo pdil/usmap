@@ -65,11 +65,6 @@
 #' @name usmap
 "_PACKAGE"
 
-## Prevent R CMD check from catching the following variables
-## as missing global variables (used in ggplot2::aes)
-if (getRversion() >= "2.15.1")
-  utils::globalVariables(c("abbr", "county", "group", "x", "y"))
-
 #' Retrieve US map data
 #'
 #' @param regions The region breakdown for the map, can be one of

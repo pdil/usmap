@@ -72,6 +72,8 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
          Use: install.packages(\"ggplot2\") and try again.")
   }
 
+  .data <- ggplot2::.data
+
   # parse parameters
   regions_ <- match.arg(regions)
   geom_args <- list(...)
@@ -95,14 +97,14 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 
   # create polygon layer
   if (nrow(data) == 0) {
-    map_df <- us_map(regions = regions_, include = include, exclude = exclude)
-    geom_args[["mapping"]] <- ggplot2::aes(x = x, y = y, group = group)
+    map_df <- usmap::us_map(regions = regions_, include = include, exclude = exclude)
+    geom_args[["mapping"]] <- ggplot2::aes(x = .data$x, y = .data$y, group = .data$group)
   } else {
-    map_df <- map_with_data(data, values = values, include = include, exclude = exclude)
+    map_df <- usmap::map_with_data(data, values = values, include = include, exclude = exclude)
     geom_args[["mapping"]] <- ggplot2::aes(
-      x = .data[["x"]],
-      y = .data[["y"]],
-      group = .data[["group"]],
+      x = .data$x,
+      y = .data$y,
+      group = .data$group,
       fill = .data[[values]]
     )
   }
@@ -135,12 +137,12 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
     if (regions_ == "county" || regions_ == "counties") {
       label_layer <- ggplot2::geom_text(
         data = centroid_labels,
-        ggplot2::aes(x = x, y = y, label = sub(" County", "", county)),
+        ggplot2::aes(x = .data$x, y = .data$y, label = sub(" County", "", .data$county)),
         color = label_color)
     } else {
       label_layer <- ggplot2::geom_text(
         data = centroid_labels,
-        ggplot2::aes(x = x, y = y, label = abbr), color = label_color)
+        ggplot2::aes(x = .data$x, y = .data$y, label = .data$abbr), color = label_color)
     }
   } else {
     label_layer <- ggplot2::geom_blank()
