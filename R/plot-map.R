@@ -113,7 +113,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
   if (labels) {
     if (regions_ == "state") regions__ <- "states"
     else if (regions_ == "county") regions__ <- "counties"
-    else { regions__ <- regions_ }
+    else regions__ <- regions_
 
     centroid_labels <- usmapdata::centroid_labels(regions__)
 
@@ -162,7 +162,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 #'
 #' @keywords internal
 theme_map <- function(base_size = 9, base_family = "") {
-  element_blank = ggplot2::element_blank()
+  element_blank <- ggplot2::element_blank()
  `%+replace%` <- ggplot2::`%+replace%`
   unit <- ggplot2::unit
 
