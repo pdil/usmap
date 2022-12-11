@@ -77,7 +77,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
   geom_args <- list(...)
 
   # set geom_polygon defaults
-  if (is.null(geom_args[["colour"]]) & is.null(geom_args[["color"]])) {
+  if (is.null(geom_args[["colour"]]) && is.null(geom_args[["color"]])) {
     geom_args[["color"]] <- "black"
   }
 
@@ -86,9 +86,9 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
   }
 
   # only use "fill" setting if data is not included
-  if (is.null(geom_args[["fill"]]) & nrow(data) == 0) {
+  if (is.null(geom_args[["fill"]]) && nrow(data) == 0) {
     geom_args[["fill"]] <- "white"
-  } else if (!is.null(geom_args[["fill"]]) & nrow(data) != 0) {
+  } else if (!is.null(geom_args[["fill"]]) && nrow(data) != 0) {
     warning("`fill` setting is ignored when `data` is provided. Use `fill` to color regions with solid color when no data is being displayed.")
   }
 
@@ -131,7 +131,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
           substr(centroid_labels$fips, 1, 2) %in% exclude), ]
     }
 
-    if (regions_ == "county" | regions_ == "counties") {
+    if (regions_ == "county" || regions_ == "counties") {
       label_layer <- ggplot2::geom_text(
         data = centroid_labels,
         ggplot2::aes(x = x, y = y, label = sub(" County", "", county)),

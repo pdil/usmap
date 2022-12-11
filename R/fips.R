@@ -51,7 +51,7 @@
 #' fips(state = "Alabama", county = "Autauga County")
 #' @export
 fips <- function(state, county = c()) {
-  if (missing(state) & missing(county)) {
+  if (missing(state) && missing(county)) {
     df <- utils::read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
     return(sprintf("%02d", df$fips))
   }
