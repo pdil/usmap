@@ -163,7 +163,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 #' @keywords internal
 theme_map <- function(base_size = 9, base_family = "") {
   element_blank <- ggplot2::element_blank()
- `%+replace%` <- ggplot2::`%+replace%`
+ `%+replace%` <- ggplot2::`%+replace%` # nolint: object_name_linter
   unit <- ggplot2::unit
 
   ggplot2::theme_bw(base_size = base_size, base_family = base_family) %+replace%

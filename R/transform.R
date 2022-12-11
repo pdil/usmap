@@ -174,15 +174,7 @@ usmap_transform.data.frame <- function(data,
   }
 
   # combine all points
-  if (length(alaska) > 0 && length(hawaii) > 0) {
-    combined <- rbind(transformed, alaska, hawaii)
-  } else if (length(alaska) > 0) {
-    combined <- rbind(transformed, alaska)
-  } else if (length(hawaii) > 0) {
-    combined <- rbind(transformed, hawaii)
-  } else {
-    combined <- transformed
-  }
+  combined <- rbind(transformed, alaska, hawaii)
 
   result <- as.data.frame(
     combined[!duplicated(combined@data, fromLast = TRUE), ]

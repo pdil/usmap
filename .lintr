@@ -1,4 +1,5 @@
 linters: linters_with_defaults(
+  cyclocomp_linter = NULL,
   line_length_linter(120),
   object_name_linter(c("camelCase", "snake_case", "symbols"))
  )
