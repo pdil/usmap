@@ -46,22 +46,17 @@
 usmap_transform <- function(data,
                             input_names = c("lon", "lat"),
                             output_names = c("x", "y")) {
-  # check for maptools
-  if (!requireNamespace("maptools", quietly = TRUE)) {
-    stop("`maptools` must be installed to use `usmap_transform`.
-         Use: install.packages(\"maptools\") and try again.")
+
+  # check for sf
+  if (!requireNamespace("sf", quietly = TRUE)) {
+    stop("`sf` must be installed to use `usmap_transform`.
+         Use: install.packages(\"sf\") and try again.")
   }
 
   # check for sp
   if (!requireNamespace("sp", quietly = TRUE)) {
     stop("`sp` must be installed to use `usmap_transform`.
          Use: install.packages(\"sp\") and try again.")
-  }
-
-  # check for rgdal
-  if (!requireNamespace("rgdal", quietly = TRUE)) {
-    stop("`rgdal` must be installed to use `usmap_transform`.
-         Use: install.packages(\"rgdal\") and try again.")
   }
 
   UseMethod("usmap_transform", data)
@@ -131,13 +126,13 @@ usmap_transform.data.frame <- function(data,
   ]
 
   if (length(alaska) > 0) {
-    alaska <- maptools::elide(
+    alaska <- sp::elide(
       alaska,
       rotate = -50,
       scale = max(apply(ak_bbox, 1, diff)) / 2.3,
       bb = ak_bbox
     )
-    alaska <- maptools::elide(alaska, shift = c(-1298669, -3018809))
+    alaska <- sp::elide(alaska, shift = c(-1298669, -3018809))
     sp::proj4string(alaska) <- usmap_crs()
     names(alaska) <- names(transformed)
   }
@@ -163,12 +158,12 @@ usmap_transform.data.frame <- function(data,
   ]
 
   if (length(hawaii) > 0) {
-    hawaii <- maptools::elide(
+    hawaii <- sp::elide(
       hawaii,
       rotate = -35,
       bb = hi_bbox
     )
-    hawaii <- maptools::elide(hawaii, shift = c(5400000, -1400000))
+    hawaii <- sp::elide(hawaii, shift = c(5400000, -1400000))
     sp::proj4string(hawaii) <- usmap_crs()
     names(hawaii) <- names(transformed)
   }
@@ -204,6 +199,11 @@ usmap_transform.data.frame <- function(data,
 #'
 #' @export
 usmap_crs <- function() {
+  if (!requireNamespace("sf", quietly = TRUE)) {
+    stop("`sf` must be installed to use `usmap_transform`.
+         Use: install.packages(\"sf\") and try again.")
+  }
+
   if (!requireNamespace("sp", quietly = TRUE)) {
     stop("`sp` must be installed to use `usmap_crs`.
          Use: install.packages(\"sp\") and try again.")

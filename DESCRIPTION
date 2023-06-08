@@ -22,12 +22,11 @@ Suggests:
     ggplot2,
     ggrepel,
     knitr,
-    maptools,
     proto,
-    rgdal,
     rmarkdown,
     scales,
     sp,
+    sf,
     stringr,
     testthat
 RoxygenNote: 7.2.2
