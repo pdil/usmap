@@ -70,10 +70,12 @@
 if (getRversion() >= "2.15.1")
   utils::globalVariables(c("abbr", "county", "group", "x", "y"))
 
-## Ensure latest evolution status of sp is used.
-## Replaces rgdal usage with sf package.
-if (sp::get_evolution_status() != 2L)
-  sp::set_evolution_status(2L)
+.onLoad <- function(libname, pkgname) {
+  ## Ensure latest evolution status of sp is used.
+  ## Replaces rgdal usage with sf package.
+  if (sp::get_evolution_status() != 2L)
+    sp::set_evolution_status(2L)
+}
 
 #' Retrieve US map data
 #'
