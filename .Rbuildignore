@@ -13,3 +13,4 @@
 ^CRAN-RELEASE$
 ^codecov\.yml$
 ^LICENSE\.md$
+^\.lintr$
