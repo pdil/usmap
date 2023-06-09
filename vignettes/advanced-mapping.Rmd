@@ -55,20 +55,19 @@ Notice in this case we set the `fill` and `alpha` parameters to fill in the coun
 
 The following parameters are supported:
 
-* `fill`: fill color of the state/county polygons
-* `alpha`: transparency of the state/county polygon fill colors
-* `color`/`colour`: line color of the state/county polygons
-* `linewidth`: thickness of the state/county polygon lines
+-   `fill`: fill color of the state/county polygons
+-   `alpha`: transparency of the state/county polygon fill colors
+-   `color`/`colour`: line color of the state/county polygons
+-   `linewidth`: thickness of the state/county polygon lines
 
 ## Transform data frames to match `usmap` projection
 
-Data sets with longitude and latitude coordinates can be transformed to match
-the projection used in `usmap` (Albers Equal Area projection).
-This is convenient for plotting location-specific data and values using `ggplot2` layers such as `geom_point` and `geom_label`.
+Data sets with longitude and latitude coordinates can be transformed to match the projection used in `usmap` (Albers Equal Area projection). This is convenient for plotting location-specific data and values using `ggplot2` layers such as `geom_point` and `geom_label`.
 
 #### Projection
 
 The projection used by `usmap` can also be accessed by using `usmap_crs()`:
+
 ```{r, warning=FALSE}
 usmap::usmap_crs()@projargs
 ```
@@ -95,6 +94,7 @@ plot_usmap() +
 ```
 
 #### Example: most populous city in each state
+
 And a more comprehensive example using the provided `citypop` dataset:
 
 ```{r, fig.align='center', fig.width=8, fig.height=5, message=FALSE, warning=FALSE}
@@ -121,6 +121,6 @@ plot_usmap(fill = "yellow", alpha = 0.25) +
   theme(legend.position = "right")
 ```
 
-The `usmap_transform` function, combined with the power of `ggplot2` layers can allow for some very unique and complex data visualizations on the US map. The `usmap_transform` function also handles transforming points in the Alaska/Hawaii area so that they are appropriately displayed on their respective states. 
+The `usmap_transform` function, combined with the power of `ggplot2` layers can allow for some very unique and complex data visualizations on the US map. The `usmap_transform` function also handles transforming points in the Alaska/Hawaii area so that they are appropriately displayed on their respective states.
 
 Currently, `usmap_transform` does not trim any points that fall outside the Alaska/Hawaii/US bounding boxes so it is important to prepare the data beforehand by eliminating any points that should not be displayed on the map otherwise it could have undesirable results.

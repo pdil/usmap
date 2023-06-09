@@ -1,5 +1,8 @@
-# usmap 0.6.1.9999
+# usmap 0.6.2
 
+### Bug Fixes
+* Replace retired packages `maptools` and `rgdal` with `sp` and `sf`, see [Issue #57](https://github.com/pdil/usmap/issues/57) and [Issue #70](https://github.com/pdil/usmap/issues/70).
+  * Special thanks [@rsbivand](https://github.com/rsbivand).
 
 # usmap 0.6.1
 Released Saturday, November 12, 2022.

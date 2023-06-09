@@ -1,11 +1,11 @@
 
 ## Test environments
-* local macOS install, R 4.2.2
+* local macOS install, R 4.3.0
 
 #### On Github Actions
-* macOS-latest (release), R 4.2.2
-* windows-latest (release), R 4.2.2
-* ubuntu-20.04 (oldrel, devel, release), R 4.2.2
+* macOS-latest (release), R 4.3.0
+* windows-latest (release), R 4.3.0
+* ubuntu-22.04 (oldrel, devel, release), R 4.2.3
 
 ## R CMD check results
 
@@ -17,3 +17,4 @@ I have also run R CMD check on downstream dependencies of usmap:
 
 * cpsvote
 * ecocomDP
+* PracTools
