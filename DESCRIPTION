@@ -1,5 +1,5 @@
 Package: usmap
-Version: 0.6.1.9999
+Version: 0.6.2.9999
 Title: US Maps Including Alaska and Hawaii
 Description: Obtain United States map data frames of varying region types (e.g. county, 
     state). The map data frames include Alaska and Hawaii conveniently placed to the
@@ -10,6 +10,7 @@ Depends:
     R (>= 3.5.0)
 License: GPL (>= 3)
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 URL: https://usmap.dev
 BugReports: https://github.com/pdil/usmap/issues
@@ -22,14 +23,13 @@ Suggests:
     ggplot2,
     ggrepel,
     knitr,
-    maptools,
     proto,
-    rgdal,
     rmarkdown,
     scales,
     sp,
+    sf,
     stringr,
     testthat
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
