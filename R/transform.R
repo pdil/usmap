@@ -83,8 +83,8 @@ usmap_transform.data.frame <- function(data,
   }
 
   if (ncol(data) < 2 ||
-      !is.numeric(data[, input_names[1]]) ||
-      !is.numeric(data[, input_names[2]])) {
+    !is.numeric(data[, input_names[1]]) ||
+    !is.numeric(data[, input_names[2]])) {
     stop("`data` must contain at least two numeric columns.")
   }
 
