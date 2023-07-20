@@ -72,7 +72,7 @@ usmap_transform.data.frame <- function(data,
   data <- as.data.frame(data)
 
   # validation
-  if (length(input_names) != 2 & !any(is.na(as.character(input_names)))) {
+  if (length(input_names) != 2 && !any(is.na(as.character(input_names)))) {
     stop("`input_names` must be a character vector of length 2.")
   } else {
     input_names <- as.character(input_names)
@@ -82,13 +82,13 @@ usmap_transform.data.frame <- function(data,
     stop("All `input_names` must exist as column names in `data`.")
   }
 
-  if (ncol(data) < 2 |
-      !is.numeric(data[, input_names[1]]) |
-      !is.numeric(data[, input_names[2]])) {
+  if (ncol(data) < 2 ||
+        !is.numeric(data[, input_names[1]]) ||
+        !is.numeric(data[, input_names[2]])) {
     stop("`data` must contain at least two numeric columns.")
   }
 
-  if (length(output_names) != 2 & !any(is.na(as.character(output_names)))) {
+  if (length(output_names) != 2 && !any(is.na(as.character(output_names)))) {
     stop("`output_names` must be a character vector of length 2.")
   } else {
     output_names <- as.character(output_names)
@@ -170,15 +170,7 @@ usmap_transform.data.frame <- function(data,
   }
 
   # combine all points
-  if (length(alaska) > 0 & length(hawaii) > 0) {
-    combined <- rbind(transformed, alaska, hawaii)
-  } else if (length(alaska) > 0) {
-    combined <- rbind(transformed, alaska)
-  } else if (length(hawaii) > 0) {
-    combined <- rbind(transformed, hawaii)
-  } else {
-    combined <- transformed
-  }
+  combined <- rbind(transformed, alaska, hawaii)
 
   result <- as.data.frame(
     combined[!duplicated(combined@data, fromLast = TRUE), ]

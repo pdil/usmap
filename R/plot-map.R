@@ -72,12 +72,14 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
          Use: install.packages(\"ggplot2\") and try again.")
   }
 
+  .data <- ggplot2::.data
+
   # parse parameters
   regions_ <- match.arg(regions)
   geom_args <- list(...)
 
   # set geom_polygon defaults
-  if (is.null(geom_args[["colour"]]) & is.null(geom_args[["color"]])) {
+  if (is.null(geom_args[["colour"]]) && is.null(geom_args[["color"]])) {
     geom_args[["color"]] <- "black"
   }
 
@@ -86,22 +88,23 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
   }
 
   # only use "fill" setting if data is not included
-  if (is.null(geom_args[["fill"]]) & nrow(data) == 0) {
+  if (is.null(geom_args[["fill"]]) && nrow(data) == 0) {
     geom_args[["fill"]] <- "white"
-  } else if (!is.null(geom_args[["fill"]]) & nrow(data) != 0) {
-    warning("`fill` setting is ignored when `data` is provided. Use `fill` to color regions with solid color when no data is being displayed.")
+  } else if (!is.null(geom_args[["fill"]]) && nrow(data) != 0) {
+    warning("`fill` setting is ignored when `data` is provided. Use `fill` to
+            color regions with solid color when no data is being displayed.")
   }
 
   # create polygon layer
   if (nrow(data) == 0) {
-    map_df <- us_map(regions = regions_, include = include, exclude = exclude)
-    geom_args[["mapping"]] <- ggplot2::aes(x = x, y = y, group = group)
+    map_df <- usmap::us_map(regions = regions_, include = include, exclude = exclude)
+    geom_args[["mapping"]] <- ggplot2::aes(x = .data$x, y = .data$y, group = .data$group)
   } else {
-    map_df <- map_with_data(data, values = values, include = include, exclude = exclude)
+    map_df <- usmap::map_with_data(data, values = values, include = include, exclude = exclude)
     geom_args[["mapping"]] <- ggplot2::aes(
-      x = .data[["x"]],
-      y = .data[["y"]],
-      group = .data[["group"]],
+      x = .data$x,
+      y = .data$y,
+      group = .data$group,
       fill = .data[[values]]
     )
   }
@@ -112,7 +115,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
   if (labels) {
     if (regions_ == "state") regions__ <- "states"
     else if (regions_ == "county") regions__ <- "counties"
-    else { regions__ <- regions_ }
+    else regions__ <- regions_
 
     centroid_labels <- usmapdata::centroid_labels(regions__)
 
@@ -131,15 +134,15 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
           substr(centroid_labels$fips, 1, 2) %in% exclude), ]
     }
 
-    if (regions_ == "county" | regions_ == "counties") {
+    if (regions_ == "county" || regions_ == "counties") {
       label_layer <- ggplot2::geom_text(
         data = centroid_labels,
-        ggplot2::aes(x = x, y = y, label = sub(" County", "", county)),
+        ggplot2::aes(x = .data$x, y = .data$y, label = sub(" County", "", .data$county)),
         color = label_color)
     } else {
       label_layer <- ggplot2::geom_text(
         data = centroid_labels,
-        ggplot2::aes(x = x, y = y, label = abbr), color = label_color)
+        ggplot2::aes(x = .data$x, y = .data$y, label = .data$abbr), color = label_color)
     }
   } else {
     label_layer <- ggplot2::geom_blank()
@@ -164,8 +167,8 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 #'
 #' @keywords internal
 theme_map <- function(base_size = 9, base_family = "") {
-  element_blank = ggplot2::element_blank()
- `%+replace%` <- ggplot2::`%+replace%`
+  element_blank <- ggplot2::element_blank()
+ `%+replace%` <- ggplot2::`%+replace%` # nolint: object_name_linter
   unit <- ggplot2::unit
 
   ggplot2::theme_bw(base_size = base_size, base_family = base_family) %+replace%

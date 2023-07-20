@@ -51,7 +51,7 @@
 #' fips(state = "Alabama", county = "Autauga County")
 #' @export
 fips <- function(state, county = c()) {
-  if (missing(state) & missing(county)) {
+  if (missing(state) && missing(county)) {
     df <- utils::read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
     return(sprintf("%02d", df$fips))
   }
@@ -213,7 +213,7 @@ get_fips_info <- function(fips, sortAndRemoveDuplicates) {
 #' @seealso https://stackoverflow.com/a/61560405/7264964
 #' @keywords internal
 static_merge <- function(x, y, ...) {
-  x$join_id_ <- 1:nrow(x)
+  x$join_id_ <- seq_len(nrow(x))
   joined <- merge(x = x, y = y, sort = FALSE, ...)
   joined[order(joined$join_id), colnames(joined) != "join_id_"]
 }

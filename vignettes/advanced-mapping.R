@@ -60,4 +60,3 @@ plot_usmap(fill = "yellow", alpha = 0.25) +
        subtitle = "Source: US Census 2010",
        size = "City Population") +
   theme(legend.position = "right")
-
