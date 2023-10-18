@@ -1,4 +1,4 @@
-# usmap 0.6.2.9999
+# usmap 0.6.3
 
 * Update package author email and website.
 
