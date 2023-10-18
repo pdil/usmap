@@ -13,4 +13,4 @@ When contributing code, please use a consistent styling convention. Try to match
 
 Contributing is open to anyone who is willing so feel free to submit pull requests at any time. This way anyone can develop new features, fixes, or enhancements for `usmap` to improve its functionality and place within the `R` ecosystem.
 
-Please [email me](mailto:paolo@dilorenzo.pl?subject=Contributing%20to%20usmap) if you have any questions.
+Please [email me](mailto:dilorenzo@hey.com?subject=Contributing%20to%20usmap) if you have any questions.

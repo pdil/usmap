@@ -1,5 +1,6 @@
 # usmap 0.6.2.9999
 
+* Update package author email and website.
 
 # usmap 0.6.2
 Released Tuesday, June 13, 2023.
