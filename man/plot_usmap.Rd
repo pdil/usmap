@@ -53,7 +53,7 @@ County labels may be added in the future.}
 
 \item{label_color}{The color of the labels to display. Corresponds to the \code{color}
 option in the \code{\link[ggplot2]{aes}} mapping. The default is \code{"black"}.
-\href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{Click here}
+\href{https://usmap.dev/docs/Rcolor.pdf}{Click here}
 for more color options.}
 
 \item{...}{Other arguments to pass to \code{ggplot2::aes()}. These are

@@ -1,4 +1,13 @@
 
+This is a re-submission for version 0.6.3 which fixes the following issue:
+
+Found the following (possibly) invalid URLs:
+URL: http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
+From: man/plot_usmap.Rd
+Status: 404
+Message: Not Found
+
+
 ## Test environments
 * local macOS install, R 4.3.0
 
