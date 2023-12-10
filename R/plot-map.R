@@ -123,7 +123,8 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
       centroid_labels <- centroid_labels[
         centroid_labels$full %in% include |
           centroid_labels$abbr %in% include |
-          centroid_labels$fips %in% include, ]
+          centroid_labels$fips %in% include,
+      ]
     }
 
     if (length(exclude) > 0) {
@@ -131,18 +132,21 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
         centroid_labels$full %in% exclude |
           centroid_labels$abbr %in% exclude |
           centroid_labels$fips %in% exclude |
-          substr(centroid_labels$fips, 1, 2) %in% exclude), ]
+          substr(centroid_labels$fips, 1, 2) %in% exclude
+      ), ]
     }
 
     if (regions_ == "county" || regions_ == "counties") {
       label_layer <- ggplot2::geom_text(
         data = centroid_labels,
         ggplot2::aes(x = .data$x, y = .data$y, label = sub(" County", "", .data$county)),
-        color = label_color)
+        color = label_color
+      )
     } else {
       label_layer <- ggplot2::geom_text(
         data = centroid_labels,
-        ggplot2::aes(x = .data$x, y = .data$y, label = .data$abbr), color = label_color)
+        ggplot2::aes(x = .data$x, y = .data$y, label = .data$abbr), color = label_color
+      )
     }
   } else {
     label_layer <- ggplot2::geom_blank()

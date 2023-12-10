@@ -153,9 +153,9 @@ usmap_transform.data.frame <- function(data,
 
   hawaii <- transformed[
     transformed@coords[, 1] >= hi_bbox[1, 1] &
-    transformed@coords[, 1] <= hi_bbox[1, 2] &
-    transformed@coords[, 2] >= hi_bbox[2, 1] &
-    transformed@coords[, 2] <= hi_bbox[2, 2],
+      transformed@coords[, 1] <= hi_bbox[1, 2] &
+      transformed@coords[, 2] >= hi_bbox[2, 1] &
+      transformed@coords[, 2] <= hi_bbox[2, 2],
   ]
 
   if (length(hawaii) > 0) {
