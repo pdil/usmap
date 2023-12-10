@@ -1,5 +1,12 @@
 context("Transforming coordinate data frames")
 
+test_that("dependencies are verified", {
+  expect_package_error("sf", { usmap_transform(data.frame()) })
+  expect_package_error("sp", { usmap_transform(data.frame()) })
+  expect_package_error("sf", { usmap_crs() })
+  expect_package_error("sp", { usmap_crs() })
+})
+
 test_that("data frame with AK and HI points is transformed", {
   data <- data.frame(
     lon = c(-74.01, -95.36, -118.24, -87.65, -134.42, -157.86),
@@ -103,4 +110,10 @@ test_that("error occurs for data with non-numeric columns", {
   expect_error(usmap_transform(invalid_data1))
   expect_error(usmap_transform(invalid_data2))
   expect_error(usmap_transform(invalid_data3))
+})
+
+test_that("sp evolution status is set correctly", {
+  sp::set_evolution_status(1L)
+  usmap_transform(data.frame(lon = 0, lat = 0))
+  expect_equal(sp::get_evolution_status(), 2L)
 })
