@@ -1,7 +1,7 @@
 context("Plotting US maps")
 
 test_that("dependencies are verified", {
-  expect_package_error("ggplot2", { plot_usmap() })
+  expect_package_error("ggplot2", plot_usmap())
 })
 
 library(proto)
