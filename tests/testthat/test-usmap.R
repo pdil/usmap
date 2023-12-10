@@ -1,7 +1,7 @@
 context("Retrieving US map data")
 
 test_that("dependencies are verified", {
-  expect_package_error("usmapdata", { us_map() })
+  expect_package_error("usmapdata", us_map())
 })
 
 test_that("data frame is returned", {

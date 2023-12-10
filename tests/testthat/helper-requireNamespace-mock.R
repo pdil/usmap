@@ -6,7 +6,7 @@ expect_package_error <- function(pkg, code, msg) {
   with_mocked_bindings({
     expect_error(code, paste0("`", pkg, "` must be installed"))
   },
-  requireNamespace = function(package, ...) { package != pkg },
+  requireNamespace = function(package, ...) package != pkg,
   .package = "base"
   )
 }

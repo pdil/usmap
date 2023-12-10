@@ -1,10 +1,10 @@
 context("Transforming coordinate data frames")
 
 test_that("dependencies are verified", {
-  expect_package_error("sf", { usmap_transform(data.frame()) })
-  expect_package_error("sp", { usmap_transform(data.frame()) })
-  expect_package_error("sf", { usmap_crs() })
-  expect_package_error("sp", { usmap_crs() })
+  expect_package_error("sf", usmap_transform(data.frame()))
+  expect_package_error("sp", usmap_transform(data.frame()))
+  expect_package_error("sf", usmap_crs())
+  expect_package_error("sp", usmap_crs())
 })
 
 test_that("data frame with AK and HI points is transformed", {
