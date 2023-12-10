@@ -86,9 +86,8 @@ fips <- function(state, county = c()) {
       result <- c(
         result,
         df$fips[which(
-          (name %in% county_i | name %in% paste(county_i, "county"))
-          &
-          (state_abbr %in% state_ | state_full %in% state_)
+          (name %in% county_i | name %in% paste(county_i, "county")) &
+            (state_abbr %in% state_ | state_full %in% state_)
         )]
       )
     }
