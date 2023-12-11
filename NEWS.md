@@ -1,4 +1,4 @@
-# usmap 0.6.3.9999
+# usmap 0.6.4
 
 ### Improvements
 * Replace local state and county FIPS files with `usmapdata::fips_data()`.
