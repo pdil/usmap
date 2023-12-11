@@ -121,9 +121,9 @@ usmap_transform.data.frame <- function(data,
 
   alaska <- transformed[
     transformed@coords[, 1] >= ak_bbox[1, 1] &
-    transformed@coords[, 1] <= ak_bbox[1, 2] &
-    transformed@coords[, 2] >= ak_bbox[2, 1] &
-    transformed@coords[, 2] <= ak_bbox[2, 2],
+      transformed@coords[, 1] <= ak_bbox[1, 2] &
+      transformed@coords[, 2] >= ak_bbox[2, 1] &
+      transformed@coords[, 2] <= ak_bbox[2, 2],
   ]
 
   if (length(alaska) > 0) {
