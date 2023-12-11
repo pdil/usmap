@@ -52,7 +52,7 @@
 #' @export
 fips <- function(state, county = c()) {
   if (missing(state) && missing(county)) {
-    df <- utils::read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
+    df <- usmapdata::fips_data()
     return(sprintf("%02d", df$fips))
   }
 
@@ -60,7 +60,7 @@ fips <- function(state, county = c()) {
   county_ <- tolower(county)
 
   if (length(county_) == 0) {
-    df <- utils::read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
+    df <- usmapdata::fips_data()
     abbr <- tolower(df$abbr)
     full <- tolower(df$full)
     fips2 <- c(df$fips, df$fips)
@@ -75,7 +75,7 @@ fips <- function(state, county = c()) {
       stop("`county` parameter cannot be used with multiple states.")
     }
 
-    df <- utils::read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
+    df <- usmapdata::fips_data("counties")
     name <- tolower(df$county)
     state_abbr <- tolower(df$abbr)
     state_full <- tolower(df$full)
@@ -173,18 +173,10 @@ fips_info.character <- function(fips, sortAndRemoveDuplicates = FALSE) {
 #' @keywords internal
 get_fips_info <- function(fips, sortAndRemoveDuplicates) {
   if (all(nchar(fips) == 2)) {
-    df <- utils::read.csv(
-      system.file("extdata", "state_fips.csv", package = "usmap"),
-      colClasses = rep("character", 3), stringsAsFactors = FALSE
-    )
-
+    df <- usmapdata::fips_data()
     columns <- c("abbr", "fips", "full")
   } else if (all(nchar(fips) == 5)) {
-    df <- utils::read.csv(
-      system.file("extdata", "county_fips.csv", package = "usmap"),
-      colClasses = rep("character", 4), stringsAsFactors = FALSE
-    )
-
+    df <- usmapdata::fips_data("counties")
     columns <- c("full", "abbr", "county", "fips")
   }
 
