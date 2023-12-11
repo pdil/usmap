@@ -52,8 +52,7 @@
 #' @export
 fips <- function(state, county = c()) {
   if (missing(state) && missing(county)) {
-    df <- usmapdata::fips_data()
-    return(sprintf("%02d", df$fips))
+    return(usmapdata::fips_data()$fips)
   }
 
   state_ <- tolower(state)
@@ -66,10 +65,8 @@ fips <- function(state, county = c()) {
     fips2 <- c(df$fips, df$fips)
 
     result <- fips2[match(state_, c(abbr, full))]
-
-    formatted_result <- sprintf("%02d", result)
-    formatted_result[formatted_result == "NA"] <- NA
-    formatted_result
+    result[result == "NA"] <- NA
+    result
   } else {
     if (length(state_) > 1) {
       stop("`county` parameter cannot be used with multiple states.")
@@ -99,7 +96,7 @@ fips <- function(state, county = c()) {
         stop(paste0(county, " are not valid counties in ", state, ".\n"))
       }
     } else {
-      sprintf("%05d", result)
+      result
     }
   }
 }
