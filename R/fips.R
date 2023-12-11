@@ -52,30 +52,27 @@
 #' @export
 fips <- function(state, county = c()) {
   if (missing(state) && missing(county)) {
-    df <- utils::read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
-    return(sprintf("%02d", df$fips))
+    return(usmapdata::fips_data()$fips)
   }
 
   state_ <- tolower(state)
   county_ <- tolower(county)
 
   if (length(county_) == 0) {
-    df <- utils::read.csv(system.file("extdata", "state_fips.csv", package = "usmap"))
+    df <- usmapdata::fips_data()
     abbr <- tolower(df$abbr)
     full <- tolower(df$full)
     fips2 <- c(df$fips, df$fips)
 
     result <- fips2[match(state_, c(abbr, full))]
-
-    formatted_result <- sprintf("%02d", result)
-    formatted_result[formatted_result == "NA"] <- NA
-    formatted_result
+    result[result == "NA"] <- NA
+    result
   } else {
     if (length(state_) > 1) {
       stop("`county` parameter cannot be used with multiple states.")
     }
 
-    df <- utils::read.csv(system.file("extdata", "county_fips.csv", package = "usmap"))
+    df <- usmapdata::fips_data("counties")
     name <- tolower(df$county)
     state_abbr <- tolower(df$abbr)
     state_full <- tolower(df$full)
@@ -99,7 +96,7 @@ fips <- function(state, county = c()) {
         stop(paste0(county, " are not valid counties in ", state, ".\n"))
       }
     } else {
-      sprintf("%05d", result)
+      result
     }
   }
 }
@@ -173,18 +170,10 @@ fips_info.character <- function(fips, sortAndRemoveDuplicates = FALSE) {
 #' @keywords internal
 get_fips_info <- function(fips, sortAndRemoveDuplicates) {
   if (all(nchar(fips) == 2)) {
-    df <- utils::read.csv(
-      system.file("extdata", "state_fips.csv", package = "usmap"),
-      colClasses = rep("character", 3), stringsAsFactors = FALSE
-    )
-
+    df <- usmapdata::fips_data()
     columns <- c("abbr", "fips", "full")
   } else if (all(nchar(fips) == 5)) {
-    df <- utils::read.csv(
-      system.file("extdata", "county_fips.csv", package = "usmap"),
-      colClasses = rep("character", 4), stringsAsFactors = FALSE
-    )
-
+    df <- usmapdata::fips_data("counties")
     columns <- c("full", "abbr", "county", "fips")
   }
 

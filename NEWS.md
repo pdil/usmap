@@ -1,6 +1,16 @@
 # usmap 0.6.3.9999
 
+### Improvements
+* Replace local state and county FIPS files with `usmapdata::fips_data()`.
+  * Single source of truth for this data is now housed in `usmapdata`.
+  * Data will be updated in sync with shapefile updates.
 
+### Bug Fixes
+* FIPS file change resolves issue with Valdez-Cordova Census Area in Alaska, see [Issue #72](https://github.com/pdil/usmap/issues/72).
+
+### Technical Changes
+* Resolve all code-linting warnings.
+* Increase test coverage to 100%.
 
 # usmap 0.6.3
 Released Saturday, October 21, 2023.
@@ -36,7 +46,7 @@ Released Sunday, February 27, 2022.
 * Extract map data frame to external [usmapdata](https://github.com/pdil/usmapdata) package to reduce `usmap` package size, see [Issue #39](https://github.com/pdil/usmap/issues/39).
   * All existing functions (including `us_map()`) should continue to work as usual.
 * Add data format examples for `plot_usmap` to "Mapping" vignette, see [Issue #42](https://github.com/pdil/usmap/issues/42).
-  
+
 ### Bug Fixes
 * Fix CRS warnings, see [Issue #40](https://github.com/pdil/usmap/issues/40).
 * Fix `plot_usmap()` issue when provided data has `"values"` column, see [Issue #48](https://github.com/pdil/usmap/issues/48) and [this Stack Overflow question](https://stackoverflow.com/questions/61111024/trouble-using-plot-usmap-function-in-usmap-package).
@@ -71,7 +81,7 @@ Released Friday, September 13, 2019.
 * Ability to exclude counties and states with new `exclude` parameter in `us_map`, `map_with_data`, and `plot_usmap`, see [Issue #19](https://github.com/pdil/usmap/issues/19).
 * New function (`usmap_transform`) to transform longitude/latitude point data frames into coordinate reference system that matches the plotted map, see [Issue #21](https://github.com/pdil/usmap/issues/21).
   * Also includes `usmap_crs()` to easily access the coordinate reference system used by the package.
-  
+
 ### Improvements
 * In the data frames provided by `us_map()`, `long` and `lat` have been renamed to `x` and `y`, respectively, see [Issue #16](https://github.com/pdil/usmap/issues/16).
   * This should not affect the behavior of `plot_usmap()` but will be a breaking change for any code that relies on `us_map()`.

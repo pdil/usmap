@@ -16,8 +16,7 @@ URL: https://usmap.dev
 BugReports: https://github.com/pdil/usmap/issues
 Imports:
     rlang,
-    usmapdata,
-    utils
+    usmapdata (>= 0.1.2)
 Suggests:
     covr,
     ggplot2,

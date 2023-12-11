@@ -48,7 +48,6 @@ usmap_transform <- function(data,
                             output_names = c("x", "y")) {
 
   # check for sf
-  set_sp_evolution_status()
   if (!requireNamespace("sf", quietly = TRUE)) {
     stop("`sf` must be installed to use `usmap_transform`.
          Use: install.packages(\"sf\") and try again.")
@@ -121,9 +120,9 @@ usmap_transform.data.frame <- function(data,
 
   alaska <- transformed[
     transformed@coords[, 1] >= ak_bbox[1, 1] &
-    transformed@coords[, 1] <= ak_bbox[1, 2] &
-    transformed@coords[, 2] >= ak_bbox[2, 1] &
-    transformed@coords[, 2] <= ak_bbox[2, 2],
+      transformed@coords[, 1] <= ak_bbox[1, 2] &
+      transformed@coords[, 2] >= ak_bbox[2, 1] &
+      transformed@coords[, 2] <= ak_bbox[2, 2],
   ]
 
   if (length(alaska) > 0) {
@@ -192,8 +191,6 @@ usmap_transform.data.frame <- function(data,
 #'
 #' @export
 usmap_crs <- function() {
-  set_sp_evolution_status()
-
   if (!requireNamespace("sf", quietly = TRUE)) {
     stop("`sf` must be installed to use `usmap_transform`.
          Use: install.packages(\"sf\") and try again.")
@@ -206,20 +203,4 @@ usmap_crs <- function() {
 
   sp::CRS(paste("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0",
                 "+a=6370997 +b=6370997 +units=m +no_defs"))
-}
-
-#' Set sp evolution status
-#'
-#' @description
-#' Sets the `sp` evolution status to "2" to
-#' force usage of `sf` instead of `rgdal`
-#' which is being retired.
-#'
-#' This can be removed in the future when the evolution status
-#' is set to >= 2 by default in `sf`.
-#'
-#' @keywords internal
-set_sp_evolution_status <- function() {
-  if (sp::get_evolution_status() < 2L)
-    sp::set_evolution_status(2L)
 }

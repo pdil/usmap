@@ -71,8 +71,16 @@ test_that("Oglala Lakota County is correctly in the data", {
 })
 
 # This is to ensure that the Wade Hampton Census Area -> Kusilvak Census Area
-# change that occured in Alaska (July 1, 2015) is properly reflected.
+# change that occurred in Alaska (July 1, 2015) is properly reflected.
 test_that("Kusilvak Census Area is correctly in the data", {
   expect_error(fips(state = "AK", county = "Wade Hampton Census Area"))
   expect_equal(fips(state = "AK", county = "Kusilvak Census Area"), "02158")
+})
+
+# This is to ensure that the Valdez-Cordova Census Area -> Chugach Census Area / Copper River Census Area
+# change that occurred in Alaska (January 2, 2019) is properly reflected.
+test_that("Chugach Census Area and Copper River Census Area are correctly in the data", {
+  expect_error(fips(state = "AK", county = "Valdez-Cordova Census Area"))
+  expect_equal(fips(state = "AK", county = "Chugach Census Area"), "02063")
+  expect_equal(fips(state = "AK", county = "Copper River Census Area"), "02066")
 })

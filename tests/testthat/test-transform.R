@@ -111,9 +111,3 @@ test_that("error occurs for data with non-numeric columns", {
   expect_error(usmap_transform(invalid_data2))
   expect_error(usmap_transform(invalid_data3))
 })
-
-test_that("sp evolution status is set correctly", {
-  sp::set_evolution_status(1L)
-  usmap_transform(data.frame(lon = 0, lat = 0))
-  expect_equal(sp::get_evolution_status(), 2L)
-})
