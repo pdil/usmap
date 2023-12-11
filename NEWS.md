@@ -1,4 +1,9 @@
+# usmap 0.6.4.9999
+
+
+
 # usmap 0.6.4
+Released Monday, December 11, 2023.
 
 ### Improvements
 * Replace local state and county FIPS files with `usmapdata::fips_data()`.
