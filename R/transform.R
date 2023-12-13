@@ -192,7 +192,7 @@ usmap_transform.data.frame <- function(data,
 #' @export
 usmap_crs <- function() {
   if (!requireNamespace("sf", quietly = TRUE)) {
-    stop("`sf` must be installed to use `usmap_transform`.
+    stop("`sf` must be installed to use `usmap_crs`.
          Use: install.packages(\"sf\") and try again.")
   }
 

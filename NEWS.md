@@ -1,6 +1,7 @@
 # usmap 0.6.4.9999
 
-
+### Bug Fixes
+* Fix `sf` warning message in `usmap_crs()`.
 
 # usmap 0.6.4
 Released Monday, December 11, 2023.
