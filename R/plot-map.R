@@ -75,7 +75,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
   .data <- ggplot2::.data
 
   # parse parameters
-  regions_ <- match.arg(regions)
+  regions <- match.arg(regions)
   geom_args <- list(...)
 
   # set geom_polygon defaults
@@ -97,27 +97,23 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 
   # create polygon layer
   if (nrow(data) == 0) {
-    map_df <- usmap::us_map(regions = regions_, include = include, exclude = exclude)
-    geom_args[["mapping"]] <- ggplot2::aes(x = .data$x, y = .data$y, group = .data$group)
+    map_df <- usmap::us_map(regions = regions, include = include, exclude = exclude)
+    geom_args[["mapping"]] <- ggplot2::aes()
   } else {
     map_df <- usmap::map_with_data(data, values = values, include = include, exclude = exclude)
-    geom_args[["mapping"]] <- ggplot2::aes(
-      x = .data$x,
-      y = .data$y,
-      group = .data$group,
-      fill = .data[[values]]
-    )
+
+    if (!is.null(map_df$county)) regions <- "counties"
+    geom_args[["mapping"]] <- ggplot2::aes(fill = .data[[values]])
   }
 
-  polygon_layer <- do.call(ggplot2::geom_polygon, geom_args)
+  polygon_layer <- do.call(ggplot2::geom_sf, geom_args)
 
   # create label layer
   if (labels) {
-    if (regions_ == "state") regions__ <- "states"
-    else if (regions_ == "county") regions__ <- "counties"
-    else regions__ <- regions_
+    if (regions == "state") regions <- "states"
+    else if (regions == "county") regions <- "counties"
 
-    centroid_labels <- usmapdata::centroid_labels(regions__)
+    centroid_labels <- usmapdata::centroid_labels(regions, as_sf = TRUE)
 
     if (length(include) > 0) {
       centroid_labels <- centroid_labels[
@@ -136,16 +132,16 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
       ), ]
     }
 
-    if (regions_ == "county" || regions_ == "counties") {
-      label_layer <- ggplot2::geom_text(
+    if (regions == "county" || regions == "counties") {
+      label_layer <- ggplot2::geom_sf_text(
         data = centroid_labels,
-        ggplot2::aes(x = .data$x, y = .data$y, label = sub(" County", "", .data$county)),
+        ggplot2::aes(label = sub(" County", "", .data$county)),
         color = label_color
       )
     } else {
-      label_layer <- ggplot2::geom_text(
+      label_layer <- ggplot2::geom_sf_text(
         data = centroid_labels,
-        ggplot2::aes(x = .data$x, y = .data$y, label = .data$abbr), color = label_color
+        ggplot2::aes(label = .data$abbr), color = label_color
       )
     }
   } else {
@@ -153,7 +149,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
   }
 
   # construct final plot
-  ggplot2::ggplot(data = map_df) + polygon_layer + label_layer + ggplot2::coord_equal() + theme
+  ggplot2::ggplot(data = map_df) + polygon_layer + label_layer + theme
 }
 
 #' Convenient theme map

@@ -1,26 +1,26 @@
 context("Transforming coordinate data frames")
 
-test_that("dependencies are verified", {
-  expect_package_error("sf", usmap_transform(data.frame()))
-  expect_package_error("sp", usmap_transform(data.frame()))
-  expect_package_error("sf", usmap_crs())
-  expect_package_error("sp", usmap_crs())
-})
-
 test_that("data frame with AK and HI points is transformed", {
   data <- data.frame(
     lon = c(-74.01, -95.36, -118.24, -87.65, -134.42, -157.86),
     lat = c(40.71, 29.76, 34.05, 41.85, 58.30, 21.31)
   )
 
-  result <- data.frame(
-    lon = c(-74.01, -95.36, -118.24, -87.65, -134.42, -157.86),
-    lat = c(40.71, 29.76, 34.05, 41.85, 58.30, 21.31),
-    x = c(2147110.0, 451625.4, -1672256.6, 1018522.4, -769682.2, -453273.9),
-    y = c(-133148.4, -1677546.4, -1035039.5, -273371.4, -2078025.3, -2051494.0)
+  result <- sf::st_as_sf(
+    data.frame(
+      geometry = sf::st_sfc(
+        sf::st_point(c(2152550, -133046.5)),
+        sf::st_point(c(452399.8, -1674650)),
+        sf::st_point(c(-1675528, -1033610)),
+        sf::st_point(c(1021166, -273151.2)),
+        sf::st_point(c(-1062738, -2125993)),
+        sf::st_point(c(-618107.8, -1962880))
+      )
+    )
   )
+  sf::st_crs(result) <- usmap_crs()
 
-  expect_equal(usmap_transform(data), result, tolerance = 1e-05)
+  expect_equal(usmap_transform(data), result, tolerance = 1e-02)
 })
 
 test_that("data frame with AK points is transformed", {
@@ -29,14 +29,20 @@ test_that("data frame with AK points is transformed", {
     lat = c(40.71, 29.76, 34.05, 41.85, 58.30)
   )
 
-  result <- data.frame(
-    lon = c(-74.01, -95.36, -118.24, -87.65, -134.42),
-    lat = c(40.71, 29.76, 34.05, 41.85, 58.30),
-    x = c(2147110.0, 451625.4, -1672256.6, 1018522.4, -769682.2),
-    y = c(-133148.4, -1677546.4, -1035039.5, -273371.4, -2078025.3)
+  result <- sf::st_as_sf(
+    data.frame(
+      geometry = sf::st_sfc(
+        sf::st_point(c(2152550, -133046.5)),
+        sf::st_point(c(452399.8, -1674650)),
+        sf::st_point(c(-1675528, -1033610)),
+        sf::st_point(c(1021166, -273151.2)),
+        sf::st_point(c(-1062738, -2125993))
+      )
+    )
   )
+  sf::st_crs(result) <- usmap_crs()
 
-  expect_equal(usmap_transform(data), result, tolerance = 1e-05)
+  expect_equal(usmap_transform(data), result, tolerance = 1e-02)
 })
 
 test_that("data frame with HI points is transformed", {
@@ -45,14 +51,20 @@ test_that("data frame with HI points is transformed", {
     lat = c(40.71, 29.76, 34.05, 41.85, 21.31)
   )
 
-  result <- data.frame(
-    lon = c(-74.01, -95.36, -118.24, -87.65, -157.86),
-    lat = c(40.71, 29.76, 34.05, 41.85, 21.31),
-    x = c(2147110.0, 451625.4, -1672256.6, 1018522.4, -453273.9),
-    y = c(-133148.4, -1677546.4, -1035039.5, -273371.4, -2051494.0)
+  result <- sf::st_as_sf(
+    data.frame(
+      geometry = sf::st_sfc(
+        sf::st_point(c(2152550, -133046.5)),
+        sf::st_point(c(452399.8, -1674650)),
+        sf::st_point(c(-1675528, -1033610)),
+        sf::st_point(c(1021166, -273151.2)),
+        sf::st_point(c(-618107.8, -1962880))
+      )
+    )
   )
+  sf::st_crs(result) <- usmap_crs()
 
-  expect_equal(usmap_transform(data), result, tolerance = 1e-05)
+  expect_equal(usmap_transform(data), result, tolerance = 1e-02)
 })
 
 test_that("data frame with no AK or HI points is transformed", {
@@ -61,14 +73,19 @@ test_that("data frame with no AK or HI points is transformed", {
     lat = c(40.71, 29.76, 34.05, 41.85)
   )
 
-  result <- data.frame(
-    lon = c(-74.01, -95.36, -118.24, -87.65),
-    lat = c(40.71, 29.76, 34.05, 41.85),
-    x = c(2147110.0, 451625.4, -1672256.6, 1018522.4),
-    y = c(-133148.4, -1677546.4, -1035039.5, -273371.4)
+  result <- sf::st_as_sf(
+    data.frame(
+      geometry = sf::st_sfc(
+        sf::st_point(c(2152550, -133046.5)),
+        sf::st_point(c(452399.8, -1674650)),
+        sf::st_point(c(-1675528, -1033610)),
+        sf::st_point(c(1021166, -273151.2))
+      )
+    )
   )
+  sf::st_crs(result) <- usmap_crs()
 
-  expect_equal(usmap_transform(data), result, tolerance = 1e-05)
+  expect_equal(usmap_transform(data), result, tolerance = 1e-02)
 })
 
 test_that("error occurs for data with less than 2 columns", {

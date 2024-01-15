@@ -21,7 +21,7 @@
 #'   input data frame with the Albers Equal Area projection applied. The
 #'   transformed columns will be appended to the data frame so that all
 #'   original columns should remain intact.
-#'
+
 #' @examples
 #' data <- data.frame(
 #'   lon = c(-74.01, -95.36, -118.24, -87.65, -134.42, -157.86),
@@ -35,9 +35,9 @@
 #' # Plot transformed data on map
 #' library(ggplot2)
 #'
-#' plot_usmap() + geom_point(
+#' plot_usmap() + geom_sf(
 #'   data = transformed_data,
-#'   aes(x = x, y = y, size = pop),
+#'   aes(size = pop),
 #'   color = "red", alpha = 0.5
 #' )
 #'
@@ -46,19 +46,6 @@
 usmap_transform <- function(data,
                             input_names = c("lon", "lat"),
                             output_names = c("x", "y")) {
-
-  # check for sf
-  if (!requireNamespace("sf", quietly = TRUE)) {
-    stop("`sf` must be installed to use `usmap_transform`.
-         Use: install.packages(\"sf\") and try again.")
-  }
-
-  # check for sp
-  if (!requireNamespace("sp", quietly = TRUE)) {
-    stop("`sp` must be installed to use `usmap_transform`.
-         Use: install.packages(\"sp\") and try again.")
-  }
-
   UseMethod("usmap_transform", data)
 }
 
@@ -93,92 +80,62 @@ usmap_transform.data.frame <- function(data,
     output_names <- as.character(output_names)
   }
 
-  # create SpatialPointsDataFrame
-  longlat <- sp::CRS(SRS_string = "EPSG:4326") # long/lat coordinates
+  # Convert data to sf
+  data_sf <- sf::st_as_sf(data, coords = input_names)
+  sf::st_crs(data_sf) <- sf::st_crs(4326) # long/lat CRS
 
-  spdf <- sp::SpatialPointsDataFrame(
-    coords = data[, c(input_names[1], input_names[2])],
-    data = data,
-    proj4string = longlat
-  )
+  # Transform to canonical projection
+  transformed <- sf::st_transform(data_sf, usmap_crs())
+  sf::st_agr(transformed) <- "constant"
 
-  # transform to canonical projection
-  transformed <- sp::spTransform(spdf, usmap_crs())
-
-  # transform Alaska points
-
-  ak_bbox <- sp::bbox(
-    matrix(
+  # Transform Alaska points
+  ak_bbox <- sf::st_as_sfc(
+    sf::st_bbox(
       c(
-        -4377000, # min transformed longitude
-        -1519000, # max transformed longitude
-        1466000,  # min transformed latitude
-        3914000   # max transformed latitude
-      ), ncol = 2
+        xmin = -4377000,
+        xmax = -1519000,
+        ymin = 1466000,
+        ymax = 3914000
+      ),
+      crs = usmap_crs()
     )
   )
+  alaska <- sf::st_intersection(transformed, ak_bbox)
 
-  alaska <- transformed[
-    transformed@coords[, 1] >= ak_bbox[1, 1] &
-      transformed@coords[, 1] <= ak_bbox[1, 2] &
-      transformed@coords[, 2] >= ak_bbox[2, 1] &
-      transformed@coords[, 2] <= ak_bbox[2, 2],
-  ]
-
-  if (length(alaska) > 0) {
-    alaska <- sp::elide(
-      alaska,
-      rotate = -50,
-      scale = max(apply(ak_bbox, 1, diff)) / 2.3,
-      bb = ak_bbox
-    )
-    alaska <- sp::elide(alaska, shift = c(-1298669, -3018809))
-    sp::proj4string(alaska) <- usmap_crs()
-    names(alaska) <- names(transformed)
+  if (nrow(alaska) > 0) {
+    sf::st_geometry(alaska) <- sf::st_geometry(alaska) * usmapdata:::transform2D(-50, 1 / 2)
+    sf::st_geometry(alaska) <- sf::st_geometry(alaska) + c(3e5, -2e6)
+    sf::st_crs(alaska) <- usmap_crs()
   }
 
-  # transform Hawaii points
-
-  hi_bbox <- sp::bbox(
-    matrix(
+  # Transform Hawaii points
+  hi_bbox <- sf::st_as_sfc(
+    sf::st_bbox(
       c(
-        -5750000, # min transformed longitude
-        -5450000, # max transformed longitude
-        -1050000, # min transformed latitude
-        -441000   # max transformed latitude
-      ), ncol = 2
+        xmin = -5750000,
+        xmax = -5450000,
+        ymin = -1050000,
+        ymax = -441000
+      ),
+      crs = usmap_crs()
     )
   )
+  hawaii <- sf::st_intersection(transformed, hi_bbox)
 
-  hawaii <- transformed[
-    transformed@coords[, 1] >= hi_bbox[1, 1] &
-      transformed@coords[, 1] <= hi_bbox[1, 2] &
-      transformed@coords[, 2] >= hi_bbox[2, 1] &
-      transformed@coords[, 2] <= hi_bbox[2, 2],
-  ]
-
-  if (length(hawaii) > 0) {
-    hawaii <- sp::elide(
-      hawaii,
-      rotate = -35,
-      bb = hi_bbox
-    )
-    hawaii <- sp::elide(hawaii, shift = c(5400000, -1400000))
-    sp::proj4string(hawaii) <- usmap_crs()
-    names(hawaii) <- names(transformed)
+  if (nrow(hawaii) > 0) {
+    sf::st_geometry(hawaii) <- sf::st_geometry(hawaii) * usmapdata:::transform2D(-35)
+    sf::st_geometry(hawaii) <- sf::st_geometry(hawaii) + c(3.6e6, 1.8e6)
+    sf::st_crs(hawaii) <- usmap_crs()
   }
 
-  # combine all points
-  combined <- rbind(transformed, alaska, hawaii)
+  # Re-combine all points
+  transformed_excl_ak <- sf::st_difference(transformed, ak_bbox)
+  sf::st_agr(transformed_excl_ak) <- "constant"
 
-  result <- as.data.frame(
-    combined[!duplicated(combined@data, fromLast = TRUE), ]
-  )
-  row.names(result) <- NULL
+  transformed_excl_ak_hi <- sf::st_difference(transformed_excl_ak, hi_bbox)
+  sf::st_agr(transformed_excl_ak_hi) <- "constant"
 
-  colnames(result) <- c(colnames(data), output_names)
-
-  result
+  rbind(transformed_excl_ak_hi, alaska, hawaii)
 }
 
 #' usmap coordinate reference system
@@ -191,16 +148,5 @@ usmap_transform.data.frame <- function(data,
 #'
 #' @export
 usmap_crs <- function() {
-  if (!requireNamespace("sf", quietly = TRUE)) {
-    stop("`sf` must be installed to use `usmap_crs`.
-         Use: install.packages(\"sf\") and try again.")
-  }
-
-  if (!requireNamespace("sp", quietly = TRUE)) {
-    stop("`sp` must be installed to use `usmap_crs`.
-         Use: install.packages(\"sp\") and try again.")
-  }
-
-  sp::CRS(paste("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0",
-                "+a=6370997 +b=6370997 +units=m +no_defs"))
+  sf::st_crs(9311)
 }
