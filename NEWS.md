@@ -6,6 +6,9 @@
   * Allows for further flexibility in manipulation, easier plotting, and reduced file sizes.
   * There should be no visible changes to existing `usmap` functionality.
   * If something doesn't look right, please [open an issue](https://github.com/pdil/usmap/issues).
+* In accordance with the `sf` change mentioned above, the output of `usmap_transform()` has changed.
+  * The output data frame now appends a single `geometry` column with the transformed points and can be plotted using `ggplot2::geom_sf()`.
+  * Review the included examples and `advanced-mapping` vignette for more details.
 
 # usmap 0.6.4
 Released Monday, December 11, 2023.
