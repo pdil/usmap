@@ -15,6 +15,7 @@ The shape files that we use to plot the maps in R are located in the [`usmapdata
 
 | Date              | `usmap` version | Shape File Year | Link |
 | ---               | :-:             | :-:             | :-:  |
+| (unreleased)      | 0.7.0           | 2022            | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2022.html) |
 | February 27, 2022 | 0.6.0           | 2020            | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2020.html) |
 | June 3, 2018      | 0.3.0           | 2017            | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2017.html)   |
 | January 29, 2017  | 0.1.0           | 2015            | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2015.html)   |
@@ -173,63 +174,55 @@ plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_eng
 
 ## Additional Information
 
-### Projection
-`usmap` uses an [Albers equal-area conic projection](https://en.wikipedia.org/wiki/Albers_projection), with arguments as follows:
+### Coordinate System
+`usmap` uses the [US National Atlas Equal Area](https://epsg.io/9311) coordinate system:
 
 <details>
-  <summary><code>usmap::usmap_crs()</code></summary>
+    <summary><code>sf::st_crs(9311)</code></summary>
 
-  ```
-  #> Coordinate Reference System:
-  #> Deprecated Proj.4 representation:
-  #>  +proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +ellps=sphere
-  #> +units=m +no_defs
-  #> WKT2 2019 representation:
-  #> PROJCRS["unknown",
-  #>     BASEGEOGCRS["unknown",
-  #>         DATUM["unknown",
-  #>             ELLIPSOID["Normal Sphere (r=6370997)",6370997,0,
-  #>                 LENGTHUNIT["metre",1,
-  #>                     ID["EPSG",9001]]]],
-  #>         PRIMEM["Greenwich",0,
-  #>             ANGLEUNIT["degree",0.0174532925199433],
-  #>             ID["EPSG",8901]]],
-  #>     CONVERSION["unknown",
-  #>         METHOD["Lambert Azimuthal Equal Area (Spherical)",
-  #>             ID["EPSG",1027]],
-  #>         PARAMETER["Latitude of natural origin",45,
-  #>             ANGLEUNIT["degree",0.0174532925199433],
-  #>             ID["EPSG",8801]],
-  #>         PARAMETER["Longitude of natural origin",-100,
-  #>             ANGLEUNIT["degree",0.0174532925199433],
-  #>             ID["EPSG",8802]],
-  #>         PARAMETER["False easting",0,
-  #>             LENGTHUNIT["metre",1],
-  #>             ID["EPSG",8806]],
-  #>         PARAMETER["False northing",0,
-  #>             LENGTHUNIT["metre",1],
-  #>             ID["EPSG",8807]]],
-  #>     CS[Cartesian,2],
-  #>         AXIS["(E)",east,
-  #>             ORDER[1],
-  #>             LENGTHUNIT["metre",1,
-  #>                 ID["EPSG",9001]]],
-  #>         AXIS["(N)",north,
-  #>             ORDER[2],
-  #>             LENGTHUNIT["metre",1,
-  #>                 ID["EPSG",9001]]]]
-  ```
+    ```r
+    #> Coordinate Reference System:
+    #>   User input: EPSG:9311
+    #>   wkt:
+    #> PROJCRS["NAD27 / US National Atlas Equal Area",
+    #>     BASEGEOGCRS["NAD27",
+    #>         DATUM["North American Datum 1927",
+    #>             ELLIPSOID["Clarke 1866",6378206.4,294.978698213898,
+    #>                 LENGTHUNIT["metre",1]]],
+    #>         PRIMEM["Greenwich",0,
+    #>             ANGLEUNIT["degree",0.0174532925199433]],
+    #>         ID["EPSG",4267]],
+    #>     CONVERSION["US National Atlas Equal Area",
+    #>         METHOD["Lambert Azimuthal Equal Area (Spherical)",
+    #>             ID["EPSG",1027]],
+    #>         PARAMETER["Latitude of natural origin",45,
+    #>             ANGLEUNIT["degree",0.0174532925199433],
+    #>             ID["EPSG",8801]],
+    #>         PARAMETER["Longitude of natural origin",-100,
+    #>             ANGLEUNIT["degree",0.0174532925199433],
+    #>             ID["EPSG",8802]],
+    #>         PARAMETER["False easting",0,
+    #>             LENGTHUNIT["metre",1],
+    #>             ID["EPSG",8806]],
+    #>         PARAMETER["False northing",0,
+    #>             LENGTHUNIT["metre",1],
+    #>             ID["EPSG",8807]]],
+    #>     CS[Cartesian,2],
+    #>         AXIS["easting (X)",east,
+    #>             ORDER[1],
+    #>             LENGTHUNIT["metre",1]],
+    #>         AXIS["northing (Y)",north,
+    #>             ORDER[2],
+    #>             LENGTHUNIT["metre",1]],
+    #>     USAGE[
+    #>         SCOPE["Statistical analysis."],
+    #>         AREA["United States (USA) - onshore and offshore."],
+    #>         BBOX[15.56,167.65,74.71,-65.69]],
+    #>     ID["EPSG",9311]]
+    ```
 </details>
 
-This is the same projection used by the [US National Atlas](https://epsg.io/2163).
-
-To obtain the projection used by `usmap`, use `usmap_crs()`.
-
-Alternatively, the CRS ([coordinate reference system](https://www.nceas.ucsb.edu/sites/default/files/2020-04/OverviewCoordinateReferenceSystems.pdf)) can be created manually with the following command:
-```r
-sp::CRS(paste("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0",
-              "+a=6370997 +b=6370997 +units=m +no_defs"))
-```
+This [coordinate reference system (CRS)](https://www.nceas.ucsb.edu/sites/default/files/2020-04/OverviewCoordinateReferenceSystems.pdf) can also be obtained with `usmap::usmap_crs()`.
 
 ## Acknowledgments
 The code used to generate the map files was based on this blog post by [Bob Rudis](https://github.com/hrbrmstr):
