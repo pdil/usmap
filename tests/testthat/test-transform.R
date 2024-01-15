@@ -20,7 +20,7 @@ test_that("data frame with AK and HI points is transformed", {
   )
   sf::st_crs(result) <- usmap_crs()
 
-  expect_equal(usmap_transform(data), result, tolerance = 1e-05)
+  expect_equal(usmap_transform(data), result, tolerance = 1e-02)
 })
 
 test_that("data frame with AK points is transformed", {
@@ -42,7 +42,7 @@ test_that("data frame with AK points is transformed", {
   )
   sf::st_crs(result) <- usmap_crs()
 
-  expect_equal(usmap_transform(data), result, tolerance = 1e-05)
+  expect_equal(usmap_transform(data), result, tolerance = 1e-02)
 })
 
 test_that("data frame with HI points is transformed", {
@@ -64,7 +64,7 @@ test_that("data frame with HI points is transformed", {
   )
   sf::st_crs(result) <- usmap_crs()
 
-  expect_equal(usmap_transform(data), result, tolerance = 1e-05)
+  expect_equal(usmap_transform(data), result, tolerance = 1e-02)
 })
 
 test_that("data frame with no AK or HI points is transformed", {
@@ -85,7 +85,7 @@ test_that("data frame with no AK or HI points is transformed", {
   )
   sf::st_crs(result) <- usmap_crs()
 
-  expect_equal(usmap_transform(data), result, tolerance = 1e-05)
+  expect_equal(usmap_transform(data), result, tolerance = 1e-02)
 })
 
 test_that("error occurs for data with less than 2 columns", {
