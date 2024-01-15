@@ -96,11 +96,5 @@
 us_map <- function(regions = c("states", "state", "counties", "county"),
                    include = c(),
                    exclude = c()) {
-  # check for usmapdata
-  if (!requireNamespace("usmapdata", quietly = TRUE)) {
-    stop("`usmapdata` must be installed to use `plot_usmap`.
-         Use: install.packages(\"usmapdata\") and try again.")
-  }
-
-  usmapdata::us_map(regions = regions, include = include, exclude = exclude)
+  usmapdata::us_map(regions = regions, include = include, exclude = exclude, as_sf = TRUE)
 }

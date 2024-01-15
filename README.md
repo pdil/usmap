@@ -48,7 +48,7 @@ vignette("mapping", package = "usmap")
 vignette("advanced-mapping", package = "usmap")
 ```
 
-For further help with this package, open an [issue](https://github.com/pdil/usmap/issues) or ask a question on Stackoverflow with the [usmap tag](https://stackoverflow.com/questions/tagged/usmap).
+For further help with this package, open an [issue](https://github.com/pdil/usmap/issues) or ask a question on Stack Overflow with the [usmap tag](https://stackoverflow.com/questions/tagged/usmap).
 
 ## Features
 * Obtain map with certain region breakdown
@@ -56,19 +56,28 @@ For further help with this package, open an [issue](https://github.com/pdil/usma
 state_map <- us_map(regions = "states")
 ```
 <details>
-  <summary><code>str(state_map)</code></summary>
+  <summary><code>state_map</code></summary>
 
   ```r
-  #> 'data.frame':	13696 obs. of  9 variables:
-  #> $ x    : num  1093752 1093244 1093125 1092939 1092914 ...
-  #> $ y    : num  -1378545 -1374233 -1360891 -1341458 -1338952 ...
-  #> $ order: int  1 2 3 4 5 6 7 8 9 10 ...
-  #> $ hole : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-  #> $ piece: int  1 1 1 1 1 1 1 1 1 1 ...
-  #> $ group: chr  "01.1" "01.1" "01.1" "01.1" ...
-  #> $ fips : chr  "01" "01" "01" "01" ...
-  #> $ abbr : chr  "AL" "AL" "AL" "AL" ...
-  #> $ full : chr  "Alabama" "Alabama" "Alabama" "Alabama" ...
+  #> Simple feature collection with 51 features and 3 fields
+  #> Geometry type: MULTIPOLYGON
+  #> Dimension:     XY
+  #> Bounding box:  xmin: -2590847 ymin: -2608148 xmax: 2523581 ymax: 731407.9
+  #> Projected CRS: NAD27 / US National Atlas Equal Area
+  #> # A tibble: 51 × 4
+  #>    fips  abbr  full                               geom
+  #>    <chr> <chr> <chr>                <MULTIPOLYGON [m]>
+  #>  1 02    AK    Alaska        (((-2396847 -2547721, -2…
+  #>  2 01    AL    Alabama       (((1093777 -1378535, 109…
+  #>  3 05    AR    Arkansas      (((483065.2 -927788.2, 5…
+  #>  4 04    AZ    Arizona       (((-1388676 -1254584, -1…
+  #>  5 06    CA    California    (((-1719946 -1090033, -1…
+  #>  6 08    CO    Colorado      (((-789538.7 -678773.8, …
+  #>  7 09    CT    Connecticut   (((2161733 -83737.52, 21…
+  #>  8 11    DC    District of … (((1955479 -402055.2, 19…
+  #>  9 10    DE    Delaware      (((2042506 -284367.3, 20…
+  #> 10 12    FL    Florida       (((1855611 -2064809, 186…
+  #> # ℹ 41 more rows
   ```
 </details><br>
 
@@ -76,20 +85,28 @@ state_map <- us_map(regions = "states")
 county_map <- us_map(regions = "counties")
 ```
 <details>
-  <summary><code>str(county_map)</code></summary>
+  <summary><code>county_map</code></summary>
 
   ```r
-  #> 'data.frame':	55097 obs. of  10 variables:
-  #> $ x     : num  811200 829408 828835 855600 859265 ...
-  #> $ y     : num  -821207 -819722 -814641 -811770 -846158 ...
-  #> $ order : int  1 2 3 4 5 6 7 8 9 10 ...
-  #> $ hole  : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-  #> $ piece : int  1 1 1 1 1 1 1 1 1 1 ...
-  #> $ group : chr  "01001.1" "01001.1" "01001.1" "01001.1" ...
-  #> $ fips  : chr  "01001" "01001" "01001" "01001" ...
-  #> $ abbr  : chr  "AL" "AL" "AL" "AL" ...
-  #> $ full  : chr  "Alabama" "Alabama" "Alabama" "Alabama" ...
-  #> $ county: chr  "Autauga County" "Autauga County" "Autauga County" "Autauga County" ...
+  #> Simple feature collection with 3144 features and 4 fields
+  #> Geometry type: MULTIPOLYGON
+  #> Dimension:     XY
+  #> Bounding box:  xmin: -2590847 ymin: -2608148 xmax: 2523581 ymax: 731407.9
+  #> Projected CRS: NAD27 / US National Atlas Equal Area
+  #> # A tibble: 3,144 × 5
+  #> fips  abbr  full   county                      geom
+  #> <chr> <chr> <chr>  <chr>         <MULTIPOLYGON [m]>
+  #> 1 02013 AK    Alaska Aleut… (((-1762715 -2477334, -1…
+  #> 2 02016 AK    Alaska Aleut… (((-2396847 -2547721, -2…
+  #> 3 02020 AK    Alaska Ancho… (((-1517576 -2089908, -1…
+  #> 4 02050 AK    Alaska Bethe… (((-1905141 -2137046, -1…
+  #> 5 02060 AK    Alaska Brist… (((-1685825 -2253496, -1…
+  #> 6 02063 AK    Alaska Chuga… (((-1476669 -2101298, -1…
+  #> 7 02066 AK    Alaska Coppe… (((-1457015 -2063407, -1…
+  #> 8 02068 AK    Alaska Denal… (((-1585793 -1980740, -1…
+  #> 9 02070 AK    Alaska Dilli… (((-1793024 -2236835, -1…
+  #> 10 02090 AK    Alaska Fairb… (((-1512363 -1851013, -1…
+  #> # ℹ 3,134 more rows
   ```
 </details><br>
 
@@ -111,7 +128,7 @@ fips("NJ", county = c("Bergen", "Hudson", "Mercer"))
 ```r
 fips_info(c("34", "35"))
 #>         full abbr fips
-#> 1 New Jersey   NJ   34 
+#> 1 New Jersey   NJ   34
 #> 2 New Mexico   NM   35
 
 fips_info(c("34021", "35021"))
@@ -149,7 +166,7 @@ plot_usmap("states", include = .mountain, labels = TRUE)
 plot_usmap("counties", data = countypov, values = "pct_pov_2014", include = "FL") +
     ggplot2::scale_fill_continuous(low = "green", high = "red", guide = FALSE)
 
-plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_england) + 
+plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_england) +
     ggplot2::scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE)
 ```
 <p align="center"><img src="https://raw.githubusercontent.com/pdil/usmap/master/resources/example-usage.png" /></p>
@@ -161,12 +178,12 @@ plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_eng
 
 <details>
   <summary><code>usmap::usmap_crs()</code></summary>
-  
+
   ```
   #> Coordinate Reference System:
   #> Deprecated Proj.4 representation:
   #>  +proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +ellps=sphere
-  #> +units=m +no_defs 
+  #> +units=m +no_defs
   #> WKT2 2019 representation:
   #> PROJCRS["unknown",
   #>     BASEGEOGCRS["unknown",
@@ -200,7 +217,7 @@ plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_eng
   #>         AXIS["(N)",north,
   #>             ORDER[2],
   #>             LENGTHUNIT["metre",1,
-  #>                 ID["EPSG",9001]]]] 
+  #>                 ID["EPSG",9001]]]]
   ```
 </details>
 
@@ -215,5 +232,5 @@ sp::CRS(paste("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0",
 ```
 
 ## Acknowledgments
-The code used to generate the map files was based on this blog post by [Bob Rudis](https://github.com/hrbrmstr):    
+The code used to generate the map files was based on this blog post by [Bob Rudis](https://github.com/hrbrmstr):
 [Moving The Earth (well, Alaska & Hawaii) With R](https://rud.is/b/2014/11/16/moving-the-earth-well-alaska-hawaii-with-r/)

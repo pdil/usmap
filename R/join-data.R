@@ -71,9 +71,8 @@ map_with_data <- function(data,
   # Remove columns in data that are already in map_df
   data$abbr <- NULL
   data$full <- NULL
-  data$piece <- NULL
-  data$order <- NULL
   data$county <- NULL
+  data$geom <- NULL
   #
 
   padding <- ifelse(region_type == "state", 2, 5)
@@ -85,9 +84,9 @@ map_with_data <- function(data,
   result <- result[, c(setdiff(names(result), names(data)), names(data))]
 
   if (region_type == "state") {
-    result <- result[order(result$full, result$piece, result$order), ]
+    result <- result[order(result$full), ]
   } else {
-    result <- result[order(result$full, result$county, result$piece, result$order), ]
+    result <- result[order(result$full, result$county), ]
   }
 
   result
