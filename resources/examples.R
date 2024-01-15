@@ -12,16 +12,15 @@ mw_citypop_t <- citypop_t[citypop_t$abbr %in% .midwest_region, ]
 
 midwest_pop_map <-
   plot_usmap(data = statepop, values = "pop_2015", include = .midwest_region) +
-  geom_point(data = mw_citypop_t, aes(x = lon.1, y = lat.1, size = city_pop),
-             color = "blue", alpha = 0.5) +
-  scale_size_continuous(guide = FALSE, range = c(1, 12)) +
-  scale_fill_continuous(low = "white", high = "green", guide = FALSE) +
+  geom_sf(data = mw_citypop_t, aes(size = city_pop), color = "blue", alpha = 0.5) +
+  scale_size_continuous(guide = "none", range = c(1, 12)) +
+  scale_fill_continuous(low = "white", high = "green", guide = "none") +
   scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 
 # Population by state ####
 state_pop_map <-
   plot_usmap(data = statepop, values = "pop_2015") +
-  scale_fill_continuous(low = "white", high = "red", guide = FALSE) +
+  scale_fill_continuous(low = "white", high = "red", guide = "none") +
   scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 
 # Blank county map (Alaska) ####
@@ -31,14 +30,14 @@ ak_blank_county_map <-
 # Population by state with labels ####
 state_pop_map_labeled <-
   plot_usmap(data = statepop, values = "pop_2015", labels = TRUE) +
-  scale_fill_continuous(low = "white", high = "red", guide = FALSE) +
+  scale_fill_continuous(low = "white", high = "red", guide = "none") +
   scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 
 # Poverty by county (South) ####
 south_pov_map <-
   plot_usmap("counties", data = countypov, values = "pct_pov_2014",
              include = .south_region, color = "white", size = 0) +
-  scale_fill_continuous(low = "darkgreen", high = "yellow", guide = FALSE) +
+  scale_fill_continuous(low = "darkgreen", high = "yellow", guide = "none") +
   scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 
 # Blank blue map ####
@@ -52,16 +51,15 @@ mt_citypop_map <-
   plot_usmap(include = .mountain,
              color = "red", fill = "#fffdcf",
              labels = TRUE, label_color = "red") +
-  geom_point(data = mt_citypop_t, aes(x = lon.1, y = lat.1, size = city_pop),
-             color = "purple", alpha = 0.5) +
-  scale_size_continuous(guide = FALSE, range = c(1, 12)) +
-  scale_fill_continuous(low = "blue", high = "darkblue", guide = FALSE) +
+  geom_sf(data = mt_citypop_t, aes(size = city_pop), color = "purple", alpha = 0.5) +
+  scale_size_continuous(guide = "none", range = c(1, 12)) +
+  scale_fill_continuous(low = "blue", high = "darkblue", guide = "none") +
   scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 
 # Poverty percentage by county ####
 county_pov_map <-
   plot_usmap(data = countypov, values = "pct_pov_2014", size = 0.2) +
-  scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE) +
+  scale_fill_continuous(low = "blue", high = "yellow", guide = "none") +
   scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 
 # Combine plots ####
@@ -87,11 +85,11 @@ mountain_states <- plot_usmap("states", include = .mountain, labels = TRUE)
 
 fl_pct_pov <- plot_usmap("counties", data = countypov,
                          values = "pct_pov_2014", include = "FL") +
-  scale_fill_continuous(low = "green", high = "red", guide = FALSE)
+  scale_fill_continuous(low = "green", high = "red", guide = "none")
 
 ne_pop <- plot_usmap("counties", data = countypop,
                      values = "pop_2015", include = .new_england) +
-  scale_fill_continuous(low = "blue", high = "yellow", guide = FALSE)
+  scale_fill_continuous(low = "blue", high = "yellow", guide = "none")
 
 
 # Combine usage plots ####
