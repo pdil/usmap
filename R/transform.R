@@ -35,9 +35,9 @@
 #' # Plot transformed data on map
 #' library(ggplot2)
 #'
-#' plot_usmap() + geom_point(
+#' plot_usmap() + geom_sf(
 #'   data = transformed_data,
-#'   aes(x = x, y = y, size = pop),
+#'   aes(size = pop),
 #'   color = "red", alpha = 0.5
 #' )
 #'
