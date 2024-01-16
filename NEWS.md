@@ -13,6 +13,11 @@
   * It is now possible to add any geographical features to the plotted map such as rivers, roads, topographical data, etc. using `usmap_transform()` before plotting with `ggplot2::geom_sf()`.
   * See the provided vignettes and examples for more information.
 
+### Removed
+* `output_names` is no longer required as a parameter to `usmap_transform()`.
+  * It continues to exist for compatibility but produces a warning and may be removed in a future version of `usmap`.
+  * `usmap_transform()` will output its transformation using the `sf` default of `"geometry"` as the column name.
+
 # usmap 0.6.4
 Released Monday, December 11, 2023.
 
