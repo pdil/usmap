@@ -9,6 +9,9 @@
 * In accordance with the `sf` change mentioned above, the output of `usmap_transform()` has changed.
   * The output data frame now replaces the `lat`/`lon` columns with a single `geometry` column with the transformed points and can be plotted using `ggplot2::geom_sf()`.
   * Review the included examples and `advanced-mapping` vignette for more details.
+* `usmap_transform()` now accepts `sf` objects and automatically transforms its `geometry` column to the projection used by this package.
+  * It is now possible to add any geographical features to the plotted map such as rivers, roads, topographical data, etc. using `usmap_transform()` before plotting with `ggplot2::geom_sf()`.
+  * See the provided vignettes and examples for more information.
 
 # usmap 0.6.4
 Released Monday, December 11, 2023.

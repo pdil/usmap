@@ -87,12 +87,9 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
     geom_args[["linewidth"]] <- 0.4
   }
 
-  # only use "fill" setting if data is not included
+  # set default "fill" if data is not included
   if (is.null(geom_args[["fill"]]) && nrow(data) == 0) {
     geom_args[["fill"]] <- "white"
-  } else if (!is.null(geom_args[["fill"]]) && nrow(data) != 0) {
-    warning("`fill` setting is ignored when `data` is provided. Use `fill` to
-            color regions with solid color when no data is being displayed.")
   }
 
   # create polygon layer
