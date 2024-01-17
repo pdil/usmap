@@ -62,3 +62,18 @@ plot_usmap(fill = "yellow", alpha = 0.25) +
        size = "City Population") +
   theme(legend.position = "right")
 
+## ----fig.align='center', fig.height=5, fig.width=8, message=FALSE, warning=FALSE----
+library(usmap)
+library(ggplot2)
+
+rivers_t <- usmap_transform(rivers)
+
+plot_usmap("counties", color = "gray80") + 
+  geom_sf(data = rivers_t, aes(linewidth = Shape_Length, color = SYSTEM, fill = SYSTEM)) + 
+  scale_linewidth_continuous(range = c(0.3, 1.8), guide = "none") +
+  scale_color_discrete(guide = "none") +
+  labs(title = "Major Rivers in the United States",
+       subtitle = "Source: ESRI 2010",
+       fill = "River System") +
+  theme(legend.position = "right")
+

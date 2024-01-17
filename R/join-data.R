@@ -76,7 +76,7 @@ map_with_data <- function(data,
   #
 
   padding <- ifelse(region_type == "state", 2, 5)
-  data$fips <- stringr::str_pad(data$fips, width = padding, side = "left", pad = "0")
+  data$fips <- sprintf(paste0("%0", padding, "d"), as.numeric(data$fips))
 
   result <- merge(map_df, data, by = "fips", all.x = TRUE, sort = FALSE)
   result[is.na(result[, values]), values] <- na

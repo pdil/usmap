@@ -1,25 +1,35 @@
-#' Convert coordinate date frame to usmap projection
+#' Convert spatial data to usmap projection
 #'
-#' @description Converting an external data frame of map coordinates will
+#' @description Converting a spatial object of map coordinates will
 #'   allow those points to line up with the regular usmap plot by applying
-#'   the same Albers Equal Area projection to those points as well.
+#'   the same US National Atlas Equal Area projection (including Alaska and
+#'   Hawaii of course) to those points as well.
+#'
+#'   The input `data` is assumed to contain longitude and latitude coordinates
+#'   by default. If this is not the case, provide an [sf::st_crs] object
+#'   to the `crs` parameter with the appropriate coordinate reference system.
 #'
 #' @param data A data frame containing coordinates in a two column format
 #'   where the first column represents longitude and the second data frame
 #'   represents latitude. The names of the data frame column do not matter,
 #'   just that the order of the columns is kept intact.
 #'
+#' @param ... Additional parameters passed onto [sf::st_as_sf].
+#'   By default, `crs = sf::st_crs(4326)` is used, implying longitude and latitude
+#'   coordinates.
+#'
 #' @param input_names A character vector of length two which specifies the
 #'   longitude and latitude columns of the input data (the ones that should be
-#'   transformed), respectively. Defaults to `c("lon", "lat")`.
+#'   transformed), respectively. Only required if the input data is
+#'   a `data.frame` object. Defaults to `c("lon", "lat")`.
 #'
-#' @param output_names A character vector of length two which specifies the
-#'   longitude and latitude columns of the output data (after transformation),
-#'   respectively. Defaults to `c("x", "y")`.
+#' @param output_names Defunct, this parameter is no longer used. The output
+#'   of this function will have a column named `"geometry"` with the transformed
+#'   coordinates. This parameter may be removed in a future version.
 #'
-#' @return A data frame containing the transformed coordinates from the
-#'   input data frame with the Albers Equal Area projection applied. The
-#'   transformed columns will be appended to the data frame so that all
+#' @return An `sf` object containing the transformed coordinates from the
+#'   input data frame with the US National Atlas Equal Area projection applied.
+#'   The transformed columns will be appended to the data frame so that all
 #'   original columns should remain intact.
 
 #' @examples
@@ -43,18 +53,23 @@
 #'
 #' @rdname usmap_transform
 #' @export
-usmap_transform <- function(data,
-                            input_names = c("lon", "lat"),
-                            output_names = c("x", "y")) {
-  UseMethod("usmap_transform", data)
+usmap_transform <- function(data, ...) {
+  UseMethod("usmap_transform")
+}
+
+#' @rdname usmap_transform
+#' @export
+usmap_transform.sf <- function(data, ...) {
+  perform_transform(data, ...)
 }
 
 #' @rdname usmap_transform
 #' @export
 usmap_transform.data.frame <- function(data,
+                                       ...,
                                        input_names = c("lon", "lat"),
-                                       output_names = c("x", "y")) {
-  # ensure data is data.frame
+                                       output_names = NULL) {
+  # ensure input is data.frame
   data <- as.data.frame(data)
 
   # validation
@@ -74,15 +89,29 @@ usmap_transform.data.frame <- function(data,
     stop("`data` must contain at least two numeric columns.")
   }
 
-  if (length(output_names) != 2 && !any(is.na(as.character(output_names)))) {
-    stop("`output_names` must be a character vector of length 2.")
-  } else {
-    output_names <- as.character(output_names)
+  if (!is.null(output_names)) {
+    warning("`output_names` is no longer used. This parameter will be removed in a future version of `usmap`.")
   }
 
-  # Convert data to sf
-  data_sf <- sf::st_as_sf(data, coords = input_names)
-  sf::st_crs(data_sf) <- sf::st_crs(4326) # long/lat CRS
+  # convert to sf and perform transformation
+  data <- sf::st_as_sf(data, coords = input_names)
+  perform_transform(data, ...)
+}
+
+#' Transform `sf` coordinates to `usmap` transform
+#'
+#' Internal function with common functionality for transforming coordinates.
+#' Using this function directly is not recommended.
+#'
+#' @keywords internal
+perform_transform <- function(data, ...) {
+  data_sf <- sf::st_as_sf(data, ...)
+
+  if (is.na(sf::st_crs(data_sf))) {
+    crs <- list(...)[["crs"]]
+    if (is.null(crs)) crs <- sf::st_crs(4326)
+    sf::st_crs(data_sf) <- crs
+  }
 
   # Transform to canonical projection
   transformed <- sf::st_transform(data_sf, usmap_crs())

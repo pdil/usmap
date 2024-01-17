@@ -25,9 +25,7 @@ Suggests:
     proto,
     rmarkdown,
     scales,
-    sp,
     sf,
-    stringr,
     testthat
 RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)

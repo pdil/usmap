@@ -120,6 +120,13 @@ test_that("layer parameters are correct", {
   expect_equal(deparse(v$layers[[2]]$mapping$label), "~.data$abbr")
 })
 
-test_that("warning occurs for unnecessary fill argument", {
-  expect_warning(plot_usmap(data = example_data, fill = "red"))
+test_that("county data works without specifying `region`", {
+  data <- data.frame(
+    fips = c("36001", "36003", "36005", "36007"),
+    values = c(1, 3, 3, 5)
+  )
+
+  p <- plot_usmap(data = data, include = "NY", labels = TRUE)
+  expect_equal(deparse(p$layers[[2]]$mapping$label),
+               "~sub(\" County\", \"\", .data$county)")
 })
