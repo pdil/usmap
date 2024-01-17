@@ -6,7 +6,7 @@
 View code used to generate these plots: [resources/examples.R](https://github.com/pdil/usmap/blob/master/resources/examples.R)
 
 ## Purpose
-Typically in R it is difficult to create nice US [choropleths](https://en.wikipedia.org/wiki/Choropleth_map) that include Alaska and Hawaii. The functions presented here attempt to elegantly solve this problem by manually moving these states to a new location and providing a fortified data frame for mapping and visualization. This allows the user to easily add data to color the map.
+Typically in R it is difficult to create nice US [choropleths](https://en.wikipedia.org/wiki/Choropleth_map) that include Alaska and Hawaii. The functions presented here attempt to elegantly solve this problem by manually moving these states to a new location and providing a simple features ([`sf`](https://github.com/r-spatial/sf)) object for mapping and visualization. This allows the user to easily add visual data or features to the US map.
 
 ## Shape Files
 The shape files that we use to plot the maps in R are located in the [`usmapdata`](https://github.com/pdil/usmapdata) package. These are generated from the [US Census Bureau cartographic boundary files](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html). Maps at both the state and county levels are included for convenience.
@@ -21,18 +21,20 @@ The shape files that we use to plot the maps in R are located in the [`usmapdata
 | January 29, 2017  | 0.1.0           | 2015            | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2015.html)   |
 
 ## Installation
-To install from CRAN _(recommended)_, run the following code in an R console:
+📦 To install from CRAN (recommended), run the following code in an R console:
 ```r
 install.packages("usmap")
 ```
+
+### Developer Build
+⚠️ The developer build may be unstable and not function correctly, use with caution.
+
 To install the package from this repository, run the following code in an R console:
 ```r
 # install.package("devtools")
 devtools::install_github("pdil/usmap")
 ```
-Installing using `devtools::install_github` will provide the most recent developer build of `usmap`.
-
-⚠️ The developer build may be unstable and not function correctly, use with caution.
+This method will provide the most recent developer build of `usmap`.
 
 To begin using `usmap`, import the package using the `library` command:
 ```r
