@@ -1,4 +1,4 @@
-# usmap 0.6.4.9999
+# [unreleased]
 
 ### Improvements
 * Migrate to new `usmapdata 0.2.0` `sf`-based map data files.
@@ -15,6 +15,7 @@
   * Input can now also be in any coordinate reference system, if it is not standard longitude/latitude, it can be specified with the `crs` parameter.
 * Add `usrivers` dataset featuring major US rivers.
   * The dataset is provided in an `sf` object and is ready to be transformed with `usmap_transform()` and plotted with `plot_usmap() + ggplot2::geom_sf()`.
+* Add visual snapshot tests for more resilient plots, see [Issue #80](https://github.com/pdil/usmap/issues/80).
 
 ### Bug Fixes
 * `plot_usmap()` warnings have been cleaned up, including a defunct warning that didn't make sense.
