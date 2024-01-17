@@ -120,6 +120,41 @@ test_that("sf object is transformed", {
   expect_equal(usmap_transform(sf), result, tolerance = 1e-02)
 })
 
+test_that("sf object with non-lon/lat CRS is transformed", {
+  sf <- sf::st_as_sf(
+    data.frame(
+      geometry = sf::st_sfc(
+        sf::st_point(c(-8238756, 4969660)),
+        sf::st_point(c(-10615427, 3472737)),
+        sf::st_point(c(-13162417, 4035518)),
+        sf::st_point(c(-9757153, 5138537)),
+        sf::st_point(c(-14963566, 8030604)),
+        sf::st_point(c(-17572895, 2428881))
+      )
+    ),
+    crs = sf::st_crs(3857)
+  )
+
+  result <- sf::st_as_sf(
+    data.frame(
+      geometry = sf::st_sfc(
+        sf::st_point(c(2152550, -133046.5)),
+        sf::st_point(c(452399.8, -1674650)),
+        sf::st_point(c(-1675528, -1033610)),
+        sf::st_point(c(1021166, -273151.2)),
+        sf::st_point(c(-1062738, -2125993)),
+        sf::st_point(c(-618107.8, -1962880))
+      )
+    ),
+    crs = usmap_crs()
+  )
+
+  # test without explicit CRS
+  expect_equal(usmap_transform(sf), result, tolerance = 1e-02)
+  # test with explicit CRS
+  expect_equal(usmap_transform(sf, crs = sf::st_crs(3857)), result, tolerance = 1e-02)
+})
+
 test_that("error occurs for data with less than 2 columns", {
   invalid_data <- data.frame(
     lon = c(-74.01, -95.36, -118.24, -87.65)

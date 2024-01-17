@@ -12,6 +12,7 @@
 * `usmap_transform()` now accepts `sf` objects and automatically transforms its `geometry` column to the projection used by this package.
   * It is now possible to add any geographical features to the plotted map such as rivers, roads, topographical data, etc. using `usmap_transform()` before plotting with `ggplot2::geom_sf()`.
   * See the provided vignettes and examples for more information.
+  * Input can now also be in any coordinate reference system, if it is not standard longitude/latitude, it can be specified with the `crs` parameter.
 
 ### Removed
 * `output_names` is no longer required as a parameter to `usmap_transform()`.

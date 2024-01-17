@@ -4,13 +4,13 @@
 \alias{usmap_transform}
 \alias{usmap_transform.sf}
 \alias{usmap_transform.data.frame}
-\title{Convert coordinate date frame to usmap projection}
+\title{Convert spatial data to usmap projection}
 \usage{
-usmap_transform(data, input_names, output_names)
+usmap_transform(data, ...)
 
-\method{usmap_transform}{sf}(data)
+\method{usmap_transform}{sf}(data, ...)
 
-\method{usmap_transform}{data.frame}(data, input_names = c("lon", "lat"), output_names = NULL)
+\method{usmap_transform}{data.frame}(data, ..., input_names = c("lon", "lat"), output_names = NULL)
 }
 \arguments{
 \item{data}{A data frame containing coordinates in a two column format
@@ -18,14 +18,18 @@ where the first column represents longitude and the second data frame
 represents latitude. The names of the data frame column do not matter,
 just that the order of the columns is kept intact.}
 
+\item{...}{Additional parameters passed onto \link[sf:st_as_sf]{sf::st_as_sf}.
+By default, \code{crs = sf::st_crs(4326)} is used, implying longitude and latitude
+coordinates.}
+
 \item{input_names}{A character vector of length two which specifies the
 longitude and latitude columns of the input data (the ones that should be
-transformed), respectively. Not required if the input data is
-an \code{sf} object. Defaults to \code{c("lon", "lat")}.}
+transformed), respectively. Only required if the input data is
+a \code{data.frame} object. Defaults to \code{c("lon", "lat")}.}
 
 \item{output_names}{Defunct, this parameter is no longer used. The output
 of this function will have a column named \code{"geometry"} with the transformed
-coordinates.}
+coordinates. This parameter may be removed in a future version.}
 }
 \value{
 An \code{sf} object containing the transformed coordinates from the
@@ -34,9 +38,14 @@ The transformed columns will be appended to the data frame so that all
 original columns should remain intact.
 }
 \description{
-Converting an external data frame of map coordinates will
+Converting a spatial object of map coordinates will
 allow those points to line up with the regular usmap plot by applying
-the same US National Atlas Equal Area projection to those points as well.
+the same US National Atlas Equal Area projection (including Alaska and
+Hawaii of course) to those points as well.
+
+The input \code{data} is assumed to contain longitude and latitude coordinates
+by default. If this is not the case, provide an \link[sf:st_crs]{sf::st_crs} object
+to the \code{crs} parameter with the appropriate coordinate reference system.
 }
 \examples{
 data <- data.frame(
