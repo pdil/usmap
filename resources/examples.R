@@ -40,9 +40,12 @@ south_pov_map <-
   scale_fill_continuous(low = "darkgreen", high = "yellow", guide = "none") +
   scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 
-# Blank blue map ####
-blue_us_map <- plot_usmap(color = "white", fill = "blue",
-                          alpha = 0.75, size = 0)
+# Rivers map ####
+rivers_t <- usmap_transform(rivers)
+
+rivers_map <- plot_usmap("counties", color = "gray80") +
+  geom_sf(data = rivers_t, aes(linewidth = Shape_Length), color = "blue") +
+  scale_linewidth_continuous(range = c(0.3, 1.5), guide = "none")
 
 # Most populous city by state (Mountain) ####
 mt_citypop_t <- citypop_t[citypop_t$abbr %in% .mountain, ]
@@ -70,7 +73,7 @@ cowplot::plot_grid(
   ak_blank_county_map,
   state_pop_map_labeled,
   south_pov_map,
-  blue_us_map,
+  rivers_map,
   mt_citypop_map,
   county_pov_map,
   nrow = 3

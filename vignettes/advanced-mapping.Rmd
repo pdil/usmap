@@ -76,7 +76,7 @@ A convenience method called `usmap_transform` is provided that transforms a `dat
 
 #### Example: earthquakes
 
-Here is an example using the provided `earthquakes` data set:
+Here is an example using the provided `earthquakes` dataset:
 
 ```{r, fig.align='center', fig.width=8, fig.height=5, message=FALSE, warning=FALSE}
 library(usmap)
@@ -122,6 +122,31 @@ plot_usmap(fill = "yellow", alpha = 0.25) +
   theme(legend.position = "right")
 ```
 
+#### Example: major rivers in the United States
+
+Here is an example of transforming and plotting another `sf` object on the map,
+using the provided `rivers` dataset. In this example the width of the river
+corresponds to its length, and the color indicates the river system it belongs
+to.
+
+```{r fig.align='center', fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+library(usmap)
+library(ggplot2)
+
+rivers_t <- usmap_transform(rivers)
+
+plot_usmap("counties", color = "gray80") + 
+  geom_sf(data = rivers_t, aes(linewidth = Shape_Length, color = SYSTEM, fill = SYSTEM)) + 
+  scale_linewidth_continuous(range = c(0.3, 1.8), guide = "none") +
+  scale_color_discrete(guide = "none") +
+  labs(title = "Major Rivers in the United States",
+       subtitle = "Source: ESRI 2010",
+       fill = "River System") +
+  theme(legend.position = "right")
+```
+
+<hr>
+
 The `usmap_transform` function, combined with the power of `ggplot2` layers can allow for some very unique and complex data visualizations on the US map. The `usmap_transform` function also handles transforming points in the Alaska/Hawaii area so that they are appropriately displayed on their respective states.
 
-Currently, `usmap_transform` does not trim any points that fall outside the Alaska/Hawaii/US bounding boxes so it is important to prepare the data beforehand by eliminating any points that should not be displayed on the map otherwise it could have undesirable results.
+<br><br><br><br><br><br><br><br><br><br>

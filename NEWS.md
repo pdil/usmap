@@ -6,13 +6,15 @@
   * Allows for further flexibility in manipulation, easier plotting, and reduced file sizes.
   * There should be no visible changes to existing `usmap` functionality.
   * If something doesn't look right, please [open an issue](https://github.com/pdil/usmap/issues).
-* In accordance with the `sf` change mentioned above, the output of `usmap_transform()` has changed.
+* Change the output of `usmap_transform()` in accordance with the `sf` change mentioned above.
   * The output data frame now replaces the `lat`/`lon` columns with a single `geometry` column with the transformed points and can be plotted using `ggplot2::geom_sf()`.
   * Review the included examples and `advanced-mapping` vignette for more details.
 * `usmap_transform()` now accepts `sf` objects and automatically transforms its `geometry` column to the projection used by this package.
   * It is now possible to add any geographical features to the plotted map such as rivers, roads, topographical data, etc. using `usmap_transform()` before plotting with `ggplot2::geom_sf()`.
   * See the provided vignettes and examples for more information.
   * Input can now also be in any coordinate reference system, if it is not standard longitude/latitude, it can be specified with the `crs` parameter.
+* Add `rivers` dataset featuring major US rivers.
+  * The dataset is provided in an `sf` object and is ready to be transformed with `usmap_transform()` and plotted with `plot_usmap() + ggplot2::geom_sf()`.
 
 ### Removed
 * `output_names` is no longer required as a parameter to `usmap_transform()`.

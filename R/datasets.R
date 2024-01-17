@@ -1,7 +1,7 @@
 #' Population estimates (2015), county level
 #'
 #' @description US census population estimates by county for 2015. \cr\cr
-#'   The data is formatted for easy merging with output from \code{\link[usmap]{us_map}}.
+#'   The data is formatted for easy merging with output from [usmap::us_map].
 #'
 #' @usage data(countypop)
 #'
@@ -28,7 +28,7 @@
 #' Population estimates (2015), state level
 #'
 #' @description US census population estimates by state for 2015. \cr\cr
-#'   The data is formatted for easy merging with output from \code{\link[usmap]{us_map}}.
+#'   The data is formatted for easy merging with output from [usmap::us_map].
 #'
 #' @usage data(statepop)
 #'
@@ -55,7 +55,7 @@
 #' Poverty percentage estimates (2014), county level
 #'
 #' @description US census poverty percentage estimates by county for 2014. \cr\cr
-#'   The data is formatted for easy merging with output from \code{\link[usmap]{us_map}}.
+#'   The data is formatted for easy merging with output from [usmap::us_map].
 #'
 #' @usage data(countypov)
 #'
@@ -82,7 +82,7 @@
 #' Poverty percentage estimates (2014), state level
 #'
 #' @description US census poverty percentage estimates by state for 2014. \cr\cr
-#'   The data is formatted for easy merging with output from \code{\link[usmap]{us_map}}.
+#'   The data is formatted for easy merging with output from [usmap::us_map].
 #'
 #' @usage data(statepov)
 #'
@@ -109,9 +109,9 @@
 #' Most populous city in each state (2010)
 #'
 #' @description The most populous city in each US state, as of the 2010 US Census.\cr\cr
-#'   The data is formatted for transforming with \code{\link[usmap]{usmap_transform}}.
+#'   The data is formatted for transforming with [usmap::usmap_transform].
 #'   Once the longitude and latitude is transformed, it can be added to
-#'   \code{\link[usmap]{plot_usmap}} using \code{ggplot2} layers.
+#'   [usmap::plot_usmap] using [ggplot2::ggplot] layers.
 #'
 #' @usage data(citypop)
 #'
@@ -138,9 +138,9 @@
 #'
 #' @description US earthquakes with a magnitude of 2.5 or greater, occurring in the
 #'   first half of 2019, from January 1st to June 30th, from USGS.\cr\cr
-#'   The data is formatted for transforming with \code{\link[usmap]{usmap_transform}}.
+#'   The data is formatted for transforming with [usmap::usmap_transform].
 #'   Once the longitude and latitude is transformed, it can be added to
-#'   \code{\link[usmap]{plot_usmap}} using \code{ggplot2} layers.
+#'   [usmap::plot_usmap] using [ggplot2::ggplot] layers.
 #'
 #' @usage data(earthquakes)
 #'
@@ -161,3 +161,33 @@
 #'   }
 #' @keywords data
 "earthquakes"
+
+#' US Major Rivers (2010)
+#'
+#' @description Major rivers in United States.\cr\cr
+#'   The data is can be transformed with [usmap::usmap_transform].
+#'   Once the `Shape` strings are transformed, it can be added to
+#'   [plot_usmap] using a [ggplot2::geom_sf] layer.
+#'
+#' @usage data(rivers)
+#'
+#' @details
+#' \itemize{
+#'   \item \code{NAME} The name of the river.
+#'   \item \code{SYSTEM} The system the river belongs to.
+#'   \item \code{MILES} The length of the river in miles.
+#'   \item \code{Shape_Length} The length of the river in the coordinate system.
+#'   \item \code{Shape} The MULTILINESTRING features depicting the river, for plotting.
+#' }
+#'
+#' @name rivers
+#' @format A simple features (sf) data frame with 55 rows and 5 variables.
+#' @docType data
+#' @references
+#'   \itemize{
+#'     \item \url{https://www.arcgis.com/home/item.html?id=290e4ab8a07f4d2c8392848d011add32#!}
+#'     \item Sources: Esri; Rand McNally; Bartholemew and Times Books;
+#'     Digital Chart of the World (DCW), U.S. National Geospatial-Intelligence Agency (NGA); i-cubed
+#'   }
+#' @keywords data
+"rivers"
