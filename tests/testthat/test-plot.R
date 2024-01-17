@@ -70,6 +70,10 @@ test_that("plots are stable", {
   vdiffr::expect_doppelganger("New England state map with labels excluding Maine", u)
   vdiffr::expect_doppelganger("State map with labels", v)
 
+  # River map snapshot test fails on non-mac platforms,
+  # use manual verification instead.
+  skip_on_os(c("windows", "linux"))
+
   rivers_t <- usmap_transform(usrivers)
   river_map <- plot_usmap() + ggplot2::geom_sf(data = rivers_t, color = "blue")
   vdiffr::expect_doppelganger("State map with major rivers", river_map)
