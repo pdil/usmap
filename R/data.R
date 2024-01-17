@@ -164,12 +164,12 @@
 
 #' US Major Rivers (2010)
 #'
-#' @description Major rivers in United States.\cr\cr
+#' @description Major rivers in the United States.\cr\cr
 #'   The data is can be transformed with [usmap::usmap_transform].
 #'   Once the `Shape` strings are transformed, it can be added to
 #'   [plot_usmap] using a [ggplot2::geom_sf] layer.
 #'
-#' @usage data(rivers)
+#' @usage data(usrivers)
 #'
 #' @details
 #' \itemize{
@@ -180,7 +180,7 @@
 #'   \item \code{Shape} The MULTILINESTRING features depicting the river, for plotting.
 #' }
 #'
-#' @name rivers
+#' @name usrivers
 #' @format A simple features (sf) data frame with 55 rows and 5 variables.
 #' @docType data
 #' @references
@@ -190,4 +190,4 @@
 #'     Digital Chart of the World (DCW), U.S. National Geospatial-Intelligence Agency (NGA); i-cubed
 #'   }
 #' @keywords data
-"rivers"
+"usrivers"

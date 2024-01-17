@@ -62,6 +62,23 @@ test_that("correct data is used", {
   expect_identical(v$data, v_map_data)
 })
 
+test_that("plots are stable", {
+  vdiffr::expect_doppelganger("State population map with blue outlines", q)
+  vdiffr::expect_doppelganger("Example data state map with custom linewidth", r)
+  vdiffr::expect_doppelganger("Southeastern states map with labels", s)
+  vdiffr::expect_doppelganger("Arizona county map with labels and fill", t)
+  vdiffr::expect_doppelganger("New England state map with labels excluding Maine", u)
+  vdiffr::expect_doppelganger("State map with labels", v)
+
+  # River map snapshot test fails on non-mac platforms,
+  # use manual verification instead.
+  skip_on_os(c("windows", "linux"))
+
+  rivers_t <- usmap_transform(usrivers)
+  river_map <- plot_usmap() + ggplot2::geom_sf(data = rivers_t, color = "blue")
+  vdiffr::expect_doppelganger("State map with major rivers", river_map)
+})
+
 test_that("layer parameters are correct", {
   expect_is(p$layers[[1]], "ggproto")
   expect_is(p$layers[[1]]$geom, "GeomSf")

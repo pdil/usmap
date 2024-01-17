@@ -66,7 +66,7 @@ plot_usmap(fill = "yellow", alpha = 0.25) +
 library(usmap)
 library(ggplot2)
 
-rivers_t <- usmap_transform(rivers)
+rivers_t <- usmap_transform(usrivers)
 
 plot_usmap("counties", color = "gray80") + 
   geom_sf(data = rivers_t, aes(linewidth = Shape_Length, color = SYSTEM, fill = SYSTEM)) + 
