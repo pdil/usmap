@@ -19,6 +19,7 @@
 * Add state abbreviation (`abbr`) column to `citypop` data set.
 * Update and standardize documentation throughout the page.
   * Includes updates to formatting, links, and language.
+* Rename vignettes to make them easier to find and read in order.
 
 ### Bug Fixes
 * `plot_usmap()` warnings have been cleaned up, including a defunct warning that didn't make sense.

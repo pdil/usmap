@@ -78,9 +78,9 @@ package, use `vignette`:
 
 ``` r
 vignette(package = "usmap")
-vignette("introduction", package = "usmap")
-vignette("mapping", package = "usmap")
-vignette("advanced-mapping", package = "usmap")
+vignette("usmap1", package = "usmap") # 1. Introduction
+vignette("usmap2", package = "usmap") # 2. Mapping the US
+vignette("usmap3", package = "usmap") # 3. Advanced Mapping
 ```
 
 For further help with this package, open an
