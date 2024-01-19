@@ -3,12 +3,12 @@
 \name{get_fips_info}
 \alias{get_fips_info}
 \title{Gets FIPS info for either states or counties depending on input.
-Helper function for S3 method \code{fips_info}.}
+Helper function for S3 method \code{\link[=fips_info]{fips_info()}}.}
 \usage{
 get_fips_info(fips, sortAndRemoveDuplicates)
 }
 \description{
 Gets FIPS info for either states or counties depending on input.
-Helper function for S3 method \code{fips_info}.
+Helper function for S3 method \code{\link[=fips_info]{fips_info()}}.
 }
 \keyword{internal}

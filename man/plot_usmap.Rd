@@ -36,7 +36,7 @@ not present in the included regions will be ignored.}
 
 \item{data}{A data frame containing values to plot on the map. This
 parameter should be a data frame consisting of two columns,
-a fips code (2 characters for state, 5 characters for county)
+a FIPS code (2 characters for state, 5 characters for county)
 and the value that should be associated with that region. The
 columns of \code{data} \emph{must} be \code{fips} or \code{state} and
 the value of the \code{values} parameter.}
@@ -48,15 +48,14 @@ with a given region. The default is \code{"value"}.}
 is \code{theme_map} from \href{https://github.com/jrnold/ggthemes}{ggthemes}.}
 
 \item{labels}{Whether or not to display labels on the map. Labels are not displayed
-by default. For now, labels only work for state maps.
-County labels may be added in the future.}
+by default.}
 
 \item{label_color}{The color of the labels to display. Corresponds to the \code{color}
-option in the \code{\link[ggplot2]{aes}} mapping. The default is \code{"black"}.
+option in the \code{\link[ggplot2:aes]{ggplot2::aes()}} mapping. The default is \code{"black"}.
 \href{https://usmap.dev/docs/Rcolor.pdf}{Click here}
 for more color options.}
 
-\item{...}{Other arguments to pass to \code{ggplot2::aes()}. These are
+\item{...}{Other arguments to pass to \code{\link[ggplot2:aes]{ggplot2::aes()}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like \code{color = "red"}
 or \code{size = 3}. They affect the appearance of the polygons used to render
 the map (for example fill color, line color, line thickness, etc.). If any of
@@ -65,9 +64,9 @@ are set to their default values of \code{color="black"}, \code{fill="white"},
 and \code{size=0.4}.}
 }
 \value{
-A \code{\link[ggplot2]{ggplot}} object that contains a basic
+A \link[ggplot2:ggplot]{ggplot2::ggplot} object that contains a basic
 US map with the described parameters. Since the result is a \code{ggplot}
-object, it can be extended with more \code{geom} layers, scales, labels,
+object, it can be extended with more \link[ggplot2:ggplot2-ggproto]{ggplot2::Geom} layers, scales, labels,
 themes, etc.
 }
 \description{
@@ -96,5 +95,5 @@ plot_usmap(data = statepop, values = "pop_2015", labels = TRUE, label_color = "w
 
 }
 \seealso{
-\code{\link{usmap}}, \code{\link[ggplot2]{theme}}
+\link{usmap}, \code{\link[ggplot2:theme]{ggplot2::theme()}}
 }

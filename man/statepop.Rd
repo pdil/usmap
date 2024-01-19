@@ -12,7 +12,7 @@ data(statepop)
 }
 \description{
 US census population estimates by state for 2015. \cr\cr
-The data is formatted for easy merging with output from \link{us_map}.
+The data is formatted for easy merging with output from \code{\link[=us_map]{us_map()}}.
 }
 \details{
 \itemize{

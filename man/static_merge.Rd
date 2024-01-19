@@ -2,14 +2,14 @@
 % Please edit documentation in R/fips.R
 \name{static_merge}
 \alias{static_merge}
-\title{Performs merge while maintaining original sort order.}
+\title{Merge while maintaining original sort order}
 \usage{
 static_merge(x, y, ...)
 }
 \description{
-Performs merge while maintaining original sort order.
+Internal function used by \code{\link[=fips_info]{fips_info()}}.
 }
 \seealso{
-https://stackoverflow.com/a/61560405/7264964
+\url{https://stackoverflow.com/a/61560405/7264964}
 }
 \keyword{internal}

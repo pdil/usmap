@@ -16,6 +16,10 @@
 * Add `usrivers` dataset featuring major US rivers.
   * The dataset is provided in an `sf` object and is ready to be transformed with `usmap_transform()` and plotted with `plot_usmap() + ggplot2::geom_sf()`.
 * Add visual snapshot tests for more resilient plots, see [Issue #80](https://github.com/pdil/usmap/issues/80).
+* Add state abbreviation (`abbr`) column to `citypop` data set.
+* Update and standardize documentation throughout the page.
+  * Includes updates to formatting, links, and language.
+* Rename vignettes to make them easier to find and read in order.
 
 ### Bug Fixes
 * `plot_usmap()` warnings have been cleaned up, including a defunct warning that didn't make sense.

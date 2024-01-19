@@ -61,3 +61,6 @@ fips("CA", county = "orange")
 fips(state = "AL", county = "autauga")
 fips(state = "Alabama", county = "Autauga County")
 }
+\seealso{
+\code{\link[=fips_info]{fips_info()}}
+}

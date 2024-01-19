@@ -1,4 +1,3 @@
-
 #' New England census division
 #'
 #' @description

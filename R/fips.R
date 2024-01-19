@@ -38,6 +38,8 @@
 #' codes is returned, sorted by the state's abbreviation (e.g. Alaska (AK) comes
 #' before Alabama (AL)).
 #'
+#' @seealso [fips_info()]
+#'
 #' @examples
 #' fips()
 #'
@@ -119,6 +121,8 @@ fips <- function(state, county = c()) {
 #'  If `fips` is omitted, the data frame containing all available states is
 #'  returned.
 #'
+#' @seealso [fips()]
+#'
 #' @examples
 #' fips_info(2)
 #' fips_info("2")
@@ -166,7 +170,7 @@ fips_info.character <- function(fips, sortAndRemoveDuplicates = FALSE) {
 }
 
 #' Gets FIPS info for either states or counties depending on input.
-#' Helper function for S3 method \code{fips_info}.
+#' Helper function for S3 method [fips_info()].
 #' @keywords internal
 get_fips_info <- function(fips, sortAndRemoveDuplicates) {
   if (all(nchar(fips) == 2)) {
@@ -196,9 +200,11 @@ get_fips_info <- function(fips, sortAndRemoveDuplicates) {
   result[, columns]
 }
 
-#' Performs merge while maintaining original sort order.
+#' Merge while maintaining original sort order
 #'
-#' @seealso https://stackoverflow.com/a/61560405/7264964
+#' Internal function used by [fips_info()].
+#'
+#' @seealso \url{https://stackoverflow.com/a/61560405/7264964}
 #' @keywords internal
 static_merge <- function(x, y, ...) {
   x$join_id_ <- seq_len(nrow(x))

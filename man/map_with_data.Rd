@@ -36,11 +36,10 @@ a value in \code{data}. This value must be of the same type as the \code{value}
 column of \code{data}.}
 }
 \value{
-A data frame composed of the map data frame (from \code{\link{us_map}}) except
+A data frame composed of the map data frame (from \code{\link[=us_map]{us_map()}}) except
 an extra column containing the values in \code{data} is included.
 
-The result can be plotted using \code{ggplot2}. See \code{\link{us_map}} or
-\code{\link{plot_usmap}} for more details.
+The result can be plotted using \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} or \code{\link[=plot_usmap]{plot_usmap()}}.
 }
 \description{
 Join county or state level data to US map data
@@ -52,4 +51,7 @@ df <- map_with_data(state_data, na = 0)
 state_data <- data.frame(state = c("AK", "CA", "Utah"), values = c(6, 9, 3))
 df <- map_with_data(state_data, na = 0)
 
+}
+\seealso{
+\code{\link[=plot_usmap]{plot_usmap()}}
 }

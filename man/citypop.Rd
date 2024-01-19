@@ -12,15 +12,16 @@ data(citypop)
 }
 \description{
 The most populous city in each US state, as of the 2010 US Census.\cr\cr
-The data is formatted for transforming with \link{usmap_transform}.
+The data is formatted for transforming with \code{\link[=usmap_transform]{usmap_transform()}}.
 Once the longitude and latitude is transformed, it can be added to
-\link{plot_usmap} using \link[ggplot2:ggplot]{ggplot2::ggplot} layers.
+\code{\link[=plot_usmap]{plot_usmap()}} using \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} layers.
 }
 \details{
 \itemize{
 \item \code{lon} The longitude of the most populous city.
 \item \code{lat} The latitude of the most populous city.
 \item \code{state} The name of the state containing the city.
+\item \code{abbr} The abbreviation of the state containing the city.
 \item \code{most_populous_city} The name of the city.
 \item \code{city_pop} The population of the city.
 }
