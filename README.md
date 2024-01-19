@@ -59,7 +59,7 @@ To install the package from this repository, run the following code in
 an R console:
 
 ``` r
-# install.package("devtools")
+install.package("devtools")
 devtools::install_github("pdil/usmap")
 ```
 
@@ -111,10 +111,10 @@ library(ggplot2)
 mt <- plot_usmap("states", include = .mountain, labels = TRUE)
 
 fl <- plot_usmap("counties", data = countypov, values = "pct_pov_2014", include = "FL") +
-    scale_fill_continuous(low = "green", high = "red", guide = "none")
+  scale_fill_continuous(low = "green", high = "red", guide = "none")
 
 ne <- plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_england) +
-    scale_fill_continuous(low = "blue", high = "yellow", guide = "none")
+  scale_fill_continuous(low = "blue", high = "yellow", guide = "none")
 
 cowplot::plot_grid(mt, fl, ne, nrow = 1)
 ```
