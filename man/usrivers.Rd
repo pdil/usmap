@@ -12,9 +12,9 @@ data(usrivers)
 }
 \description{
 Major rivers in the United States.\cr\cr
-The data is can be transformed with \link{usmap_transform}.
+The data is can be transformed with \code{\link[=usmap_transform]{usmap_transform()}}.
 Once the \code{Shape} strings are transformed, it can be added to
-\link{plot_usmap} using a \link[ggplot2:ggsf]{ggplot2::geom_sf} layer.
+\code{\link[=plot_usmap]{plot_usmap()}} using a \code{\link[ggplot2:ggsf]{ggplot2::geom_sf()}} layer.
 }
 \details{
 \itemize{

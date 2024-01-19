@@ -4,13 +4,13 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-## ---- fig.align='center', fig.width=7-----------------------------------------
+## ----fig.align='center', fig.width=7------------------------------------------
 usmap::plot_usmap()
 
-## ---- fig.align='center', fig.width=7-----------------------------------------
+## ----fig.align='center', fig.width=7------------------------------------------
 usmap::plot_usmap(regions = "counties")
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  states_df <- usmap::us_map()
 #  counties_df <- usmap::us_map(regions = "counties")
 
@@ -31,3 +31,4 @@ usmap::fips_info(c("30", "33", "34"))
 
 ## -----------------------------------------------------------------------------
 usmap::fips_info(c("01001", "01003", "01005", "01007"))
+

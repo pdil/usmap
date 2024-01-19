@@ -42,3 +42,6 @@ fips_info(2016)
 fips_info(c("02016", "02017"), sortAndRemoveDuplicates = TRUE)
 
 }
+\seealso{
+\code{\link[=fips]{fips()}}
+}

@@ -1,7 +1,7 @@
 #' Population estimates (2015), county level
 #'
 #' @description US census population estimates by county for 2015. \cr\cr
-#'   The data is formatted for easy merging with output from [usmap::us_map].
+#'   The data is formatted for easy merging with output from [usmap::us_map()].
 #'
 #' @usage data(countypop)
 #'
@@ -28,7 +28,7 @@
 #' Population estimates (2015), state level
 #'
 #' @description US census population estimates by state for 2015. \cr\cr
-#'   The data is formatted for easy merging with output from [usmap::us_map].
+#'   The data is formatted for easy merging with output from [usmap::us_map()].
 #'
 #' @usage data(statepop)
 #'
@@ -55,7 +55,7 @@
 #' Poverty percentage estimates (2014), county level
 #'
 #' @description US census poverty percentage estimates by county for 2014. \cr\cr
-#'   The data is formatted for easy merging with output from [usmap::us_map].
+#'   The data is formatted for easy merging with output from [usmap::us_map()].
 #'
 #' @usage data(countypov)
 #'
@@ -82,7 +82,7 @@
 #' Poverty percentage estimates (2014), state level
 #'
 #' @description US census poverty percentage estimates by state for 2014. \cr\cr
-#'   The data is formatted for easy merging with output from [usmap::us_map].
+#'   The data is formatted for easy merging with output from [usmap::us_map()].
 #'
 #' @usage data(statepov)
 #'
@@ -109,9 +109,9 @@
 #' Most populous city in each state (2010)
 #'
 #' @description The most populous city in each US state, as of the 2010 US Census.\cr\cr
-#'   The data is formatted for transforming with [usmap::usmap_transform].
+#'   The data is formatted for transforming with [usmap::usmap_transform()].
 #'   Once the longitude and latitude is transformed, it can be added to
-#'   [usmap::plot_usmap] using [ggplot2::ggplot] layers.
+#'   [usmap::plot_usmap()] using [ggplot2::ggplot()] layers.
 #'
 #' @usage data(citypop)
 #'
@@ -120,6 +120,7 @@
 #'   \item \code{lon} The longitude of the most populous city.
 #'   \item \code{lat} The latitude of the most populous city.
 #'   \item \code{state} The name of the state containing the city.
+#'   \item \code{abbr} The abbreviation of the state containing the city.
 #'   \item \code{most_populous_city} The name of the city.
 #'   \item \code{city_pop} The population of the city.
 #' }
@@ -138,9 +139,9 @@
 #'
 #' @description US earthquakes with a magnitude of 2.5 or greater, occurring in the
 #'   first half of 2019, from January 1st to June 30th, from USGS.\cr\cr
-#'   The data is formatted for transforming with [usmap::usmap_transform].
+#'   The data is formatted for transforming with [usmap::usmap_transform()].
 #'   Once the longitude and latitude is transformed, it can be added to
-#'   [usmap::plot_usmap] using [ggplot2::ggplot] layers.
+#'   [usmap::plot_usmap()] using [ggplot2::ggplot()] layers.
 #'
 #' @usage data(earthquakes)
 #'
@@ -165,9 +166,9 @@
 #' US Major Rivers (2010)
 #'
 #' @description Major rivers in the United States.\cr\cr
-#'   The data is can be transformed with [usmap::usmap_transform].
+#'   The data is can be transformed with [usmap::usmap_transform()].
 #'   Once the `Shape` strings are transformed, it can be added to
-#'   [plot_usmap] using a [ggplot2::geom_sf] layer.
+#'   [plot_usmap()] using a [ggplot2::geom_sf()] layer.
 #'
 #' @usage data(usrivers)
 #'

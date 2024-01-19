@@ -22,7 +22,7 @@ Alaska and Hawaii. The functions presented here attempt to elegantly
 solve this problem by manually moving these states to a new location and
 providing a simple features ([`sf`](https://github.com/r-spatial/sf))
 object for mapping and visualization. This allows the user to easily add
-visual data or features to the US map.
+spatial data or features to the US map.
 
 ## Shape Files
 
@@ -121,7 +121,7 @@ cowplot::plot_grid(mt, fl, ne, nrow = 1)
 
 <img src="man/figures/README-more_plots-1.png" style="display: block; margin: auto;" />
 
-- Transform and add data to map
+- Transform and add spatial data to map
 
 ``` r
 library(ggplot2)

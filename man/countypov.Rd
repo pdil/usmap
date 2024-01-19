@@ -12,7 +12,7 @@ data(countypov)
 }
 \description{
 US census poverty percentage estimates by county for 2014. \cr\cr
-The data is formatted for easy merging with output from \link{us_map}.
+The data is formatted for easy merging with output from \code{\link[=us_map]{us_map()}}.
 }
 \details{
 \itemize{
