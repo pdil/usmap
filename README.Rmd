@@ -28,46 +28,45 @@ knitr::opts_chunk$set(
 library(usmap)
 library(ggplot2)
 
+# City population county map (West Region) ####
 citypop_t <- usmap_transform(citypop)
+citypop_t_west <- citypop_t[
+    (citypop_t$abbr %in% .west_region) & (citypop_t$abbr != "AK") & (citypop_t$abbr != "HI"), 
+  ]
 
-# Blank state map ####
-blank_state_map <- plot_usmap()
-
-# Population by state (Midwest) ####
-mw_citypop_t <- citypop_t[citypop_t$abbr %in% .midwest_region, ]
-
-midwest_pop_map <-
-  plot_usmap(data = statepop, values = "pop_2015", include = .midwest_region) +
-  geom_sf(data = mw_citypop_t, aes(size = city_pop), color = "blue", alpha = 0.5) +
-  scale_size_continuous(guide = "none", range = c(1, 12)) +
-  scale_fill_continuous(low = "white", high = "green", guide = "none") +
-  scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
-
-# Population by state ####
-state_pop_map <-
-  plot_usmap(data = statepop, values = "pop_2015") +
-  scale_fill_continuous(low = "white", high = "red", guide = "none") +
-  scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
-
-# Blank county map (Alaska) ####
-ak_blank_county_map <-
-  plot_usmap("counties", include = "AK", color = "red", fill = "#fffdcf")
-
-tx_blank_county_map <-
-  plot_usmap("counties", include = .west_region, exclude = c("AK", "HI"), color = "blue", fill = "lightblue")
+west_county_citypop_map <-
+  plot_usmap("counties", include = .west_region, exclude = c("AK", "HI"), color = "blue", fill = "lightblue") +
+  geom_sf(data = citypop_t_west, aes(size = city_pop), color = "red", alpha = 0.7) +
+  scale_size_continuous(range = c(2, 15), guide = "none") +
+  ggrepel::geom_label_repel(
+    data = citypop_t_west,
+    aes(label = most_populous_city, geometry = geometry),
+    size = 5, alpha = 0.8,
+    label.r = unit(0.5, "lines"), label.size = 0.5,
+    segment.color = "red", segment.size = 1,
+    stat = "sf_coordinates", seed = 1002,
+    max.overlaps = 20
+  )
 
 # Population by state with labels ####
 state_pop_map_labeled <-
   plot_usmap(data = statepop, values = "pop_2015", labels = TRUE) +
-  scale_fill_continuous(low = "white", high = "red", guide = "none") +
-  scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
+  scale_fill_continuous(low = "white", high = "red", guide = "none")
+
+# Blank county map (Alaska) ####
+ak_county_map <-
+  plot_usmap("counties", include = "AK", color = "red", fill = "#fffdcf")
 
 # Poverty by county (South) ####
 south_pov_map <-
   plot_usmap("counties", data = countypov, values = "pct_pov_2014",
              include = .south_region, color = "white", size = 0) +
-  scale_fill_continuous(low = "darkgreen", high = "yellow", guide = "none") +
-  scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
+  scale_fill_continuous(low = "darkgreen", high = "yellow", guide = "none")
+
+# Poverty percentage by county ####
+county_pov_map <-
+  plot_usmap(data = countypov, values = "pct_pov_2014", size = 0.2) +
+  scale_fill_continuous(low = "blue", high = "yellow", guide = "none")
 
 # Rivers map ####
 rivers_t <- usmap_transform(usrivers)
@@ -76,29 +75,11 @@ rivers_map <- plot_usmap("counties", color = "gray80") +
   geom_sf(data = rivers_t, aes(linewidth = Shape_Length), color = "blue") +
   scale_linewidth_continuous(range = c(0.3, 1.5), guide = "none")
 
-# Most populous city by state (Mountain) ####
-mt_citypop_t <- citypop_t[citypop_t$abbr %in% .mountain, ]
-
-mt_citypop_map <-
-  plot_usmap(include = .mountain,
-             color = "red", fill = "#fffdcf",
-             labels = TRUE, label_color = "red") +
-  geom_sf(data = mt_citypop_t, aes(size = city_pop), color = "purple", alpha = 0.5) +
-  scale_size_continuous(guide = "none", range = c(1, 12)) +
-  scale_fill_continuous(low = "blue", high = "darkblue", guide = "none") +
-  scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
-
-# Poverty percentage by county ####
-county_pov_map <-
-  plot_usmap(data = countypov, values = "pct_pov_2014", size = 0.2) +
-  scale_fill_continuous(low = "blue", high = "yellow", guide = "none") +
-  scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
-
 # Combine plots ####
 cowplot::plot_grid(
-  tx_blank_county_map,
+  west_county_citypop_map,
   state_pop_map_labeled,
-  ak_blank_county_map,
+  ak_county_map,
   south_pov_map,
   county_pov_map,
   rivers_map,
@@ -165,6 +146,8 @@ For further help with this package, open an [issue](https://github.com/pdil/usma
 
 ## Features
 
+### Map Plots
+
 - Plot US maps
 
 ```{r plots, fig.align='center'}
@@ -191,6 +174,7 @@ ne <- plot_usmap("counties", data = countypop, values = "pop_2015", include = .n
 cowplot::plot_grid(mt, fl, ne, nrow = 1)
 ```
 
+
 - Transform and add data to map
 
 ```{r sf_plot}
@@ -213,6 +197,9 @@ earthquake_map <- plot_usmap() +
 cowplot::plot_grid(river_map, earthquake_map, nrow = 1)
 ```
 
+
+### Map Data
+
 - Obtain map data with certain region breakdown
 ```{r state_map}
 us_map(regions = "states")
@@ -222,6 +209,8 @@ us_map(regions = "states")
 us_map(regions = "counties")
 ```
 
+
+### FIPS Codes
 
 - Look up FIPS codes for states and counties
 

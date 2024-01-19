@@ -90,6 +90,8 @@ tag](https://stackoverflow.com/questions/tagged/usmap).
 
 ## Features
 
+### Map Plots
+
 - Plot US maps
 
 ``` r
@@ -143,6 +145,8 @@ cowplot::plot_grid(river_map, earthquake_map, nrow = 1)
 
 <img src="man/figures/README-sf_plot-1.png" style="display: block; margin: auto;" />
 
+### Map Data
+
 - Obtain map data with certain region breakdown
 
 ``` r
@@ -190,6 +194,8 @@ us_map(regions = "counties")
 #> 10 02090 AK    Alaska Fairbanks North Star Borough (((-1512362 -1851013, -14878…
 #> # ℹ 3,134 more rows
 ```
+
+### FIPS Codes
 
 - Look up FIPS codes for states and counties
 
