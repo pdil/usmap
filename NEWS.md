@@ -1,4 +1,6 @@
-# [unreleased]
+# usmap 0.7.0
+
+This is a major new release for `usmap`. The data has been modernized to be a [simple features (`sf`)](https://r-spatial.github.io/sf/) object. This will allow for much greater flexibility in the type of data that can be portrayed on the US map. `us_map()`, `plot_usmap()`, and `usmap_transform()` have been updated to work with these new formats. See the examples in the vignettes and `README` for more information.
 
 ### Improvements
 * Migrate to new `usmapdata 0.2.0` `sf`-based map data files.
