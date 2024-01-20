@@ -11,7 +11,8 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.align = "center",
   fig.path = "man/figures/README-",
-  fig.width = 15
+  fig.width = 15,
+  dev.args = list(bg = "transparent")
 )
 ```
 

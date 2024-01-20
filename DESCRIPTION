@@ -1,10 +1,10 @@
 Package: usmap
-Version: 0.6.4.9999
+Version: 0.7.0.9999
 Title: US Maps Including Alaska and Hawaii
 Description: Obtain United States map data frames of varying region types (e.g. county,
     state). The map data frames include Alaska and Hawaii conveniently placed to the
     bottom left, as they appear in most maps of the US. Convenience functions for plotting
-    choropleths, drawing map features, and working with FIPS codes are also provided.
+    choropleths, visualizing spatial data, and working with FIPS codes are also provided.
 Authors@R: person("Paolo", "Di Lorenzo", email = "dilorenzo@hey.com", role = c("aut", "cre"))
 Depends:
     R (>= 3.5.0)

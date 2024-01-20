@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette will explore some of the more advanced mapping features of `usmap`. Before continuing, be sure to check out [Mapping the US](mapping.html) as that will cover more of the basics of plotting US maps and styling them with `ggplot2`.
+This vignette will explore some of the more advanced mapping features of `usmap`. Before continuing, be sure to check out [Mapping the US](usmap2.html) as that will cover more of the basics of plotting US maps and styling them with `ggplot2`.
 
 ## Labels
 
