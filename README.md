@@ -36,7 +36,7 @@ Maps at both the state and county levels are included for convenience.
 
 | Date              | `usmap` version | Shape File Year |                                                  Link                                                  |
 |-------------------|:---------------:|:---------------:|:------------------------------------------------------------------------------------------------------:|
-| (unreleased)      |      0.7.0      |      2022       | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2022.html) |
+| January 20, 2024  |      0.7.0      |      2022       | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2022.html) |
 | February 27, 2022 |      0.6.0      |      2020       | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2020.html) |
 | June 3, 2018      |      0.3.0      |      2017       |  [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2017.html)  |
 | January 29, 2017  |      0.1.0      |      2015       |  [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2015.html)  |
