@@ -1,5 +1,6 @@
 # [unreleased]
 
+* Add citation information to README, see [Issue #86](https://github.com/pdil/usmap/issues/86).
 
 # usmap 0.7.0
 Released Saturday, January 20, 2024.
