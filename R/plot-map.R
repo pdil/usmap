@@ -19,11 +19,11 @@
 #'   for more color options.
 #' @param ... Other arguments to pass to [ggplot2::aes()]. These are
 #'   often aesthetics, used to set an aesthetic to a fixed value, like \code{color = "red"}
-#'   or \code{size = 3}. They affect the appearance of the polygons used to render
+#'   or \code{linewidth = 3}. They affect the appearance of the polygons used to render
 #'   the map (for example fill color, line color, line thickness, etc.). If any of
-#'   \code{color}/\code{colour}, \code{fill}, or \code{size} are not specified they
+#'   \code{color}/\code{colour}, \code{fill}, or \code{linewidth} are not specified they
 #'   are set to their default values of \code{color="black"}, \code{fill="white"},
-#'   and \code{size=0.4}.
+#'   and \code{linewidth=0.4}.
 #'
 #' @return A [ggplot2::ggplot] object that contains a basic
 #'   US map with the described parameters. Since the result is a \code{ggplot}
