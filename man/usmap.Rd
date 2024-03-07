@@ -2,8 +2,8 @@
 % Please edit documentation in R/usmap.R
 \docType{package}
 \name{usmap}
-\alias{usmap}
 \alias{usmap-package}
+\alias{usmap}
 \title{usmap: US maps including Alaska and Hawaii}
 \description{
 It is usually difficult or inconvenient to create US maps that

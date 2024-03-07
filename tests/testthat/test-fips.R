@@ -1,4 +1,3 @@
-context("Retrieving FIPS codes")
 
 test_that("all FIPS codes returned when no state specified", {
   expect_equal(fips(),

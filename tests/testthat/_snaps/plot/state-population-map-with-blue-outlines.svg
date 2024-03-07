@@ -165,17 +165,17 @@
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 <rect x='6.72' y='417.46' width='50.96' height='107.91' style='stroke-width: 0.87; stroke: none; fill: #FFFFFF;' />
+<text x='11.21' y='429.07' style='font-size: 9.00px; font-family: sans;' textLength='40.05px' lengthAdjust='spacingAndGlyphs'>pop_2015</text>
 <image width='17.28' height='86.40' x='11.21' y='434.48' preserveAspectRatio='none' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAEsCAYAAAACUNnVAAAAmElEQVQ4ja2UQRLDMAgDd3hk/tnX5agcknFaCoa0vnkMCEnGsL12GQhDYDpPwoDrpBFlRDWi/9Wu6AHC9FkLYLrzlhD3oJ3mDvRHRYy7IC8A7bCK8gpWKYDzeQVArDcDyD2YAnSofZvzaOA6Q7Oahp/dmRuVTQ0xU5TGP2o8Waool1obVuv1q8qP9xPvg633XlGLDtfIhNUBcBeA5ss0BXMAAAAASUVORK5CYII='/>
+<polyline points='25.03,499.72 28.49,499.72 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='25.03,477.38 28.49,477.38 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='25.03,455.05 28.49,455.05 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='14.66,499.72 11.21,499.72 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='14.66,477.38 11.21,477.38 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='14.66,455.05 11.21,455.05 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
 <text x='32.97' y='502.19' style='font-size: 7.20px; font-family: sans;' textLength='20.23px' lengthAdjust='spacingAndGlyphs'>1e+07</text>
 <text x='32.97' y='479.86' style='font-size: 7.20px; font-family: sans;' textLength='20.23px' lengthAdjust='spacingAndGlyphs'>2e+07</text>
 <text x='32.97' y='457.53' style='font-size: 7.20px; font-family: sans;' textLength='20.23px' lengthAdjust='spacingAndGlyphs'>3e+07</text>
-<text x='11.21' y='429.07' style='font-size: 9.00px; font-family: sans;' textLength='40.05px' lengthAdjust='spacingAndGlyphs'>pop_2015</text>
-<line x1='11.21' y1='499.72' x2='14.66' y2='499.72' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='11.21' y1='477.38' x2='14.66' y2='477.38' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='11.21' y1='455.05' x2='14.66' y2='455.05' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='25.03' y1='499.72' x2='28.49' y2='499.72' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='25.03' y1='477.38' x2='28.49' y2='477.38' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='25.03' y1='455.05' x2='28.49' y2='455.05' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
 <text x='6.72' y='55.82' style='font-size: 10.80px; font-family: sans;' textLength='187.93px' lengthAdjust='spacingAndGlyphs'>State population map with blue outlines</text>
 </g>
 </svg>

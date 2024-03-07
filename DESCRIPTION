@@ -19,15 +19,16 @@ Imports:
     usmapdata (>= 0.2.0)
 Suggests:
     covr,
-    ggplot2,
+    ggplot2 (>= 3.5.0),
     ggrepel,
     knitr,
     proto,
     rmarkdown,
     scales,
     sf,
-    testthat,
+    testthat (>= 3.0.0),
     vdiffr
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
+Config/testthat/edition: 3
