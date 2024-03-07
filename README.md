@@ -267,20 +267,19 @@ required!), you may do so in the following way:
 
 ``` r
 citation("usmap")
-#> Warning in citation("usmap"): could not determine year for 'usmap' from package
-#> DESCRIPTION file
 #> To cite package 'usmap' in publications use:
 #> 
-#>   Di Lorenzo P (????). _usmap: US Maps Including Alaska and Hawaii_. R
-#>   package version 0.7.0.9999, <https://usmap.dev>.
+#>   Di Lorenzo P (2024). _usmap: US Maps Including Alaska and Hawaii_. R
+#>   package version 0.7.0, <https://CRAN.R-project.org/package=usmap>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {usmap: US Maps Including Alaska and Hawaii},
 #>     author = {Paolo {Di Lorenzo}},
-#>     note = {R package version 0.7.0.9999},
-#>     url = {https://usmap.dev},
+#>     year = {2024},
+#>     note = {R package version 0.7.0},
+#>     url = {https://CRAN.R-project.org/package=usmap},
 #>   }
 ```
 
