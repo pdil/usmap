@@ -19,7 +19,7 @@ Imports:
     usmapdata (>= 0.2.0)
 Suggests:
     covr,
-    ggplot2,
+    ggplot2 (>= 3.5.0),
     ggrepel,
     knitr,
     proto,

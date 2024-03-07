@@ -165,20 +165,20 @@
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 <rect x='6.72' y='417.46' width='34.99' height='107.91' style='stroke-width: 0.87; stroke: none; fill: #FFFFFF;' />
+<text x='11.21' y='429.07' style='font-size: 9.00px; font-family: sans;' textLength='26.02px' lengthAdjust='spacingAndGlyphs'>values</text>
 <image width='17.28' height='86.40' x='11.21' y='434.48' preserveAspectRatio='none' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAEsCAYAAAACUNnVAAAAmElEQVQ4ja2UQRLDMAgDd3hk/tnX5agcknFaCoa0vnkMCEnGsL12GQhDYDpPwoDrpBFlRDWi/9Wu6AHC9FkLYLrzlhD3oJ3mDvRHRYy7IC8A7bCK8gpWKYDzeQVArDcDyD2YAnSofZvzaOA6Q7Oahp/dmRuVTQ0xU5TGP2o8Waool1obVuv1q8qP9xPvg633XlGLDtfIhNUBcBeA5ss0BXMAAAAASUVORK5CYII='/>
+<polyline points='25.03,520.74 28.49,520.74 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='25.03,492.04 28.49,492.04 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='25.03,463.33 28.49,463.33 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='25.03,434.63 28.49,434.63 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='14.66,520.74 11.21,520.74 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='14.66,492.04 11.21,492.04 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='14.66,463.33 11.21,463.33 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='14.66,434.63 11.21,434.63 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
 <text x='32.97' y='523.22' style='font-size: 7.20px; font-family: sans;' textLength='4.00px' lengthAdjust='spacingAndGlyphs'>5</text>
 <text x='32.97' y='494.51' style='font-size: 7.20px; font-family: sans;' textLength='4.00px' lengthAdjust='spacingAndGlyphs'>6</text>
 <text x='32.97' y='465.81' style='font-size: 7.20px; font-family: sans;' textLength='4.00px' lengthAdjust='spacingAndGlyphs'>7</text>
 <text x='32.97' y='437.11' style='font-size: 7.20px; font-family: sans;' textLength='4.00px' lengthAdjust='spacingAndGlyphs'>8</text>
-<text x='11.21' y='429.07' style='font-size: 9.00px; font-family: sans;' textLength='26.02px' lengthAdjust='spacingAndGlyphs'>values</text>
-<line x1='11.21' y1='520.74' x2='14.66' y2='520.74' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='11.21' y1='492.04' x2='14.66' y2='492.04' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='11.21' y1='463.33' x2='14.66' y2='463.33' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='11.21' y1='434.63' x2='14.66' y2='434.63' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='25.03' y1='520.74' x2='28.49' y2='520.74' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='25.03' y1='492.04' x2='28.49' y2='492.04' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='25.03' y1='463.33' x2='28.49' y2='463.33' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='25.03' y1='434.63' x2='28.49' y2='434.63' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
 <text x='6.72' y='55.82' style='font-size: 10.80px; font-family: sans;' textLength='221.54px' lengthAdjust='spacingAndGlyphs'>Example data state map with custom linewidth</text>
 </g>
 </svg>
