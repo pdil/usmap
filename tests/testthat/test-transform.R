@@ -1,4 +1,3 @@
-context("Transforming coordinate data frames")
 
 test_that("data frame with AK and HI points is transformed", {
   data <- data.frame(

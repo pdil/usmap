@@ -1,4 +1,3 @@
-context("Joining state and county data to map")
 
 state_data <- data.frame(fips = c("01", "02", "04"), values = c(3, 5, 10))
 county_data <- data.frame(fips = c("01001", "01003", "01005"), values = c(3, 5, 10))
