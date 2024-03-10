@@ -103,5 +103,5 @@
 us_map <- function(regions = c("states", "state", "counties", "county"),
                    include = c(),
                    exclude = c()) {
-  usmapdata::us_map(regions = regions, include = include, exclude = exclude, as_sf = TRUE)
+  usmapdata::us_map(regions = regions, include = include, exclude = exclude)
 }

@@ -5,7 +5,7 @@ Description: Obtain United States map data frames of varying region types (e.g. 
     state). The map data frames include Alaska and Hawaii conveniently placed to the
     bottom left, as they appear in most maps of the US. Convenience functions for plotting
     choropleths, visualizing spatial data, and working with FIPS codes are also provided.
-Authors@R: person("Paolo", "Di Lorenzo", email = "dilorenzo@hey.com", role = c("aut", "cre"))
+Authors@R: person("Paolo", "Di Lorenzo", email = "dilorenzo@hey.com", role = c("aut", "cph", "cre"))
 Depends:
     R (>= 3.5.0)
 License: GPL (>= 3)

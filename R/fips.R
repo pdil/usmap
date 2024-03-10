@@ -54,14 +54,14 @@
 #' @export
 fips <- function(state, county = c()) {
   if (missing(state) && missing(county)) {
-    return(usmapdata::fips_data(as_sf = TRUE)$fips)
+    return(usmapdata::fips_data()$fips)
   }
 
   state_ <- tolower(state)
   county_ <- tolower(county)
 
   if (length(county_) == 0) {
-    df <- usmapdata::fips_data(as_sf = TRUE)
+    df <- usmapdata::fips_data()
     abbr <- tolower(df$abbr)
     full <- tolower(df$full)
     fips2 <- c(df$fips, df$fips)
@@ -74,7 +74,7 @@ fips <- function(state, county = c()) {
       stop("`county` parameter cannot be used with multiple states.")
     }
 
-    df <- usmapdata::fips_data("counties", as_sf = TRUE)
+    df <- usmapdata::fips_data("counties")
     name <- tolower(df$county)
     state_abbr <- tolower(df$abbr)
     state_full <- tolower(df$full)
@@ -174,10 +174,10 @@ fips_info.character <- function(fips, sortAndRemoveDuplicates = FALSE) {
 #' @keywords internal
 get_fips_info <- function(fips, sortAndRemoveDuplicates) {
   if (all(nchar(fips) == 2)) {
-    df <- usmapdata::fips_data(as_sf = TRUE)
+    df <- usmapdata::fips_data()
     columns <- c("abbr", "fips", "full")
   } else if (all(nchar(fips) == 5)) {
-    df <- usmapdata::fips_data("counties", as_sf = TRUE)
+    df <- usmapdata::fips_data("counties")
     columns <- c("full", "abbr", "county", "fips")
   }
 

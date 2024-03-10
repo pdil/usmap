@@ -109,7 +109,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
     if (regions == "state") regions <- "states"
     else if (regions == "county") regions <- "counties"
 
-    centroid_labels <- usmapdata::centroid_labels(regions, as_sf = TRUE)
+    centroid_labels <- usmapdata::centroid_labels(regions)
 
     if (length(include) > 0) {
       centroid_labels <- centroid_labels[
