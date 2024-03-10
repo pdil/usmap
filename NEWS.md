@@ -2,10 +2,19 @@
 
 ### Improvements
 * Add citation information to README, see [Issue #86](https://github.com/pdil/usmap/issues/86).
-* Update map theme to work with new legend behavior in [ggplot2 v3.5.0](https://www.tidyverse.org/blog/2024/02/ggplot2-3-5-0-legends/#placement).
+* Update map theme to work with new legend behavior in [ggplot2 3.5.0](https://www.tidyverse.org/blog/2024/02/ggplot2-3-5-0-legends/#placement).'
 
 ### Bug Fixes
 * Replace `size` with `linewidth` in `plot_usmap()` documentation, see [Issue #89](https://github.com/pdil/usmap/issues/89).
+
+### Technical Changes
+* Internal `usmapdata` functions are used for data transformation (i.e. `usmap_transform()`) values for consistency.
+  * This allows the same values used to create the map to be used when transforming external data.
+  * Values will now only have to be updated in one place.
+  * `usmapdata 0.2.2` is now a required dependency because of this change.
+* Continue `sf`-based map data file migration.
+  * Usage of the `as_sf` parameter in `usmapdata` function calls has been removed.
+  * The parameter will be removed from `usmapdata` functions in the future.
 
 # usmap 0.7.0
 Released Saturday, January 20, 2024.

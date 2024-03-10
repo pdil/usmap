@@ -118,44 +118,14 @@ perform_transform <- function(data, ...) {
   sf::st_agr(transformed) <- "constant"
 
   # Transform Alaska points
-  ak_bbox <- sf::st_as_sfc(
-    sf::st_bbox(
-      c(
-        xmin = -4377000,
-        xmax = -1519000,
-        ymin = 1466000,
-        ymax = 3914000
-      ),
-      crs = usmap_crs()
-    )
-  )
+  ak_bbox <- usmapdata:::alaska_bbox()
   alaska <- sf::st_intersection(transformed, ak_bbox)
-
-  if (nrow(alaska) > 0) {
-    sf::st_geometry(alaska) <- sf::st_geometry(alaska) * usmapdata:::transform2D(-50, 1 / 2)
-    sf::st_geometry(alaska) <- sf::st_geometry(alaska) + c(3e5, -2e6)
-    sf::st_crs(alaska) <- usmap_crs()
-  }
+  alaska <- usmapdata:::transform_alaska(alaska)
 
   # Transform Hawaii points
-  hi_bbox <- sf::st_as_sfc(
-    sf::st_bbox(
-      c(
-        xmin = -5750000,
-        xmax = -5450000,
-        ymin = -1050000,
-        ymax = -441000
-      ),
-      crs = usmap_crs()
-    )
-  )
+  hi_bbox <- usmapdata:::hawaii_bbox()
   hawaii <- sf::st_intersection(transformed, hi_bbox)
-
-  if (nrow(hawaii) > 0) {
-    sf::st_geometry(hawaii) <- sf::st_geometry(hawaii) * usmapdata:::transform2D(-35)
-    sf::st_geometry(hawaii) <- sf::st_geometry(hawaii) + c(3.6e6, 1.8e6)
-    sf::st_crs(hawaii) <- usmap_crs()
-  }
+  hawaii <- usmapdata:::transform_hawaii(hawaii)
 
   # Re-combine all points
   transformed_excl_ak <- sf::st_difference(transformed, ak_bbox)
@@ -177,5 +147,5 @@ perform_transform <- function(data, ...) {
 #'
 #' @export
 usmap_crs <- function() {
-  sf::st_crs(9311)
+  usmapdata:::ea_crs()
 }
