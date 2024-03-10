@@ -7,6 +7,12 @@
 ### Bug Fixes
 * Replace `size` with `linewidth` in `plot_usmap()` documentation, see [Issue #89](https://github.com/pdil/usmap/issues/89).
 
+### Technical Changes
+* Internal `usmapdata` functions are used for data transformation (i.e. `usmap_transform()`) values for consistency.
+  * This allows the same values used to create the map to be used when transforming external data.
+  * Values will now only have to be updated in one place.
+  * `usmapdata v0.2.2` is now a required dependency because of this change.
+
 # usmap 0.7.0
 Released Saturday, January 20, 2024.
 
