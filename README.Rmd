@@ -49,7 +49,7 @@ west_county_citypop_map <-
 
 # Population by state with labels ####
 state_pop_map_labeled <-
-  plot_usmap(data = statepop, values = "pop_2015", labels = TRUE) +
+  plot_usmap(data = statepop, values = "pop_2022", labels = TRUE) +
   scale_fill_continuous(low = "white", high = "red", guide = "none")
 
 # Blank county map (Alaska) ####
@@ -58,13 +58,13 @@ ak_county_map <-
 
 # Poverty by county (South) ####
 south_pov_map <-
-  plot_usmap("counties", data = countypov, values = "pct_pov_2014",
+  plot_usmap("counties", data = countypov, values = "pct_pov_2021",
              include = .south_region, color = "white", size = 0) +
   scale_fill_continuous(low = "darkgreen", high = "yellow", guide = "none")
 
 # Poverty percentage by county ####
 county_pov_map <-
-  plot_usmap(data = countypov, values = "pct_pov_2014", size = 0.2) +
+  plot_usmap(data = countypov, values = "pct_pov_2021", size = 0.2) +
   scale_fill_continuous(low = "blue", high = "yellow", guide = "none")
 
 # Rivers map ####
@@ -164,10 +164,10 @@ library(ggplot2)
 
 mt <- plot_usmap("states", include = .mountain, labels = TRUE)
 
-fl <- plot_usmap("counties", data = countypov, values = "pct_pov_2014", include = "FL") +
+fl <- plot_usmap("counties", data = countypov, values = "pct_pov_2021", include = "FL") +
   scale_fill_continuous(low = "green", high = "red", guide = "none")
 
-ne <- plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_england) +
+ne <- plot_usmap("counties", data = countypop, values = "pop_2022", include = .new_england) +
   scale_fill_continuous(low = "blue", high = "yellow", guide = "none")
 
 cowplot::plot_grid(mt, fl, ne, nrow = 1)

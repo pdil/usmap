@@ -1,5 +1,5 @@
 Package: usmap
-Version: 0.7.0.9999
+Version: 0.7.0.9000
 Title: US Maps Including Alaska and Hawaii
 Description: Obtain United States map data frames of varying region types (e.g. county,
     state). The map data frames include Alaska and Hawaii conveniently placed to the

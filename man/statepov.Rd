@@ -3,7 +3,7 @@
 \docType{data}
 \name{statepov}
 \alias{statepov}
-\title{Poverty percentage estimates (2014), state level}
+\title{Poverty percentage estimates (2021), state level}
 \format{
 A data frame with 51 rows and 4 variables.
 }
@@ -11,7 +11,7 @@ A data frame with 51 rows and 4 variables.
 data(statepov)
 }
 \description{
-US census poverty percentage estimates by state for 2014. \cr\cr
+US census poverty percentage estimates by state for 2021. \cr\cr
 The data is formatted for easy merging with output from \code{\link[=us_map]{us_map()}}.
 }
 \details{
@@ -19,7 +19,7 @@ The data is formatted for easy merging with output from \code{\link[=us_map]{us_
 \item \code{fips} The 2-digit FIPS code corresponding to the state.
 \item \code{abbr} The 2-letter state abbreviation.
 \item \code{full} The full state name.
-\item \code{pct_pov_2014} The 2014 poverty estimate (in percent of state population)
+\item \code{pct_pov_2021} The 2021 poverty estimate (in percent of state population)
 for the corresponding state
 }
 }

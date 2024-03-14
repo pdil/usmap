@@ -1,6 +1,6 @@
-#' Population estimates (2015), county level
+#' Population estimates (2022), county level
 #'
-#' @description US census population estimates by county for 2015. \cr\cr
+#' @description US census population estimates by county for 2022. \cr\cr
 #'   The data is formatted for easy merging with output from [usmap::us_map()].
 #'
 #' @usage data(countypop)
@@ -10,12 +10,12 @@
 #'   \item \code{fips} The 5-digit FIPS code corresponding to the county.
 #'   \item \code{abbr} The 2-letter state abbreviation.
 #'   \item \code{county} The full county name.
-#'   \item \code{pop_2015} The 2015 population estimate (in number of people)
+#'   \item \code{pop_2022} The 2022 population estimate (in number of people)
 #'     for the corresponding county.
 #' }
 #'
 #' @name countypop
-#' @format A data frame with 3142 rows and 4 variables.
+#' @format A data frame with 3222 rows and 4 variables.
 #' @docType data
 #' @references
 #'   \itemize{
@@ -25,9 +25,9 @@
 #' @keywords data
 "countypop"
 
-#' Population estimates (2015), state level
+#' Population estimates (2022), state level
 #'
-#' @description US census population estimates by state for 2015. \cr\cr
+#' @description US census population estimates by state for 2022. \cr\cr
 #'   The data is formatted for easy merging with output from [usmap::us_map()].
 #'
 #' @usage data(statepop)
@@ -37,12 +37,12 @@
 #'   \item \code{fips} The 2-digit FIPS code corresponding to the state.
 #'   \item \code{abbr} The 2-letter state abbreviation.
 #'   \item \code{full} The full state name.
-#'   \item \code{pop_2015} The 2015 population estimate (in number of people)
+#'   \item \code{pop_2022} The 2022 population estimate (in number of people)
 #'     for the corresponding state.
 #' }
 #'
 #' @name statepop
-#' @format A data frame with 51 rows and 4 variables.
+#' @format A data frame with 52 rows and 4 variables.
 #' @docType data
 #' @references
 #'   \itemize{
@@ -52,9 +52,9 @@
 #' @keywords data
 "statepop"
 
-#' Poverty percentage estimates (2014), county level
+#' Poverty percentage estimates (2021), county level
 #'
-#' @description US census poverty percentage estimates by county for 2014. \cr\cr
+#' @description US census poverty percentage estimates by county for 2021. \cr\cr
 #'   The data is formatted for easy merging with output from [usmap::us_map()].
 #'
 #' @usage data(countypov)
@@ -64,12 +64,12 @@
 #'   \item \code{fips} The 5-digit FIPS code corresponding to the county.
 #'   \item \code{abbr} The 2-letter state abbreviation.
 #'   \item \code{county} The full county name.
-#'   \item \code{pct_pov_2014} The 2014 poverty estimate (in percent of county population)
+#'   \item \code{pct_pov_2021} The 2021 poverty estimate (in percent of county population)
 #'     for the corresponding county.
 #' }
 #'
 #' @name countypov
-#' @format A data frame with 3142 rows and 4 variables.
+#' @format A data frame with 3194 rows and 4 variables.
 #' @docType data
 #' @references
 #'   \itemize{
@@ -79,9 +79,9 @@
 #' @keywords data
 "countypov"
 
-#' Poverty percentage estimates (2014), state level
+#' Poverty percentage estimates (2021), state level
 #'
-#' @description US census poverty percentage estimates by state for 2014. \cr\cr
+#' @description US census poverty percentage estimates by state for 2021. \cr\cr
 #'   The data is formatted for easy merging with output from [usmap::us_map()].
 #'
 #' @usage data(statepov)
@@ -91,7 +91,7 @@
 #'   \item \code{fips} The 2-digit FIPS code corresponding to the state.
 #'   \item \code{abbr} The 2-letter state abbreviation.
 #'   \item \code{full} The full state name.
-#'   \item \code{pct_pov_2014} The 2014 poverty estimate (in percent of state population)
+#'   \item \code{pct_pov_2021} The 2021 poverty estimate (in percent of state population)
 #'     for the corresponding state
 #' }
 #'
