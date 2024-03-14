@@ -11,7 +11,7 @@ example_data <- data.frame(
 )
 
 p <- plot_usmap("counties", fill = "red")
-q <- plot_usmap(data = statepop, values = "pop_2015", color = "blue")
+q <- plot_usmap(data = statepop, values = "pop_2022", color = "blue")
 r <- plot_usmap(data = example_data, linewidth = 0.8)
 s <- plot_usmap(include = c("AL", "FL", "GA"), labels = TRUE, label_color = "blue")
 t <- plot_usmap("county", include = "AZ", labels = TRUE, fill = "yellow", linewidth = 0.6)
@@ -42,7 +42,7 @@ test_that("correct data is used", {
   p_map_data <- us_map(regions = "counties")
   expect_identical(p$data, p_map_data)
 
-  q_map_data <- map_with_data(statepop, values = "pop_2015")
+  q_map_data <- map_with_data(statepop, values = "pop_2022")
   expect_identical(q$data, q_map_data)
 
   r_map_data <- map_with_data(example_data)
@@ -87,7 +87,7 @@ test_that("layer parameters are correct", {
 
   expect_s3_class(q$layers[[1]], "ggproto")
   expect_s3_class(q$layers[[1]]$geom, "GeomSf")
-  expect_equal(deparse(q$layers[[1]]$mapping$fill), "~.data[[\"pop_2015\"]]")
+  expect_equal(deparse(q$layers[[1]]$mapping$fill), "~.data[[\"pop_2022\"]]")
   expect_equal(as.character(q$layers[[1]]$aes_params$colour), "blue")
   expect_equal(q$layers[[1]]$aes_params$linewidth, 0.4)
 

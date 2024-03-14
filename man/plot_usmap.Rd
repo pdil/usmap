@@ -86,12 +86,12 @@ plot_usmap(include = c("CA", "NV", "ID", "OR", "WA")) +
   labs(title = "Western States")
 
 # Color maps with data
-plot_usmap(data = statepop, values = "pop_2015")
+plot_usmap(data = statepop, values = "pop_2022")
 
 # Include labels on map (e.g. state abbreviations)
-plot_usmap(data = statepop, values = "pop_2015", labels = TRUE)
+plot_usmap(data = statepop, values = "pop_2022", labels = TRUE)
 # Choose color for labels
-plot_usmap(data = statepop, values = "pop_2015", labels = TRUE, label_color = "white")
+plot_usmap(data = statepop, values = "pop_2022", labels = TRUE, label_color = "white")
 
 }
 \seealso{

@@ -110,10 +110,10 @@ library(ggplot2)
 
 mt <- plot_usmap("states", include = .mountain, labels = TRUE)
 
-fl <- plot_usmap("counties", data = countypov, values = "pct_pov_2014", include = "FL") +
+fl <- plot_usmap("counties", data = countypov, values = "pct_pov_2021", include = "FL") +
   scale_fill_continuous(low = "green", high = "red", guide = "none")
 
-ne <- plot_usmap("counties", data = countypop, values = "pop_2015", include = .new_england) +
+ne <- plot_usmap("counties", data = countypop, values = "pop_2022", include = .new_england) +
   scale_fill_continuous(low = "blue", high = "yellow", guide = "none")
 
 cowplot::plot_grid(mt, fl, ne, nrow = 1)
@@ -270,7 +270,7 @@ citation("usmap")
 #> To cite package 'usmap' in publications use:
 #> 
 #>   Di Lorenzo P (2024). _usmap: US Maps Including Alaska and Hawaii_. R
-#>   package version 0.7.0, <https://CRAN.R-project.org/package=usmap>.
+#>   package version 0.7.0, <https://usmap.dev>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -279,7 +279,7 @@ citation("usmap")
 #>     author = {Paolo {Di Lorenzo}},
 #>     year = {2024},
 #>     note = {R package version 0.7.0},
-#>     url = {https://CRAN.R-project.org/package=usmap},
+#>     url = {https://usmap.dev},
 #>   }
 ```
 

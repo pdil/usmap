@@ -3,15 +3,15 @@
 \docType{data}
 \name{statepop}
 \alias{statepop}
-\title{Population estimates (2015), state level}
+\title{Population estimates (2022), state level}
 \format{
-A data frame with 51 rows and 4 variables.
+A data frame with 52 rows and 4 variables.
 }
 \usage{
 data(statepop)
 }
 \description{
-US census population estimates by state for 2015. \cr\cr
+US census population estimates by state for 2022. \cr\cr
 The data is formatted for easy merging with output from \code{\link[=us_map]{us_map()}}.
 }
 \details{
@@ -19,7 +19,7 @@ The data is formatted for easy merging with output from \code{\link[=us_map]{us_
 \item \code{fips} The 2-digit FIPS code corresponding to the state.
 \item \code{abbr} The 2-letter state abbreviation.
 \item \code{full} The full state name.
-\item \code{pop_2015} The 2015 population estimate (in number of people)
+\item \code{pop_2022} The 2022 population estimate (in number of people)
 for the corresponding state.
 }
 }

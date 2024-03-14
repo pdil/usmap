@@ -25,17 +25,17 @@ plot_usmap(include = c("CA", "ID", "NV", "OR", "WA")) +
 library(usmap)
 library(ggplot2)
 
-plot_usmap(data = statepop, values = "pop_2015", color = "red") + 
-  scale_fill_continuous(name = "Population (2015)", label = scales::comma) + 
+plot_usmap(data = statepop, values = "pop_2022", color = "red") + 
+  scale_fill_continuous(name = "Population (2022)", label = scales::comma) + 
   theme(legend.position = "right")
 
 ## ----fig.align='center', fig.width=7, message=FALSE, warning=FALSE------------
 library(usmap)
 library(ggplot2)
 
-plot_usmap(data = statepop, values = "pop_2015", color = "red") + 
+plot_usmap(data = statepop, values = "pop_2022", color = "red") + 
   scale_fill_continuous(
-    low = "white", high = "red", name = "Population (2015)", label = scales::comma
+    low = "white", high = "red", name = "Population (2022)", label = scales::comma
   ) + theme(legend.position = "right")
 
 ## ----fig.align='center', fig.width=7, message=FALSE, warning=FALSE------------
@@ -43,10 +43,10 @@ library(usmap)
 library(ggplot2)
 
 plot_usmap(
-    data = statepop, values = "pop_2015", include = c("CA", "ID", "NV", "OR", "WA"), color = "red"
+    data = statepop, values = "pop_2022", include = c("CA", "ID", "NV", "OR", "WA"), color = "red"
   ) + 
   scale_fill_continuous(
-    low = "white", high = "red", name = "Population (2015)", label = scales::comma
+    low = "white", high = "red", name = "Population (2022)", label = scales::comma
   ) + 
   labs(title = "Western US States", subtitle = "These are the states in the Pacific Timezone.") +
   theme(legend.position = "right")

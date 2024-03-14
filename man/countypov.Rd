@@ -3,15 +3,15 @@
 \docType{data}
 \name{countypov}
 \alias{countypov}
-\title{Poverty percentage estimates (2014), county level}
+\title{Poverty percentage estimates (2021), county level}
 \format{
-A data frame with 3142 rows and 4 variables.
+A data frame with 3194 rows and 4 variables.
 }
 \usage{
 data(countypov)
 }
 \description{
-US census poverty percentage estimates by county for 2014. \cr\cr
+US census poverty percentage estimates by county for 2021. \cr\cr
 The data is formatted for easy merging with output from \code{\link[=us_map]{us_map()}}.
 }
 \details{
@@ -19,7 +19,7 @@ The data is formatted for easy merging with output from \code{\link[=us_map]{us_
 \item \code{fips} The 5-digit FIPS code corresponding to the county.
 \item \code{abbr} The 2-letter state abbreviation.
 \item \code{county} The full county name.
-\item \code{pct_pov_2014} The 2014 poverty estimate (in percent of county population)
+\item \code{pct_pov_2021} The 2021 poverty estimate (in percent of county population)
 for the corresponding county.
 }
 }
