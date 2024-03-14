@@ -2,9 +2,10 @@
 
 ### Improvements
 * Add citation information to README, see [Issue #86](https://github.com/pdil/usmap/issues/86).
-* Update map theme to work with new legend behavior in [ggplot2 3.5.0](https://www.tidyverse.org/blog/2024/02/ggplot2-3-5-0-legends/#placement).'
+* Update map theme to work with new legend behavior in [ggplot2 3.5.0](https://www.tidyverse.org/blog/2024/02/ggplot2-3-5-0-legends/#placement).
+* Update provided population and poverty (county & state) data sets, see [Issue #88](https://github.com/pdil/usmap/issues/88).
 
-### Bug Fixes
+### Documentation
 * Replace `size` with `linewidth` in `plot_usmap()` documentation, see [Issue #89](https://github.com/pdil/usmap/issues/89).
 
 ### Technical Changes
