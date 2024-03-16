@@ -1,4 +1,3 @@
-
 test_that("state data frame is returned", {
   data <- us_map()
 

@@ -1,4 +1,3 @@
-
 test_that("all states returned when no FIPS specified", {
   expect_equal(fips_info()$fips, fips())
 })
