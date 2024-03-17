@@ -2,14 +2,14 @@
 
 on:
   push:
-    branches: [main, master]
+    branches: master
   pull_request:
-    branches: [main, master]
+    branches: master
 
-name: R-CMD-check
+name: check
 
 jobs:
-  R-CMD-check:
+  check:
     runs-on: ${{ matrix.config.os }}
 
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
