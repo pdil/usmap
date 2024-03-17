@@ -25,6 +25,7 @@ jobs:
         with:
           extra-packages: |
             any::devtools
+            any::rhub
             github::r-lib/revdepcheck
 
       - name: Run release checks
