@@ -30,10 +30,16 @@ jobs:
 
       - name: Run release checks
         env:
+          EMAIL: ${{ secrets.RHUB_EMAIL }}
+          TOKEN: ${{ secrets.RHUB_TOKEN }}
           VERSION: ${{ inputs.version }}
         run: |
           source(".github/workflows/release-checklist.R")
-          release_checklist(Sys.getenv("VERSION"))
+          release_checklist(
+            Sys.getenv("EMAIL"),
+            Sys.getenv("TOKEN"),
+            Sys.getenv("VERSION")
+          )
         shell: Rscript {0}
 
       - name: Update NEWS.md version
