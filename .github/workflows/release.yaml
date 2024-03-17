@@ -1,0 +1,58 @@
+
+name: release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "The version number for new release, e.g. 1.0.2"
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: |
+            any::desc
+            any::devtools
+            any::revdepcheck
+
+      - name: Run release checks
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          source(".github/workflows/release-checklist.R")
+          release_checklist(Sys.getenv("VERSION"))
+        shell: Rscript {0}
+
+      - name: Update NEWS.md version
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "[unreleased]"
+          replace: "usmap ${{ inputs.version }}"
+          include: "NEWS.md"
+          regex: false
+
+      - name: Open pull request
+        id: open-pr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "[automated] Prepare for ${{ inputs.version }} release"
+          branch: release/${{ inputs.version }}
+          title: Release version ${{ inputs.version }}
+          body-path: .github/workflows/release-pr-body.md
+          reviewers: pdil
+          assignees: pdil
+          labels: release
+          delete-branch: true
