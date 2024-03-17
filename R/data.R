@@ -138,7 +138,7 @@
 #' Earthquakes (2019)
 #'
 #' @description US earthquakes with a magnitude of 2.5 or greater, occurring in the
-#'   first half of 2019, from January 1st to June 30th, from USGS.\cr\cr
+#'   first half of 2019, from January 1 to June 30, from USGS.\cr\cr
 #'   The data is formatted for transforming with [usmap::usmap_transform()].
 #'   Once the longitude and latitude is transformed, it can be added to
 #'   [usmap::plot_usmap()] using [ggplot2::ggplot()] layers.
