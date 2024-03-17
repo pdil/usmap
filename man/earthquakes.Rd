@@ -12,7 +12,7 @@ data(earthquakes)
 }
 \description{
 US earthquakes with a magnitude of 2.5 or greater, occurring in the
-first half of 2019, from January 1st to June 30th, from USGS.\cr\cr
+first half of 2019, from January 1 to June 30, from USGS.\cr\cr
 The data is formatted for transforming with \code{\link[=usmap_transform]{usmap_transform()}}.
 Once the longitude and latitude is transformed, it can be added to
 \code{\link[=plot_usmap]{plot_usmap()}} using \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} layers.

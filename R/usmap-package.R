@@ -25,7 +25,7 @@
 #' pertaining to a FIPS code.
 #'
 #' Likewise a reverse lookup can be done where a FIPS code can be used to
-#' retrieve the associated state(s) or county(ies). This can be useful when
+#' retrieve the associated states or counties. This can be useful when
 #' preparing data to be merged with the map data frame.
 #'
 #' @section Plot US map data:
