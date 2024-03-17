@@ -24,9 +24,8 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: |
-            any::desc
             any::devtools
-            any::revdepcheck
+            github::r-lib/revdepcheck
 
       - name: Run release checks
         env:
