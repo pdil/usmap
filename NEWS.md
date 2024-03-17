@@ -1,4 +1,4 @@
-# [unreleased]
+# usmap 0.8.0
 
 ### Improvements
 * Add citation information to README, see [Issue #86](https://github.com/pdil/usmap/issues/86).
