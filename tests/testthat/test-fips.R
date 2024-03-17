@@ -1,4 +1,3 @@
-
 test_that("all FIPS codes returned when no state specified", {
   expect_equal(fips(),
                c("02", "01", "05", "04", "06", "08", "09", "11",

@@ -4,6 +4,8 @@
 * Add citation information to README, see [Issue #86](https://github.com/pdil/usmap/issues/86).
 * Update map theme to work with new legend behavior in [ggplot2 3.5.0](https://www.tidyverse.org/blog/2024/02/ggplot2-3-5-0-legends/#placement).
 * Update provided population and poverty (county & state) data sets, see [Issue #88](https://github.com/pdil/usmap/issues/88).
+  * Previous data sets from 2015 and 2014, respectively have been updated to 2022 and 2021 versions, respectively.
+  * The main change (besides numerical values) is that Connecticut now has the correct FIPS codes in the 2022 county population data set. See [this Federal Register document](https://www.federalregister.gov/documents/2022/06/06/2022-12063/change-to-county-equivalents-in-the-state-of-connecticut) for more information. The 2021 county data does not include CT updates yet since the new FIPS codes were not made effective until 2022. Poverty data for 2022 is not available yet so the most recently available data from 2021 is included for now.
 
 ### Documentation
 * Replace `size` with `linewidth` in `plot_usmap()` documentation, see [Issue #89](https://github.com/pdil/usmap/issues/89).
