@@ -7,8 +7,7 @@
 
 [![CRAN](http://www.r-pkg.org/badges/version/usmap?color=blue)](https://cran.r-project.org/package=usmap)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/usmap)](https://cran.r-project.org/package=usmap)
-[![Build
-Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fpdil%2Fusmap%2Fbadge%3Fref%3Dmaster&style=popout&label=build)](https://actions-badge.atrox.dev/pdil/usmap/goto?ref=master)
+[![check](https://github.com/pdil/usmap/actions/workflows/check/badge.svg)](https://github.com/pdil/usmap/actions/workflows/check.yaml)
 [![codecov](https://codecov.io/gh/pdil/usmap/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pdil/usmap)
 <!-- badges: end -->
 

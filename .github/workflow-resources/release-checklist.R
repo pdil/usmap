@@ -1,6 +1,8 @@
-release_checklist <- function(version) {
+release_checklist <- function(email, token, version) {
     # Platform checks
-    devtools::check_rhub(interactive = FALSE)
+    rhub::validate_email(email, token)
+    devtools::check_rhub(email = email, interactive = FALSE)
+
     devtools::check_win_devel()
 
     # Reverse dependency checks

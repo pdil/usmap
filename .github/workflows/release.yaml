@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "The version number for new release, e.g. 1.0.2"
+        description: "Release version number (e.g. 1.0.2)"
         required: true
         type: string
 
@@ -24,16 +24,22 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: |
-            any::desc
             any::devtools
-            any::revdepcheck
+            any::rhub
+            github::r-lib/revdepcheck
 
       - name: Run release checks
         env:
+          EMAIL: ${{ secrets.RHUB_EMAIL }}
+          TOKEN: ${{ secrets.RHUB_TOKEN }}
           VERSION: ${{ inputs.version }}
         run: |
-          source(".github/workflows/release-checklist.R")
-          release_checklist(Sys.getenv("VERSION"))
+          source(".github/workflow-resources/release-checklist.R")
+          release_checklist(
+            Sys.getenv("EMAIL"),
+            Sys.getenv("TOKEN"),
+            Sys.getenv("VERSION")
+          )
         shell: Rscript {0}
 
       - name: Update NEWS.md version
@@ -44,15 +50,34 @@ jobs:
           include: "NEWS.md"
           regex: false
 
-      - name: Open pull request
-        id: open-pr
-        uses: peter-evans/create-pull-request@v5
+      - name: Import GPG signing key
+        uses: crazy-max/ghaction-import-gpg@v6
         with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+
+      - name: Render PR body
+        id: pr-body
+        uses: chuhlomin/render-template@v1
+        with:
+          template: .github/workflow-resources/release-pr-body.md
+          vars: |
+            version: ${{ inputs.version }}
+
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.BOT_PAT }}
+          author: ${{ secrets.BOT_USER }}
+          committer: ${{ secrets.BOT_USER }}
           commit-message: "[automated] Prepare for ${{ inputs.version }} release"
           branch: release/${{ inputs.version }}
           title: Release version ${{ inputs.version }}
-          body-path: .github/workflows/release-pr-body.md
+          body: ${{ steps.pr-body.outputs.result }}
           reviewers: pdil
           assignees: pdil
           labels: release
           delete-branch: true
+          draft: true
