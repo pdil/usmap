@@ -50,14 +50,21 @@ jobs:
           include: "NEWS.md"
           regex: false
 
+      - name: Render PR body
+        id: pr-body
+        uses: chuhlomin/render-template@v1
+        with:
+          template: .github/workflows/release-pr-body.md
+          vars: |
+            version: ${{ inputs.version }}
+
       - name: Open pull request
-        id: open-pr
         uses: peter-evans/create-pull-request@v5
         with:
           commit-message: "[automated] Prepare for ${{ inputs.version }} release"
           branch: release/${{ inputs.version }}
           title: Release version ${{ inputs.version }}
-          body-path: .github/workflows/release-pr-body.md
+          body: ${{ steps.pr-body.outputs.result }}
           reviewers: pdil
           assignees: pdil
           labels: release
