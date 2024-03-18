@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![CRAN](http://www.r-pkg.org/badges/version/usmap?color=blue)](https://cran.r-project.org/package=usmap)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/usmap)](https://cran.r-project.org/package=usmap)
-[![check](https://github.com/pdil/usmap/actions/workflows/check/badge.svg)](https://github.com/pdil/usmap/actions/workflows/check.yaml)
+[![check](https://github.com/pdil/usmap/actions/workflows/check.yaml/badge.svg)](https://github.com/pdil/usmap/actions/workflows/check.yaml)
 [![codecov](https://codecov.io/gh/pdil/usmap/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pdil/usmap)
 <!-- badges: end -->
 
