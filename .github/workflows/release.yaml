@@ -50,7 +50,8 @@ jobs:
           include: "NEWS.md"
           regex: false
 
-      - uses: crazy-max/ghaction-import-gpg@v6
+      - name: Import GPG signing key
+        uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
@@ -68,7 +69,8 @@ jobs:
       - name: Open pull request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.BOT_PAT }}
+          author: ${{ secrets.BOT_USER }}
           committer: ${{ secrets.BOT_USER }}
           commit-message: "[automated] Prepare for ${{ inputs.version }} release"
           branch: release/${{ inputs.version }}
