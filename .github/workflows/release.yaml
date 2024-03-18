@@ -34,7 +34,7 @@ jobs:
           TOKEN: ${{ secrets.RHUB_TOKEN }}
           VERSION: ${{ inputs.version }}
         run: |
-          source(".github/workflows/release-checklist.R")
+          source(".github/workflow-resources/release-checklist.R")
           release_checklist(
             Sys.getenv("EMAIL"),
             Sys.getenv("TOKEN"),
@@ -54,12 +54,12 @@ jobs:
         id: pr-body
         uses: chuhlomin/render-template@v1
         with:
-          template: .github/workflows/release-pr-body.md
+          template: .github/workflow-resources/release-pr-body.md
           vars: |
             version: ${{ inputs.version }}
 
       - name: Open pull request
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         with:
           commit-message: "[automated] Prepare for ${{ inputs.version }} release"
           branch: release/${{ inputs.version }}
