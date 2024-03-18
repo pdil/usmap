@@ -80,3 +80,4 @@ jobs:
           assignees: pdil
           labels: release
           delete-branch: true
+          draft: true
