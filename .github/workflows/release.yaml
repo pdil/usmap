@@ -50,6 +50,13 @@ jobs:
           include: "NEWS.md"
           regex: false
 
+      - uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+
       - name: Render PR body
         id: pr-body
         uses: chuhlomin/render-template@v1
@@ -61,6 +68,8 @@ jobs:
       - name: Open pull request
         uses: peter-evans/create-pull-request@v6
         with:
+          token: ${{ secrets.PAT }}
+          committer: ${{ secrets.BOT_USER }}
           commit-message: "[automated] Prepare for ${{ inputs.version }} release"
           branch: release/${{ inputs.version }}
           title: Release version ${{ inputs.version }}
