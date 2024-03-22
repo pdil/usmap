@@ -1,5 +1,10 @@
 # [unreleased]
 
+
+
+# usmap 0.7.1
+Released Thursday, March 21, 2024.
+
 ### Improvements
 * Add citation information to README, see [Issue #86](https://github.com/pdil/usmap/issues/86).
 * Update map theme to work with new legend behavior in [ggplot2 3.5.0](https://www.tidyverse.org/blog/2024/02/ggplot2-3-5-0-legends/#placement).
