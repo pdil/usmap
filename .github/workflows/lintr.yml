@@ -1,47 +1,16 @@
-# lintr provides static code analysis for R.
-# It checks for adherence to a given style,
-# identifying syntax errors and possible semantic issues,
-# then reports them to you so you can take action.
-# More details at https://lintr.r-lib.org/
 
 name: lintr
 
 on:
   push:
-    branches: [ "master" ]
+    branches: master
   pull_request:
-    branches: [ "master" ]
+    branches: master
 
 permissions:
   contents: read
 
 jobs:
   lintr:
-    name: Run lintr scanning
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read # for checkout to fetch code
-      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v2
-
-      - name: Setup lintr
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: lintr
-
-      - name: Run lintr
-        run: lintr::sarif_output(lintr::lint_dir("."), "lintr-results.sarif")
-        shell: Rscript {0}
-        continue-on-error: true
-
-      - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: lintr-results.sarif
-          wait-for-processing: true
+    uses: pdil/usmapdata/.github/workflows/lintr.yaml@master
+    secrets: inherit
