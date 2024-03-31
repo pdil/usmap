@@ -1,6 +1,6 @@
 
 name: release
-run-name: Release usmap ${{ inputs.version }}
+run-name: Release ${{ github.event.repository.name }} ${{ inputs.version }}
 
 on:
   workflow_dispatch:
@@ -21,13 +21,7 @@ jobs:
       - name: Check version number
         env:
           INPUT_VERSION: ${{ inputs.version }}
-        run: |
-          CURRENT_VERSION=$(echo "$(cat DESCRIPTION)" | grep "Version:" | awk '{print $2}')
-
-          if [ "$(printf '%s\n' "$INPUT_VERSION" "$CURRENT_VERSION" | sort -V | head -n1)" = "$INPUT_VERSION" ]; then
-            echo "::error title=Invalid version::Provided version number must be higher than the current version ($CURRENT_VERSION)."
-            exit 1
-          fi
+        run: .github/workflow-resources/release-version-check.sh
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
@@ -58,7 +52,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "[unreleased]"
-          replace: "usmap ${{ inputs.version }}"
+          replace: "${{ github.event.repository.name }} ${{ inputs.version }}"
           include: "NEWS.md"
           regex: false
 
