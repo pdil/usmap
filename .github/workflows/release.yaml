@@ -38,7 +38,6 @@ jobs:
         shell: Rscript {0}
 
       - name: Version number error
-        if: ${{ INVALID_VERSION }}
         run: |
           if [ "$INVALID_VERSION" = "true" ]; then
             echo "::error title=Invalid version::Provided version number must be higher than the current version (${{ inputs.version }})"
