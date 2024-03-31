@@ -7,10 +7,10 @@ on:
   pull_request:
     branches: master
 
-permissions:
-  contents: read
-
 jobs:
   lintr:
+    permissions:
+      # for github/codeql-action/upload-sarif to upload SARIF results
+      security-events: write
     uses: pdil/usmapdata/.github/workflows/lintr.yaml@master
     secrets: inherit
