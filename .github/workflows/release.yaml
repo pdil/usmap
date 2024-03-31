@@ -1,5 +1,6 @@
 
 name: release
+run-name: release ${{ inputs.version }}
 
 on:
   workflow_dispatch:
@@ -27,6 +28,22 @@ jobs:
             any::devtools
             any::rhub
             github::r-lib/revdepcheck
+
+      - name: Check version number
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          source(".github/workflow_resources/version-check.R")
+          verify_version(Sys.getenv("VERSION"))
+        shell: Rscript {0}
+
+      - name: Version number error
+        if: ${{ INVALID_VERSION }}
+        run: |
+          if [ "$INVALID_VERSION" = "true" ]; then
+            echo "::error title=Invalid version::Provided version number must be higher than the current version (${{ inputs.version }})"
+            exit 1
+          fi
 
       - name: Run release checks
         env:
