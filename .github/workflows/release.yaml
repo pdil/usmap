@@ -18,6 +18,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check version number
+        run: |
+          current_version=$(echo "$(cat DESCRIPTION)" | grep "Version:" | awk '{print $2}')
+          input_version="${{ steps.read_version.outputs.version }}"
+
+          if [ "$(printf '%s\n' "$input_version" "$current_version" | sort -V | head -n1)" = "$input_version" ]; then
+            echo "::error title=Invalid version::Provided version number must be higher than the current version (${{ inputs.version }})."
+            exit 1
+          fi
+
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
 
@@ -28,21 +38,6 @@ jobs:
             any::devtools
             any::rhub
             github::r-lib/revdepcheck
-
-      - name: Check version number
-        env:
-          VERSION: ${{ inputs.version }}
-        run: |
-          source(".github/workflow_resources/version-check.R")
-          verify_version(Sys.getenv("VERSION"))
-        shell: Rscript {0}
-
-      - name: Version number error
-        run: |
-          if [ "$INVALID_VERSION" = "true" ]; then
-            echo "::error title=Invalid version::Provided version number must be higher than the current version (${{ inputs.version }})"
-            exit 1
-          fi
 
       - name: Run release checks
         env:
