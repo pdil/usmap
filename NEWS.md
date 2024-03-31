@@ -1,4 +1,4 @@
-# [unreleased]
+# usmap 0.8.0
 
 
 
