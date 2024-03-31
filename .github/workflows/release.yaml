@@ -1,6 +1,6 @@
 
 name: release
-run-name: release ${{ inputs.version }}
+run-name: Release usmap ${{ inputs.version }}
 
 on:
   workflow_dispatch:
