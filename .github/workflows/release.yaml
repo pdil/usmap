@@ -21,10 +21,10 @@ jobs:
       - name: Check version number
         run: |
           current_version=$(echo "$(cat DESCRIPTION)" | grep "Version:" | awk '{print $2}')
-          input_version="${{ steps.read_version.outputs.version }}"
+          input_version="${{ inputs.version }}"
 
           if [ "$(printf '%s\n' "$input_version" "$current_version" | sort -V | head -n1)" = "$input_version" ]; then
-            echo "::error title=Invalid version::Provided version number must be higher than the current version (${{ inputs.version }})."
+            echo "::error title=Invalid version::Provided version number must be higher than the current version ($current_version)."
             exit 1
           fi
 
