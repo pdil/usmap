@@ -5,8 +5,8 @@
 
 <!-- badges: start -->
 
-[![CRAN](http://www.r-pkg.org/badges/version/usmap?color=blue)](https://cran.r-project.org/package=usmap)
-[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/usmap)](https://cran.r-project.org/package=usmap)
+[![CRAN](https://www.r-pkg.org/badges/version/usmap?color=blue)](https://cran.r-project.org/package=usmap)
+[![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/usmap)](https://cran.r-project.org/package=usmap)
 [![check](https://github.com/pdil/usmap/actions/workflows/check.yaml/badge.svg)](https://github.com/pdil/usmap/actions/workflows/check.yaml)
 [![codecov](https://codecov.io/gh/pdil/usmap/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pdil/usmap)
 <!-- badges: end -->
@@ -35,6 +35,7 @@ Maps at both the state and county levels are included for convenience.
 
 | Date              | `usmap` version | Shape File Year |                                                  Link                                                  |
 |-------------------|:---------------:|:---------------:|:------------------------------------------------------------------------------------------------------:|
+| May 10, 2024      |      0.7.1      |      2023       | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2023.html) |
 | January 20, 2024  |      0.7.0      |      2022       | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2022.html) |
 | February 27, 2022 |      0.6.0      |      2020       | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2020.html) |
 | June 3, 2018      |      0.3.0      |      2017       |  [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2017.html)  |
@@ -153,21 +154,21 @@ us_map(regions = "states")
 #> Simple feature collection with 51 features and 3 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
-#> Bounding box:  xmin: -2590847 ymin: -2608151 xmax: 2523583 ymax: 731405.7
+#> Bounding box:  xmin: -2590847 ymin: -2608148 xmax: 2523581 ymax: 731407.9
 #> Projected CRS: NAD27 / US National Atlas Equal Area
 #> # A tibble: 51 × 4
 #>    fips  abbr  full                                                         geom
 #>    <chr> <chr> <chr>                                          <MULTIPOLYGON [m]>
-#>  1 02    AK    Alaska               (((-2396840 -2547726, -2393291 -2546396, -2…
-#>  2 01    AL    Alabama              (((1093779 -1378539, 1093270 -1374227, 1092…
-#>  3 05    AR    Arkansas             (((483066 -927786.9, 506063 -926262.2, 5315…
-#>  4 04    AZ    Arizona              (((-1388677 -1254586, -1389182 -1251858, -1…
-#>  5 06    CA    California           (((-1719948 -1090032, -1709613 -1090025, -1…
-#>  6 08    CO    Colorado             (((-789537.1 -678772.6, -789536.6 -678768.3…
-#>  7 09    CT    Connecticut          (((2161728 -83727.16, 2177177 -65210.71, 21…
-#>  8 11    DC    District of Columbia (((1955475 -402047.2, 1960230 -393564, 1964…
-#>  9 10    DE    Delaware             (((2042501 -284358, 2043073 -279990.9, 2044…
-#> 10 12    FL    Florida              (((1855614 -2064805, 1860160 -2054368, 1867…
+#>  1 02    AK    Alaska               (((-2396847 -2547721, -2393297 -2546391, -2…
+#>  2 01    AL    Alabama              (((1093777 -1378535, 1093269 -1374223, 1092…
+#>  3 05    AR    Arkansas             (((483065.2 -927788.2, 506062 -926263.3, 53…
+#>  4 04    AZ    Arizona              (((-1388676 -1254584, -1389181 -1251856, -1…
+#>  5 06    CA    California           (((-1719946 -1090033, -1709611 -1090026, -1…
+#>  6 08    CO    Colorado             (((-789538.7 -678773.8, -789538.2 -678769.5…
+#>  7 09    CT    Connecticut          (((2161733 -83737.52, 2177182 -65221.22, 21…
+#>  8 11    DC    District of Columbia (((1955479 -402055.2, 1960234 -393571.9, 19…
+#>  9 10    DE    Delaware             (((2042506 -284367.3, 2043078 -280000.3, 20…
+#> 10 12    FL    Florida              (((1855611 -2064809, 1860157 -2054372, 1867…
 #> # ℹ 41 more rows
 ```
 
@@ -176,21 +177,21 @@ us_map(regions = "counties")
 #> Simple feature collection with 3144 features and 4 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
-#> Bounding box:  xmin: -2590847 ymin: -2608151 xmax: 2523583 ymax: 731405.7
+#> Bounding box:  xmin: -2590847 ymin: -2608148 xmax: 2523581 ymax: 731407.9
 #> Projected CRS: NAD27 / US National Atlas Equal Area
 #> # A tibble: 3,144 × 5
 #>    fips  abbr  full   county                                                geom
 #>    <chr> <chr> <chr>  <chr>                                   <MULTIPOLYGON [m]>
-#>  1 02013 AK    Alaska Aleutians East Borough       (((-1762717 -2477334, -17612…
-#>  2 02016 AK    Alaska Aleutians West Census Area   (((-2396840 -2547726, -23932…
-#>  3 02020 AK    Alaska Anchorage Municipality       (((-1517576 -2089907, -15176…
-#>  4 02050 AK    Alaska Bethel Census Area           (((-1905137 -2137044, -19008…
-#>  5 02060 AK    Alaska Bristol Bay Borough          (((-1685824 -2253496, -16840…
-#>  6 02063 AK    Alaska Chugach Census Area          (((-1476668 -2101298, -14698…
-#>  7 02066 AK    Alaska Copper River Census Area     (((-1457012 -2063407, -14434…
-#>  8 02068 AK    Alaska Denali Borough               (((-1585790 -1980739, -15864…
-#>  9 02070 AK    Alaska Dillingham Census Area       (((-1793023 -2236834, -17884…
-#> 10 02090 AK    Alaska Fairbanks North Star Borough (((-1512362 -1851013, -14878…
+#>  1 02013 AK    Alaska Aleutians East Borough       (((-1762715 -2477334, -17612…
+#>  2 02016 AK    Alaska Aleutians West Census Area   (((-2396847 -2547721, -23932…
+#>  3 02020 AK    Alaska Anchorage Municipality       (((-1517576 -2089908, -15176…
+#>  4 02050 AK    Alaska Bethel Census Area           (((-1905141 -2137046, -19009…
+#>  5 02060 AK    Alaska Bristol Bay Borough          (((-1685825 -2253496, -16840…
+#>  6 02063 AK    Alaska Chugach Census Area          (((-1476669 -2101298, -14698…
+#>  7 02066 AK    Alaska Copper River Census Area     (((-1457015 -2063407, -14434…
+#>  8 02068 AK    Alaska Denali Borough               (((-1585793 -1980740, -15864…
+#>  9 02070 AK    Alaska Dillingham Census Area       (((-1793024 -2236835, -17884…
+#> 10 02090 AK    Alaska Fairbanks North Star Borough (((-1512363 -1851013, -14878…
 #> # ℹ 3,134 more rows
 ```
 
