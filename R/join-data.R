@@ -29,12 +29,14 @@
 #' df <- map_with_data(state_data, na = 0)
 #'
 #' @export
-map_with_data <- function(data,
-                          values = "values",
-                          include = c(),
-                          exclude = c(),
-                          na = NA) {
-
+map_with_data <- function(
+  data,
+  values = "values",
+  include = c(),
+  exclude = c(),
+  na = NA,
+  data_year = NULL
+) {
   if (!is.data.frame(data)) {
     stop("`data` must be a data frame")
   }
@@ -47,7 +49,7 @@ map_with_data <- function(data,
     }
 
     warning(paste("`data` is empty, returning basic", region_type, "US map data frame"))
-    return(usmap::us_map(regions = region_type, include = include, exclude = exclude))
+    return(usmap::us_map(regions = region_type, include = include, exclude = exclude, data_year = data_year))
   }
 
   if (!(values %in% names(data))) {
@@ -58,7 +60,7 @@ map_with_data <- function(data,
     # do nothing
   } else if ("state" %in% names(data)) {
     # convert to fips
-    data$fips <- usmap::fips(data$state)
+    data$fips <- usmap::fips(data$state, data_year = data_year)
   } else {
     # error
     stop("`data` must be a data.frame containing either a `state` or `fips` column.")
@@ -67,7 +69,7 @@ map_with_data <- function(data,
   data$fips <- as.character(data$fips)
 
   region_type <- ifelse(nchar(data$fips[1]) <= 2, "state", "county")
-  map_df <- usmap::us_map(regions = region_type, include = include, exclude = exclude)
+  map_df <- usmap::us_map(regions = region_type, include = include, exclude = exclude, data_year = data_year)
 
   # Remove columns in data that are already in map_df
   data$abbr <- NULL

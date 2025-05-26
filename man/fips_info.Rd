@@ -6,11 +6,11 @@
 \alias{fips_info.character}
 \title{Retrieve states or counties using FIPS codes}
 \usage{
-fips_info(fips, sortAndRemoveDuplicates = FALSE)
+fips_info(fips, sortAndRemoveDuplicates = FALSE, data_year = NULL)
 
-\method{fips_info}{numeric}(fips, sortAndRemoveDuplicates = FALSE)
+\method{fips_info}{numeric}(fips, sortAndRemoveDuplicates = FALSE, data_year = NULL)
 
-\method{fips_info}{character}(fips, sortAndRemoveDuplicates = FALSE)
+\method{fips_info}{character}(fips, sortAndRemoveDuplicates = FALSE, data_year = NULL)
 }
 \arguments{
 \item{fips}{A one to five digit, either \code{numeric}
@@ -22,6 +22,11 @@ code (where the first 2 numbers pertain to the state).}
 duplicates. By default, the output will be returned in the order of
 the values provided to the \code{fips} parameter. Set this parameter to \code{TRUE}
 to return the output sorted by FIPS with a single instance of each FIPS.}
+
+\item{data_year}{The year for which to obtain FIPS data. If the value is NULL,
+the most recent year's data is used. If the provided year is not found from
+the available map data sets, the next most recent year's data is used.
+The default is NULL, i.e. the most recent available year is used.}
 }
 \value{
 A data frame with the states or counties and the associated

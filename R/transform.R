@@ -65,10 +65,12 @@ usmap_transform.sf <- function(data, ...) {
 
 #' @rdname usmap_transform
 #' @export
-usmap_transform.data.frame <- function(data,
-                                       ...,
-                                       input_names = c("lon", "lat"),
-                                       output_names = NULL) {
+usmap_transform.data.frame <- function(
+  data,
+  ...,
+  input_names = c("lon", "lat"),
+  output_names = NULL
+) {
   # ensure input is data.frame
   data <- as.data.frame(data)
 

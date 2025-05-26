@@ -257,10 +257,10 @@ and may be used and distributed freely in any publication or otherwise.
 
 The underlying shapefiles used to generate the map data are derived from
 the [US Census Bureau’s TIGER/Line
-Shapefiles](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2022.html#list-tab-790442341)
+Shapefiles](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2023.html#list-tab-790442341)
 which are not copyrighted but do suggest citation. See [section 1.2 of
 this
-document](https://www2.census.gov/geo/pdfs/maps-data/data/tiger/tgrshp2022/TGRSHP2022_TechDoc_Ch1.pdf).
+document](https://www2.census.gov/geo/pdfs/maps-data/data/tiger/tgrshp2023/TGRSHP2023_TechDoc_Ch1.pdf).
 
 If you wish to cite `usmap` in a publication (appreciated but never
 required!), you may do so in the following way:
@@ -268,17 +268,16 @@ required!), you may do so in the following way:
 ``` r
 citation("usmap")
 #> To cite package 'usmap' in publications use:
-#> 
+#>
 #>   Di Lorenzo P (2024). _usmap: US Maps Including Alaska and Hawaii_. R
-#>   package version 0.7.0, <https://usmap.dev>.
-#> 
+#>   package version 0.7.1, <https://usmap.dev>.
+#>
 #> A BibTeX entry for LaTeX users is
-#> 
+#>
 #>   @Manual{,
 #>     title = {usmap: US Maps Including Alaska and Hawaii},
 #>     author = {Paolo {Di Lorenzo}},
-#>     year = {2024},
-#>     note = {R package version 0.7.0},
+#>     note = {R package version 0.7.1},
 #>     url = {https://usmap.dev},
 #>   }
 ```

@@ -55,16 +55,18 @@
 #'
 #' @importFrom rlang .data
 #' @export
-plot_usmap <- function(regions = c("states", "state", "counties", "county"),
-                       include = c(),
-                       exclude = c(),
-                       data = data.frame(),
-                       values = "values",
-                       theme = theme_map(),
-                       labels = FALSE,
-                       label_color = "black",
-                       ...) {
-
+plot_usmap <- function(
+  regions = c("states", "state", "counties", "county"),
+  include = c(),
+  exclude = c(),
+  data = data.frame(),
+  values = "values",
+  theme = theme_map(),
+  labels = FALSE,
+  label_color = "black",
+  data_year = NULL,
+  ...
+) {
   # check for ggplot2
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("`ggplot2` must be installed to use `plot_usmap`.
@@ -93,10 +95,10 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
 
   # create polygon layer
   if (nrow(data) == 0) {
-    map_df <- usmap::us_map(regions = regions, include = include, exclude = exclude)
+    map_df <- usmap::us_map(regions = regions, include = include, exclude = exclude, data_year = data_year)
     geom_args[["mapping"]] <- ggplot2::aes()
   } else {
-    map_df <- usmap::map_with_data(data, values = values, include = include, exclude = exclude)
+    map_df <- usmap::map_with_data(data, values = values, include = include, exclude = exclude, data_year = data_year)
 
     if (!is.null(map_df$county)) regions <- "counties"
     geom_args[["mapping"]] <- ggplot2::aes(fill = .data[[values]])
@@ -109,7 +111,7 @@ plot_usmap <- function(regions = c("states", "state", "counties", "county"),
     if (regions == "state") regions <- "states"
     else if (regions == "county") regions <- "counties"
 
-    centroid_labels <- usmapdata::centroid_labels(regions)
+    centroid_labels <- usmapdata::centroid_labels(regions, data_year = data_year)
 
     if (length(include) > 0) {
       centroid_labels <- centroid_labels[

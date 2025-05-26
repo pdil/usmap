@@ -4,7 +4,7 @@
 \alias{fips}
 \title{Retrieve FIPS code for either a US state or county}
 \usage{
-fips(state, county = c())
+fips(state, county = c(), data_year = NULL)
 }
 \arguments{
 \item{state}{The state(s) for which to obtain a FIPS code(s).
@@ -15,6 +15,11 @@ If \code{state} is a vector, \code{county} must be omitted.}
 
 \item{county}{The county for which to obtain a FIPS code.
 Can be entered with or without "county" (case-insensitive).}
+
+\item{data_year}{The year for which to obtain FIPS data. If the value is NULL,
+the most recent year's data is used. If the provided year is not found from
+the available map data sets, the next most recent year's data is used.
+The default is NULL, i.e. the most recent available year is used.}
 }
 \value{
 The FIPS code(s) of given \code{state} or \code{county}.
