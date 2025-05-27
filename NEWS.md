@@ -1,6 +1,16 @@
 # [unreleased]
 
-
+### New Features
+* Add `data_year` parameter to `fips()`, `fips_info()`, `map_with_data()`, `plot_usmap()`, and `us_map()`, see [Issue #110](https://github.com/pdil/usmapdata/issues/110).
+  * Allows user to select the year for which to plot US map.
+  * This will allow the user to match the map that is provided to the data they are using.
+  * To start with, 2021, 2022, 2023, and 2024 maps are included.
+  * Going forward, each year will be added to `usmapdata` (`usmap`'s data repository) and previous years can be accessed with this parameter.
+  * If the value provided via `data_year` is not available, the package will select the next year for which data exists.
+    * For example, if data sets 2022 and 2023 are available and the user calls `us_map(data_year = 2019)`, 2022 will be used.
+    * A warning is presented when this occurs to alert the user.
+  * Further reading on the impetus for this change: [major changes made to Connecticut counties in 2023](https://www.ctinsider.com/projects/2023/ct-planning-regions/).
+  * The old Connecticut counties are available in the 2021 data, 2022 and forward use the new planning regions.
 
 # usmap 0.7.1
 Released Thursday, March 21, 2024.
