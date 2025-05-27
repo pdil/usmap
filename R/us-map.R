@@ -14,6 +14,13 @@
 #'  same name. The regions listed in the \code{include} parameter are applied first and the
 #'  \code{exclude} regions are then removed from the resulting map. Any excluded regions
 #'  not present in the included regions will be ignored.
+#' @param data_year The year for which to obtain map data. If the value is NULL,
+#'  the most recent year's data is used. If the provided year is not found from
+#'  the available map data sets, the next most recent year's data is used.
+#'  This can be used if an older data set is being plotted on the US map so that
+#'  the data matches the map more accurately. Therefore, the provided value should
+#'  match the year of the plotted data set. The default is NULL, i.e. the most
+#'  recent available year is used.
 #'
 #' @seealso [usmapdata::us_map()] of which this function is a wrapper for.
 #'
@@ -27,8 +34,16 @@
 #'
 #' south_atl_excl_FL <- us_map(include = .south_atlantic, exclude = "FL")
 #' @export
-us_map <- function(regions = c("states", "state", "counties", "county"),
-                   include = c(),
-                   exclude = c()) {
-  usmapdata::us_map(regions = regions, include = include, exclude = exclude)
+us_map <- function(
+  regions = c("states", "state", "counties", "county"),
+  include = c(),
+  exclude = c(),
+  data_year = NULL
+) {
+  usmapdata::us_map(
+    regions = regions,
+    include = include,
+    exclude = exclude,
+    data_year = data_year
+  )
 }

@@ -14,6 +14,11 @@
 #' @param county The county for which to obtain a FIPS code.
 #'  Can be entered with or without "county" (case-insensitive).
 #'
+#' @param data_year The year for which to obtain FIPS data. If the value is NULL,
+#'  the most recent year's data is used. If the provided year is not found from
+#'  the available map data sets, the next most recent year's data is used.
+#'  The default is NULL, i.e. the most recent available year is used.
+#'
 #' @note A \code{state} must be included when searching for \code{county},
 #'  otherwise multiple results may be returned for duplicate county names.
 #'
@@ -52,16 +57,16 @@
 #' fips(state = "AL", county = "autauga")
 #' fips(state = "Alabama", county = "Autauga County")
 #' @export
-fips <- function(state, county = c()) {
+fips <- function(state, county = c(), data_year = NULL) {
   if (missing(state) && missing(county)) {
-    return(usmapdata::fips_data()$fips)
+    return(usmapdata::fips_data(data_year = data_year)$fips)
   }
 
   state_ <- tolower(state)
   county_ <- tolower(county)
 
   if (length(county_) == 0) {
-    df <- usmapdata::fips_data()
+    df <- usmapdata::fips_data(data_year = data_year)
     abbr <- tolower(df$abbr)
     full <- tolower(df$full)
     fips2 <- c(df$fips, df$fips)
@@ -74,7 +79,7 @@ fips <- function(state, county = c()) {
       stop("`county` parameter cannot be used with multiple states.")
     }
 
-    df <- usmapdata::fips_data("counties")
+    df <- usmapdata::fips_data("counties", data_year = data_year)
     name <- tolower(df$county)
     state_abbr <- tolower(df$abbr)
     state_full <- tolower(df$full)
@@ -115,6 +120,11 @@ fips <- function(state, county = c()) {
 #'  the values provided to the \code{fips} parameter. Set this parameter to \code{TRUE}
 #'  to return the output sorted by FIPS with a single instance of each FIPS.
 #'
+#' @param data_year The year for which to obtain FIPS data. If the value is NULL,
+#'  the most recent year's data is used. If the provided year is not found from
+#'  the available map data sets, the next most recent year's data is used.
+#'  The default is NULL, i.e. the most recent available year is used.
+#'
 #' @return A data frame with the states or counties and the associated
 #'  FIPS codes.
 #'
@@ -133,9 +143,9 @@ fips <- function(state, county = c()) {
 #'
 #' @rdname fips_info
 #' @export
-fips_info <- function(fips, sortAndRemoveDuplicates = FALSE) {
+fips_info <- function(fips, sortAndRemoveDuplicates = FALSE, data_year = NULL) {
   if (missing(fips)) {
-    fips_info.character(usmap::fips())
+    fips_info.character(usmap::fips(data_year = data_year))
   } else {
     UseMethod("fips_info", fips)
   }
@@ -143,7 +153,7 @@ fips_info <- function(fips, sortAndRemoveDuplicates = FALSE) {
 
 #' @rdname fips_info
 #' @export
-fips_info.numeric <- function(fips, sortAndRemoveDuplicates = FALSE) {
+fips_info.numeric <- function(fips, sortAndRemoveDuplicates = FALSE, data_year = NULL) {
   if (all(fips >= 1001 & fips <= 56043)) {
     fips_ <- sprintf("%05d", fips)
   } else if (all(fips >= 1 & fips <= 56)) {
@@ -152,12 +162,12 @@ fips_info.numeric <- function(fips, sortAndRemoveDuplicates = FALSE) {
     stop("Invalid FIPS code(s), must be either 2 digit (states) or 5 digit (counties), but not both.")
   }
 
-  get_fips_info(fips_, sortAndRemoveDuplicates)
+  get_fips_info(fips_, sortAndRemoveDuplicates, data_year = data_year)
 }
 
 #' @rdname fips_info
 #' @export
-fips_info.character <- function(fips, sortAndRemoveDuplicates = FALSE) {
+fips_info.character <- function(fips, sortAndRemoveDuplicates = FALSE, data_year = NULL) {
   if (all(nchar(fips) %in% 4:5)) {
     fips_ <- sprintf("%05s", fips)
   } else if (all(nchar(fips) %in% 1:2)) {
@@ -166,18 +176,18 @@ fips_info.character <- function(fips, sortAndRemoveDuplicates = FALSE) {
     stop("Invalid FIPS code, must be either 2 digit (states) or 5 digit (counties), but not both.")
   }
 
-  get_fips_info(fips_, sortAndRemoveDuplicates)
+  get_fips_info(fips_, sortAndRemoveDuplicates, data_year = data_year)
 }
 
 #' Gets FIPS info for either states or counties depending on input.
 #' Helper function for S3 method [fips_info()].
 #' @keywords internal
-get_fips_info <- function(fips, sortAndRemoveDuplicates) {
+get_fips_info <- function(fips, sortAndRemoveDuplicates, data_year = NULL) {
   if (all(nchar(fips) == 2)) {
-    df <- usmapdata::fips_data()
+    df <- usmapdata::fips_data(data_year = data_year)
     columns <- c("abbr", "fips", "full")
   } else if (all(nchar(fips) == 5)) {
-    df <- usmapdata::fips_data("counties")
+    df <- usmapdata::fips_data("counties", data_year = data_year)
     columns <- c("full", "abbr", "county", "fips")
   }
 

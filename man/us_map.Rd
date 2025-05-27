@@ -7,7 +7,8 @@
 us_map(
   regions = c("states", "state", "counties", "county"),
   include = c(),
-  exclude = c()
+  exclude = c(),
+  data_year = NULL
 )
 }
 \arguments{
@@ -27,6 +28,14 @@ For counties, the FIPS must be provided as there can be multiple counties with t
 same name. The regions listed in the \code{include} parameter are applied first and the
 \code{exclude} regions are then removed from the resulting map. Any excluded regions
 not present in the included regions will be ignored.}
+
+\item{data_year}{The year for which to obtain map data. If the value is NULL,
+the most recent year's data is used. If the provided year is not found from
+the available map data sets, the next most recent year's data is used.
+This can be used if an older data set is being plotted on the US map so that
+the data matches the map more accurately. Therefore, the provided value should
+match the year of the plotted data set. The default is NULL, i.e. the most
+recent available year is used.}
 }
 \value{
 A data frame of US map coordinates divided by the desired \code{regions}.

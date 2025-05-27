@@ -13,6 +13,7 @@ plot_usmap(
   theme = theme_map(),
   labels = FALSE,
   label_color = "black",
+  data_year = NULL,
   ...
 )
 }
@@ -54,6 +55,14 @@ by default.}
 option in the \code{\link[ggplot2:aes]{ggplot2::aes()}} mapping. The default is \code{"black"}.
 \href{https://usmap.dev/docs/Rcolor.pdf}{Click here}
 for more color options.}
+
+\item{data_year}{The year for which to obtain map data. If the value is NULL,
+the most recent year's data is used. If the provided year is not found from
+the available map data sets, the next most recent year's data is used.
+This can be used if an older data set is being plotted on the US map so that
+the data matches the map more accurately. Therefore, the provided value should
+match the year of the plotted data set. The default is NULL, i.e. the most
+recent available year is used.}
 
 \item{...}{Other arguments to pass to \code{\link[ggplot2:aes]{ggplot2::aes()}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like \code{color = "red"}
