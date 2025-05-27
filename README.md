@@ -23,23 +23,34 @@ providing a simple features ([`sf`](https://github.com/r-spatial/sf))
 object for mapping and visualization. This allows the user to easily add
 spatial data or features to the US map.
 
-## Shape Files
+## Available Map Data
 
-The shape files that we use to plot the maps in R are located in the
+The map data files that we use to plot the maps in R are located in the
 [`usmapdata`](https://github.com/pdil/usmapdata) package. These are
 generated from the [US Census Bureau cartographic boundary
 files](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html).
 Maps at both the state and county levels are included for convenience.
 
+In `usmap v0.8.0` the `data_year` parameter was added to most package
+functions, allowing the user to select from multiple available years.
+Since data is now stored in `usmapdata`, updates are no longer tied to
+`usmap` versions.
+
 #### Update History
 
-| Date              | `usmap` version | Shape File Year |                                                  Link                                                  |
-|-------------------|:---------------:|:---------------:|:------------------------------------------------------------------------------------------------------:|
-| May 10, 2024      |      0.7.1      |      2023       | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2023.html) |
-| January 20, 2024  |      0.7.0      |      2022       | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2022.html) |
-| February 27, 2022 |      0.6.0      |      2020       | [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2020.html) |
-| June 3, 2018      |      0.3.0      |      2017       |  [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2017.html)  |
-| January 29, 2017  |      0.1.0      |      2015       |  [🔗](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2015.html)  |
+| Date | Available Years |
+|----|:--:|
+| ??? | [2021](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2021.html), [2022](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2022.html), [2023](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2023.html), [2024](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2024.html) |
+
+Prior to `usmap v0.8.0`:
+
+| Date | `usmap` version | Available Year |
+|----|:--:|:--:|
+| May 10, 2024 | 0.7.1 | [2023](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2023.html) |
+| January 20, 2024 | 0.7.0 | [2022](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2022.html) |
+| February 27, 2022 | 0.6.0 | [2020](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2020.html) |
+| June 3, 2018 | 0.3.0 | [2017](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2017.html) |
+| January 29, 2017 | 0.1.0 | [2015](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2015.html) |
 
 ## Installation
 
@@ -154,21 +165,21 @@ us_map(regions = "states")
 #> Simple feature collection with 51 features and 3 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
-#> Bounding box:  xmin: -2590847 ymin: -2608148 xmax: 2523581 ymax: 731407.9
+#> Bounding box:  xmin: -2584074 ymin: -2602555 xmax: 2516258 ymax: 731628.1
 #> Projected CRS: NAD27 / US National Atlas Equal Area
 #> # A tibble: 51 × 4
 #>    fips  abbr  full                                                         geom
 #>    <chr> <chr> <chr>                                          <MULTIPOLYGON [m]>
-#>  1 02    AK    Alaska               (((-2396847 -2547721, -2393297 -2546391, -2…
-#>  2 01    AL    Alabama              (((1093777 -1378535, 1093269 -1374223, 1092…
-#>  3 05    AR    Arkansas             (((483065.2 -927788.2, 506062 -926263.3, 53…
-#>  4 04    AZ    Arizona              (((-1388676 -1254584, -1389181 -1251856, -1…
-#>  5 06    CA    California           (((-1719946 -1090033, -1709611 -1090026, -1…
-#>  6 08    CO    Colorado             (((-789538.7 -678773.8, -789538.2 -678769.5…
-#>  7 09    CT    Connecticut          (((2161733 -83737.52, 2177182 -65221.22, 21…
-#>  8 11    DC    District of Columbia (((1955479 -402055.2, 1960234 -393571.9, 19…
-#>  9 10    DE    Delaware             (((2042506 -284367.3, 2043078 -280000.3, 20…
-#> 10 12    FL    Florida              (((1855611 -2064809, 1860157 -2054372, 1867…
+#>  1 02    AK    Alaska               (((-2390688 -2541831, -2387144 -2540510, -2…
+#>  2 01    AL    Alabama              (((1091785 -1380715, 1091274 -1376393, 1090…
+#>  3 05    AR    Arkansas             (((482022.2 -928936.8, 504969.3 -927409.9, …
+#>  4 04    AZ    Arizona              (((-1386064 -1256492, -1386565 -1253758, -1…
+#>  5 06    CA    California           (((-1716581 -1091606, -1706264 -1091597, -1…
+#>  6 08    CO    Colorado             (((-787705.6 -679505.6, -787705.1 -679501.3…
+#>  7 09    CT    Connecticut          (((2156162 -83795.62, 2171549 -65263.26, 21…
+#>  8 11    DC    District of Columbia (((1950799 -402452.2, 1955532 -393958.4, 19…
+#>  9 10    DE    Delaware             (((2037480 -284625.1, 2038045 -280253.1, 20…
+#> 10 12    FL    Florida              (((1853163 -2069104, 1857692 -2058634, 1864…
 #> # ℹ 41 more rows
 ```
 
@@ -177,21 +188,21 @@ us_map(regions = "counties")
 #> Simple feature collection with 3144 features and 4 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
-#> Bounding box:  xmin: -2590847 ymin: -2608148 xmax: 2523581 ymax: 731407.9
+#> Bounding box:  xmin: -2584074 ymin: -2602555 xmax: 2516258 ymax: 731628.1
 #> Projected CRS: NAD27 / US National Atlas Equal Area
 #> # A tibble: 3,144 × 5
 #>    fips  abbr  full   county                                                geom
 #>    <chr> <chr> <chr>  <chr>                                   <MULTIPOLYGON [m]>
-#>  1 02013 AK    Alaska Aleutians East Borough       (((-1762715 -2477334, -17612…
-#>  2 02016 AK    Alaska Aleutians West Census Area   (((-2396847 -2547721, -23932…
-#>  3 02020 AK    Alaska Anchorage Municipality       (((-1517576 -2089908, -15176…
-#>  4 02050 AK    Alaska Bethel Census Area           (((-1905141 -2137046, -19009…
-#>  5 02060 AK    Alaska Bristol Bay Borough          (((-1685825 -2253496, -16840…
-#>  6 02063 AK    Alaska Chugach Census Area          (((-1476669 -2101298, -14698…
-#>  7 02066 AK    Alaska Copper River Census Area     (((-1457015 -2063407, -14434…
-#>  8 02068 AK    Alaska Denali Borough               (((-1585793 -1980740, -15864…
-#>  9 02070 AK    Alaska Dillingham Census Area       (((-1793024 -2236835, -17884…
-#> 10 02090 AK    Alaska Fairbanks North Star Borough (((-1512363 -1851013, -14878…
+#>  1 02013 AK    Alaska Aleutians East Borough       (((-1757988 -2472695, -17565…
+#>  2 02016 AK    Alaska Aleutians West Census Area   (((-2390688 -2541831, -23871…
+#>  3 02020 AK    Alaska Anchorage Municipality       (((-1513326 -2086615, -15133…
+#>  4 02050 AK    Alaska Bethel Census Area           (((-1899724 -2132957, -18954…
+#>  5 02060 AK    Alaska Bristol Bay Borough          (((-1681144 -2249485, -16793…
+#>  6 02063 AK    Alaska Chugach Census Area          (((-1472549 -2098045, -14657…
+#>  7 02066 AK    Alaska Copper River Census Area     (((-1452955 -2060293, -14394…
+#>  8 02068 AK    Alaska Denali Borough               (((-1581283 -1977646, -15819…
+#>  9 02070 AK    Alaska Dillingham Census Area       (((-1788018 -2232676, -17835…
+#> 10 02090 AK    Alaska Fairbanks North Star Borough (((-1508063 -1848448, -14836…
 #> # ℹ 3,134 more rows
 ```
 
@@ -268,17 +279,21 @@ required!), you may do so in the following way:
 ``` r
 citation("usmap")
 #> To cite package 'usmap' in publications use:
-#>
-#>   Di Lorenzo P (2024). _usmap: US Maps Including Alaska and Hawaii_. R
-#>   package version 0.7.1, <https://usmap.dev>.
-#>
+#> 
+#>   Di Lorenzo P (2024). _usmap: US Maps Including Alaska and Hawaii_.
+#>   doi:10.32614/CRAN.package.usmap
+#>   <https://doi.org/10.32614/CRAN.package.usmap>, R package version
+#>   0.7.1, <https://CRAN.R-project.org/package=usmap>.
+#> 
 #> A BibTeX entry for LaTeX users is
-#>
+#> 
 #>   @Manual{,
 #>     title = {usmap: US Maps Including Alaska and Hawaii},
 #>     author = {Paolo {Di Lorenzo}},
+#>     year = {2024},
 #>     note = {R package version 0.7.1},
-#>     url = {https://usmap.dev},
+#>     url = {https://CRAN.R-project.org/package=usmap},
+#>     doi = {10.32614/CRAN.package.usmap},
 #>   }
 ```
 
@@ -288,7 +303,9 @@ citation("usmap")
 coordinate system:
 
 <details>
+
 <summary>
+
 <code>sf::st_crs(9311)</code>
 </summary>
 
@@ -342,4 +359,4 @@ can also be obtained with `usmap::usmap_crs()`.
 The code used to generate the map files was based on this blog post by
 [Bob Rudis](https://github.com/hrbrmstr): [Moving The Earth (well,
 Alaska & Hawaii) With
-R](https://rud.is/b/2014/11/16/moving-the-earth-well-alaska-hawaii-with-r/)
+R](https://rud.is/b/2014/11/16/moving-the-earth-well-alaska-hawaii-with-r/).
