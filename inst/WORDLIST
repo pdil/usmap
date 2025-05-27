@@ -1,6 +1,5 @@
 Albers
 Bartholemew
-CRS
 Cordova
 DCW
 Esri
@@ -20,6 +19,7 @@ Vectorize
 choropleth
 choropleths
 codecov
+crs
 expandability
 fips
 ggplot

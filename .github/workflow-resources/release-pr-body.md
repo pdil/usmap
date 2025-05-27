@@ -2,7 +2,7 @@
 
 ### 📝 Pre-release checklist
 - [ ] Review automated changes
-- [ ] Review reverse dependency checks (see `release` workflow artifacts)
+- [ ] Review reverse dependency checks (see [workflow artifacts]({{ .artifacts_url }}))
 - [ ] Review check and test results
 - [ ] Verify `DESCRIPTION` and `NEWS.md` are accurate
 - [ ] Update `cran-comments.md` if necessary
