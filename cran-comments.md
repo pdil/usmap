@@ -1,4 +1,6 @@
 
+This is a re-submission to fix URL issues caught by the automated checks.
+
 ## Test environments
 * local macOS install, R 4.5.0
 
