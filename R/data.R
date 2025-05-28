@@ -20,7 +20,7 @@
 #' @references
 #'   \itemize{
 #'     \item \url{https://www.census.gov/programs-surveys/popest.html}
-#'     \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
+#'     \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets}
 #'   }
 #' @keywords data
 "countypop"
@@ -47,7 +47,7 @@
 #' @references
 #'   \itemize{
 #'     \item \url{https://www.census.gov/programs-surveys/popest.html}
-#'     \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
+#'     \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets}
 #'   }
 #' @keywords data
 "statepop"
@@ -74,7 +74,7 @@
 #' @references
 #'   \itemize{
 #'     \item \url{https://www.census.gov/topics/income-poverty/poverty.html}
-#'     \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
+#'     \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets}
 #'   }
 #' @keywords data
 "countypov"
@@ -101,7 +101,7 @@
 #' @references
 #'   \itemize{
 #'     \item \url{https://www.census.gov/topics/income-poverty/poverty.html}
-#'     \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
+#'     \item \url{https://www.ers.usda.gov/data-products/county-level-data-sets}
 #'   }
 #' @keywords data
 "statepov"

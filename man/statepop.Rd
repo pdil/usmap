@@ -26,7 +26,7 @@ for the corresponding state.
 \references{
 \itemize{
 \item \url{https://www.census.gov/programs-surveys/popest.html}
-\item \url{https://www.ers.usda.gov/data-products/county-level-data-sets/}
+\item \url{https://www.ers.usda.gov/data-products/county-level-data-sets}
 }
 }
 \keyword{data}

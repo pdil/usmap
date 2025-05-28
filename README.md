@@ -40,7 +40,7 @@ Since data is now stored in `usmapdata`, updates are no longer tied to
 
 | Date | Available Years |
 |----|:--:|
-| ??? | [2021](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2021.html), [2022](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2022.html), [2023](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2023.html), [2024](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2024.html) |
+| May 28, 2025 | [2021](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2021.html), [2022](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2022.html), [2023](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2023.html), [2024](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2024.html) |
 
 Prior to `usmap v0.8.0`:
 
@@ -121,10 +121,10 @@ library(ggplot2)
 
 mt <- plot_usmap("states", include = .mountain, labels = TRUE)
 
-fl <- plot_usmap("counties", data = countypov, values = "pct_pov_2021", include = "FL") +
+fl <- plot_usmap("counties", data = countypov, values = "pct_pov_2021", include = "FL", data_year = 2021) +
   scale_fill_continuous(low = "green", high = "red", guide = "none")
 
-ne <- plot_usmap("counties", data = countypop, values = "pop_2022", include = .new_england) +
+ne <- plot_usmap("counties", data = countypop, values = "pop_2022", include = .new_england, data_year = 2022) +
   scale_fill_continuous(low = "blue", high = "yellow", guide = "none")
 
 cowplot::plot_grid(mt, fl, ne, nrow = 1)
@@ -145,7 +145,8 @@ river_map <- plot_usmap("counties", color = "gray80") +
   scale_linewidth_continuous(range = c(0.3, 1.5), guide = "none")
 
 # Transform included `earthquakes` data set
-eq_transformed <- usmap_transform(earthquakes)
+earthquakes_above_mag_3 <- earthquakes[earthquakes$mag > 3, ]
+eq_transformed <- usmap_transform(earthquakes_above_mag_3)
 
 earthquake_map <- plot_usmap() +
   geom_sf(data = eq_transformed, aes(size = mag), color = "red", alpha = 0.25) +
@@ -280,20 +281,16 @@ required!), you may do so in the following way:
 citation("usmap")
 #> To cite package 'usmap' in publications use:
 #> 
-#>   Di Lorenzo P (2024). _usmap: US Maps Including Alaska and Hawaii_.
-#>   doi:10.32614/CRAN.package.usmap
-#>   <https://doi.org/10.32614/CRAN.package.usmap>, R package version
-#>   0.7.1, <https://CRAN.R-project.org/package=usmap>.
+#>   Di Lorenzo P (2025). _usmap: US Maps Including Alaska and Hawaii_. R
+#>   package version 0.8.0, <https://usmap.dev>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {usmap: US Maps Including Alaska and Hawaii},
 #>     author = {Paolo {Di Lorenzo}},
-#>     year = {2024},
-#>     note = {R package version 0.7.1},
-#>     url = {https://CRAN.R-project.org/package=usmap},
-#>     doi = {10.32614/CRAN.package.usmap},
+#>     note = {R package version 0.8.0},
+#>     url = {https://usmap.dev},
 #>   }
 ```
 
