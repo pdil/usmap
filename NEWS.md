@@ -1,4 +1,7 @@
+# [unreleased]
+
 # usmap 0.8.0
+Released Wednesday, May 28, 2025.
 
 ### New Features
 * Add `data_year` parameter to `fips()`, `fips_info()`, `map_with_data()`, `plot_usmap()`, and `us_map()`, see [Issue #110](https://github.com/pdil/usmap/issues/110).
