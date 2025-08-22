@@ -5,28 +5,28 @@
 #'   parameter should be a data frame consisting of two columns,
 #'   a FIPS code (2 characters for state, 5 characters for county)
 #'   and the value that should be associated with that region. The
-#'   columns of \code{data} \emph{must} be \code{fips} or \code{state} and
+#'   columns of `data` _must_ be `fips` or `state` and
 #'   the value of the `values` parameter.
 #' @param values The name of the column that contains the values to be associated
-#'   with a given region. The default is \code{"value"}.
+#'   with a given region. The default is `"value"`.
 #' @param theme The theme that should be used for plotting the map. The default
-#'   is \code{theme_map} from \href{https://github.com/jrnold/ggthemes}{ggthemes}.
+#'   is `theme_map` from [ggthemes](https://github.com/jrnold/ggthemes).
 #' @param labels Whether or not to display labels on the map. Labels are not displayed
 #'   by default.
-#' @param label_color The color of the labels to display. Corresponds to the \code{color}
-#'   option in the [ggplot2::aes()] mapping. The default is \code{"black"}.
-#'   \href{https://usmap.dev/docs/Rcolor.pdf}{Click here}
+#' @param label_color The color of the labels to display. Corresponds to the `color`
+#'   option in the [ggplot2::aes()] mapping. The default is `"black"`.
+#'   [Click here](https://usmap.dev/docs/Rcolor.pdf)
 #'   for more color options.
 #' @param ... Other arguments to pass to [ggplot2::aes()]. These are
-#'   often aesthetics, used to set an aesthetic to a fixed value, like \code{color = "red"}
-#'   or \code{linewidth = 3}. They affect the appearance of the polygons used to render
+#'   often aesthetics, used to set an aesthetic to a fixed value, like `color = "red"`
+#'   or `linewidth = 3`. They affect the appearance of the polygons used to render
 #'   the map (for example fill color, line color, line thickness, etc.). If any of
-#'   \code{color}/\code{colour}, \code{fill}, or \code{linewidth} are not specified they
-#'   are set to their default values of \code{color="black"}, \code{fill="white"},
-#'   and \code{linewidth=0.4}.
+#'   `color`/`colour`, `fill`, or `linewidth` are not specified they
+#'   are set to their default values of `color="black"`, `fill="white"`,
+#'   and `linewidth=0.4`.
 #'
 #' @return A [ggplot2::ggplot] object that contains a basic
-#'   US map with the described parameters. Since the result is a \code{ggplot}
+#'   US map with the described parameters. Since the result is a `ggplot`
 #'   object, it can be extended with more [ggplot2::Geom] layers, scales, labels,
 #'   themes, etc.
 #'
@@ -113,14 +113,10 @@ plot_usmap <- function(
 
     centroid_labels <- usmapdata::centroid_labels(regions, data_year = data_year)
 
-    if (length(include) > 0) {
-      centroid_labels <- centroid_labels[
-        centroid_labels$full %in% include |
-          centroid_labels$abbr %in% include |
-          centroid_labels$fips %in% include,
-      ]
-    }
+    # remove excluded items that are in `include`
+    exclude <- setdiff(exclude, include)
 
+    # remove excludes
     if (length(exclude) > 0) {
       centroid_labels <- centroid_labels[!(
         centroid_labels$full %in% exclude |
@@ -128,6 +124,15 @@ plot_usmap <- function(
           centroid_labels$fips %in% exclude |
           substr(centroid_labels$fips, 1, 2) %in% exclude
       ), ]
+    }
+
+    # remove non-includes
+    if (length(include) > 0) {
+      centroid_labels <- centroid_labels[
+        centroid_labels$full %in% include |
+          centroid_labels$abbr %in% include |
+          centroid_labels$fips %in% include,
+      ]
     }
 
     if (regions == "county" || regions == "counties") {

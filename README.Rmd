@@ -34,7 +34,7 @@ citypop_t <- usmap_transform(citypop)
 citypop_t_west <- citypop_t[(citypop_t$abbr %in% .west_region) & (citypop_t$abbr != "AK") & (citypop_t$abbr != "HI"), ]
 
 west_county_citypop_map <-
-  plot_usmap("counties", include = .west_region, exclude = c("AK", "HI"), color = "blue", fill = "lightblue") +
+  plot_usmap("counties", include = setdiff(.west_region, c("AK", "HI")), color = "blue", fill = "lightblue") +
   geom_sf(data = citypop_t_west, aes(size = city_pop), color = "red", alpha = 0.7) +
   scale_size_continuous(range = c(2, 15), guide = "none") +
   ggrepel::geom_label_repel(

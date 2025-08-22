@@ -34,21 +34,21 @@ will be returned.}
 \item{exclude}{The regions to exclude in the resulting map. If \code{regions} is
 \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
 For counties, the FIPS must be provided as there can be multiple counties with the
-same name. The regions listed in the \code{include} parameter are applied first and the
-\code{exclude} regions are then removed from the resulting map. Any excluded regions
-not present in the included regions will be ignored.}
+same name. The regions listed in the \code{include} parameter take precedence over
+regions listed in \code{exclude}. If both parameters include the same region(s) they
+will be included in the map.}
 
 \item{na}{The value to be inserted for states or counties that don't have
 a value in \code{data}. This value must be of the same type as the \code{value}
 column of \code{data}.}
 
-\item{data_year}{The year for which to obtain map data. If the value is NULL,
-the most recent year's data is used. If the provided year is not found from
-the available map data sets, the next most recent year's data is used.
-This can be used if an older data set is being plotted on the US map so that
-the data matches the map more accurately. Therefore, the provided value should
-match the year of the plotted data set. The default is NULL, i.e. the most
-recent available year is used.}
+\item{data_year}{The year for which to obtain map data.
+If the value is \code{NULL}, the most recent year's data is used. If the
+provided year is not found from the available map data sets, the next most
+recent year's data is used. This can be used if an older data set is being
+plotted on the US map so that the data matches the map more accurately.
+Therefore, the provided value should match the year of the plotted data set.
+The default is \code{NULL}, i.e. the most recent available year is used.}
 }
 \value{
 A data frame composed of the map data frame (from \code{\link[=us_map]{us_map()}}) except

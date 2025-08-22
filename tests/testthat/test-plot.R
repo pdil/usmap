@@ -14,7 +14,7 @@ q <- plot_usmap(data = statepop, values = "pop_2022", color = "blue")
 r <- plot_usmap(data = example_data, linewidth = 0.8)
 s <- plot_usmap(include = c("AL", "FL", "GA"), labels = TRUE, label_color = "blue")
 t <- plot_usmap("county", include = "AZ", labels = TRUE, fill = "yellow", linewidth = 0.6)
-u <- plot_usmap(include = .new_england, exclude = "ME", labels = TRUE)
+u <- plot_usmap(include = c("CT", "MA", "NH", "RI", "VT"), labels = TRUE)
 v <- plot_usmap("state", labels = TRUE)
 
 test_that("ggplot object is returned", {
@@ -53,7 +53,7 @@ test_that("correct data is used", {
   t_map_data <- us_map(regions = "counties", include = "AZ")
   expect_identical(t$data, t_map_data)
 
-  u_map_data <- us_map(include = .new_england, exclude = "ME")
+  u_map_data <- us_map(include = setdiff(.new_england, "ME"))
   expect_identical(u$data, u_map_data)
 
   v_map_data <- us_map()

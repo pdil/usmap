@@ -1,4 +1,3 @@
-
 name: release
 run-name: Release ${{ github.event.repository.name }} ${{ inputs.version }}
 

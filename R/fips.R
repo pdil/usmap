@@ -19,7 +19,7 @@
 #'  the available map data sets, the next most recent year's data is used.
 #'  The default is NULL, i.e. the most recent available year is used.
 #'
-#' @note A \code{state} must be included when searching for \code{county},
+#' @note A `state` must be included when searching for `county`,
 #'  otherwise multiple results may be returned for duplicate county names.
 #'
 #' @details State and county FIPS (Federal Information Processing Standards) are
@@ -30,7 +30,7 @@
 #'   information for the 50 US states (and their associated counties and
 #'   census designated areas).
 #'
-#' @return The FIPS code(s) of given \code{state} or \code{county}.
+#' @return The FIPS code(s) of given `state` or `county`.
 #'
 #' If only states are entered, a vector of length equal to the number of states
 #' is returned. If any states are not found or are invalid, `NA` is returned in their place.
