@@ -9,6 +9,8 @@ example_data <- data.frame(
   values = c(5, 8, 7)
 )
 
+withr::local_envvar(c("USMAP_DEFAULT_EXCLUDE_PR" = FALSE))
+
 p <- plot_usmap("counties", fill = "red")
 q <- plot_usmap(data = statepop, values = "pop_2022", color = "blue")
 r <- plot_usmap(data = example_data, linewidth = 0.8)

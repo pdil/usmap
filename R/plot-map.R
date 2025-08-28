@@ -82,7 +82,7 @@ plot_usmap <- function(
 
   # exclude PR by default if env variable is not `FALSE`
   if (Sys.getenv("USMAP_DEFAULT_EXCLUDE_PR", unset = TRUE) == TRUE &&
-      !("PR" %in% include || "72" %in% include)) {
+        !("PR" %in% include || "72" %in% include)) {
     exclude <- unique(c(exclude, "PR", "72"))
   }
 
