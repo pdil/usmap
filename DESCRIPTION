@@ -28,7 +28,8 @@ Suggests:
     sf,
     spelling,
     testthat (>= 3.0.0),
-    vdiffr
+    vdiffr,
+    withr
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr

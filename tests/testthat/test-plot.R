@@ -16,6 +16,7 @@ s <- plot_usmap(include = c("AL", "FL", "GA"), labels = TRUE, label_color = "blu
 t <- plot_usmap("county", include = "AZ", labels = TRUE, fill = "yellow", linewidth = 0.6)
 u <- plot_usmap(include = c("CT", "MA", "NH", "RI", "VT"), labels = TRUE)
 v <- plot_usmap("state", labels = TRUE)
+w <- plot_usmap("counties", include = "PR", exclude = c("72001", "72003"), labels = TRUE)
 
 test_that("ggplot object is returned", {
   expect_s3_class(p, "ggplot")
@@ -25,6 +26,7 @@ test_that("ggplot object is returned", {
   expect_s3_class(t, "ggplot")
   expect_s3_class(u, "ggplot")
   expect_s3_class(v, "ggplot")
+  expect_s3_class(w, "ggplot")
 })
 
 test_that("no warnings are produced", {
@@ -35,6 +37,7 @@ test_that("no warnings are produced", {
   expect_silent(t)
   expect_silent(u)
   expect_silent(v)
+  expect_silent(w)
 })
 
 test_that("correct data is used", {
@@ -58,6 +61,9 @@ test_that("correct data is used", {
 
   v_map_data <- us_map()
   expect_identical(v$data, v_map_data)
+
+  w_map_data <- us_map("counties", include = "PR", exclude = c("72001", "72003"))
+  expect_identical(w$data, w_map_data)
 })
 
 test_that("plots are stable", {
@@ -67,6 +73,7 @@ test_that("plots are stable", {
   vdiffr::expect_doppelganger("Arizona county map with labels and fill", t)
   vdiffr::expect_doppelganger("New England state map with labels excluding Maine", u)
   vdiffr::expect_doppelganger("State map with labels", v)
+  vdiffr::expect_doppelganger("PR county map with labels and excludes", w)
 
   # River map snapshot test fails on non-mac platforms,
   # use manual verification instead.
@@ -133,6 +140,16 @@ test_that("layer parameters are correct", {
   expect_s3_class(v$layers[[2]], "ggproto")
   expect_s3_class(v$layers[[2]]$geom, "GeomText")
   expect_equal(deparse(v$layers[[2]]$mapping$label), "~.data$abbr")
+
+  expect_s3_class(w$layers[[1]], "ggproto")
+  expect_s3_class(w$layers[[1]]$geom, "GeomSf")
+  expect_equal(as.character(w$layers[[1]]$aes_params$fill), "white")
+  expect_equal(as.character(w$layers[[1]]$aes_params$colour), "black")
+  expect_equal(w$layers[[1]]$aes_params$linewidth, 0.4)
+  expect_s3_class(w$layers[[2]], "ggproto")
+  expect_s3_class(w$layers[[2]]$geom, "GeomText")
+  expect_equal(deparse(w$layers[[2]]$mapping$label),
+               "~sub(\" County\", \"\", .data$county)")
 })
 
 test_that("county data works without specifying `region`", {
@@ -144,4 +161,26 @@ test_that("county data works without specifying `region`", {
   p <- plot_usmap(data = data, include = "NY", labels = TRUE)
   expect_equal(deparse(p$layers[[2]]$mapping$label),
                "~sub(\" County\", \"\", .data$county)")
+})
+
+test_that("plot excludes Puerto Rico based one environment variable", {
+  withr::with_envvar(c("USMAP_DEFAULT_EXCLUDE_PR" = TRUE), {
+    p <- plot_usmap()
+    expect_false("PR" %in% p$data$abbr)
+  })
+
+  withr::with_envvar(c("USMAP_DEFAULT_EXCLUDE_PR" = TRUE), {
+    p <- plot_usmap(include = "PR")
+    expect_contains(p$data$abbr, "PR")
+  })
+
+  withr::with_envvar(c("USMAP_DEFAULT_EXCLUDE_PR" = FALSE), {
+    p <- plot_usmap()
+    expect_contains(p$data$abbr, "PR")
+  })
+
+  withr::with_envvar(c("USMAP_DEFAULT_EXCLUDE_PR" = FALSE), {
+    p <- plot_usmap(exclude = "PR", labels = TRUE)
+    expect_false("PR" %in% p$data$abbr)
+  })
 })

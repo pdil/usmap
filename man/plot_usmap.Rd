@@ -81,6 +81,11 @@ themes, etc.
 \description{
 Conveniently plot basic US map
 }
+\details{
+By default, Puerto Rico is not plotted unless it is specifically included
+via \code{include = c("PR")} etc. The default behavior can be changed by setting
+the environment variable \code{USMAP_DEFAULT_EXCLUDE_PR = FALSE}.
+}
 \examples{
 plot_usmap()
 plot_usmap(regions = "states")

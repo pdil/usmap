@@ -30,6 +30,11 @@
 #'   object, it can be extended with more [ggplot2::Geom] layers, scales, labels,
 #'   themes, etc.
 #'
+#' @details
+#' By default, Puerto Rico is not plotted unless it is specifically included
+#' via `include = c("PR")` etc. The default behavior can be changed by setting
+#' the environment variable `USMAP_DEFAULT_EXCLUDE_PR = FALSE`.
+#'
 #' @seealso [usmap], [ggplot2::theme()]
 #'
 #' @examples
@@ -74,6 +79,12 @@ plot_usmap <- function(
   }
 
   .data <- ggplot2::.data
+
+  # exclude PR by default if env variable is not `FALSE`
+  if (Sys.getenv("USMAP_DEFAULT_EXCLUDE_PR", unset = TRUE) == TRUE &&
+      !("PR" %in% include || "72" %in% include)) {
+    exclude <- unique(c(exclude, "PR", "72"))
+  }
 
   # parse parameters
   regions <- match.arg(regions)
