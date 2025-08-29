@@ -1,4 +1,4 @@
-# usmap 1.0.0
+# [unreleased]
 
 Introducing `usmap 1.0.0`! This week we celebrated 10 years since the [first commit](https://github.com/pdil/usmap/commit/1d6a950d54c8195507406d7042093041381b605c) to this project. It has been quite a ride and `usmap` has grown greatly over the years. To everyone who has supported the project in any way, either by reporting issues, contributing code, or just using the package in your work, thank you so much.
 
