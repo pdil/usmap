@@ -129,6 +129,11 @@ perform_transform <- function(data, ...) {
   hawaii <- sf::st_intersection(transformed, hi_bbox)
   hawaii <- usmapdata:::transform_hawaii(hawaii)
 
+  # Transform Hawaii points
+  pr_bbox <- usmapdata:::puerto_rico_bbox()
+  puerto_rico <- sf::st_intersection(transformed, pr_bbox)
+  puerto_rico <- usmapdata:::transform_puerto_rico(puerto_rico)
+
   # Re-combine all points
   transformed_excl_ak <- sf::st_difference(transformed, ak_bbox)
   sf::st_agr(transformed_excl_ak) <- "constant"
@@ -136,7 +141,10 @@ perform_transform <- function(data, ...) {
   transformed_excl_ak_hi <- sf::st_difference(transformed_excl_ak, hi_bbox)
   sf::st_agr(transformed_excl_ak_hi) <- "constant"
 
-  rbind(transformed_excl_ak_hi, alaska, hawaii)
+  transformed_excl_ak_hi_pr <- sf::st_difference(transformed_excl_ak_hi, pr_bbox)
+  sf::st_agr(transformed_excl_ak_hi_pr) <- "constant"
+
+  rbind(transformed_excl_ak_hi_pr, alaska, hawaii, puerto_rico)
 }
 
 #' usmap coordinate reference system

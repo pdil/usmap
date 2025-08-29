@@ -95,7 +95,7 @@ plot_usmap() +
 
 #### Example: most populous city in each state
 
-And a more comprehensive example using the provided `citypop` dataset:
+And a more comprehensive example using the provided `citypop` data set:
 
 ```{r fig.align='center', fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
 library(usmap)

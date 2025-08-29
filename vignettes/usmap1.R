@@ -11,8 +11,8 @@ usmap::plot_usmap()
 usmap::plot_usmap(regions = "counties")
 
 ## ----eval = FALSE-------------------------------------------------------------
-#  states_df <- usmap::us_map()
-#  counties_df <- usmap::us_map(regions = "counties")
+# states_df <- usmap::us_map()
+# counties_df <- usmap::us_map(regions = "counties")
 
 ## -----------------------------------------------------------------------------
 # Get FIPS code for a state

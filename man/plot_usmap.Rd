@@ -31,9 +31,9 @@ will be returned.}
 \item{exclude}{The regions to exclude in the resulting map. If \code{regions} is
 \code{"states"}/\code{"state"}, the value can be either a state name, abbreviation or FIPS code.
 For counties, the FIPS must be provided as there can be multiple counties with the
-same name. The regions listed in the \code{include} parameter are applied first and the
-\code{exclude} regions are then removed from the resulting map. Any excluded regions
-not present in the included regions will be ignored.}
+same name. The regions listed in the \code{include} parameter take precedence over
+regions listed in \code{exclude}. If both parameters include the same region(s) they
+will be included in the map.}
 
 \item{data}{A data frame containing values to plot on the map. This
 parameter should be a data frame consisting of two columns,
@@ -56,13 +56,13 @@ option in the \code{\link[ggplot2:aes]{ggplot2::aes()}} mapping. The default is 
 \href{https://usmap.dev/docs/Rcolor.pdf}{Click here}
 for more color options.}
 
-\item{data_year}{The year for which to obtain map data. If the value is NULL,
-the most recent year's data is used. If the provided year is not found from
-the available map data sets, the next most recent year's data is used.
-This can be used if an older data set is being plotted on the US map so that
-the data matches the map more accurately. Therefore, the provided value should
-match the year of the plotted data set. The default is NULL, i.e. the most
-recent available year is used.}
+\item{data_year}{The year for which to obtain map data.
+If the value is \code{NULL}, the most recent year's data is used. If the
+provided year is not found from the available map data sets, the next most
+recent year's data is used. This can be used if an older data set is being
+plotted on the US map so that the data matches the map more accurately.
+Therefore, the provided value should match the year of the plotted data set.
+The default is \code{NULL}, i.e. the most recent available year is used.}
 
 \item{...}{Other arguments to pass to \code{\link[ggplot2:aes]{ggplot2::aes()}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like \code{color = "red"}
@@ -75,11 +75,16 @@ and \code{linewidth=0.4}.}
 \value{
 A \link[ggplot2:ggplot]{ggplot2::ggplot} object that contains a basic
 US map with the described parameters. Since the result is a \code{ggplot}
-object, it can be extended with more \link[ggplot2:ggplot2-ggproto]{ggplot2::Geom} layers, scales, labels,
+object, it can be extended with more \link[ggplot2:Geom]{ggplot2::Geom} layers, scales, labels,
 themes, etc.
 }
 \description{
 Conveniently plot basic US map
+}
+\details{
+By default, Puerto Rico is not plotted unless it is specifically included
+via \code{include = c("PR")} etc. The default behavior can be changed by setting
+the environment variable \code{USMAP_DEFAULT_EXCLUDE_PR = FALSE}.
 }
 \examples{
 plot_usmap()

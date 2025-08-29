@@ -1,5 +1,20 @@
 # [unreleased]
 
+Introducing `usmap 1.0.0`! This week we celebrated 10 years since the [first commit](https://github.com/pdil/usmap/commit/1d6a950d54c8195507406d7042093041381b605c) to this project. It has been quite a ride and `usmap` has grown greatly over the years. To everyone who has supported the project in any way, either by reporting issues, contributing code, or just using the package in your work, thank you so much.
+
+I'm happy to announce that with this version we have finally added Puerto Rico! This addition has been [years](https://github.com/pdil/usmap/issues/20) in the making and its now available throughout `usmap`.
+
+### New Features
+* Add Puerto Rico support to all `usmap` functions (where relevant), see [Issue #20](https://github.com/pdil/usmap/issues/20).
+  * All included map years have been retroactively updated to include Puerto Rico, so any valid value of `data_year` will include Puerto Rico if desired.
+  * Functions now return Puerto Rico in their data sets and it can be included or excluded just like any state (using FIPS, full name, abbreviation, etc.).
+  * Puerto Rican municipalities will be shown when using `"county"` map variants.
+  * By default, Puerto Rico is not shown when using `plot_usmap()` unless it is specifically included with the `include` parameter. This default behavior can be changed by setting the environment variable `USMAP_DEFAULT_EXCLUDE_PR = FALSE`. Setting this parameter will include Puerto Rico by default when calling `plot_usmap()` unless specifically excluded with the `exclude` parameter.
+  * Special thanks [@dcaud](https://github.com/dcaud) who started this work [years ago](https://github.com/pdil/usmap/pull/34).
+
+### Improvements
+* Improve documentation and vignettes.
+
 # usmap 0.8.0
 Released Wednesday, May 28, 2025.
 
@@ -18,6 +33,11 @@ Released Wednesday, May 28, 2025.
 
 ### Improvements
 * Update package author email.
+
+### Removed
+* The `as_sf` parameter has been completely removed from `usmapdata`.
+  * Its usage was already removed from `usmap` but its removal is noted here as a final notice.
+  * Any existing code that sets it can safely delete it from `usmapdata` function calls.
 
 # usmap 0.7.1
 Released Thursday, March 21, 2024.

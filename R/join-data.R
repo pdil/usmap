@@ -5,17 +5,17 @@
 #'   parameter should be a data frame consisting of two columns,
 #'   a fips code (2 characters for state, 5 characters for county)
 #'   and the value that should be associated with that region. The
-#'   columns of \code{data} \emph{must} be \code{fips} or \code{state} and
-#'   the value of the `values` parameter. If both \code{fips} and \code{state}
-#'   are provided, this function uses the \code{fips}.
+#'   columns of `data` _must_ be `fips` or `state` and
+#'   the value of the `values` parameter. If both `fips` and `state`
+#'   are provided, this function uses the `fips`.
 #' @param values The name of the column that contains the values to be associated
-#'   with a given region. The default is \code{"values"}.
+#'   with a given region. The default is `"values"`.
 #' @param na The value to be inserted for states or counties that don't have
-#'   a value in \code{data}. This value must be of the same type as the \code{value}
-#'   column of \code{data}.
+#'   a value in `data`. This value must be of the same type as the `value`
+#'   column of `data`.
 #'
 #' @return A data frame composed of the map data frame (from [us_map()]) except
-#'   an extra column containing the values in \code{data} is included.
+#'   an extra column containing the values in `data` is included.
 #'
 #'   The result can be plotted using [ggplot2::ggplot()] or [plot_usmap()].
 #'
@@ -69,7 +69,12 @@ map_with_data <- function(
   data$fips <- as.character(data$fips)
 
   region_type <- ifelse(nchar(data$fips[1]) <= 2, "state", "county")
-  map_df <- usmap::us_map(regions = region_type, include = include, exclude = exclude, data_year = data_year)
+  map_df <- usmap::us_map(
+    regions = region_type,
+    include = include,
+    exclude = exclude,
+    data_year = data_year
+  )
 
   # Remove columns in data that are already in map_df
   data$abbr <- NULL

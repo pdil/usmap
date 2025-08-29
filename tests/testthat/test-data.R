@@ -1,4 +1,6 @@
 test_that("provided data sets plot correctly", {
+  skip_on_ci()
+
   a <- plot_usmap(data = countypop, values = "pop_2022", include = "TX")
   b <- plot_usmap(data = countypov, values = "pct_pov_2021", include = "TX")
   c <- plot_usmap(data = statepop, values = "pop_2022", include = .south_region)

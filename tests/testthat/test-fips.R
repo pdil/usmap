@@ -4,9 +4,9 @@ test_that("all FIPS codes returned when no state specified", {
                  "10", "12", "13", "15", "19", "16", "17", "18",
                  "20", "21", "22", "25", "24", "23", "26", "27",
                  "29", "28", "30", "37", "38", "31", "33", "34",
-                 "35", "32", "36", "39", "40", "41", "42", "44",
-                 "45", "46", "47", "48", "49", "51", "50", "53",
-                 "55", "54", "56"))
+                 "35", "32", "36", "39", "40", "41", "42", "72",
+                 "44", "45", "46", "47", "48", "49", "51", "50",
+                 "53", "55", "54", "56"))
 })
 
 test_that("returns correct FIPS code for state", {
@@ -45,7 +45,7 @@ test_that("returns correct FIPS if it starts with a 0", {
 })
 
 test_that("NA is returned for invalid state", {
-  expect_true(is.na(fips(state = "Puerto Rico")))
+  expect_true(is.na(fips(state = "Guam")))
 })
 
 test_that("error occurs for missing state", {

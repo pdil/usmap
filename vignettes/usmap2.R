@@ -123,8 +123,8 @@ usmap::plot_usmap("counties", fill = "yellow", alpha = 0.25,
 .west_region           # c(.mountain, .pacific)
 
 ## -----------------------------------------------------------------------------
-str(usmap::us_map())
+usmap::us_map()
 
 ## -----------------------------------------------------------------------------
-str(usmap::us_map(regions = "counties"))
+usmap::us_map(regions = "counties")
 

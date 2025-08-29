@@ -202,10 +202,10 @@ Regions are composed of multiple divisions, and the following are supported:
 The raw US map data for counties or states can be obtained for further manipulation (and joining with data).
 
 ```{r}
-str(usmap::us_map())
+usmap::us_map()
 ```
 ```{r}
-str(usmap::us_map(regions = "counties"))
+usmap::us_map(regions = "counties")
 ```
 
 You can also include only certain states and counties just like in `plot_usmap`. In fact, the `regions` and `include` parameters of `plot_usmap` are derived directly from their usage in `us_map`.

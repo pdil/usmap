@@ -2,12 +2,12 @@
 #'
 #' @description
 #' It is usually difficult or inconvenient to create US maps that
-#'   include both Alaska and Hawaii in a convenient spot. All map
-#'   data presented in this package uses the US National Atlas Equal Area
+#'   include Alaska, Hawaii, and even Puerto Rico in a convenient spot. All map
+#'   data frames produced by this package use the US National Atlas Equal Area
 #'   projection.
 #'
 #' @section Map data:
-#' Alaska and Hawaii have been manually moved to a new location so that
+#' Alaska, Hawaii, and Puerto Rico have been manually moved to a new location so that
 #' their new coordinates place them to the bottom-left corner of
 #' the map. These maps can be accessed by using the [us_map()] function.
 #'
@@ -31,7 +31,7 @@
 #' @section Plot US map data:
 #' A convenience function [plot_usmap()] has been included which
 #' takes similar parameters to [us_map()] and returns a [ggplot2::ggplot2]
-#' object. Since the output is a \code{ggplot} object, other layers can be
+#' object. Since the output is a `ggplot` object, other layers can be
 #' added such as scales, themes, and labels. Including data in the function call
 #' will color the map according to the values in the data, creating a choropleth.
 #'

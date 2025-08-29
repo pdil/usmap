@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 ## Plotting
 
-Plots of US maps in R usually lack Alaska and Hawaii. The reason is plotting takes the literal longitude and latitude coordinates and maps it to a cartesian x-y coordinate graph. Alaska and Hawaii are very far from the mainland US when using this so it can be unwieldy to include them. The `usmap` package solves this issue by providing data frames which have Alaska and Hawaii moved to a convenient spot just to the bottom left of the contiguous United States.
+Plots of US maps in R usually lack Alaska, Hawaii, and Puerto Rico. The reason is plotting takes the literal longitude and latitude coordinates and maps it to a cartesian x-y coordinate graph. Alaska, Hawaii, and Puerto Rico are very far from the mainland US when using this so it can be unwieldy to include them. The `usmap` package solves this issue by providing data frames which have Alaska, Hawaii, and Puerto Rico moved to a convenient spot just to the bottom left of the contiguous United States.
 
 #### Blank US state map
 
@@ -44,7 +44,7 @@ counties_df <- usmap::us_map(regions = "counties")
 
 ## FIPS codes
 
-FIPS codes are defined in the Federal Information Processing Standards by the US government. One usage is uniquely identifying US states and counties (among other things such as identifying countries for the CIA World Factbook). Downloading datasets from the [US Census](https://www.census.gov/data.html) will often include FIPS codes as identifiers so it can be helpful to know what a FIPS code represents. The functions in `usmap` are built around the FIPS code identification system and so convenience methods for accessing them and performing reverse-lookups have been included.
+FIPS codes are defined in the Federal Information Processing Standards by the US government. One usage is uniquely identifying US states and counties. Downloaded data sets from the [US Census](https://www.census.gov/data.html) will often include FIPS codes as identifiers so it can be helpful to know what a FIPS code represents. The functions in `usmap` are built around the FIPS code identification system and so convenience methods for accessing them and performing reverse-lookups have been included.
 
 #### State/County FIPS lookup
 
