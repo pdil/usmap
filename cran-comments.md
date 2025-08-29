@@ -1,13 +1,11 @@
 
-This is a re-submission to fix URL issues caught by the automated checks.
-
 ## Test environments
 * local macOS install, R 4.5.0
 
 #### On Github Actions
-* macOS-latest (release), R 4.5.0
-* windows-latest (release), R 4.5.0
-* ubuntu-22.04 (oldrel, devel, release), R 4.5.0
+* macOS-latest (release), R 4.5.1
+* windows-latest (release), R 4.5.1
+* ubuntu-22.04 (oldrel, devel, release), R 4.5.1
 
 ## R CMD check results
 
