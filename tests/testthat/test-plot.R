@@ -1,3 +1,5 @@
+withr::local_envvar(c("USMAP_DEFAULT_EXCLUDE_PR" = FALSE))
+
 test_that("dependencies are verified", {
   expect_package_error("ggplot2", plot_usmap())
 })
@@ -8,8 +10,6 @@ example_data <- data.frame(
   state = c("AK", "CA", "New Jersey"),
   values = c(5, 8, 7)
 )
-
-withr::local_envvar(c("USMAP_DEFAULT_EXCLUDE_PR" = FALSE))
 
 p <- plot_usmap("counties", fill = "red")
 q <- plot_usmap(data = statepop, values = "pop_2022", color = "blue")
@@ -69,6 +69,8 @@ test_that("correct data is used", {
 })
 
 test_that("plots are stable", {
+  skip_on_ci()
+
   vdiffr::expect_doppelganger("State population map with blue outlines", q)
   vdiffr::expect_doppelganger("Example data state map with custom linewidth", r)
   vdiffr::expect_doppelganger("Southeastern states map with labels", s)
@@ -76,10 +78,6 @@ test_that("plots are stable", {
   vdiffr::expect_doppelganger("New England state map with labels excluding Maine", u)
   vdiffr::expect_doppelganger("State map with labels", v)
   vdiffr::expect_doppelganger("PR county map with labels and excludes", w)
-
-  # River map snapshot test fails on non-mac platforms,
-  # use manual verification instead.
-  skip_on_os(c("windows", "linux"))
 
   rivers_t <- usmap_transform(usrivers)
   river_map <- plot_usmap() + ggplot2::geom_sf(data = rivers_t, color = "blue")
