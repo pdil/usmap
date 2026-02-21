@@ -70,7 +70,7 @@ To install the package from this repository, run the following code in
 an R console:
 
 ``` r
-install.package("devtools")
+install.packages("devtools")
 devtools::install_github("pdil/usmap")
 ```
 
