@@ -11,7 +11,7 @@
 [![codecov](https://codecov.io/gh/pdil/usmap/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pdil/usmap)
 <!-- badges: end -->
 
-<img src="man/figures/README-header-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-header-1.png" alt="" style="display: block; margin: auto;" />
 
 ## Purpose
 
@@ -40,6 +40,7 @@ Since data is now stored in `usmapdata`, updates are no longer tied to
 
 | Date | Available Years |
 |----|:--:|
+| July 25, 2026 | [2021](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2021.html), [2022](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2022.html), [2023](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2023.html), [2024](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2024.html), [2025](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2025.html) |
 | May 28, 2025 | [2021](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2021.html), [2022](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2022.html), [2023](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2023.html), [2024](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2024.html) |
 
 Prior to `usmap v0.8.0`:
@@ -112,7 +113,7 @@ counties <- plot_usmap("counties")
 cowplot::plot_grid(states, counties, nrow = 1)
 ```
 
-<img src="man/figures/README-plots-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-plots-1.png" alt="" style="display: block; margin: auto;" />
 
 - Display only certain states, counties, or regions
 
@@ -130,7 +131,7 @@ ne <- plot_usmap("counties", data = countypop, values = "pop_2022", include = .n
 cowplot::plot_grid(mt, fl, ne, nrow = 1)
 ```
 
-<img src="man/figures/README-more_plots-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-more_plots-1.png" alt="" style="display: block; margin: auto;" />
 
 - Transform and add spatial data to map
 
@@ -155,7 +156,7 @@ earthquake_map <- plot_usmap() +
 cowplot::plot_grid(river_map, earthquake_map, nrow = 1)
 ```
 
-<img src="man/figures/README-sf_plot-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-sf_plot-1.png" alt="" style="display: block; margin: auto;" />
 
 ### Map Data
 
@@ -286,20 +287,22 @@ required!), you may do so in the following way:
 
 ``` r
 citation("usmap")
-#> Warning in citation("usmap"): could not determine year for 'usmap' from package
-#> DESCRIPTION file
 #> To cite package 'usmap' in publications use:
 #> 
-#>   Di Lorenzo P (????). _usmap: US Maps Including Alaska and Hawaii_. R
-#>   package version 0.8.0.9000, <https://usmap.dev>.
+#>   Di Lorenzo P (2025). _usmap: US Maps Including Alaska and Hawaii_.
+#>   doi:10.32614/CRAN.package.usmap
+#>   <https://doi.org/10.32614/CRAN.package.usmap>. R package version
+#>   1.0.0, <https://CRAN.R-project.org/package=usmap>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {usmap: US Maps Including Alaska and Hawaii},
 #>     author = {Paolo {Di Lorenzo}},
-#>     note = {R package version 0.8.0.9000},
-#>     url = {https://usmap.dev},
+#>     year = {2025},
+#>     note = {R package version 1.0.0},
+#>     url = {https://CRAN.R-project.org/package=usmap},
+#>     doi = {10.32614/CRAN.package.usmap},
 #>   }
 ```
 
