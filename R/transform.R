@@ -129,7 +129,7 @@ perform_transform <- function(data, ...) {
   hawaii <- sf::st_intersection(transformed, hi_bbox)
   hawaii <- usmapdata:::transform_hawaii(hawaii)
 
-  # Transform Hawaii points
+  # Transform Puerto Rico points
   pr_bbox <- usmapdata:::puerto_rico_bbox()
   puerto_rico <- sf::st_intersection(transformed, pr_bbox)
   puerto_rico <- usmapdata:::transform_puerto_rico(puerto_rico)
